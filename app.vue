@@ -1,33 +1,41 @@
 <template>
-  <div class="container mx-auto">
+  <div class="mx-4 md:mx-auto">
     <!-- Logo -->
-    <div class="grid grid-rows-4 gap-4">
-    <div class="w-1/3 mx-auto my-8">
+    <div class="h-screen grid grid-rows-3 gap-4">
+    <div class="md:w-1/3 mx-auto my-auto">
       <img src="~/assets/logo_lmlc.png" alt="Logo lmlccommunication" />
     </div>
 
     <!-- Countdown -->
-    <div class="countdown-container my-8">
-      <div class="flex w-full  bg-[#D9D9D9] p-4 rounded h-64 justify-center items-center ">
-        <div class="relative z-10 text-center w-full">
-          <div class="flex justify-around w-full p-10">
-            <div> <p class="text-6xl font-bold">{{ temps.jours }}</p></div>
-            <div> <p class="text-6xl font-bold">{{ temps.hours }}</p></div>
-            <div> <p class="text-6xl font-bold">{{ temps.minutes }}</p></div>
-            <div> <p class="text-6xl font-bold">{{ temps.secondes }}</p></div>
+    <div class="my-auto">
+      <div class="flex w-full md:w-2/3 mx-auto bg-[#D9D9D9] p-4 rounded h-auto md:h-64 justify-center items-center ">
+        <div class="z-10 text-center h-auto w-full">
+          <div class="flex justify-around w-full text-3xl md:text-6xl font-medium md:font-bold font-montserrat">
+            <div> <p class="">{{ temps.jours }}</p></div>
+            <div> <p class="">{{ temps.hours }}</p></div>
+            <div> <p class="">{{ temps.minutes }}</p></div>
+            <div> <p class="">{{ temps.secondes }}</p></div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Contact -->
-    <div class="contact-container my-8 pl-20">
-      <p class="font-bold">QUESTION & </p> 
-      <p class="font-bold">
-      NEW BUISINESS</p>
-      <p>contact@lmlccommunication.fr</p>
-      <p class="font-bold">JOB</p>
-      <p>talents@lmlccommunication.fr</p>
+    <div class="flex font-montserrat">
+      <div class="flex-1"></div>
+      <div class="flex-1">
+        <p class="font-bold">QUESTION & </p> 
+        <p class="font-bold">
+        NEW BUISINESS</p>
+        <div class="font-thin mt-2 mb-6">
+          <a href = "mailto: contact@lmlccommunication.fr">contact@lmlccommunication.fr</a>
+        </div>
+        <p class="font-bold">JOB</p>
+        <div class="font-thin mt-2">
+          <a href = "mailto: talents@lmlccommunication.fr">talents@lmlccommunication.fr</a>
+        </div>
+        </div>
+      <div class="flex-1"></div>
     </div>
   </div>
 </div>
