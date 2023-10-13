@@ -16,11 +16,9 @@ export default {
         'rose-neon': '#ff0066',
         'bleu-ciel': '#99deff',
         'jaune-citron': '#ffff00',
-      }
+      },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
-        "lovelo-black": ["Lovelo_Black", "sans-serif"],
-        "lovelo-bold": ["Lovelo_Bold", "arial"],
+        montserrat: ["Montserrat", "Arial", "sans-serif"]
       },
     },
   },
