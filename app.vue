@@ -8,8 +8,9 @@
 
       <!-- Countdown -->
       <div class="my-auto">
-        <div class="flex w-full md:w-2/3 mx-auto bg-[#D9D9D9] p-4 rounded py-[8vh] justify-center items-center ">
-          <div class="z-10 text-center h-auto w-full">
+        <div class="flex relative monin overflow-hidden w-full h-full md:w-2/3 mx-auto p-4 py-[8vh] rounded-3xl justify-center items-center ">
+          <!-- <div class="relative monin overflow-hidden w-full h-full"> -->
+          <div class="z-10 text-center h-auto w-full relative">
             <div class="flex justify-around w-full text-3xl md:text-6xl font-medium md:font-bold font-montserrat">
               <!-- <div> -->
                 <!-- Nouveau code -->
@@ -72,8 +73,9 @@
                     <!-- <span class="">Seconds</span> -->
                   </div>
                 <!-- </div> -->
-            </div>
+            <!-- </div> -->
           </div>
+        </div>
         </div>
       </div>
 
