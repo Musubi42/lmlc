@@ -4,7 +4,7 @@
     <div class="h-screen flex flex-col gap-16 py-20">
       <!-- gap-[10vh] -->
       <div class="flex flex-1 justify-center items-center h-full">
-        <div class="md:w-1/3 mx-auto">
+        <div class="md:w-1/5 mx-auto">
           <img
             class="w-7/12 mx-auto md:w-full"
             src="~/assets/logo_lmlc.png"
