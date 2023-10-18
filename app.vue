@@ -16,7 +16,7 @@
       <!-- Countdown -->
       <div class="my-auto flex-1">
         <div
-          class="flex relative bg-black overflow-hidden w-[90%] h-auto md:w-2/3 mx-auto py-[4vh] rounded-[10px] justify-center items-center"
+          class="flex relative bg-slate-900 overflow-hidden w-[90%] h-auto md:w-2/3 mx-auto py-[4vh] rounded-[10px] justify-center items-center"
         >
           <!-- <div class="relative monin overflow-hidden w-full h-full"> -->
           <!-- TODO: Black and white ecriture pas d'image client, que les carrès soient plus gros  -->
