@@ -1,77 +1,36 @@
 <template>
   <div>
-    <div class="container" ref="container">
-      <draggable v-model="items" :options="draggableOptions">
-        <div
-          v-for="(item, index) in items"
-          :key="item.id"
-          class="draggable-item"
-        >
-          {{ item.text }}
-        </div>
-      </draggable>
-    </div>
+    <draggable-container>
+      <div class="draggable-element">Élément 1</div>
+      <div class="draggable-element">Élément 2</div>
+    </draggable-container>
+    <draggable-element><div class="draggable-element">Élément 2</div></draggable-element>
   </div>
 </template>
 
 <script>
-import draggable from 'vuedraggable';
+import DraggableContainer from "@/components/DraggableContainer.vue";
 
 export default {
   components: {
-    draggable,
-  },
-  data() {
-    return {
-      items: [
-        { id: 1, text: 'Element 1' },
-        { id: 2, text: 'Element 2' },
-        { id: 3, text: 'Element 3' },
-      ],
-    };
-  },
-  computed: {
-    draggableOptions() {
-      return {
-        group: 'draggableItems',
-        preventOnFilter: false,
-        move: this.handleMove,
-      };
-    },
-  },
-  methods: {
-    handleMove(evt) {
-      // Empêcher les éléments de sortir de la division
-      const containerRect = this.$refs.container.getBoundingClientRect();
-      const elementRect = evt.relatedContext.element.getBoundingClientRect();
-
-      if (
-        elementRect.left < containerRect.left ||
-        elementRect.right > containerRect.right ||
-        elementRect.top < containerRect.top ||
-        elementRect.bottom > containerRect.bottom
-      ) {
-        return false;
-      }
-    },
+    DraggableContainer,
   },
 };
 </script>
 
 <style scoped>
-.container {
-  width: 300px;
-  height: 200px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  overflow: auto;
+.draggable-element {
+ 
+  width: 50px;
+  height: 50px; /* Ajustez la hauteur des éléments à 50px */
+  background-color: #3498db;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  cursor: grab;
 }
 
-.draggable-item {
-  background-color: #f0f0f0;
-  margin: 5px;
-  padding: 10px;
-  border: 1px solid #999;
-  cursor: grab;
+.draggable-element:active {
+  cursor: grabbing;
 }
 </style>

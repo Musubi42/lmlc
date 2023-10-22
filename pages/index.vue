@@ -1,35 +1,44 @@
 <template>
-  <div>
-<ul><li>test</li></ul>
+  <div class="container">
+  <div class="container-tableau bg-slate-950 mx-auto">
+    <draggable-container>
+      <div class="draggable-element"></div>
+    </draggable-container>
+    <draggable-container>
+      <div class="draggable-element"></div>
+    </draggable-container>
+
   </div>
+</div>
 </template>
 
 <script>
-import {Draggable} from '@shopify/draggable';
+import DraggableContainer from "@/components/DraggableContainer.vue";
 
-const draggable = new Draggable(document.querySelectorAll('ul'), {
-  draggable: 'li',
-});
-
-draggable.on('drag:start', () => console.log('drag:start'));
-draggable.on('drag:move', () => console.log('drag:move'));
-draggable.on('drag:stop', () => console.log('drag:stop'));
+export default {
+  components: {
+    DraggableContainer,
+  },
+};
 </script>
 
 <style scoped>
-.container {
-  width: 300px;
-  height: 200px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  overflow: auto;
+.draggable-element {
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  background-color: #3498db;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  cursor: grab;
 }
 
-.draggable-item {
-  background-color: #f0f0f0;
-  margin: 5px;
-  padding: 10px;
-  border: 1px solid #999;
-  cursor: grab;
+.container-tableau{
+  width: 800px;
+  background-color: #3498db;
+}
+.draggable-element:active {
+  cursor: grabbing;
 }
 </style>
