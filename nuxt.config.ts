@@ -1,11 +1,23 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { resolve } from "path";
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  css: ['~/assets/css/main.css'],
+  runtimeConfig: {
+    public: {
+      MAINTENANCE: process.env.MAINTENANCE,
+    },
+  },
+  alias: {
+    "@": resolve(__dirname, "/"),
+  },
+  // router: {
+  //   middleware: 'maintenance'
+  // },
+  css: ["~/assets/css/main.css"],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
-})
+});
