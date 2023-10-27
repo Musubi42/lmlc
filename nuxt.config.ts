@@ -10,6 +10,10 @@ export default defineNuxtConfig({
   alias: {
     "@": resolve(__dirname, "/"),
   },
+  modules: ["nuxt-svgo", "@nuxt/image"],
+  svgo: {
+    autoImportPath: "~/assets/icons/",
+  },
   // router: {
   //   middleware: 'maintenance'
   // },

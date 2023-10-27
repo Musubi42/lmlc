@@ -3,7 +3,7 @@
     <div class="">
       <img
         class="h-[13px] w-auto"
-        src="@/assets/images/logo-lmlc-black.png"
+        src="~/assets/images/logo-lmlc-black.png"
         alt="Logo LMLC couleur noir"
       />
     </div>
