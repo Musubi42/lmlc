@@ -23,7 +23,7 @@ export default {
   },
   data() {
     return {
-      isVisible: true,
+      isVisible: false,
       imageX: 0,
       imageY: 0,
     };

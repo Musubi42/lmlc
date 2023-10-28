@@ -1,12 +1,12 @@
 <template>
   <!-- TODO: Pour faire l'effet d'image qui follow sur le hover -->
   <!-- https://codepen.io/coreDeiv/pen/YzqzRKK -->
-  <footer class="fixed bottom-0 bg-black text-white w-full h-auto">
+  <footer class="bottom-0 bg-black text-white w-full h-auto">
     <div class="flex flex-row px-[10%] py-[8%]">
       <div class="flex-1">
         <div class="mb-8">
           <div class="font-bold w-fit">
-            <ImageOnHover
+            <ImageFooterOnHover
               class="onHover w-fit"
               imageSrc="/footer-questions-small.png"
             >
@@ -15,27 +15,29 @@
               <span class="font-bold z-10 relative leading-3"
                 >NEW BUISINESS</span
               >
-            </ImageOnHover>
+            </ImageFooterOnHover>
           </div>
           <span class="font-extralight">contact@lmlccommunication.fr</span>
         </div>
 
         <div class="mb-8 w-fit">
-          <ImageOnHover class="onHover w-fit" imageSrc="/footer-job-small.png">
+          <ImageFooterOnHover
+            class="onHover w-fit"
+            imageSrc="/footer-job-small.png"
+          >
             <span class="font-bold z-10 relative leading-3">JOB</span>
             <!-- transition: ease .5s all padding-left: 1rem; color: #ccc; text-shadow: 3px 5px 10px rgba(0,0,0,1); -->
-          </ImageOnHover>
-          <br />
+          </ImageFooterOnHover>
           <span class="font-extralight">talents@lmlccommunication.fr</span>
         </div>
 
         <div class="mb-8 w-fit">
-          <ImageOnHover
+          <ImageFooterOnHover
             class="onHover w-fit"
             imageSrc="/footer-tuned-small.png"
           >
             <span class="font-bold z-10 relative leading-3">STAY TUNED</span>
-          </ImageOnHover>
+          </ImageFooterOnHover>
           <!-- opacity: 0; width: 100%; height: auto; max-width: 400px; box-sizing:
           border-box; transition: ease .2s; position: absolute; transform:
           translate(-50%, -50%); z-index: -1; object-fit: cover; -->
@@ -54,15 +56,18 @@
         </div>
       </div>
     </div>
-    <div
-      class="fixed flex flex-col justify-content items-center bottom-0 h-20 w-full"
-    >
-      <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
-        <instagram class="text-[35px] w-auto" />
-      </a>
-      <NuxtLink to="/mentions-legales" class="font-monteserrat font-extralight"
-        >Mentions légales</NuxtLink
+    <div class="relative w-full">
+      <div
+        class="absolute flex flex-col justify-content items-center bottom-0 h-20 w-full"
       >
+        <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
+          <instagram class="text-[35px] w-auto text-white" />
+        </a>
+        <!-- TODO : Ajouter le lien vers mentions-legales une fois la page crée -->
+        <NuxtLink to="/" class="font-monteserrat font-extralight"
+          >Mentions légales</NuxtLink
+        >
+      </div>
     </div>
   </footer>
 </template>
