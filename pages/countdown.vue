@@ -7,7 +7,7 @@
         <div class="md:w-1/5 mx-auto">
           <img
             class="w-7/12 mx-auto md:w-full"
-            src="@/assets/logo-lmlc-black.png"
+            src="/logo-lmlc-black.png"
             alt="Logo lmlccommunication"
           />
         </div>
@@ -116,6 +116,10 @@
 </template>
 
 <script setup>
+definePageMeta({
+  layout: "menu",
+});
+
 import gsap from "gsap";
 import { Quart } from "gsap/gsap-core";
 

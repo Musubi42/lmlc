@@ -15,7 +15,7 @@
       </div>
       <!-- 
         class="z-50 flex flex-col h-12 w-12 border-2 border-black rounded justify-center items-center group cursor-pointer" -->
-      <div id="menu-burger" class="">
+      <NuxtLink to="/menu" id="menu-burger hover:cursor-pointer" class="">
         <div
           class="menu__burger__sides__open h-[6px] w-8 rounded-full bg-black transition ease transform duration-300"
         ></div>
@@ -25,7 +25,7 @@
         <div
           class="menu__burger__sides__open h-[6px] w-8 mt-[1px] rounded-full bg-black transition ease transform duration-300"
         ></div>
-      </div>
+      </NuxtLink>
     </div>
   </div>
 </template>
