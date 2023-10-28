@@ -1,18 +1,33 @@
 <template>
-  <div class="h-screen bg-rose-neon flex flex-row">
+  <div class="h-screen bg-rose-neon flex flex-row" id="bg">
     <!-- Titre -->
     <div class="my-auto flex flex-col place-content-between h-3/6 ml-16">
       <div class="">
-        <ImageMenuOnHover class="onHover w-fit" imageSrc="/menu-work-small.png">
-          <div class="font-black z-10 relative text-8xl text-white">WORK</div>
+        <ImageMenuOnHover
+          class="onHover w-fit"
+          imageSrc="/menu-work-small.png"
+          @mouseover="color"
+          id="work"
+        >
+          <div
+            data-color="#ffff00"
+            class="font-black z-10 relative text-8xl text-white hover:cursor-pointer leading-[78%]"
+          >
+            WORK
+          </div>
         </ImageMenuOnHover>
       </div>
       <div class="mb-30">
         <ImageMenuOnHover
           class="onHover w-fit"
           imageSrc="/menu-services-small.png"
+          @mouseover="color"
+          id="services"
         >
-          <div class="text-8xl text-white font-black z-10 relative">
+          <div
+            data-color="#974dff"
+            class="text-8xl text-white font-black z-10 relative hover:cursor-pointer leading-[78%]"
+          >
             SERVICES
           </div>
         </ImageMenuOnHover>
@@ -20,25 +35,30 @@
       <ImageMenuOnHover
         class="onHover w-fit"
         imageSrc="/menu-talents-small.png"
+        @mouseover="color"
+        id="talents"
       >
-        <div class="text-8xl text-white font-black z-10 relative">TALENTS</div>
+        <div
+          data-color="#99deff"
+          class="text-8xl text-white font-black z-10 relative hover:cursor-pointer leading-[78%]"
+        >
+          TALENTS
+        </div>
       </ImageMenuOnHover>
     </div>
     <!-- Sidebar -->
     <div class="flex flex-col place-content-between ml-auto mr-10 mb-10 mt-6">
-      <div id="menu-burger" class="ml-auto flex flex-row">
-        <div
-          class="menu__burger__sides__open h-[25px] w-[10px] mr-[4px] rounded-full bg-white transition ease transform duration-300"
-        ></div>
-        <div
-          class="menu__burger__middle__open h-[50px] w-[10px] mr-[4px] rounded-full bg-white transition ease transform duration-300"
-        ></div>
-        <div
-          class="menu__burger__sides__open h-[50px] w-[10px] rounded-full bg-white transition ease transform duration-300"
-        ></div>
+      <div
+        id="menu-burger"
+        class="ml-auto flex flex-row hover:cursor-pointer relative h-[50px] w-[38px]"
+        @click="toggleMenu"
+      >
+        <div class="menu-burger-open-short absolute left-0"></div>
+        <div class="menu-burger-open-long absolute left-[12px]"></div>
+        <div class="menu-burger-open-long absolute right-0"></div>
       </div>
       <!-- Reaseaux sociaux -->
-      <div>
+      <div id="social-network">
         <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
           <tiktok class="text-[65px] w-auto text-white opacity-50" />
         </a>
@@ -50,7 +70,6 @@
         <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
           <instagram class="text-[65px] w-auto" />
         </a>
-        <button @mouseover="mouseup">Greet</button>
       </div>
     </div>
   </div>
@@ -58,10 +77,101 @@
 
 <script setup>
 import tiktok from "assets/icons/tiktok.svg";
-import instagram from "assets/icons/instagram.svg";
+import instagram from "assets/icons/instagram-opacity.svg";
 import linkedin from "assets/icons/linkedin.svg";
 const name = ref("Vue.js");
 
+function toggleMenu(event) {
+  if (event.target.id === "menu-burger") {
+    var menuBurgerFirst = event.target.children[0];
+    var menuBurgerSecond = event.target.children[1];
+    var menuBurgerThird = event.target.children[2];
+  } else {
+    // Le coup ou on clique pas sur le burger, mais sur les barres
+    var menuBurgerFirst = event.srcElement.offsetParent.children[0];
+    var menuBurgerSecond = event.srcElement.offsetParent.children[1];
+    var menuBurgerThird = event.srcElement.offsetParent.children[2];
+  }
+
+  menuBurgerFirst.style.height = "6px";
+  menuBurgerFirst.style.width = "6px";
+  menuBurgerFirst.style.transition =
+    "height 0.5s cubic-bezier(.47,1.64,.41,.8)";
+
+  menuBurgerSecond.style.height = "6px";
+  menuBurgerSecond.style.width = "6px";
+  menuBurgerSecond.style.transform = "translateY(20px)";
+  menuBurgerSecond.style.transition = "all 0.5s cubic-bezier(.47,1.64,.41,.8)";
+  menuBurgerThird.style.height = "6px";
+  menuBurgerThird.style.width = "6px";
+  menuBurgerThird.style.transform = "translateY(40px)";
+  menuBurgerThird.style.transition = "all 0.5s cubic-bezier(.47,1.64,.41,.8)";
+
+  setTimeout(function () {
+    menuBurgerFirst.style.backgroundColor = "black";
+    menuBurgerFirst.style.width = "35px";
+    menuBurgerFirst.style.transition = "width 0.3s ease-in-out";
+
+    menuBurgerSecond.style.backgroundColor = "black";
+    menuBurgerSecond.style.width = "35px";
+    menuBurgerSecond.style.transform = "translate(-12px, 8px)";
+
+    menuBurgerThird.style.backgroundColor = "black";
+    menuBurgerThird.style.width = "35px";
+    menuBurgerThird.style.transform = "translate(1px, 16px)";
+  }, 500);
+
+  // Make the elements disapear
+  // Menu burger
+  setTimeout(function () {
+    menuBurgerFirst.style.opacity = "0";
+    menuBurgerSecond.style.opacity = "0";
+    menuBurgerThird.style.opacity = "0";
+  }, 1000);
+
+  // Social Networks
+  setTimeout(function () {
+    document.getElementById("social-network").style.transform =
+      "translateX(120px)";
+    document.getElementById("social-network").style.transition =
+      "all 0.5s ease-in-out";
+  }, 1000);
+
+  // Link
+  // Work
+  setTimeout(function () {
+    document.getElementById("work").style.transform = "translateX(-400px)";
+    document.getElementById("work").style.transition = "all 0.5s ease-in-out";
+  }, 1000);
+
+  // Services
+  setTimeout(function () {
+    document.getElementById("services").style.transform = "translateY(-600px)";
+    document.getElementById("services").style.transition =
+      "all 0.5s ease-in-out";
+  }, 1000);
+
+  // Talents
+  setTimeout(function () {
+    document.getElementById("talents").style.transform = "translateY(600px)";
+    document.getElementById("talents").style.transition =
+      "all 0.5s ease-in-out";
+  }, 1000);
+
+  // TODO : Navigation provisoire pour demo la transition
+  setTimeout(function () {
+    window.location.href = "http://pre-prod.lmlccommunication.fr/";
+  }, 1500);
+}
+
+function color(value) {
+  if (typeof value === "string") {
+    document.getElementById("bg").style.backgroundColor = value;
+  } else {
+    document.getElementById("bg").style.backgroundColor =
+      value.target.attributes["data-color"].value;
+  }
+}
 function mouseup(event) {
   console.log(event);
 }
