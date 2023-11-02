@@ -75,21 +75,64 @@ body {
   background-color: #000; /* Replace with your desired color value */
 }
 
-.menu-burger-open-short {
+.menu-burger-open-first {
   height: 25px;
   width: 10px;
-  margin-right: 4px;
+  margin-right: 2px;
   border-radius: 9999px; /* A large value to create a circle */
-  background-color: #fff; /* Replace with your desired color value */
+  background-color: green; /* Replace with your desired color value */
+  /* position: absolute; */
+  left: 0px;
+  transition: all 0.7s cubic-bezier(.47,1.64,.41,.8);
 }
 
-.menu-burger-open-long {
+.menu-burger-open-second {
   height: 50px;
   width: 10px;
-  margin-right: 4px;
+  margin-right: 2px;
   border-radius: 9999px; /* A large value to create a circle */
-  background-color: #fff; /* Replace with your desired color value */
+  background-color: green; /* Replace with your desired color value */
+  /* position: absolute; */
+  left: 12px;
+  transition: all 0.7s cubic-bezier(.47,1.64,.41,.8);
 }
+
+.menu-burger-open-third {
+  height: 50px;
+  width: 10px;
+  margin-right: 2px;
+  border-radius: 9999px; /* A large value to create a circle */
+  background-color: green; /* Replace with your desired color value */
+  right: 0px;
+  /* position: absolute; */
+  transition: all 0.7s cubic-bezier(.47,1.64,.41,.8);
+}
+
+.menu-burger-close-first {
+  height: 6px;
+  width: 32px;
+  background-color: black;
+  border-radius: 9999px; 
+  transition: all 0.7s cubic-bezier(.47,1.64,.41,.8);
+}
+
+.menu-burger-close-second {
+  height: 6px;
+  width: 32px;
+  margin-top: 1px;
+  background-color: black;
+  border-radius: 9999px; 
+  margin-top: 1px;
+  transition: all 0.7s cubic-bezier(.47,1.64,.41,.8);
+}
+
+.open {
+  display: flex;
+}
+
+.close {
+  overflow: hidden;
+} 
 
 .time-elem {
   position: relative;

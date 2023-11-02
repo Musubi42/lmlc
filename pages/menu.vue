@@ -4,7 +4,7 @@
     <div class="my-auto flex flex-col place-content-between h-3/6 ml-16">
       <div class="">
         <ImageMenuOnHover
-          class="onHover w-fit"
+          class="onHover w-fit hover:ml-14"
           imageSrc="/menu-work-small.png"
           @mouseover="color"
           id="work"
@@ -19,7 +19,7 @@
       </div>
       <div class="mb-30">
         <ImageMenuOnHover
-          class="onHover w-fit"
+          class="onHover w-fit hover:ml-14"
           imageSrc="/menu-services-small.png"
           @mouseover="color"
           id="services"
@@ -33,7 +33,7 @@
         </ImageMenuOnHover>
       </div>
       <ImageMenuOnHover
-        class="onHover w-fit"
+        class="onHover w-fit hover:ml-14"
         imageSrc="/menu-talents-small.png"
         @mouseover="color"
         id="talents"
@@ -53,22 +53,22 @@
         class="ml-auto flex flex-row hover:cursor-pointer relative h-[50px] w-[38px]"
         @click="toggleMenu"
       >
-        <div class="menu-burger-open-short absolute left-0"></div>
-        <div class="menu-burger-open-long absolute left-[12px]"></div>
-        <div class="menu-burger-open-long absolute right-0"></div>
+        <div class="menu-burger-open-first absolute left-0"></div>
+        <div class="menu-burger-open-second absolute left-[12px]"></div>
+        <div class="menu-burger-open-third absolute right-0"></div>
       </div>
       <!-- Reaseaux sociaux -->
       <div id="social-network">
-        <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
+        <!-- <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
           <tiktok class="text-[65px] w-auto text-white opacity-50" />
+        </a> -->
+
+        <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
+          <linkedin class="text-[30px] w-auto text-white" />
         </a>
 
         <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
-          <linkedin class="text-[65px] w-auto text-white" />
-        </a>
-
-        <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
-          <instagram class="text-[65px] w-auto" />
+          <instagram class="text-[30px] w-auto" />
         </a>
       </div>
     </div>
@@ -123,11 +123,11 @@ function toggleMenu(event) {
 
   // Make the elements disapear
   // Menu burger
-  setTimeout(function () {
-    menuBurgerFirst.style.opacity = "0";
-    menuBurgerSecond.style.opacity = "0";
-    menuBurgerThird.style.opacity = "0";
-  }, 1000);
+  // setTimeout(function () {
+  //   menuBurgerFirst.style.opacity = "0";
+  //   menuBurgerSecond.style.opacity = "0";
+  //   menuBurgerThird.style.opacity = "0";
+  // }, 1000);
 
   // Social Networks
   setTimeout(function () {
@@ -159,9 +159,9 @@ function toggleMenu(event) {
   }, 1000);
 
   // TODO : Navigation provisoire pour demo la transition
-  setTimeout(function () {
-    window.location.href = "http://pre-prod.lmlccommunication.fr/";
-  }, 1500);
+  // setTimeout(function () {
+  //   window.location.href = "http://pre-prod.lmlccommunication.fr/";
+  // }, 1500);
 }
 
 function color(value) {
@@ -182,7 +182,7 @@ definePageMeta({
 
 <style scoped>
 .onHover:hover {
-  transition: ease 0.2s all;
+  /* transition: ease 0.2s all; */
   color: black;
   cursor: default;
 }

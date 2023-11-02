@@ -32,6 +32,9 @@ export default {
       fontFamily: {
         montserrat: ["Montserrat", "Arial", "sans-serif"],
       },
+      animation: {
+        "spin-slow": "spin 8s linear infinite",
+      },
     },
   },
   safelist: ["lilas-pop", "rose-neon", "bleu-ciel", "jaune-citron"],

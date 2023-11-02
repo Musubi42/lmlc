@@ -1,0 +1,17 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Create a transparent sphere -->
+  <circle cx="100" cy="100" r="80" fill="none" stroke-width="2"
+    style="background-color: transparent; color: transparent" />
+
+  <!-- Define the circular path for text -->
+  <path id="circlePath" d="M100,20 A80,80 0 1,0 100,180 A80,80 0 1,0 100,20" fill="transparent"
+    style="background-color: transparent; color: transparent" />
+
+  <!-- Create the text and make it follow the circular path -->
+  <text>
+    <textPath href="#circlePath"
+      style="font-size: 38px; letter-spacing: 9px; color: white; mix-blend-mode: difference;">
+      CONTACT CONTACT
+    </textPath>
+  </text>
+</svg>

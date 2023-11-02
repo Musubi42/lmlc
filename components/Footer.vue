@@ -2,7 +2,7 @@
   <!-- TODO: Pour faire l'effet d'image qui follow sur le hover -->
   <!-- https://codepen.io/coreDeiv/pen/YzqzRKK -->
   <footer class="bottom-0 bg-black text-white w-full h-auto">
-    <div class="flex flex-row px-[10%] py-[8%]">
+    <div class="flex flex-row px-[10%] py-[5%]">
       <div class="flex-1">
         <div class="mb-8">
           <div class="font-bold w-fit">
@@ -58,14 +58,16 @@
     </div>
     <div class="relative w-full">
       <div
-        class="absolute flex flex-col justify-content items-center bottom-0 h-20 w-full"
+        class="absolute flex flex-col justify-content items-center bottom-0 w-full"
       >
         <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
-          <instagram class="text-[35px] w-auto text-white" />
+          <instagram class="text-[30px] w-auto text-white" />
         </a>
         <!-- TODO : Ajouter le lien vers mentions-legales une fois la page crée -->
-        <NuxtLink to="/" class="font-monteserrat font-extralight"
-          >Mentions légales</NuxtLink
+        <NuxtLink
+          to="/"
+          class="font-monteserrat font-extralight text-sm mt-4 mb-6"
+          >mentions légales</NuxtLink
         >
       </div>
     </div>

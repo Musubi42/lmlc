@@ -26,22 +26,22 @@ export default {
       isVisible: false,
       imageX: 0,
       imageY: 0,
-      bgColor: "blue",
     };
   },
   methods: {
     mouseHover(event) {
+      // Récupérer la couleur à afficher selon l'élément survolé
       const elementAttributes = event.target.attributes;
       const color = elementAttributes["data-color"].value;
-      // console.log("childColor" + color);
       this.$emit("mouseover", color);
-      this.bgColor = color;
     },
     showImage() {
       this.isVisible = true;
     },
     hideImage() {
       this.isVisible = false;
+
+      this.$emit("mouseover", "#ff0066");
     },
     moveImage(event) {
       // const elementHeight =
@@ -62,7 +62,6 @@ export default {
         top: this.imageY + "px",
         transform: "translate(-50%, -50%)",
         pointerEvents: "none",
-        backgroundcolor: `${this.bgColor}`,
       };
     },
   },

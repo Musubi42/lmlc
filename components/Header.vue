@@ -15,93 +15,64 @@
       </div>
       <!-- 
         class="z-50 flex flex-col h-12 w-12 border-2 border-black rounded justify-center items-center group cursor-pointer" -->
-      <NuxtLink to="/menu" id="menu-burger hover:cursor-pointer" class="">
-        <div
-          class="menu__burger__sides__open h-[6px] w-8 rounded-full bg-black transition ease transform duration-300"
-        ></div>
-        <div
-          class="menu__burger__middle__open h-[6px] w-8 mt-[1px] rounded-full bg-black transition ease transform duration-300"
-        ></div>
-        <div
-          class="menu__burger__sides__open h-[6px] w-8 mt-[1px] rounded-full bg-black transition ease transform duration-300"
-        ></div>
-      </NuxtLink>
+      <div to="/menu" id="menu-burger" class="hover:cursor-pointer h-5 close">
+        <div class="menu-burger-close-first"></div>
+        <div class="menu-burger-close-second"></div>
+        <div class="menu-burger-close-second"></div>
+      </div>
     </div>
   </div>
 </template>
 
-<!-- <script setup>
+<script>
+export default {
+  mounted() {
+    document
+      .getElementById("menu-burger")
+      .addEventListener("click", this.toggleMenu);
+    // => {
+    //   document
+    //     .getElementById("menu-burger")
+    //     .classList.toggle("menu__burger__open");
+    //   document
+    //     .getElementById("menu-burger")
+    //     .classList.toggle("menu__burger__close");
+    // });
+  },
+  unmounted() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+  methods: {
+    toggleMenu() {
+      console.log(document.querySelectorAll("#menu-burger")[0].childNodes);
+      console.log(
+        document.querySelectorAll("#menu-burger")[0].childNodes[0].classList
+      );
+      document.querySelectorAll("#menu-burger")[0].classList.toggle("open");
+      document.querySelectorAll("#menu-burger")[0].classList.toggle("close");
+      document
+        .querySelectorAll("#menu-burger")[0]
+        .childNodes[0].classList.toggle("menu-burger-open-first");
+      document
+        .querySelectorAll("#menu-burger")[0]
+        .childNodes[0].classList.toggle("menu-burger-close-first");
 
-onMounted(() => {
-  toggleMenu();
-});
+      document
+        .querySelectorAll("#menu-burger")[0]
+        .childNodes[1].classList.toggle("menu-burger-open-second");
+      document
+        .querySelectorAll("#menu-burger")[0]
+        .childNodes[1].classList.toggle("menu-burger-close-second");
 
-const toggleMenu = () => {
-  const menu_burger = document.getElementById("menu-burger");
-  const menu = document.getElementById("menu");
-  const calendly = document.getElementById("calendly")
-    ? document.getElementById("calendly")
-    : false;
-  const tarifs = document.getElementById("tarifs")
-    ? document.getElementById("tarifs")
-    : false;
-  const coupes = document.getElementById("coupes")
-    ? document.getElementById("coupes")
-    : false;
-  const reseaux = document.getElementById("reseaux")
-    ? document.getElementById("reseaux")
-    : false;
-  const avis = document.getElementById("avis")
-    ? document.getElementById("avis")
-    : false;
-
-  const menu_open = false;
-
-  const lines = [
-    {
-      activate: [(opacity = "0.5")],
-      desactivate: [
-        (transform = "rotate(45)"),
-        (transform = "translate(0, 12px)"),
-      ],
+      document
+        .querySelectorAll("#menu-burger")[0]
+        .childNodes[2].classList.toggle("menu-burger-open-third");
+      document
+        .querySelectorAll("#menu-burger")[0]
+        .childNodes[2].classList.toggle("menu-burger-close-second");
+      // document.getElementById("menu-burger").classList.toggle("menu__burger__open");
+      // document.getElementById("menu-burger").classList.toggle("menu__burger__close");
     },
-    {
-      activate: [(opcaity = "0.5")],
-      desactivate: [(opcaity = "0")],
-    },
-    {
-      activate: [(opcaity = "0.5")],
-      desactivate: [
-        (transform = "rotate(-45)"),
-        (transform = "translate(0, -12px)"),
-      ],
-    },
-  ];
-
-  menu_burger.addEventListener("click", (e) => {
-  // menu_burger.children[0].classList.toggle("menu__burger__first__open");
-  menu_burger.children[0].classList.toggle("menu__burger__first__close");
-
-  // menu_burger.children[1].classList.toggle("menu__burger__second__open");
-  menu_burger.children[1].classList.toggle("menu__burger__second__close");
-
-  // menu_burger.children[2].classList.toggle("menu__burger__third__open");
-  menu_burger.children[2].classList.toggle("menu__burger__third__close");
-
-  // if(menu_open) {
-  menu.classList.toggle("hidden");
-  calendly ? calendly.classList.toggle("hidden") : null;
-  tarifs ? tarifs.classList.toggle("hidden") : null;
-  // Appliquer un hidden rejout la vidéo quand la navbar disparait
-  // coupes ? coupes.classList.toggle("hidden") : null;
-  // Mettre en pause toutes les vidéos
-  videos.forEach((video) => {
-    video.pause();
-  });
-  reseaux ? reseaux.classList.toggle("hidden") : null;
-  avis ? avis.classList.toggle("hidden") : null;
-  // calendly.classList.toggle("hidden");
-  // }
-}
-}
-</script> -->
+  },
+};
+</script>
