@@ -1,5 +1,5 @@
 <template>
-<Tableau />
+<tableau />
 </template>
 
 <style scoped>
