@@ -1,24 +1,33 @@
 <template>
-  <div class="flex place-content-between py-6 px-10">
-    <div class="">
-      <img
-        class="h-[13px] w-auto"
-        src="~/assets/images/logo-lmlc-black.png"
-        alt="Logo LMLC couleur noir"
-      />
-    </div>
-    <div class="flex flex-row">
-      <div class="flex flex-row font-montserrat font-medium text-sm mr-10">
-        <span class="mr-4">FR</span>
-        <span class="mr-4">EN</span>
-        <span>IT</span>
+  <div>
+    <transition name="slide-fade">
+      <Menu v-if="isMenuOpen" />
+    </transition>
+    <div class="flex place-content-between py-6 px-10">
+      <div class="">
+        <img
+          class="h-[13px] w-auto"
+          src="~/assets/images/logo-lmlc-black.png"
+          alt="Logo LMLC couleur noir"
+        />
       </div>
-      <!-- 
+      <div class="flex flex-row">
+        <div class="flex flex-row font-montserrat font-medium text-sm mr-10">
+          <span class="mr-4">FR</span>
+          <span class="mr-4">EN</span>
+          <span>IT</span>
+        </div>
+        <!-- 
         class="z-50 flex flex-col h-12 w-12 border-2 border-black rounded justify-center items-center group cursor-pointer" -->
-      <div to="/menu" id="menu-burger" class="hover:cursor-pointer h-5 close">
-        <div class="menu-burger-close-first"></div>
-        <div class="menu-burger-close-second"></div>
-        <div class="menu-burger-close-second"></div>
+        <div
+          to="/menu"
+          id="menu-burger"
+          class="hover:cursor-pointer h-5 close z-20"
+        >
+          <div class="menu-burger-close-first"></div>
+          <div class="menu-burger-close-second"></div>
+          <div class="menu-burger-close-second"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -26,10 +35,19 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isMenuOpen: false,
+    };
+  },
   mounted() {
     document
       .getElementById("menu-burger")
       .addEventListener("click", this.toggleMenu);
+
+    document
+      .getElementById("menu-burger")
+      .addEventListener("click", this.toggleMenuButton);
     // => {
     //   document
     //     .getElementById("menu-burger")
@@ -40,10 +58,16 @@ export default {
     // });
   },
   unmounted() {
-    window.removeEventListener("scroll", this.handleScroll);
+    document
+      .getElementById("menu-burger")
+      .removeEventListener("click", this.toggleMenu);
+
+    document
+      .getElementById("menu-burger")
+      .removeEventListener("click", this.toggleMenuButton);
   },
   methods: {
-    toggleMenu() {
+    toggleMenuButton() {
       console.log(document.querySelectorAll("#menu-burger")[0].childNodes);
       console.log(
         document.querySelectorAll("#menu-burger")[0].childNodes[0].classList
@@ -72,6 +96,9 @@ export default {
         .childNodes[2].classList.toggle("menu-burger-close-second");
       // document.getElementById("menu-burger").classList.toggle("menu__burger__open");
       // document.getElementById("menu-burger").classList.toggle("menu__burger__close");
+    },
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
     },
   },
 };

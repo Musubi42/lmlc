@@ -1,54 +1,60 @@
 <template>
-  <div class="h-screen bg-rose-neon flex flex-row" id="bg">
+  <div
+    class="h-screen bg-rose-neon flex flex-row fixed z-10 right-0 w-1/2"
+    id="bg"
+  >
     <!-- Titre -->
     <div class="my-auto flex flex-col place-content-between h-3/6 ml-16">
       <div class="">
         <ImageMenuOnHover
-          class="onHover w-fit hover:ml-14"
+          class="onHover w-fit"
           imageSrc="/menu-work-small.png"
           @mouseover="color"
           id="work"
         >
           <div
-            data-color="#ffff00"
             class="font-black z-10 relative text-8xl text-white hover:cursor-pointer leading-[78%]"
           >
-            WORK
+            <span data-color="#ffff00" class="hover:ml-14 menu-text-overlay"
+              >WORK</span
+            >
           </div>
         </ImageMenuOnHover>
       </div>
       <div class="mb-30">
         <ImageMenuOnHover
-          class="onHover w-fit hover:ml-14"
+          class="onHover w-fit"
           imageSrc="/menu-services-small.png"
           @mouseover="color"
           id="services"
         >
-          <div
-            data-color="#974dff"
-            class="text-8xl text-white font-black z-10 relative hover:cursor-pointer leading-[78%]"
-          >
-            SERVICES
+          <div class="text-8xl text-white font-black z-10 relative">
+            <span
+              data-color="#974dff"
+              class="hover:ml-14 menu-text-overlay hover:cursor-pointer leading-[78%]"
+              >SERVICES</span
+            >
           </div>
         </ImageMenuOnHover>
       </div>
       <ImageMenuOnHover
-        class="onHover w-fit hover:ml-14"
+        class="onHover w-fit"
         imageSrc="/menu-talents-small.png"
         @mouseover="color"
         id="talents"
       >
-        <div
-          data-color="#99deff"
-          class="text-8xl text-white font-black z-10 relative hover:cursor-pointer leading-[78%]"
-        >
-          TALENTS
+        <div class="text-white font-black z-10 relative">
+          <span
+            data-color="#99deff"
+            class="hover:ml-14 leading-[78%] text-8xl menu-text-overlay hover:cursor-pointer"
+            >TALENTS</span
+          >
         </div>
       </ImageMenuOnHover>
     </div>
     <!-- Sidebar -->
-    <div class="flex flex-col place-content-between ml-auto mr-10 mb-10 mt-6">
-      <div
+    <!-- <div class="flex flex-col place-content-between ml-auto mr-10 mb-10 mt-6"> -->
+    <!-- <div
         id="menu-burger"
         class="ml-auto flex flex-row hover:cursor-pointer relative h-[50px] w-[38px]"
         @click="toggleMenu"
@@ -56,23 +62,19 @@
         <div class="menu-burger-open-first absolute left-0"></div>
         <div class="menu-burger-open-second absolute left-[12px]"></div>
         <div class="menu-burger-open-third absolute right-0"></div>
-      </div>
-      <!-- Reaseaux sociaux -->
-      <div id="social-network">
-        <!-- <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
-          <tiktok class="text-[65px] w-auto text-white opacity-50" />
-        </a> -->
+      </div> -->
+    <!-- Reaseaux sociaux -->
+    <div id="social-network" class="absolute right-0 bottom-0 mr-8 mb-3">
+      <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
+        <linkedin class="text-[30px] w-auto text-white" />
+      </a>
 
-        <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
-          <linkedin class="text-[30px] w-auto text-white" />
-        </a>
-
-        <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
-          <instagram class="text-[30px] w-auto" />
-        </a>
-      </div>
+      <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
+        <instagram class="text-[30px] w-auto" />
+      </a>
     </div>
   </div>
+  <!-- </div> -->
 </template>
 
 <script setup>

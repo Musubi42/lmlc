@@ -50,7 +50,10 @@ export default {
 
       // const componentHeight = pageHeight - elementHeight;
 
-      this.imageX = event.clientX;
+      // Le placement de l'image étant absolu par rapport à l'écran, il faut soustraire la largeur qui n'est pas celle du menu, donc la taille du menu, car il prend la moitié de l'écran
+      const menuWidth = event.srcElement.offsetParent.clientWidth;
+
+      this.imageX = event.clientX - menuWidth;
       this.imageY = event.clientY;
     },
   },

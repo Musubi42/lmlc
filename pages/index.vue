@@ -52,13 +52,15 @@ export default {
     return {
       scrollPos: 0,
       firstParagraphText:
-        "Nous sommes une équipe de communiquants, de créatifs, de developpeurs et de réalisateurs, tous experts dans leurs domaines. Passionnés, nous sommes constamment à la recherche de tendances créatives et d’innovations technologiques.",
+        "Nous sommes une équipe de communicants, de créatifs, de développeurs et de réalisateurs, tous experts dans leurs domaines. Passionnés, nous sommes constamment à la recherche de tendances créatives et d’innovations technologiques.",
       secondParagraphText:
-        "Nous croyons à la synergie entre le savoir-faire, l&#8216importance de linnovation et le pouvoir des émotions pour créer des projets uniques.",
+        "Nous croyons à la synergie entre le savoir-faire, l’importance de l’innovation et le pouvoir des émotions pour créer des projets uniques.",
       thirdPararaphText:
         "Avec nos clients, ce sont des histoires sur le long terme que nous écrivons.",
       firstParagraphHeight: 0,
       secondParagraphHeight: 0,
+      scrollSpeed: 20,
+      adjustByDevice: 160,
     };
   },
   computed: {
@@ -71,6 +73,10 @@ export default {
     thirdParagraphWords() {
       return this.thirdPararaphText.split(" ");
     },
+    adjustHeightByDevice() {
+      // Trouver le moyen d'ajuster le moment ou le texte apparait en fonction de la taille de l'écran
+      return 0;
+    },
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
@@ -81,69 +87,53 @@ export default {
   },
   methods: {
     handleScroll(event) {
-      // console.log(event);
-      // Capter la taille du texte, pour savoir quel texte est affiché sur quelle ligne
-      // Maper le tout dans un tableau
-      // Calculer la position du scroll
-      // Afficher le texte correspondant
       this.firstParagraphHeight =
         document.getElementById("first-paragraph").offsetHeight;
-      console.log(this.firstParagraphHeight);
       this.secondParagraphHeight =
         document.getElementById("second-paragraph").offsetHeight;
       this.scrollPos = window.scrollY;
     },
     getOpacityFirstParagraph(index) {
-      const opacityChangeStart = index * 10;
+      const opacityChangeStart = index * this.scrollSpeed;
       const opacityChangeEnd = opacityChangeStart + 50;
 
-      if (this.scrollPos < opacityChangeStart) {
+      if (this.scrollPos - this.adjustByDevice < opacityChangeStart) {
         return 0.2;
       } else if (this.scrollPos > opacityChangeEnd) {
         return 1;
       }
-      // else {
-      //   const progress =
-      //     (this.scrollPos - opacityChangeStart) /
-      //     (opacityChangeEnd - opacityChangeStart);
-      //   return 0.2 + progress * 0.8;
-      // }
     },
     getOpacitySecondParagraph(index) {
-      const opacityChangeStart = index * 10;
-      const opacityChangeEnd = opacityChangeStart + 50;
-
-      if (this.scrollPos - this.firstParagraphHeight < opacityChangeStart) {
-        return 0.2;
-      } else if (this.scrollPos > opacityChangeEnd) {
-        return 1;
-      }
-      // else {
-      //   const progress =
-      //     (this.scrollPos - opacityChangeStart) /
-      //     (opacityChangeEnd - opacityChangeStart);
-      //   return 0.2 + progress * 0.8;
-      // }
-    },
-    getOpacityThirdParagraph(index) {
-      const opacityChangeStart = index * 10;
+      const opacityChangeStart = index * this.scrollSpeed;
       const opacityChangeEnd = opacityChangeStart + 50;
 
       if (
-        this.scrollPos -
-          (this.secondParagraphHeight + this.firstParagraphHeight) <
+        this.scrollPos - this.firstParagraphHeight - this.adjustByDevice <
         opacityChangeStart
       ) {
         return 0.2;
       } else if (this.scrollPos > opacityChangeEnd) {
         return 1;
       }
-      // else {
-      //   const progress =
-      //     (this.scrollPos - opacityChangeStart) /
-      //     (opacityChangeEnd - opacityChangeStart);
-      //   return 0.2 + progress * 0.8;
-      // }
+    },
+    getOpacityThirdParagraph(index) {
+      const opacityChangeStart = index * this.scrollSpeed;
+      const opacityChangeEnd = opacityChangeStart + 50;
+
+      // Pour une raison que j'ignore, je dois rajouter plus de height pour que le texte se mette à apparaitre au bon moment
+      const heightPlus = 50;
+
+      if (
+        this.scrollPos -
+          (this.secondParagraphHeight + this.firstParagraphHeight) -
+          this.adjustByDevice -
+          heightPlus <
+        opacityChangeStart
+      ) {
+        return 0.2;
+      } else if (this.scrollPos > opacityChangeEnd) {
+        return 1;
+      }
     },
   },
 };
