@@ -17,6 +17,7 @@ export default defineNuxtConfig({
   // router: {
   //   middleware: 'maintenance'
   // },
+  components: true,
   css: ["~/assets/css/main.css"],
   postcss: {
     plugins: {
