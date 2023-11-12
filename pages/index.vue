@@ -1,6 +1,9 @@
 <template>
   <div class="">
     <div class="h-[60vh]"></div>
+    <div class="">
+
+    </div>
     <div class="font-medium text-6xl mx-[10%] mb-80">
       <div
         id="first-paragraph"

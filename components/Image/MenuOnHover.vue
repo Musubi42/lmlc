@@ -1,15 +1,7 @@
 <template>
-  <div @mouseover="mouseHover">
-    <!--  -->
-    <div @mousemove="moveImage" @mouseenter="showImage" @mouseleave="hideImage">
-      <slot></slot>
-      <img
-        v-if="isVisible"
-        :src="imageSrc"
-        :style="imageStyle"
-        class="image-on-hover"
-      />
-    </div>
+  <div class="container" @mousemove="moveImage" @mouseenter="showImage" @mouseleave="hideImage">
+    <slot></slot>
+    <img v-if="isVisible" :src="imageSrc" :style="imageStyle" class="image-on-hover" />
   </div>
 </template>
 
@@ -29,42 +21,26 @@ export default {
     };
   },
   methods: {
-    mouseHover(event) {
-      // Récupérer la couleur à afficher selon l'élément survolé
-      const elementAttributes = event.target.attributes;
-      const color = elementAttributes["data-color"].value;
-      this.$emit("mouseover", color);
-    },
     showImage() {
       this.isVisible = true;
     },
     hideImage() {
       this.isVisible = false;
-
-      this.$emit("mouseover", "#ff0066");
     },
     moveImage(event) {
-      // const elementHeight =
-      //   event.srcElement.parentElement.offsetParent.clientHeight;
-      // const pageHeight = event.view.innerHeight;
-
-      // const componentHeight = pageHeight - elementHeight;
-
-      // Le placement de l'image étant absolu par rapport à l'écran, il faut soustraire la largeur qui n'est pas celle du menu, donc la taille du menu, car il prend la moitié de l'écran
-      const menuWidth = event.srcElement.offsetParent.clientWidth;
-
-      this.imageX = event.clientX - menuWidth;
-      this.imageY = event.clientY;
+      this.imageX = event.pageX;
+      this.imageY = event.pageY;
     },
   },
   computed: {
     imageStyle() {
       return {
-        position: "absolute",
-        left: this.imageX + "px",
-        top: this.imageY + "px",
-        transform: "translate(-50%, -50%)",
-        pointerEvents: "none",
+        position: 'fixed', 
+        left: `${this.imageX}px`,
+        top: `${this.imageY}px`,
+        transform: 'translate(-50%, -50%)', 
+        pointerEvents: 'none', 
+        zIndex: 9, 
       };
     },
   },
@@ -72,9 +48,20 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 5%;
+  margin-bottom: 15%;
+}
 .image-on-hover {
   transition: transform 0.1s;
+  width: auto;
+  max-width: 100%; 
   width: fit-content;
   z-index: 1;
 }
+
+
 </style>
