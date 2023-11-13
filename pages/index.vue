@@ -1,8 +1,7 @@
 <template>
   <div class="">
-    <div class="h-[60vh]"></div>
-    <div class="">
-
+    <div class="h-[60vh] mt-60 mb-20">
+      <tableau />
     </div>
     <div class="font-medium text-6xl mx-[10%] mb-80">
       <div

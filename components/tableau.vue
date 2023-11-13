@@ -1,12 +1,12 @@
 <template>
-  <div class="content">
-    <div id="drawhere"></div>
+  <div class="content" ref="drawhere">
+    <div id="drawhere" class="h-auto"></div>
     <div class="spotify-draggable">
       <div class="spotify-handle">
         <!-- Vous pouvez mettre une image de flèche ici ou utiliser une icône de fonte -->
         <p>tire moi</p>
       </div>
-      <spotify id="myIframe"/> 
+      <spotify id="myIframe" />
     </div>
     <div class="background" />
     <div class="text">
@@ -40,16 +40,14 @@
 }
 
 #myIframe {
-
   pointer-events: auto;
 }
 .content {
   overflow: hidden;
   /* Hide scrollbars */
-  height: 100vh;
-  width: 100vw;
-  background-image:
-    linear-gradient(45deg, #f5f5f5 25%, transparent 25%),
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(45deg, #f5f5f5 25%, transparent 25%),
     linear-gradient(-45deg, #f5f5f5 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, #f5f5f5 75%),
     linear-gradient(-45deg, transparent 75%, #f5f5f5 75%);
@@ -88,18 +86,21 @@ import {
   Common,
   Events,
   Body,
-  Constraint
-} from 'matter-js'
-import decomp from 'poly-decomp'
+  Constraint,
+} from "matter-js";
+import decomp from "poly-decomp";
 
 const gifFrames = [
-  '/images/gif/frame_0.gif',
-  '/images/gif/frame_1.gif',
-  '/images/gif/frame_2.gif',
+  "/images/gif/frame_0.gif",
+  "/images/gif/frame_1.gif",
+  "/images/gif/frame_2.gif",
 ];
 
 function dragElement(element, dragHandle) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  var pos1 = 0,
+    pos2 = 0,
+    pos3 = 0,
+    pos4 = 0;
   dragHandle.onmousedown = dragMouseDown;
 
   function dragMouseDown(e) {
@@ -116,8 +117,8 @@ function dragElement(element, dragHandle) {
     pos2 = pos4 - e.clientY;
     pos3 = e.clientX;
     pos4 = e.clientY;
-    element.style.top = (element.offsetTop - pos2) + "px";
-    element.style.left = (element.offsetLeft - pos1) + "px";
+    element.style.top = element.offsetTop - pos2 + "px";
+    element.style.left = element.offsetLeft - pos1 + "px";
   }
 
   function closeDragElement() {
@@ -127,7 +128,6 @@ function dragElement(element, dragHandle) {
 }
 
 export default {
-
   data: function () {
     return {
       debug: null,
@@ -142,47 +142,69 @@ export default {
       currentPage: 1,
       totalPages: 3,
       pageTextures: [
-      '/images/gif/frame_0.gif',
-  '/images/gif/frame_1.gif',
-  '/images/gif/frame_2.gif',
+        "/images/gif/frame_0.gif",
+        "/images/gif/frame_1.gif",
+        "/images/gif/frame_2.gif",
       ],
-    }
+    };
   },
   mounted() {
     if (process.client) {
-      window.decomp = decomp
-      let width = window.innerWidth,
-        height = window.innerHeight,
+      // document.getElementById("drawhere").innerHeight;
+      let drawhereWidth = this.$refs.drawhere.offsetWidth;
+      let drawhereHeight = this.$refs.drawhere.offsetHeight;
+
+      console.log("Width: ", drawhereWidth, "Height: ", drawhereHeight);
+      window.decomp = decomp;
+      let width = this.$refs.drawhere.offsetWidth,
+        height = this.$refs.drawhere.offsetHeight,
         renderOptions = {
           width,
           height,
           showAngleIndicator: false,
           wireframes: false,
-          background: 'transparent',
-        }
-        
+          background: "transparent",
+        };
+
       // create an engine
       let engine = Engine.create(),
-        world = engine.world
-      world.gravity.scale = 0
-      world.gravity.x = 1
-      world.gravity.y = 1
+        world = engine.world;
+      world.gravity.scale = 0;
+      world.gravity.x = 1;
+      world.gravity.y = 1;
 
       // create a renderer
       var render = Render.create({
-        element: document.querySelector('#drawhere'),
+        element: document.querySelector("#drawhere"),
         engine,
         options: renderOptions,
-      })
-  
+      });
+
       let offset = this.canvasProp.wallWidth,
-        options = { isStatic: true }
+        options = { isStatic: true };
 
       const items = [
-        { id: 1, src: "/images/sac-bleu.png", width: 300, height: 315, rotation: 0 },
-        { id: 2, src: "/images/timur_berry.png", width: 200, height: 314, rotation: 0 },
-        { id: 5, src: "/images/bourges2024.png", width: 250, height: 280, rotation: 0 },
-
+        {
+          id: 1,
+          src: "/images/sac-bleu.png",
+          width: 300,
+          height: 315,
+          rotation: 0,
+        },
+        {
+          id: 2,
+          src: "/images/timur_berry.png",
+          width: 200,
+          height: 314,
+          rotation: 0,
+        },
+        {
+          id: 5,
+          src: "/images/bourges2024.png",
+          width: 250,
+          height: 280,
+          rotation: 0,
+        },
       ];
 
       Composite.add(world, [
@@ -214,11 +236,9 @@ export default {
           offset,
           options
         ),
-      ])
+      ]);
 
-
-
-      items.forEach(item => {
+      items.forEach((item) => {
         const body = Bodies.rectangle(
           Math.random() * width,
           Math.random() * height,
@@ -233,15 +253,15 @@ export default {
                 yScale: item.height / 1000,
               },
               render: {
-      fillStyle: 'transparent', // Ajustez si nécessaire
-      strokeStyle: 'transparent', // Ajustez si nécessaire
-      lineWidth: 0,
-      sprite: {
-        texture: item.src,
-        xScale: item.width / 1000,
-        yScale: item.height / 1000,
-      }
-    }
+                fillStyle: "transparent", // Ajustez si nécessaire
+                strokeStyle: "transparent", // Ajustez si nécessaire
+                lineWidth: 0,
+                sprite: {
+                  texture: item.src,
+                  xScale: item.width / 1000,
+                  yScale: item.height / 1000,
+                },
+              },
             },
           }
         );
@@ -251,7 +271,8 @@ export default {
       var gifObject = Bodies.rectangle(
         Math.random() * width,
         Math.random() * height,
-        200, 200,
+        200,
+        200,
         {
           angle: 0 * (Math.PI / 180),
           render: {
@@ -259,23 +280,23 @@ export default {
               texture: gifFrames[this.currentFrame],
               xScale: 200 / 800, // calculez l'échelle appropriée
               yScale: 200 / 800,
-            }
+            },
           },
         }
       );
       this.$nextTick(() => {
-      let spotifyDraggable = document.querySelector('.spotify-draggable');
-      let spotifyHandle = spotifyDraggable.querySelector('.spotify-handle');
-      if (spotifyDraggable && spotifyHandle) {
-        dragElement(spotifyDraggable, spotifyHandle);
-      }
-    });
+        let spotifyDraggable = document.querySelector(".spotify-draggable");
+        let spotifyHandle = spotifyDraggable.querySelector(".spotify-handle");
+        if (spotifyDraggable && spotifyHandle) {
+          dragElement(spotifyDraggable, spotifyHandle);
+        }
+      });
 
-      
       var bottle = Bodies.rectangle(
         Math.random() * width,
         Math.random() * height,
-        250, 333,
+        250,
+        333,
         {
           angle: 0 * (Math.PI / 180),
           render: {
@@ -283,51 +304,45 @@ export default {
               texture: "/images/monin.png",
               xScale: 250 / 800, // calculez l'échelle appropriée
               yScale: 333 / 800,
-            }
+            },
           },
         }
       );
       Composite.add(world, bottle);
 
-      this.book = Composite.create({ label: 'Book' });
+      this.book = Composite.create({ label: "Book" });
 
-// Ajoutez chaque page au composite de livre
-for (let i = 0; i < this.totalPages; i++) {
-  let page = Bodies.rectangle(400, 200, 150, 200, {
-    render: {
-      sprite: {
-        texture: '/images/' + this.pageTextures[i],
-        xScale: 1,
-        yScale: 1
+      // Ajoutez chaque page au composite de livre
+      for (let i = 0; i < this.totalPages; i++) {
+        let page = Bodies.rectangle(400, 200, 150, 200, {
+          render: {
+            sprite: {
+              texture: "/images/" + this.pageTextures[i],
+              xScale: 1,
+              yScale: 1,
+            },
+          },
+        });
+        Composite.add(this.book, page);
       }
-    }
-  });
-  Composite.add(this.book, page);
-}
 
-// Ajoutez le livre composite au monde
-Composite.add(world, this.book);
+      // Ajoutez le livre composite au monde
+      Composite.add(world, this.book);
 
       const updateTexture = () => {
         const position = { x: gifObject.position.x, y: gifObject.position.y };
         Composite.remove(world, gifObject);
-        gifObject = Bodies.rectangle(
-          position.x,
-          position.y,
-          200, 200,
-          {
-            angle: 0 * (Math.PI / 180),
-            render: {
-              sprite: {
-                texture: gifFrames[this.currentFrame],
-                xScale: 200 / 800, // calculez l'échelle appropriée
-                yScale: 200 / 800,
-              }
+        gifObject = Bodies.rectangle(position.x, position.y, 200, 200, {
+          angle: 0 * (Math.PI / 180),
+          render: {
+            sprite: {
+              texture: gifFrames[this.currentFrame],
+              xScale: 200 / 800, // calculez l'échelle appropriée
+              yScale: 200 / 800,
             },
-          }
-        );
+          },
+        });
         Composite.add(world, gifObject);
-
       };
 
       // Add an event to change the frame on each interval
@@ -336,7 +351,6 @@ Composite.add(world, this.book);
         updateTexture(gifObject);
       }, this.frameInterval);
 
-      
       var mouse = Mouse.create(render.canvas),
         mouseConstraint = MouseConstraint.create(engine, {
           mouse: mouse,
@@ -345,27 +359,27 @@ Composite.add(world, this.book);
               visible: false,
             },
           },
-        })
+        });
 
-     Composite.add(world, mouseConstraint)
+      Composite.add(world, mouseConstraint);
 
       // keep the mouse in sync with rendering
-      render.mouse = mouse
+      render.mouse = mouse;
 
       // fit the render viewport to the scene
       Render.lookAt(render, {
         min: { x: 0, y: 0 },
         max: { x: width, y: height },
-      })
+      });
 
       // run the engine
-      Runner.run(engine)
+      Runner.run(engine);
       // run the renderer
-      Render.run(render)
+      Render.run(render);
     }
   },
   destroyed() {
-    Events.off(engine, 'beforeUpdate');
-  }
-}
+    Events.off(engine, "beforeUpdate");
+  },
+};
 </script>
