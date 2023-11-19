@@ -17,7 +17,7 @@
               >
             </ImageFooterOnHover>
           </div>
-          <span class="font-extralight">contact@lmlccommunication.fr</span>
+          <span class="font-extralight z-10 relative">contact@lmlccommunication.fr</span>
         </div>
 
         <div class="mb-8 w-fit">
@@ -28,7 +28,7 @@
             <span class="font-bold z-10 relative leading-3">JOB</span>
             <!-- transition: ease .5s all padding-left: 1rem; color: #ccc; text-shadow: 3px 5px 10px rgba(0,0,0,1); -->
           </ImageFooterOnHover>
-          <span class="font-extralight">talents@lmlccommunication.fr</span>
+          <span class="font-extralight z-10 relative">talents@lmlccommunication.fr</span>
         </div>
 
         <div class="mb-8 w-fit">
@@ -43,7 +43,7 @@
           translate(-50%, -50%); z-index: -1; object-fit: cover; -->
           <!-- TODO: Faire un input pour récupérer email en contact -->
         </div>
-        <div class="">PARIS, FR</div>
+        <div class="z-10 relative">PARIS, FR</div>
       </div>
 
       <div class="flex-1">
@@ -84,4 +84,8 @@ import instagram from "assets/icons/instagram.svg";
   color: black;
   cursor: default;
 }
+.email-text {
+  z-index: 100; /* ou une autre valeur suffisamment élevée */
+}
+
 </style>

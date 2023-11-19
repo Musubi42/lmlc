@@ -15,7 +15,7 @@
           <div
             class="font-black z-10 relative text-8xl text-white hover:cursor-pointer leading-[78%]"
           >
-            <span data-color="#ffff00" class="hover:ml-14 menu-text-overlay"
+            <span data-color="#ffff00" class="hover:ml-14 menu-text-overlay opacity-80 hover:opacity-100"
               >WORK</span
             >
           </div>
@@ -31,7 +31,7 @@
           <div class="text-8xl text-white font-black z-10 relative">
             <span
               data-color="#974dff"
-              class="hover:ml-14 menu-text-overlay hover:cursor-pointer leading-[78%]"
+              class="hover:ml-14 menu-text-overlay hover:cursor-pointer leading-[78%]  opacity-80 hover:opacity-100"
               >SERVICES</span
             >
           </div>
@@ -46,7 +46,7 @@
         <div class="text-white font-black z-10 relative">
           <span
             data-color="#99deff"
-            class="hover:ml-14 leading-[78%] text-8xl menu-text-overlay hover:cursor-pointer"
+            class="hover:ml-14 leading-[78%] text-8xl menu-text-overlay hover:cursor-pointer  opacity-80 hover:opacity-100"
             >TALENTS</span
           >
         </div>

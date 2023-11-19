@@ -95,49 +95,59 @@ export default {
         document.getElementById("second-paragraph").offsetHeight;
       this.scrollPos = window.scrollY;
     },
-    getOpacityFirstParagraph(index) {
-      const opacityChangeStart = index * this.scrollSpeed;
-      const opacityChangeEnd = opacityChangeStart + 50;
-
-      if (this.scrollPos - this.adjustByDevice < opacityChangeStart) {
-        return 0.2;
-      } else if (this.scrollPos > opacityChangeEnd) {
-        return 1;
-      }
-    },
-    getOpacitySecondParagraph(index) {
-      const opacityChangeStart = index * this.scrollSpeed;
-      const opacityChangeEnd = opacityChangeStart + 50;
-
-      if (
-        this.scrollPos - this.firstParagraphHeight - this.adjustByDevice <
-        opacityChangeStart
-      ) {
-        return 0.2;
-      } else if (this.scrollPos > opacityChangeEnd) {
-        return 1;
-      }
-    },
-    getOpacityThirdParagraph(index) {
-      const opacityChangeStart = index * this.scrollSpeed;
-      const opacityChangeEnd = opacityChangeStart + 50;
-
-      // Pour une raison que j'ignore, je dois rajouter plus de height pour que le texte se mette à apparaitre au bon moment
-      const heightPlus = 50;
-
-      if (
-        this.scrollPos -
-          (this.secondParagraphHeight + this.firstParagraphHeight) -
-          this.adjustByDevice -
-          heightPlus <
-        opacityChangeStart
-      ) {
-        return 0.2;
-      } else if (this.scrollPos > opacityChangeEnd) {
-        return 1;
-      }
-    },
+  getMiddleOfScreen() {
+    // return window.innerHeight /2;
   },
+  getOpacityFirstParagraph(index) {
+    const middleOfScreen = this.getMiddleOfScreen();
+    const opacityChangeStart = index * this.scrollSpeed + middleOfScreen - this.adjustByDevice;
+    const opacityChangeEnd = opacityChangeStart + 50;
+
+    if (this.scrollPos < opacityChangeStart) {
+      return 0.2;
+    } else if (this.scrollPos >= opacityChangeStart && this.scrollPos <= opacityChangeEnd) {
+      return (this.scrollPos - opacityChangeStart) / (opacityChangeEnd - opacityChangeStart);
+    } else {
+      return 1;
+    }
+  },
+  getOpacitySecondParagraph(index) {
+    const middleOfScreen = this.getMiddleOfScreen();
+    // Calculate where the second paragraph starts on the page
+    const paragraphStart = this.firstParagraphHeight + this.adjustByDevice;
+    // Calculate the points where the opacity will start and end changing
+    const opacityChangeStart = paragraphStart + (index * this.scrollSpeed) - middleOfScreen;
+    const opacityChangeEnd = opacityChangeStart + 50;
+
+    // Adjust opacity based on the scroll position
+    if (this.scrollPos < opacityChangeStart) {
+      return 0.2;
+    } else if (this.scrollPos >= opacityChangeStart && this.scrollPos <= opacityChangeEnd) {
+      // Linearly interpolate the opacity
+      return 0.2 + (0.8 * (this.scrollPos - opacityChangeStart) / (opacityChangeEnd - opacityChangeStart));
+    } else {
+      return 1;
+    }
+  },
+  getOpacityThirdParagraph(index) {
+    const middleOfScreen = this.getMiddleOfScreen();
+    // Calculate where the third paragraph starts on the page
+    const paragraphStart = this.firstParagraphHeight + this.secondParagraphHeight + this.adjustByDevice + 50; // added 50 as per your note
+    // Calculate the points where the opacity will start and end changing
+    const opacityChangeStart = paragraphStart + (index * this.scrollSpeed) - middleOfScreen;
+    const opacityChangeEnd = opacityChangeStart + 50;
+
+    // Adjust opacity based on the scroll position
+    if (this.scrollPos < opacityChangeStart) {
+      return 0.2;
+    } else if (this.scrollPos >= opacityChangeStart && this.scrollPos <= opacityChangeEnd) {
+      // Linearly interpolate the opacity
+      return 0.2 + (0.8 * (this.scrollPos - opacityChangeStart) / (opacityChangeEnd - opacityChangeStart));
+    } else {
+      return 1;
+    }
+  }
+},
 };
 </script>
 
