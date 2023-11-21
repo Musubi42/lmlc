@@ -1,9 +1,27 @@
 <template>
-  <div class="">
-    <div class="h-[80vh] mt-60 mb-20">
-      <tableau />
+  <div id="home" class="">
+    <div class="h-screen">
+      <div class="absolute top-[250px] w-full">
+        <p class="text-[2.5rem] font-black mx-auto w-[65%] z-50">
+          AGENCE DE COMMUNICATION 360, DIGITAL NATIVE, ALLIANT CREATIVITE ET
+          TECHNOLOGIE
+        </p>
+      </div>
+      <div class="absolute w-full h-[65%] bottom-0 shadow-sm tableau-shadow">
+        <tableau />
+      </div>
     </div>
-    <div class="font-medium text-6xl mx-[10%] mb-80">
+    <!-- <div class="h-[60vh] mt-60 mb-20">
+      Ajoute au-dessus du tableau le texte et le faire descendre 
+      <div class="absolute top-[250px] w-full">
+        <p class="text-[2.5rem] font-black mx-auto w-[65%]">
+          AGENCE DE COMMUNICATION 360, DIGITAL NATIVE, ALLIANT CREATIVITE ET
+          TECHNOLOGIE
+        </p>
+      </div>
+      <tableau />
+    </div> -->
+    <div class="font-medium text-6xl mx-[10%]">
       <div
         id="first-paragraph"
         class="flex flex-row flex-wrap whitespace-pre-wrap"
@@ -43,10 +61,22 @@
       </div>
     </div>
     <contactSVG
-      class="text-[65px] w-auto fixed left-4 bg-transparent bottom-0 animate-spin-slow color-white"
+      id="contact"
+      class="text-[65px] text-blue w-auto fixed left-4 bg-transparent bottom-0 contact-spin color-white"
+      style="mix-blend-mode: difference"
     />
   </div>
 </template>
+
+<style scoped>
+.contact-spin {
+  animation: spin 7s linear infinite;
+}
+.tableau-shadow {
+  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.1),
+    0px -5px 10px 1px rgba(0, 0, 0, 0.1);
+}
+</style>
 
 <script>
 export default {
@@ -82,10 +112,11 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
-    // document.getElementById("first-paragraph").;
+    window.addEventListener("scroll", this.handleContact);
   },
   unmounted() {
     window.removeEventListener("scroll", this.handleScroll);
+    window.addEventListener("scroll", this.handleContact);
   },
   methods: {
     handleScroll(event) {
@@ -95,8 +126,62 @@ export default {
         document.getElementById("second-paragraph").offsetHeight;
       this.scrollPos = window.scrollY;
     },
-  getMiddleOfScreen() {
-    // return window.innerHeight /2;
+    handleContact() {
+      const fixedElement = document.querySelector("#contact");
+
+      var bottomElement = document.elementFromPoint(
+        window.innerWidth / 2,
+        window.innerHeight - 1
+      );
+
+      if (bottomElement?.hasAttribute("data-footer-element")) {
+        // fixedElement.style.backgroundColor = "black";
+      } else {
+        // fixedElement.style.backgroundColor = "white";
+      }
+    },
+    getOpacityFirstParagraph(index) {
+      const opacityChangeStart = index * this.scrollSpeed;
+      const opacityChangeEnd = opacityChangeStart + 50;
+
+      if (this.scrollPos - this.adjustByDevice < opacityChangeStart) {
+        return 0.2;
+      } else if (this.scrollPos > opacityChangeEnd) {
+        return 1;
+      }
+    },
+    getOpacitySecondParagraph(index) {
+      const opacityChangeStart = index * this.scrollSpeed;
+      const opacityChangeEnd = opacityChangeStart + 50;
+
+      if (
+        this.scrollPos - this.firstParagraphHeight - this.adjustByDevice <
+        opacityChangeStart
+      ) {
+        return 0.2;
+      } else if (this.scrollPos > opacityChangeEnd) {
+        return 1;
+      }
+    },
+    getOpacityThirdParagraph(index) {
+      const opacityChangeStart = index * this.scrollSpeed;
+      const opacityChangeEnd = opacityChangeStart + 50;
+
+      // Pour une raison que j'ignore, je dois rajouter plus de height pour que le texte se mette à apparaitre au bon moment
+      const heightPlus = 50;
+
+      if (
+        this.scrollPos -
+          (this.secondParagraphHeight + this.firstParagraphHeight) -
+          this.adjustByDevice -
+          heightPlus <
+        opacityChangeStart
+      ) {
+        return 0.2;
+      } else if (this.scrollPos > opacityChangeEnd) {
+        return 1;
+      }
+    },
   },
   getOpacityFirstParagraph(index) {
     const middleOfScreen = this.getMiddleOfScreen();
