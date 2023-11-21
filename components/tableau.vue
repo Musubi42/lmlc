@@ -1,20 +1,12 @@
 <template>
-  <div class="content" ref="convasSize">
-    <div id="drawhere" class="h-auto -z-20"></div>
-    <!-- <div class="spotify-draggable"> -->
-    <div
-      id="spotify-draggable"
-      class="spotify-draggable absolute top-[450px] left-[200px] z-20"
-    >
-      <div
-        id="spotify-handle"
-        class="spotify-handle absolute top-[-30px] left-0 w-full h-[30px] bg-slate-300 cursor-move flex justify-center items-center"
-      >
-        <!-- <div class="spotify-handle"> -->
+  <div class="content bg-cover" ref="drawhere">
+    <div id="drawhere" class="h-auto"></div>
+    <div class="spotify-draggable">
+      <div class="spotify-handle">
         <!-- Vous pouvez mettre une image de flèche ici ou utiliser une icône de fonte -->
         <p>tire moi</p>
       </div>
-      <spotify id="myIframe" class="pointer-events-auto" />
+      <!-- <spotify id="myIframe" /> -->
     </div>
     <div
       class="absolute top-0 left-0 w-screen h-screen object-cover bg-center -z-10"
@@ -26,6 +18,58 @@
 </template>
 
 <style lang="scss" scoped>
+#drawhere {
+  z-index: -10;
+}
+.spotify-draggable {
+  position: absolute;
+  top: 50px; // Position initiale
+  left: 50px;
+  z-index: 20;
+}
+
+.spotify-handle {
+  position: absolute;
+  top: -30px; /* Place la poignée au-dessus de l'iframe */
+  left: 0;
+  width: 100%;
+  height: 30px; /* Hauteur de la barre de titre */
+  background-color: #ccc; /* Couleur de la barre de titre */
+  cursor: move; /* Change le curseur pour indiquer qu'il s'agit d'une zone déplaçable */
+  display: flex;
+  justify-content: center; /* Centre l'icône dans la barre de titre */
+  align-items: center;
+}
+
+#myIframe {
+  pointer-events: auto;
+}
+.content {
+  // overflow: hidden;
+  /* Hide scrollbars */
+  height: 100%;
+  width: 100%;
+  background-image: url("/BG-tableau.png");
+  // background-image: linear-gradient(45deg, #f5f5f5 25%, transparent 25%),
+  //   linear-gradient(-45deg, #f5f5f5 25%, transparent 25%),
+  //   linear-gradient(45deg, transparent 75%, #f5f5f5 75%),
+  //   linear-gradient(-45deg, transparent 75%, #f5f5f5 75%);
+  // background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  background-position: center;
+  z-index: -2;
+}
+</style>
+
+<style>
 canvas {
   background: transparent;
 }
@@ -33,7 +77,7 @@ canvas {
 <script>
 import Matter from "matter-js";
 
-const {
+import {
   Engine,
   Render,
   Bodies,
@@ -47,14 +91,15 @@ const {
   Events,
   Body,
   Constraint,
-} = Matter;
+} from "matter-js";
+// import Phaser from "phaser";
 import decomp from "poly-decomp";
 
-const gifFrames = [
-  "/images/gif/frame_0.gif",
-  "/images/gif/frame_1.gif",
-  "/images/gif/frame_2.gif",
-];
+// const gifFrames = [
+//   "/images/gif/frame_0.gif",
+//   "/images/gif/frame_1.gif",
+//   "/images/gif/frame_2.gif",
+// ];
 
 function dragElement(element, dragHandle) {
   var pos1 = 0,
@@ -95,24 +140,45 @@ export default {
         wallWidth: 50,
       },
       currentFrame: 0,
-      maxFrame: gifFrames.length - 1,
+      // maxFrame: gifFrames.length - 1,
       frameInterval: 1000, // Interval in ms for changing frames
       frameTimer: 0, // A timer for frame changes
       book: null,
       currentPage: 1,
       totalPages: 3,
-      pageTextures: [
-        "/images/gif/frame_0.gif",
-        "/images/gif/frame_1.gif",
-        "/images/gif/frame_2.gif",
-      ],
+      // pageTextures: [
+      //   "/images/gif/frame_0.gif",
+      //   "/images/gif/frame_1.gif",
+      //   "/images/gif/frame_2.gif",
+      // ],
+      handbagPhysics: null,
+      game: null,
+      // gameConfig: {
+      //   type: Phaser.AUTO,
+      //   width: 800,
+      //   height: 600,
+      //   physics: {
+      //     default: "matter",
+      //     matter: {
+      //       gravity: { y: 0.5 },
+      //       debug: true,
+      //     },
+      //   },
+      //   scene: {
+      //     preload: this.preload,
+      //     create: this.create,
+      //   },
+      // },
     };
   },
   mounted() {
     if (process.client) {
-      let drawhereWidth = this.$refs.convasSize.offsetWidth;
-      let drawhereHeight = this.$refs.convasSize.offsetHeight;
+      // Check if the code run on the client side
+      // document.getElementById("drawhere").innerHeight;
+      let drawhereWidth = this.$refs.drawhere.offsetWidth;
+      let drawhereHeight = this.$refs.drawhere.offsetHeight;
 
+      // console.log("Width: ", drawhereWidth, "Height: ", drawhereHeight);
       window.decomp = decomp;
       let width = drawhereWidth,
         height = drawhereHeight,
@@ -165,6 +231,46 @@ export default {
           rotation: 0,
         },
       ];
+
+      // add all of the bodies to the world
+      // Pour le handbag blue
+      // Phaser
+      // this.game = new Phaser.Game(this.gameConfig);
+
+      fetch("images/handbag-blue.json")
+        .then((response) => response.json())
+        .then((handbagPhysics) => {
+          this.handbagPhysics = handbagPhysics;
+
+          // const handbagBody =
+          //   Phaser.Physics.Matter.PhysicsEditorParser.parseBody(
+          //     0,
+          //     0,
+          //     this.handbagPhysics.handbag_blue,
+          //     1
+          //   );
+
+          // const handbag = Bodies.rectangle(
+          //   Math.random() * width,
+          //   Math.random() * height,
+          //   200,
+          //   200,
+          //   {
+          //     angle: 0 * (Math.PI / 180),
+          //     render: {
+          //       sprite: {
+          //         texture: "images/sac-bleu.png",
+          //         xScale: 200 / 800, // Adjust the scale as necessary
+          //         yScale: 200 / 800,
+          //       },
+          //     },
+          //     chamfer: { radius: 10 },
+          //   }
+          // );
+          // Body.setVertices(handbag, handbagBody.vertices);
+          // console.log(Body.getVertices(handbag));
+          // Composite.add(world, handbag);
+        });
 
       Composite.add(world, [
         Bodies.rectangle(
@@ -227,22 +333,22 @@ export default {
         Composite.add(world, body);
       });
 
-      var gifObject = Bodies.rectangle(
-        Math.random() * width,
-        Math.random() * height,
-        200,
-        200,
-        {
-          angle: 0 * (Math.PI / 180),
-          render: {
-            sprite: {
-              texture: gifFrames[this.currentFrame],
-              xScale: 200 / 800, // calculez l'échelle appropriée
-              yScale: 200 / 800,
-            },
-          },
-        }
-      );
+      // var gifObject = Bodies.rectangle(
+      //   Math.random() * width,
+      //   Math.random() * height,
+      //   200,
+      //   200,
+      //   {
+      //     angle: 0 * (Math.PI / 180),
+      //     render: {
+      //       sprite: {
+      //         texture: gifFrames[this.currentFrame],
+      //         xScale: 200 / 800, // calculez l'échelle appropriée
+      //         yScale: 200 / 800,
+      //       },
+      //     },
+      //   }
+      // );
       this.$nextTick(() => {
         let spotifyDraggable = document.querySelector(".spotify-draggable");
         let spotifyHandle = spotifyDraggable.querySelector(".spotify-handle");
@@ -272,43 +378,43 @@ export default {
       this.book = Composite.create({ label: "Book" });
 
       // Ajoutez chaque page au composite de livre
-      for (let i = 0; i < this.totalPages; i++) {
-        let page = Bodies.rectangle(400, 200, 150, 200, {
-          render: {
-            sprite: {
-              texture: "/images/" + this.pageTextures[i],
-              xScale: 1,
-              yScale: 1,
-            },
-          },
-        });
-        Composite.add(this.book, page);
-      }
+      // for (let i = 0; i < this.totalPages; i++) {
+      //   let page = Bodies.rectangle(400, 200, 150, 200, {
+      //     render: {
+      //       sprite: {
+      //         texture: "/images/" + this.pageTextures[i],
+      //         xScale: 1,
+      //         yScale: 1,
+      //       },
+      //     },
+      //   });
+      //   Composite.add(this.book, page);
+      // }
 
       // Ajoutez le livre composite au monde
       Composite.add(world, this.book);
 
-      const updateTexture = () => {
-        const position = { x: gifObject.position.x, y: gifObject.position.y };
-        Composite.remove(world, gifObject);
-        gifObject = Bodies.rectangle(position.x, position.y, 200, 200, {
-          angle: 0 * (Math.PI / 180),
-          render: {
-            sprite: {
-              texture: gifFrames[this.currentFrame],
-              xScale: 200 / 800, // calculez l'échelle appropriée
-              yScale: 200 / 800,
-            },
-          },
-        });
-        Composite.add(world, gifObject);
-      };
+      // const updateTexture = () => {
+      //   const position = { x: gifObject.position.x, y: gifObject.position.y };
+      //   Composite.remove(world, gifObject);
+      //   gifObject = Bodies.rectangle(position.x, position.y, 200, 200, {
+      //     angle: 0 * (Math.PI / 180),
+      //     render: {
+      //       sprite: {
+      //         texture: gifFrames[this.currentFrame],
+      //         xScale: 200 / 800, // calculez l'échelle appropriée
+      //         yScale: 200 / 800,
+      //       },
+      //     },
+      //   });
+      //   Composite.add(world, gifObject);
+      // };
 
       // Add an event to change the frame on each interval
-      this.updateInterval = setInterval(() => {
-        this.currentFrame = (this.currentFrame + 1) % gifFrames.length;
-        updateTexture(gifObject);
-      }, this.frameInterval);
+      // this.updateInterval = setInterval(() => {
+      //   this.currentFrame = (this.currentFrame + 1) % gifFrames.length;
+      //   updateTexture(gifObject);
+      // }, this.frameInterval);
 
       var mouse = Mouse.create(render.canvas),
         mouseConstraint = MouseConstraint.create(engine, {
