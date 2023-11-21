@@ -25,3 +25,6 @@ logs
 deploy.sh
 .nuxt
 .output
+
+test/
+snyk-macos
