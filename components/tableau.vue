@@ -1,6 +1,6 @@
 <template>
   <div class="content bg-cover" ref="drawhere">
-    <div id="drawhere" class="h-auto relative"></div>
+    <div id="drawhere" class="h-auto"></div>
     <div class="spotify-draggable">
       <div class="spotify-handle">
         <!-- Vous pouvez mettre une image de flèche ici ou utiliser une icône de fonte -->
@@ -88,7 +88,7 @@ import {
   Composites,
   Vertices,
   Common,
-  Events,
+  // Events,
   Body,
   Constraint,
 } from "matter-js";
@@ -443,8 +443,8 @@ export default {
       Render.run(render);
     }
   },
-  destroyed() {
-    Events.off(engine, "beforeUpdate");
-  },
+  // destroyed() {
+  //   Events.off(engine, "beforeUpdate");
+  // },
 };
 </script>

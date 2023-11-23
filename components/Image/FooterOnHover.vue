@@ -2,13 +2,13 @@
   <!-- <div> -->
   <!--  -->
   <div @mousemove="moveImage" @mouseenter="showImage" @mouseleave="hideImage">
-    <slot name="title"></slot>
     <img
       v-if="isVisible"
       :src="imageSrc"
       :style="imageStyle"
       class="image-on-hover"
     />
+    <slot name="title"></slot>
     <br />
     <div class="ml-[-10px] px-[10px] py-[6px]">
       <slot name="content"></slot>

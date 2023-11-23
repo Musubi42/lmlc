@@ -62,17 +62,15 @@
     </div>
     <contactSVG
       id="contact"
-      class="text-[65px] text-blue w-auto fixed left-4 bg-transparent bottom-0 contact-spin"
+      class="text-[65px] text-white w-auto fixed left-4 bg-transparent bottom-0 contact-spin"
     />
   </div>
 </template>
 
 <style scoped>
-/* @supports (-webkit-appearance: none) { */
 .blend-mode {
   mix-blend-mode: difference;
 }
-/* } */
 .contact-spin {
   animation-name: spin;
   animation-duration: 7000ms;
