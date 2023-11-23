@@ -1,6 +1,6 @@
 <template>
   <div class="content bg-cover" ref="drawhere">
-    <div id="drawhere" class="h-auto"></div>
+    <div id="drawhere" class="h-auto relative"></div>
     <div class="spotify-draggable">
       <div class="spotify-handle">
         <!-- Vous pouvez mettre une image de flèche ici ou utiliser une icône de fonte -->
