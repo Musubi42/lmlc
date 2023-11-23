@@ -1,5 +1,5 @@
 <template>
-  <div id="home" class="">
+  <div id="home" class="bg-white">
     <div class="h-screen">
       <div class="absolute top-[250px] w-full">
         <p class="text-[2.5rem] font-black mx-auto w-[65%] z-50">
@@ -21,7 +21,7 @@
       </div>
       <tableau />
     </div> -->
-    <div class="font-medium text-6xl mx-[10%]">
+    <div class="font-medium text-6xl mx-[10%] pb-80">
       <div
         id="first-paragraph"
         class="flex flex-row flex-wrap whitespace-pre-wrap"
@@ -62,7 +62,7 @@
     </div>
     <contactSVG
       id="contact"
-      class="text-[65px] text-white w-auto fixed left-4 bg-transparent bottom-0 contact-spin"
+      class="text-[90px] text-blue w-auto fixed left-4 bg-transparent bottom-0 contact-spin color-white mix-blend-difference"
     />
   </div>
 </template>
@@ -125,6 +125,7 @@ export default {
     },
   },
   mounted() {
+    console.log("hi");
     this.supportBlendMode();
     window.addEventListener("scroll", this.handleScroll);
     window.addEventListener("scroll", this.handleContact);
