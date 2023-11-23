@@ -9,25 +9,56 @@
       <div class="flex-1" data-footer-element>
         <div class="mb-8" data-footer-element>
           <div class="font-bold w-fit" data-footer-element>
-            <ImageFooterOnHover
+            <!-- <ImageFooterOnHover
               class="onHover w-fit"
               imageSrc="/footer-questions-small.png"
               data-footer-element
             >
-              <span class="font-bold z-10 relative" data-footer-element
-                >QUESTION &</span
-              >
-              <br />
-              <span
-                class="font-bold z-10 relative leading-3"
-                data-footer-element
-                >NEW BUISINESS</span
-              >
+              <template #title>
+                <span class="font-bold z-10 relative" data-footer-element
+                  >QUESTION &</span
+                >
+                <br />
+                <span
+                  class="font-bold z-10 relative leading-3"
+                  data-footer-element
+                  >NEW BUISINESS</span
+                >
+              </template>
+              <template #content>
+                <span class="font-extralight z-10 relative" data-footer-element
+                  >contact@lmlccommunication.fr</span
+                >
+              </template>
+            </ImageFooterOnHover> -->
+            <ImageFooterOnHover
+              data-footer-element
+              class="onHover w-fit"
+              imageSrc="/footer-questions-small.png"
+            >
+              <template #title>
+                <span
+                  class="font-bold z-10 relative bg-black mix-blend-difference text-white"
+                  data-footer-element
+                  >QUESTION &</span
+                >
+                <br />
+                <span
+                  class="font-bold z-10 relative leading-3 bg-black mix-blend-difference text-white"
+                  data-footer-element
+                  >NEW BUISINESS</span
+                >
+              </template>
+              <template #content>
+                <span
+                  class="font-extralight z-10 relative bg-black mix-blend-difference text-white"
+                  data-footer-element
+                >
+                  contact@lmlccommunication.fr
+                </span>
+              </template>
             </ImageFooterOnHover>
           </div>
-          <span class="font-extralight z-10 relative" data-footer-element
-            >contact@lmlccommunication.fr</span
-          >
         </div>
 
         <div class="mb-8 w-fit" data-footer-element>
@@ -36,14 +67,22 @@
             class="onHover w-fit"
             imageSrc="/footer-job-small.png"
           >
-            <span class="font-bold z-10 relative leading-3" data-footer-element
-              >JOB</span
-            >
-            <!-- transition: ease .5s all padding-left: 1rem; color: #ccc; text-shadow: 3px 5px 10px rgba(0,0,0,1); -->
+            <template #title>
+              <span
+                class="font-bold z-10 relative leading-3 bg-black mix-blend-difference text-white"
+                data-footer-element
+                >JOB</span
+              >
+            </template>
+            <template #content>
+              <span
+                class="font-extralight z-10 relative bg-black mix-blend-difference text-white"
+                data-footer-element
+              >
+                talents@lmlccommunication.fr
+              </span>
+            </template>
           </ImageFooterOnHover>
-          <span class="font-extralight z-10 relative" data-footer-element
-            >talents@lmlccommunication.fr</span
-          >
         </div>
 
         <div class="mb-8 w-fit" data-footer-element>
@@ -52,9 +91,21 @@
             class="onHover w-fit"
             imageSrc="/footer-tuned-small.png"
           >
-            <span class="font-bold z-10 relative leading-3" data-footer-element
-              >STAY TUNED</span
-            >
+            <template #title>
+              <span
+                class="font-bold z-10 relative leading-3 bg-black mix-blend-difference text-white"
+                data-footer-element
+                >TUNED</span
+              >
+            </template>
+            <template #content>
+              <span
+                class="font-extralight z-10 relative bg-black mix-blend-difference text-white"
+                data-footer-element
+              >
+                Ajouter champs pour récupérer email
+              </span>
+            </template>
           </ImageFooterOnHover>
           <!-- opacity: 0; width: 100%; height: auto; max-width: 400px; box-sizing:
           border-box; transition: ease .2s; position: absolute; transform:

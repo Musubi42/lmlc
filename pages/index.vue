@@ -62,7 +62,7 @@
     </div>
     <contactSVG
       id="contact"
-      class="text-[65px] text-blue w-auto fixed left-4 bg-transparent bottom-0 contact-spin color-white"
+      class="text-[65px] text-blue w-auto fixed left-4 bg-transparent bottom-0 contact-spin"
     />
   </div>
 </template>

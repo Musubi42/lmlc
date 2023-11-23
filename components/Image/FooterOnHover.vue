@@ -1,16 +1,20 @@
 <template>
-  <div>
-    <!--  -->
-    <div @mousemove="moveImage" @mouseenter="showImage" @mouseleave="hideImage">
-      <slot></slot>
-      <img
-        v-if="isVisible"
-        :src="imageSrc"
-        :style="imageStyle"
-        class="image-on-hover"
-      />
+  <!-- <div> -->
+  <!--  -->
+  <div @mousemove="moveImage" @mouseenter="showImage" @mouseleave="hideImage">
+    <slot name="title"></slot>
+    <img
+      v-if="isVisible"
+      :src="imageSrc"
+      :style="imageStyle"
+      class="image-on-hover"
+    />
+    <br />
+    <div class="ml-[-10px] px-[10px] py-[6px]">
+      <slot name="content"></slot>
     </div>
   </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -56,6 +60,17 @@ export default {
         pointerEvents: "none",
       };
     },
+    contentStyleOnHover() {
+      if (this.isVisible) {
+        return {
+          borderRadius: "20px",
+          backgroundColor: "white",
+          fontWeight: "500",
+        };
+      } else {
+        return {};
+      }
+    },
   },
 };
 </script>
@@ -66,4 +81,11 @@ export default {
   width: fit-content;
   z-index: 1;
 }
+
+/* .content-slot:hover ::v-deep {
+  border-radius: 20px;
+  background-color: white;
+  padding: 2px 6px;
+  font-weight: 500;
+} */
 </style>
