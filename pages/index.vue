@@ -63,14 +63,30 @@
     <contactSVG
       id="contact"
       class="text-[65px] text-blue w-auto fixed left-4 bg-transparent bottom-0 contact-spin color-white"
-      style="mix-blend-mode: difference"
     />
   </div>
 </template>
 
 <style scoped>
+/* @supports (-webkit-appearance: none) { */
+.blend-mode {
+  mix-blend-mode: difference;
+}
+/* } */
 .contact-spin {
-  animation: spin 7s linear infinite;
+  animation-name: spin;
+  animation-duration: 7000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 .tableau-shadow {
   box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.1),
@@ -111,6 +127,7 @@ export default {
     },
   },
   mounted() {
+    this.supportBlendMode();
     window.addEventListener("scroll", this.handleScroll);
     window.addEventListener("scroll", this.handleContact);
   },
@@ -119,6 +136,16 @@ export default {
     window.addEventListener("scroll", this.handleContact);
   },
   methods: {
+    supportBlendMode() {
+      console.log(navigator.userAgent);
+      if (
+        navigator.userAgent.includes("Safari") &&
+        !navigator.userAgent.includes("Chrome")
+      ) {
+        document.getElementById("contact").classList.add("blend-mode");
+        // document.body.classList.add("safari");
+      }
+    },
     handleScroll(event) {
       this.firstParagraphHeight =
         document.getElementById("first-paragraph").offsetHeight;
@@ -185,13 +212,20 @@ export default {
   },
   getOpacityFirstParagraph(index) {
     const middleOfScreen = this.getMiddleOfScreen();
-    const opacityChangeStart = index * this.scrollSpeed + middleOfScreen - this.adjustByDevice;
+    const opacityChangeStart =
+      index * this.scrollSpeed + middleOfScreen - this.adjustByDevice;
     const opacityChangeEnd = opacityChangeStart + 50;
 
     if (this.scrollPos < opacityChangeStart) {
       return 0.2;
-    } else if (this.scrollPos >= opacityChangeStart && this.scrollPos <= opacityChangeEnd) {
-      return (this.scrollPos - opacityChangeStart) / (opacityChangeEnd - opacityChangeStart);
+    } else if (
+      this.scrollPos >= opacityChangeStart &&
+      this.scrollPos <= opacityChangeEnd
+    ) {
+      return (
+        (this.scrollPos - opacityChangeStart) /
+        (opacityChangeEnd - opacityChangeStart)
+      );
     } else {
       return 1;
     }
@@ -201,15 +235,23 @@ export default {
     // Calculate where the second paragraph starts on the page
     const paragraphStart = this.firstParagraphHeight + this.adjustByDevice;
     // Calculate the points where the opacity will start and end changing
-    const opacityChangeStart = paragraphStart + (index * this.scrollSpeed) - middleOfScreen;
+    const opacityChangeStart =
+      paragraphStart + index * this.scrollSpeed - middleOfScreen;
     const opacityChangeEnd = opacityChangeStart + 50;
 
     // Adjust opacity based on the scroll position
     if (this.scrollPos < opacityChangeStart) {
       return 0.2;
-    } else if (this.scrollPos >= opacityChangeStart && this.scrollPos <= opacityChangeEnd) {
+    } else if (
+      this.scrollPos >= opacityChangeStart &&
+      this.scrollPos <= opacityChangeEnd
+    ) {
       // Linearly interpolate the opacity
-      return 0.2 + (0.8 * (this.scrollPos - opacityChangeStart) / (opacityChangeEnd - opacityChangeStart));
+      return (
+        0.2 +
+        (0.8 * (this.scrollPos - opacityChangeStart)) /
+          (opacityChangeEnd - opacityChangeStart)
+      );
     } else {
       return 1;
     }
@@ -217,22 +259,33 @@ export default {
   getOpacityThirdParagraph(index) {
     const middleOfScreen = this.getMiddleOfScreen();
     // Calculate where the third paragraph starts on the page
-    const paragraphStart = this.firstParagraphHeight + this.secondParagraphHeight + this.adjustByDevice + 50; // added 50 as per your note
+    const paragraphStart =
+      this.firstParagraphHeight +
+      this.secondParagraphHeight +
+      this.adjustByDevice +
+      50; // added 50 as per your note
     // Calculate the points where the opacity will start and end changing
-    const opacityChangeStart = paragraphStart + (index * this.scrollSpeed) - middleOfScreen;
+    const opacityChangeStart =
+      paragraphStart + index * this.scrollSpeed - middleOfScreen;
     const opacityChangeEnd = opacityChangeStart + 50;
 
     // Adjust opacity based on the scroll position
     if (this.scrollPos < opacityChangeStart) {
       return 0.2;
-    } else if (this.scrollPos >= opacityChangeStart && this.scrollPos <= opacityChangeEnd) {
+    } else if (
+      this.scrollPos >= opacityChangeStart &&
+      this.scrollPos <= opacityChangeEnd
+    ) {
       // Linearly interpolate the opacity
-      return 0.2 + (0.8 * (this.scrollPos - opacityChangeStart) / (opacityChangeEnd - opacityChangeStart));
+      return (
+        0.2 +
+        (0.8 * (this.scrollPos - opacityChangeStart)) /
+          (opacityChangeEnd - opacityChangeStart)
+      );
     } else {
       return 1;
     }
-  }
-},
+  },
 };
 </script>
 
