@@ -3,8 +3,7 @@
     <div class="h-screen">
       <div class="absolute top-[250px] w-full">
         <p class="text-[2.5rem] font-black mx-auto w-[65%] z-50">
-          AGENCE DE COMMUNICATION 360, DIGITAL NATIVE, ALLIANT CREATIVITE ET
-          TECHNOLOGIE
+          {{ title }}
         </p>
       </div>
       <div class="absolute w-full h-[65%] bottom-0 shadow-sm tableau-shadow">
@@ -22,48 +21,23 @@
       <tableau />
     </div> -->
     <div class="font-medium text-6xl mx-[10%] pb-80">
-      <div
-        id="first-paragraph"
-        class="flex flex-row flex-wrap whitespace-pre-wrap"
-      >
-        <p
-          v-for="(word, index) in firstParagraphWords"
-          :key="index"
-          :style="{ opacity: getOpacityFirstParagraph(index) }"
-          class="whitespace-pre-line mr-4 mb-4"
-          v-html="word"
-        ></p>
+      <div id="first-paragraph" class="flex flex-row flex-wrap whitespace-pre-wrap">
+        <p v-for="(word, index) in firstParagraphWords" :key="index" :style="{ opacity: getOpacityFirstParagraph(index) }"
+          class="whitespace-pre-line mr-4 mb-4" v-html="word"></p>
       </div>
       <br />
-      <br />
-      <div
-        id="second-paragraph"
-        class="flex flex-row flex-wrap whitespace-pre-wrap"
-      >
-        <p
-          v-for="(word, index) in secondParagraphWords"
-          :key="index"
-          :style="{ opacity: getOpacitySecondParagraph(index) }"
-          class="whitespace-pre-line mr-4 mb-4"
-          v-html="word"
-        ></p>
+      <div id="second-paragraph" class="flex flex-row flex-wrap whitespace-pre-wrap">
+        <p v-for="(word, index) in secondParagraphWords" :key="index"
+          :style="{ opacity: getOpacitySecondParagraph(index) }" class="whitespace-pre-line mr-4 mb-4" v-html="word"></p>
       </div>
-      <br />
       <br />
       <div class="flex flex-row flex-wrap whitespace-pre-wrap">
-        <p
-          v-for="(word, index) in thirdParagraphWords"
-          :key="index"
-          :style="{ opacity: getOpacityThirdParagraph(index) }"
-          class="whitespace-pre-line mr-4 mb-4"
-          v-html="word"
-        ></p>
+        <p v-for="(word, index) in thirdParagraphWords" :key="index" :style="{ opacity: getOpacityThirdParagraph(index) }"
+          class="whitespace-pre-line mr-4 mb-4" v-html="word"></p>
       </div>
     </div>
-    <contactSVG
-      id="contact"
-      class="text-[90px] text-blue w-auto fixed left-4 bg-transparent bottom-0 contact-spin color-white mix-blend-difference"
-    />
+    <contactSVG id="contact"
+      class="text-[90px] text-blue w-auto fixed left-4 bg-transparent bottom-0 contact-spin color-white mix-blend-difference" />
   </div>
 </template>
 
@@ -71,6 +45,7 @@
 .blend-mode {
   mix-blend-mode: difference;
 }
+
 .contact-spin {
   animation-name: spin;
   animation-duration: 7000ms;
@@ -82,10 +57,12 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 .tableau-shadow {
   box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.1),
     0px -5px 10px 1px rgba(0, 0, 0, 0.1);
@@ -93,10 +70,13 @@
 </style>
 
 <script>
+import Cookies from "js-cookie";
 export default {
+
   data() {
     return {
       scrollPos: 0,
+      title: "AGENCE DE COMMUNICATION 360, DIGITAL NATIVE, ALLIANT CREATIVITE ET TECHNOLOGIE",
       firstParagraphText:
         "Nous sommes une équipe de communicants, de créatifs, de développeurs et de réalisateurs, tous experts dans leurs domaines. Passionnés, nous sommes constamment à la recherche de tendances créatives et d’innovations technologiques.",
       secondParagraphText:
@@ -125,10 +105,12 @@ export default {
     },
   },
   mounted() {
-    console.log("hi");
     this.supportBlendMode();
     window.addEventListener("scroll", this.handleScroll);
     window.addEventListener("scroll", this.handleContact);
+    const language = Cookies.get("i18n_language") || "fr";
+    this.setLanguageTexts(language);
+
   },
   unmounted() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -143,6 +125,33 @@ export default {
       ) {
         document.getElementById("contact").classList.add("blend-mode");
         // document.body.classList.add("safari");
+      }
+    },
+    setLanguageTexts(language) {
+      switch (language) {
+        case 'fr':
+          this.title = "AGENCE DE COMMUNICATION 360, DIGITAL NATIVE, ALLIANT CREATIVITE ET TECHNOLOGIE"
+          this.firstParagraph = "Nous sommes une équipe de communicants, de créatifs, de développeurs et de réalisateurs, tous experts dans leurs domaines. Passionnés, nous sommes constamment à la recherche de tendances créatives et d’innovations technologiques."
+          this.secondParagraph = "Nous croyons à la synergie entre le savoir-faire, l’importance de l’innovation et le pouvoir des émotions pour créer des projets uniques."
+          this.thirdParagraph = "Avec nos clients, ce sont des histoires sur le long terme que nous écrivons."
+          break;
+        case 'en':
+          this.title = "360 COMMUNICATION AGENCY, DIGITAL NATIVE, COMBINING CREATIVITY AND TECHNOLOGY"
+          this.firstParagraph = "we are a team of communicators, creatives, developers, and directors, all experts in their fields. Passionate, we are constantly on the search of creative trends and technological innovations."
+          this.secondParagraph = "we believe in the synergy of know-how, the importance of the innovation and the power of emotions to create unique projects."
+          this.thirdParagraph = "with our clients we write long-term stories."
+          break;
+        case 'it':
+          this.title = "AGENZIA DI COMUNICAZIONE 360,  DIGITAL NATIVE, CHE UNISCE CREATIVITÀ E TECNOLOGIA"
+          this.firstParagraph = "siamo un team di comunicatori, designer, sviluppatori e produttori, tutti esperti nei loro settori. Siamo appassionati di ciò che facciamo e siamo costantemente alla ricerca di tendenze creative e innovazioni tecnologiche."
+          this.secondParagraph = "crediamo nella sinergia tra il know-how, l'importanza dell'innovazione e il potere dell'emozione per creare progetti unici."
+          this.thirdParagraph = "con i nostri clienti, scriviamo storie a lungo termine."
+          break;
+        default:
+          this.title = "AGENCE DE COMMUNICATION 360, DIGITAL NATIVE, ALLIANT CREATIVITE ET TECHNOLOGIE"
+          this.firstParagraph = "Nous sommes une équipe de communicants, de créatifs, de développeurs et de réalisateurs, tous experts dans leurs domaines. Passionnés, nous sommes constamment à la recherche de tendances créatives et d’innovations technologiques."
+          this.secondParagraph = "Nous croyons à la synergie entre le savoir-faire, l’importance de l’innovation et le pouvoir des émotions pour créer des projets uniques."
+          this.thirdParagraph = "Avec nos clients, ce sont des histoires sur le long terme que nous écrivons."
       }
     },
     handleScroll(event) {
@@ -198,9 +207,9 @@ export default {
 
       if (
         this.scrollPos -
-          (this.secondParagraphHeight + this.firstParagraphHeight) -
-          this.adjustByDevice -
-          heightPlus <
+        (this.secondParagraphHeight + this.firstParagraphHeight) -
+        this.adjustByDevice -
+        heightPlus <
         opacityChangeStart
       ) {
         return 0.2;
@@ -249,7 +258,7 @@ export default {
       return (
         0.2 +
         (0.8 * (this.scrollPos - opacityChangeStart)) /
-          (opacityChangeEnd - opacityChangeStart)
+        (opacityChangeEnd - opacityChangeStart)
       );
     } else {
       return 1;
@@ -279,7 +288,7 @@ export default {
       return (
         0.2 +
         (0.8 * (this.scrollPos - opacityChangeStart)) /
-          (opacityChangeEnd - opacityChangeStart)
+        (opacityChangeEnd - opacityChangeStart)
       );
     } else {
       return 1;
@@ -290,4 +299,5 @@ export default {
 
 <script setup>
 import contactSVG from "assets/icons/contact.svg";
+
 </script>

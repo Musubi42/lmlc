@@ -5,25 +5,18 @@
     </transition>
     <div class="flex place-content-between py-6 px-10">
       <div class="">
-        <img
-          class="h-[13px] w-auto"
-          src="~/assets/images/logo-lmlc-black.png"
-          alt="Logo LMLC couleur noir"
-        />
+        <img class="h-[13px] w-auto" src="~/assets/images/logo-lmlc-black.png" alt="Logo LMLC couleur noir" />
       </div>
       <div class="flex flex-row">
         <div class="flex flex-row font-montserrat font-medium text-sm mr-10">
-          <span class="mr-4">FR</span>
-          <span class="mr-4">EN</span>
-          <span>IT</span>
+          <span @click="changeLanguage('fr')" class="mr-4">FR</span>
+          <span @click="changeLanguage('en')" class="mr-4">EN</span>
+          <span @click="changeLanguage('it')">IT</span>
+
         </div>
         <!-- 
         class="z-50 flex flex-col h-12 w-12 border-2 border-black rounded justify-center items-center group cursor-pointer" -->
-        <div
-          to="/menu"
-          id="menu-burger"
-          class="hover:cursor-pointer h-5 close z-20"
-        >
+        <div to="/menu" id="menu-burger" class="hover:cursor-pointer h-5 close z-20">
           <div class="menu-burger-close-first"></div>
           <div class="menu-burger-close-second"></div>
           <div class="menu-burger-close-second"></div>
@@ -33,7 +26,9 @@
   </div>
 </template>
 
+
 <script>
+import Cookies from "js-cookie";
 export default {
   data() {
     return {
@@ -67,6 +62,12 @@ export default {
       .removeEventListener("click", this.toggleMenuButton);
   },
   methods: {
+    changeLanguage(locale) {
+      Cookies.remove("messages");
+      Cookies.set("i18n_language",locale);
+      window.location.reload();
+      this.$i18n.locale = locale;
+    },
     toggleMenuButton() {
       console.log(document.querySelectorAll("#menu-burger")[0].childNodes);
       console.log(
