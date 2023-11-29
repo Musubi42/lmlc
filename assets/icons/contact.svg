@@ -9,7 +9,7 @@
 
   <!-- Create the text and make it follow the circular path -->
   <text>
-    <textPath href="#circlePath" style="font-size: 22px; letter-spacing: 7px; color: white;">
+    <textPath href="#circlePath" style="font-size: 21px; letter-spacing: 7px; color: white;">
       CONTACT CONTACT CONTACT
     </textPath>
   </text>

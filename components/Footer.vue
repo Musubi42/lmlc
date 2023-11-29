@@ -6,62 +6,38 @@
     data-footer-element
   >
     <div class="flex flex-row px-[10%] py-[5%]" data-footer-element>
-      <div class="flex-1" data-footer-element>
-        <div class="mb-8" data-footer-element>
-          <div class="font-bold w-fit" data-footer-element>
-            <!-- <ImageFooterOnHover
-              class="onHover w-fit"
-              imageSrc="/footer-questions-small.png"
-              data-footer-element
-            >
-              <template #title>
-                <span class="font-bold z-10 relative" data-footer-element
-                  >QUESTION &</span
-                >
-                <br />
-                <span
-                  class="font-bold z-10 relative leading-3"
-                  data-footer-element
-                  >NEW BUISINESS</span
-                >
-              </template>
-              <template #content>
-                <span class="font-extralight z-10 relative" data-footer-element
-                  >contact@lmlccommunication.fr</span
-                >
-              </template>
-            </ImageFooterOnHover> -->
-            <ImageFooterOnHover
-              data-footer-element
-              class="onHover w-fit"
-              imageSrc="/footer-questions-small.png"
-            >
-              <template #title>
-                <span
-                  class="font-bold z-10 relative bg-black mix-blend-difference text-white"
-                  data-footer-element
-                  >QUESTION &</span
-                >
-                <br />
-                <span
-                  class="font-bold z-10 relative leading-3 bg-black mix-blend-difference text-white"
-                  data-footer-element
-                  >NEW BUISINESS</span
-                >
-              </template>
-              <template #content>
-                <span
-                  class="font-extralight z-10 relative bg-black mix-blend-difference text-white"
-                  data-footer-element
-                >
-                  contact@lmlccommunication.fr
-                </span>
-              </template>
-            </ImageFooterOnHover>
-          </div>
+      <div class="flex-1 mb-24 md:mb-0" data-footer-element>
+        <div class="mb-3 md:mb-8 w-fit" data-footer-element>
+          <ImageFooterOnHover
+            data-footer-element
+            class="onHover w-fit"
+            imageSrc="/footer-questions-small.png"
+          >
+            <template #title>
+              <span
+                class="font-bold text-sm md:text-lg z-10 relative bg-black mix-blend-difference text-white"
+                data-footer-element
+                >QUESTION &</span
+              >
+              <br />
+              <span
+                class="font-bold text-sm md:text-lg z-10 relative leading-3 bg-black mix-blend-difference text-white"
+                data-footer-element
+                >NEW BUISINESS</span
+              >
+            </template>
+            <template #content>
+              <span
+                class="font-extralight z-10 relative bg-black mix-blend-difference text-white"
+                data-footer-element
+              >
+                contact@lmlccommunication.fr
+              </span>
+            </template>
+          </ImageFooterOnHover>
         </div>
 
-        <div class="mb-8 w-fit" data-footer-element>
+        <div class="mb-3 md:mb-8 w-fit" data-footer-element>
           <ImageFooterOnHover
             data-footer-element
             class="onHover w-fit"
@@ -69,7 +45,7 @@
           >
             <template #title>
               <span
-                class="font-bold z-10 relative leading-3 bg-black mix-blend-difference text-white"
+                class="font-bold text-sm md:text-lg z-10 relative leading-3 bg-black mix-blend-difference text-white"
                 data-footer-element
                 >JOB</span
               >
@@ -85,7 +61,7 @@
           </ImageFooterOnHover>
         </div>
 
-        <div class="mb-8 w-fit" data-footer-element>
+        <div class="mb-3 md:mb-8 w-fit" data-footer-element>
           <ImageFooterOnHover
             data-footer-element
             class="onHover w-fit"
@@ -93,7 +69,7 @@
           >
             <template #title>
               <span
-                class="font-bold z-10 relative leading-3 bg-black mix-blend-difference text-white"
+                class="font-bold text-sm md:text-lg z-10 relative leading-3 bg-black mix-blend-difference text-white"
                 data-footer-element
                 >TUNED</span
               >
@@ -118,7 +94,7 @@
       <div class="flex-1" data-footer-element>
         <div
           data-footer-element
-          class="flex flex-row font-montserrat font-medium text-sm w-fit ml-auto"
+          class="hidden md:flex flex-row font-montserrat font-medium text-sm w-fit ml-auto"
         >
           <span class="mr-4" data-footer-element>FR</span>
           <span class="mr-4" data-footer-element>EN</span>

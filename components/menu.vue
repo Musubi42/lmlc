@@ -1,42 +1,42 @@
 <template>
   <div
-    class="h-screen bg-rose-neon flex flex-row fixed z-10 right-0 w-1/2"
+    class="h-screen bg-rose-neon flex flex-row fixed z-[100] right-0 w-full md:w-1/2 transform translate-x-full"
     id="bg"
   >
     <!-- Titre -->
     <div class="my-auto flex flex-col place-content-between h-3/6 ml-16">
-      <div class="">
-        <ImageMenuOnHover
-          class="onHover w-fit"
-          imageSrc="/menu-work-small.png"
-          @mouseover="color"
-          id="work"
+      <ImageMenuOnHover
+        class="onHover w-fit"
+        imageSrc="/menu-work-small.png"
+        @mouseover="color"
+        id="work"
+      >
+        <div
+          class="font-black z-10 relative text-[42px] md:text-[85px] text-white hover:cursor-pointer leading-[78%]"
         >
-          <div
-            class="font-black z-10 relative text-8xl text-white hover:cursor-pointer leading-[78%]"
+          <span
+            data-color="#ffff00"
+            class="md:hover:ml-32 menu-text-overlay opacity-50 hover:opacity-100"
+            >WORK</span
           >
-            <span data-color="#ffff00" class="hover:ml-14 menu-text-overlay opacity-80 hover:opacity-100"
-              >WORK</span
-            >
-          </div>
-        </ImageMenuOnHover>
-      </div>
-      <div class="mb-30">
-        <ImageMenuOnHover
-          class="onHover w-fit"
-          imageSrc="/menu-services-small.png"
-          @mouseover="color"
-          id="services"
+        </div>
+      </ImageMenuOnHover>
+      <ImageMenuOnHover
+        class="onHover w-fit mb-30"
+        imageSrc="/menu-services-small.png"
+        @mouseover="color"
+        id="services"
+      >
+        <div
+          class="text-[42px] md:text-[85px] text-white font-black z-10 relative"
         >
-          <div class="text-8xl text-white font-black z-10 relative">
-            <span
-              data-color="#974dff"
-              class="hover:ml-14 menu-text-overlay hover:cursor-pointer leading-[78%]  opacity-80 hover:opacity-100"
-              >SERVICES</span
-            >
-          </div>
-        </ImageMenuOnHover>
-      </div>
+          <span
+            data-color="#974dff"
+            class="md:hover:ml-32 menu-text-overlay hover:cursor-pointer leading-[78%] opacity-50 hover:opacity-100"
+            >SERVICES</span
+          >
+        </div>
+      </ImageMenuOnHover>
       <ImageMenuOnHover
         class="onHover w-fit"
         imageSrc="/menu-talents-small.png"
@@ -46,7 +46,7 @@
         <div class="text-white font-black z-10 relative">
           <span
             data-color="#99deff"
-            class="hover:ml-14 leading-[78%] text-8xl menu-text-overlay hover:cursor-pointer  opacity-80 hover:opacity-100"
+            class="md:hover:ml-32 leading-[78%] text-[42px] md:text-[85px] menu-text-overlay hover:cursor-pointer opacity-50 hover:opacity-100"
             >TALENTS</span
           >
         </div>
@@ -167,6 +167,7 @@ function toggleMenu(event) {
 }
 
 function color(value) {
+  console.log(value);
   if (typeof value === "string") {
     document.getElementById("bg").style.backgroundColor = value;
   } else {

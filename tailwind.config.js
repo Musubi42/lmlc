@@ -15,6 +15,7 @@ export default {
         "footer-job": "url('/assets/images/footer-job.png')",
         "footer-tuned": "url('/assets/images/footer-tuned.png')",
         "footer-questions": "url('/assets/images/footer-questions.png')",
+        "fond-tableau": "url('/assets/images/BG-tableau.png')",
       },
       colors: {
         primary: "#0000ff",
