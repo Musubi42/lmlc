@@ -2,6 +2,7 @@
   <div
     class="h-screen bg-rose-neon flex flex-row fixed z-[100] right-0 w-full md:w-1/2 transform translate-x-full"
     id="bg"
+    :style="menuState"
   >
     <!-- Titre -->
     <div class="my-auto flex flex-col place-content-between h-3/6 ml-16">
@@ -76,6 +77,70 @@
   </div>
   <!-- </div> -->
 </template>
+
+<script>
+export default {
+  props: {
+    isMenuOpened: Boolean,
+  },
+  data() {
+    return {
+      isMenuOpen: false,
+      isTransitionEnded: false,
+    };
+  },
+  mounted() {
+    window.addEventListener("click", this.toggleMenu);
+    window.dede;
+  },
+  methods: {
+    isMenuOpened() {
+      console.log("oui");
+      if (this.isMenuOpened) {
+        document.getElementById("bg").style.transform = "translateX(0)";
+        document.getElementById("bg").style.transition = "all 0.5s ease-in-out";
+      } else {
+        document.getElementById("bg").style.transform = "translateX(100%)";
+        document.getElementById("bg").style.transition = "all 0.5s ease-in-out";
+      }
+      return this.isMenuOpened;
+    },
+    toggleMenu() {
+      console.log("toggleMenu");
+      this.isMenuOpen = !this.isMenuOpen;
+      if (this.isMenuOpen) {
+        document.getElementById("bg").style.transform = "translateX(0)";
+        document.getElementById("bg").style.transition = "all 0.5s ease-in-out";
+      } else {
+        document.getElementById("bg").style.transform = "translateX(100%)";
+        document.getElementById("bg").style.transition = "all 0.5s ease-in-out";
+      }
+    },
+  },
+  // watch:
+  //   (props.isMenuOpened,
+  //   (first, second) => {
+  //     console.log(
+  //       "Watch props.selected function called with args:",
+  //       first,
+  //       second
+  //     );
+  //   }),
+  // watch: {
+  //   isMenuOpened(newValue, oldValue) {
+  //     // this.isMenuOpen = !this.isMenuOpen;
+  //     console.log("newValue : " + newValue + " oldValue : " + oldValue);
+  //     if (newValue) {
+  //       document.getElementById("bg").style.transform = "translateX(0)";
+  //       document.getElementById("bg").style.transition = "all 0.5s ease-in-out";
+  //     } else {
+  //       document.getElementById("bg").style.transform = "translateX(100%)";
+  //       document.getElementById("bg").style.transition = "all 0.5s ease-in-out";
+  //     }
+  //   },
+  // },
+};
+</script>
 
 <script setup>
 import tiktok from "assets/icons/tiktok.svg";
