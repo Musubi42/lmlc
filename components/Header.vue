@@ -1,11 +1,19 @@
 <template>
   <div>
-    <transition name="slide-fade">
-      <Menu v-if="isMenuOpen" />
+    <transition name="slide-fade" @after-enter="afterEnter">
+      <Menu
+        v-if="isMenuOpen"
+        :class="{ 'end-of-transition': isTransitionEnded }"
+      />
     </transition>
-    <div class="flex place-content-between py-6 px-10">
+    <div class="place-content-between py-6 pl-6 md:px-10 flex flex-row">
       <div class="">
-        <img class="h-[13px] w-auto" src="~/assets/images/logo-lmlc-black.png" alt="Logo LMLC couleur noir" />
+        <img
+          class="h-[11px] w-auto"
+          src="~/assets/images/logo-lmlc-black.png"
+          alt="Logo LMLC couleur noir"
+        />
+        <!-- TODO: revenir à la page d'accueil -->
       </div>
       <div class="flex flex-row">
         <div class="flex flex-row font-montserrat font-medium text-sm mr-10">
@@ -21,11 +29,44 @@
           <div class="menu-burger-close-second"></div>
           <div class="menu-burger-close-second"></div>
         </div>
+      <div class="flex flex-row place-content-end">
+        <div
+          class="flex flex-row font-montserrat font-medium text-sm mt-[-4px] mr-16 md:mr-40 content-end"
+        >
+          <span class="mr-4">FR</span>
+          <span class="mr-4">EN</span>
+          <span>IT</span>
+          <div
+            to="/menu"
+            id="menu-burger"
+            class="hover:cursor-pointer h-5 close z-[1000] fixed mr-6 md:mr-10 right-0"
+          >
+            <div class="menu-burger-close-first"></div>
+            <div class="menu-burger-close-second"></div>
+            <div class="menu-burger-close-second"></div>
+          </div>
+        </div>
+        <!-- 
+        class="z-50 flex flex-col h-12 w-12 border-2 border-black rounded justify-center items-center group cursor-pointer" -->
       </div>
     </div>
   </div>
 </template>
 
+<!-- TODO: Comment faire l'animation https://codepen.io/chichichi/pen/YNaVKK -->
+<style scoped>
+.slide-fade-enter-active {
+  transition: all 0.6s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter,
+.slide-fade-enter-to {
+  transform: translateX(10px);
+}
+
+.end-of-transition {
+  transform: translateX(0);
+}
+</style>
 
 <script>
 import Cookies from "js-cookie";
@@ -33,6 +74,7 @@ export default {
   data() {
     return {
       isMenuOpen: false,
+      isTransitionEnded: false,
     };
   },
   mounted() {
@@ -62,6 +104,9 @@ export default {
       .removeEventListener("click", this.toggleMenuButton);
   },
   methods: {
+    afterEnter() {
+      this.isTransitionEnded = true;
+    },
     changeLanguage(locale) {
       Cookies.remove("messages");
       Cookies.set("i18n_language",locale);
@@ -103,4 +148,8 @@ export default {
     },
   },
 };
+</script>
+
+<script setup>
+import menuMobile from "assets/images/menu-black.svg";
 </script>

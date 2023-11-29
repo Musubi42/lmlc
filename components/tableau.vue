@@ -1,12 +1,17 @@
 <template>
-  <div class="content bg-cover" ref="drawhere">
-    <div id="drawhere" class="h-auto"></div>
-    <div class="spotify-draggable">
-      <div class="spotify-handle">
+  <div
+    class="content bg-cover h-full w-full bg-fond-tableau relative overflow-hidden"
+    ref="drawhere"
+  >
+    <div id="drawhere" class="h-auto -z-10"></div>
+    <div class="spotify-draggable absolute top-[50px] left-[50px] z-20">
+      <div
+        class="spotify-handle absolute top-[-30px] left-0 w-full h-[30px] bg-[#ccc] cursor-move flex justify-center items-center"
+      >
         <!-- Vous pouvez mettre une image de flèche ici ou utiliser une icône de fonte -->
         <p>tire moi</p>
       </div>
-      <!-- <spotify id="myIframe" /> -->
+      <spotify id="myIframe" class="pointer-events-auto" />
     </div>
     <div
       class="absolute top-0 left-0 w-screen h-screen object-cover bg-center -z-10"
@@ -16,57 +21,11 @@
     </div>
   </div>
 </template>
-
 <style lang="scss" scoped>
-#drawhere {
-  z-index: -10;
-}
-.spotify-draggable {
-  position: absolute;
-  top: 50px; // Position initiale
-  left: 50px;
-  z-index: 20;
-}
-
-.spotify-handle {
-  position: absolute;
-  top: -30px; /* Place la poignée au-dessus de l'iframe */
-  left: 0;
-  width: 100%;
-  height: 30px; /* Hauteur de la barre de titre */
-  background-color: #ccc; /* Couleur de la barre de titre */
-  cursor: move; /* Change le curseur pour indiquer qu'il s'agit d'une zone déplaçable */
-  display: flex;
-  justify-content: center; /* Centre l'icône dans la barre de titre */
-  align-items: center;
-}
-
-#myIframe {
-  pointer-events: auto;
-}
-.content {
-  // overflow: hidden;
-  /* Hide scrollbars */
-  height: 100%;
-  width: 100%;
-  background-image: url("/BG-tableau.png");
-  // background-image: linear-gradient(45deg, #f5f5f5 25%, transparent 25%),
-  //   linear-gradient(-45deg, #f5f5f5 25%, transparent 25%),
-  //   linear-gradient(45deg, transparent 75%, #f5f5f5 75%),
-  //   linear-gradient(-45deg, transparent 75%, #f5f5f5 75%);
-  // background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
-}
-
-.background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  background-position: center;
-  z-index: -2;
-}
+// .content {
+//   // overflow: hidden;
+//   /* Hide scrollbars */
+// }
 </style>
 
 <style>
@@ -88,7 +47,7 @@ import {
   Composites,
   Vertices,
   Common,
-  // Events,
+  Events,
   Body,
   Constraint,
 } from "matter-js";
@@ -137,7 +96,7 @@ export default {
     return {
       debug: null,
       canvasProp: {
-        wallWidth: 50,
+        wallWidth: 5000,
       },
       currentFrame: 0,
       // maxFrame: gifFrames.length - 1,
@@ -175,10 +134,10 @@ export default {
     if (process.client) {
       // Check if the code run on the client side
       // document.getElementById("drawhere").innerHeight;
+      // this.handleSpotify();
       let drawhereWidth = this.$refs.drawhere.offsetWidth;
       let drawhereHeight = this.$refs.drawhere.offsetHeight;
 
-      // console.log("Width: ", drawhereWidth, "Height: ", drawhereHeight);
       window.decomp = decomp;
       let width = drawhereWidth,
         height = drawhereHeight,
@@ -443,8 +402,42 @@ export default {
       Render.run(render);
     }
   },
-  // destroyed() {
-  //   Events.off(engine, "beforeUpdate");
-  // },
+  unmounted() {
+    Events.off(engine, "beforeUpdate");
+  },
+  methods: {
+    handleSpotify() {
+      let drawhereWidth = this.$refs.drawhere.offsetWidth;
+      let drawhereHeight = this.$refs.drawhere.offsetHeight;
+
+      window.decomp = decomp;
+      let width = drawhereWidth,
+        height = drawhereHeight,
+        renderOptions = {
+          width,
+          height,
+          showAngleIndicator: false,
+          wireframes: false,
+          background: "transparent",
+        };
+
+      // create an engine
+      let engine = Engine.create(),
+        world = engine.world;
+      world.gravity.scale = 0;
+      world.gravity.x = 1;
+      world.gravity.y = 1;
+
+      // create a renderer
+      var render = Render.create({
+        element: document.querySelector("#drawhere"),
+        engine,
+        options: renderOptions,
+      });
+
+      // Play Spotify track
+      // You would need to implement this part based on how you're integrating with Spotify
+    },
+  },
 };
 </script>

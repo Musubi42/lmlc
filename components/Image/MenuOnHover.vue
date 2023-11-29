@@ -1,7 +1,17 @@
 <template>
-  <div class="container" @mousemove="moveImage" @mouseenter="showImage" @mouseleave="hideImage">
+  <div
+    class="container"
+    @mousemove="moveImage"
+    @mouseenter="showImage"
+    @mouseleave="hideImage"
+  >
     <slot></slot>
-    <img v-if="isVisible" :src="imageSrc" :style="imageStyle" class="image-on-hover" />
+    <img
+      v-if="isVisible"
+      :src="imageSrc"
+      :style="imageStyle"
+      class="image-on-hover hidden md:block"
+    />
   </div>
 </template>
 
@@ -18,7 +28,17 @@ export default {
       isVisible: false,
       imageX: 0,
       imageY: 0,
+      scrollPos: 0,
     };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.scrollPos = window.scrollY;
+      window.addEventListener("scroll", this.handleScroll);
+    });
+  },
+  unmounted() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     showImage() {
@@ -28,19 +48,24 @@ export default {
       this.isVisible = false;
     },
     moveImage(event) {
-      this.imageX = event.pageX;
+      // this.imageX = event.pageX;
+      this.imageX = event.pageX - window.innerWidth / 2;
+      console.log("imageX : " + this.imageX);
       this.imageY = event.pageY;
+    },
+    handleScroll(event) {
+      this.scrollPos = window.scrollY;
     },
   },
   computed: {
     imageStyle() {
       return {
-        position: 'fixed', 
+        position: "fixed",
         left: `${this.imageX}px`,
-        top: `${this.imageY}px`,
-        transform: 'translate(-50%, -50%)', 
-        pointerEvents: 'none', 
-        zIndex: 9, 
+        top: `${this.imageY - this.scrollPos}px`,
+        transform: "translate(-50%, -50%)",
+        pointerEvents: "none",
+        zIndex: 9,
       };
     },
   },
@@ -52,16 +77,14 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  margin: 5%;
-  margin-bottom: 15%;
+  /* margin: 5%;
+  margin-bottom: 15%; */
 }
 .image-on-hover {
-  transition: transform 0.1s;
+  transition: transform 0.3s;
   width: auto;
-  max-width: 100%; 
+  max-width: 100%;
   width: fit-content;
   z-index: 1;
 }
-
-
 </style>
