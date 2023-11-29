@@ -5,8 +5,7 @@
         <p
           class="text-[1rem] md:text-[2rem] xl:text-[3.2rem] font-black mx-auto w-[90%] md:w-[65%]"
         >
-          AGENCE DE COMMUNICATION 360, DIGITAL NATIVE, ALLIANT CREATIVITE ET
-          TECHNOLOGIE
+          {{ title }}
         </p>
       </div>
       <div
@@ -73,6 +72,7 @@
 .blend-mode {
   mix-blend-mode: difference;
 }
+
 .contact-spin {
   animation-name: spin;
   animation-duration: 7000ms;
@@ -84,10 +84,12 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 .tableau-shadow {
   box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.1),
     0px -5px 10px 1px rgba(0, 0, 0, 0.1);
@@ -95,10 +97,13 @@
 </style>
 
 <script>
+import Cookies from "js-cookie";
 export default {
   data() {
     return {
       scrollPos: 0,
+      title:
+        "AGENCE DE COMMUNICATION 360, DIGITAL NATIVE, ALLIANT CREATIVITE ET TECHNOLOGIE",
       firstParagraphText:
         "Nous sommes une équipe de communicants, de créatifs, de développeurs et de réalisateurs, tous experts dans leurs domaines. Passionnés, nous sommes constamment à la recherche de tendances créatives et d’innovations technologiques.",
       secondParagraphText:
@@ -160,6 +165,10 @@ export default {
         console.log("scrollSpeed : " + this.scrollSpeed);
       });
     });
+    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("scroll", this.handleContact);
+    const language = Cookies.get("i18n_language") || "fr";
+    this.setLanguageTexts(language);
   },
   unmounted() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -190,6 +199,90 @@ export default {
         return 13;
       } else {
         return 10;
+      }
+    },
+    setLanguageTexts(language) {
+      switch (language) {
+        case "fr":
+          this.title =
+            "AGENCE DE COMMUNICATION 360, DIGITAL NATIVE, ALLIANT CREATIVITE ET TECHNOLOGIE";
+          this.firstParagraph =
+            "Nous sommes une équipe de communicants, de créatifs, de développeurs et de réalisateurs, tous experts dans leurs domaines. Passionnés, nous sommes constamment à la recherche de tendances créatives et d’innovations technologiques.";
+          this.secondParagraph =
+            "Nous croyons à la synergie entre le savoir-faire, l’importance de l’innovation et le pouvoir des émotions pour créer des projets uniques.";
+          this.thirdParagraph =
+            "Avec nos clients, ce sont des histoires sur le long terme que nous écrivons.";
+          break;
+        case "en":
+          this.title =
+            "360 COMMUNICATION AGENCY, DIGITAL NATIVE, COMBINING CREATIVITY AND TECHNOLOGY";
+          this.firstParagraph =
+            "we are a team of communicators, creatives, developers, and directors, all experts in their fields. Passionate, we are constantly on the search of creative trends and technological innovations.";
+          this.secondParagraph =
+            "we believe in the synergy of know-how, the importance of the innovation and the power of emotions to create unique projects.";
+          this.thirdParagraph = "with our clients we write long-term stories.";
+          break;
+        case "it":
+          this.title =
+            "AGENZIA DI COMUNICAZIONE 360,  DIGITAL NATIVE, CHE UNISCE CREATIVITÀ E TECNOLOGIA";
+          this.firstParagraph =
+            "siamo un team di comunicatori, designer, sviluppatori e produttori, tutti esperti nei loro settori. Siamo appassionati di ciò che facciamo e siamo costantemente alla ricerca di tendenze creative e innovazioni tecnologiche.";
+          this.secondParagraph =
+            "crediamo nella sinergia tra il know-how, l'importanza dell'innovazione e il potere dell'emozione per creare progetti unici.";
+          this.thirdParagraph =
+            "con i nostri clienti, scriviamo storie a lungo termine.";
+          break;
+        default:
+          this.title =
+            "AGENCE DE COMMUNICATION 360, DIGITAL NATIVE, ALLIANT CREATIVITE ET TECHNOLOGIE";
+          this.firstParagraph =
+            "Nous sommes une équipe de communicants, de créatifs, de développeurs et de réalisateurs, tous experts dans leurs domaines. Passionnés, nous sommes constamment à la recherche de tendances créatives et d’innovations technologiques.";
+          this.secondParagraph =
+            "Nous croyons à la synergie entre le savoir-faire, l’importance de l’innovation et le pouvoir des émotions pour créer des projets uniques.";
+          this.thirdParagraph =
+            "Avec nos clients, ce sont des histoires sur le long terme que nous écrivons.";
+      }
+    },
+    setLanguageTexts(language) {
+      switch (language) {
+        case "fr":
+          this.title =
+            "AGENCE DE COMMUNICATION 360, DIGITAL NATIVE, ALLIANT CREATIVITE ET TECHNOLOGIE";
+          this.firstParagraph =
+            "Nous sommes une équipe de communicants, de créatifs, de développeurs et de réalisateurs, tous experts dans leurs domaines. Passionnés, nous sommes constamment à la recherche de tendances créatives et d’innovations technologiques.";
+          this.secondParagraph =
+            "Nous croyons à la synergie entre le savoir-faire, l’importance de l’innovation et le pouvoir des émotions pour créer des projets uniques.";
+          this.thirdParagraph =
+            "Avec nos clients, ce sont des histoires sur le long terme que nous écrivons.";
+          break;
+        case "en":
+          this.title =
+            "360 COMMUNICATION AGENCY, DIGITAL NATIVE, COMBINING CREATIVITY AND TECHNOLOGY";
+          this.firstParagraph =
+            "we are a team of communicators, creatives, developers, and directors, all experts in their fields. Passionate, we are constantly on the search of creative trends and technological innovations.";
+          this.secondParagraph =
+            "we believe in the synergy of know-how, the importance of the innovation and the power of emotions to create unique projects.";
+          this.thirdParagraph = "with our clients we write long-term stories.";
+          break;
+        case "it":
+          this.title =
+            "AGENZIA DI COMUNICAZIONE 360,  DIGITAL NATIVE, CHE UNISCE CREATIVITÀ E TECNOLOGIA";
+          this.firstParagraph =
+            "siamo un team di comunicatori, designer, sviluppatori e produttori, tutti esperti nei loro settori. Siamo appassionati di ciò che facciamo e siamo costantemente alla ricerca di tendenze creative e innovazioni tecnologiche.";
+          this.secondParagraph =
+            "crediamo nella sinergia tra il know-how, l'importanza dell'innovazione e il potere dell'emozione per creare progetti unici.";
+          this.thirdParagraph =
+            "con i nostri clienti, scriviamo storie a lungo termine.";
+          break;
+        default:
+          this.title =
+            "AGENCE DE COMMUNICATION 360, DIGITAL NATIVE, ALLIANT CREATIVITE ET TECHNOLOGIE";
+          this.firstParagraph =
+            "Nous sommes une équipe de communicants, de créatifs, de développeurs et de réalisateurs, tous experts dans leurs domaines. Passionnés, nous sommes constamment à la recherche de tendances créatives et d’innovations technologiques.";
+          this.secondParagraph =
+            "Nous croyons à la synergie entre le savoir-faire, l’importance de l’innovation et le pouvoir des émotions pour créer des projets uniques.";
+          this.thirdParagraph =
+            "Avec nos clients, ce sont des histoires sur le long terme que nous écrivons.";
       }
     },
     handleScroll(event) {

@@ -10,26 +10,23 @@
         />
         <!-- TODO: revenir à la page d'accueil -->
       </div>
-      <div class="flex flex-row place-content-end">
+      <div class="flex flex-row">
         <div
-          class="flex flex-row font-montserrat font-medium text-sm mt-[-4px] mr-16 md:mr-40 content-end"
+          class="flex flex-row font-montserrat font-medium text-sm mt-[-4px] mr-16 md:mr-40 content-end cursor-pointer"
         >
-          <span class="mr-4">FR</span>
-          <span class="mr-4">EN</span>
-          <span>IT</span>
-          <div
-            to="/menu"
-            id="menu-burger"
-            class="hover:cursor-pointer h-5 close z-[1000] fixed mr-6 md:mr-10 right-0"
-            v-on:click="menuBurgerClicked"
-          >
-            <div class="menu-burger-close-first"></div>
-            <div class="menu-burger-close-second"></div>
-            <div class="menu-burger-close-second"></div>
-          </div>
+          <span @click="changeLanguage('fr')" class="mr-4">FR</span>
+          <span @click="changeLanguage('en')" class="mr-4">EN</span>
+          <span @click="changeLanguage('it')">IT</span>
         </div>
-        <!-- 
-        class="z-50 flex flex-col h-12 w-12 border-2 border-black rounded justify-center items-center group cursor-pointer" -->
+        <div
+          to="/menu"
+          id="menu-burger"
+          class="hover:cursor-pointer h-5 close z-[1000] fixed mr-6 md:mr-10 right-0"
+        >
+          <div class="menu-burger-close-first"></div>
+          <div class="menu-burger-close-second"></div>
+          <div class="menu-burger-close-second"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -37,6 +34,7 @@
 
 <!-- TODO: Comment faire l'animation https://codepen.io/chichichi/pen/YNaVKK -->
 <script>
+import Cookies from "js-cookie";
 export default {
   data() {
     return {
@@ -73,6 +71,12 @@ export default {
   methods: {
     afterEnter() {
       this.isTransitionEnded = true;
+    },
+    changeLanguage(locale) {
+      Cookies.remove("messages");
+      Cookies.set("i18n_language", locale);
+      window.location.reload();
+      this.$i18n.locale = locale;
     },
     toggleMenuButton() {
       // console.log(document.querySelectorAll("#menu-burger")[0].childNodes);
