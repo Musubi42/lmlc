@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Menu :isMenuOpened="toggleMenu" />
+    <Menu :menuOpen="toggleMenu" />
     <div class="place-content-between py-6 pl-6 md:px-10 flex flex-row">
       <div class="">
         <img
@@ -22,6 +22,7 @@
           to="/menu"
           id="menu-burger"
           class="hover:cursor-pointer h-5 close z-[1000] fixed mr-6 md:mr-10 right-0"
+          @click="toggleMenuButton"
         >
           <div class="menu-burger-close-first"></div>
           <div class="menu-burger-close-second"></div>
@@ -38,18 +39,15 @@ import Cookies from "js-cookie";
 export default {
   data() {
     return {
-      toggleMenu: false,
-      isTransitionEnded: false,
+      isMenuOpen: false,
     };
   },
   mounted() {
     // document
     //   .getElementById("menu-burger")
     //   .addEventListener("click", this.toggleMenu);
-
-    document
-      .getElementById("menu-burger")
-      .addEventListener("click", this.toggleMenuButton);
+    // .getElementById("menu-burger")
+    // .addEventListener("click", this.toggleMenuButton);
     // => {
     //   document
     //     .getElementById("menu-burger")
@@ -69,9 +67,6 @@ export default {
       .removeEventListener("click", this.toggleMenuButton);
   },
   methods: {
-    afterEnter() {
-      this.isTransitionEnded = true;
-    },
     changeLanguage(locale) {
       Cookies.remove("messages");
       Cookies.set("i18n_language", locale);
@@ -79,36 +74,34 @@ export default {
       this.$i18n.locale = locale;
     },
     toggleMenuButton() {
-      // console.log(document.querySelectorAll("#menu-burger")[0].childNodes);
-      // console.log(
-      //   document.querySelectorAll("#menu-burger")[0].childNodes[0].classList
-      // );
-      document.querySelectorAll("#menu-burger")[0].classList.toggle("open");
-      document.querySelectorAll("#menu-burger")[0].classList.toggle("close");
-      document
-        .querySelectorAll("#menu-burger")[0]
-        .childNodes[0].classList.toggle("menu-burger-open-first");
-      document
-        .querySelectorAll("#menu-burger")[0]
-        .childNodes[0].classList.toggle("menu-burger-close-first");
+      this.isMenuOpen = !this.isMenuOpen;
 
-      document
-        .querySelectorAll("#menu-burger")[0]
-        .childNodes[1].classList.toggle("menu-burger-open-second");
-      document
-        .querySelectorAll("#menu-burger")[0]
-        .childNodes[1].classList.toggle("menu-burger-close-second");
+      // document.querySelectorAll("#menu-burger")[0].classList.toggle("open");
+      // document.querySelectorAll("#menu-burger")[0].classList.toggle("close");
+      // document
+      //   .querySelectorAll("#menu-burger")[0]
+      //   .childNodes[0].classList.toggle("menu-burger-open-first");
+      // document
+      //   .querySelectorAll("#menu-burger")[0]
+      //   .childNodes[0].classList.toggle("menu-burger-close-first");
 
-      document
-        .querySelectorAll("#menu-burger")[0]
-        .childNodes[2].classList.toggle("menu-burger-open-third");
-      document
-        .querySelectorAll("#menu-burger")[0]
-        .childNodes[2].classList.toggle("menu-burger-close-second");
+      // document
+      //   .querySelectorAll("#menu-burger")[0]
+      //   .childNodes[1].classList.toggle("menu-burger-open-second");
+      // document
+      //   .querySelectorAll("#menu-burger")[0]
+      //   .childNodes[1].classList.toggle("menu-burger-close-second");
+
+      // document
+      //   .querySelectorAll("#menu-burger")[0]
+      //   .childNodes[2].classList.toggle("menu-burger-open-third");
+      // document
+      //   .querySelectorAll("#menu-burger")[0]
+      //   .childNodes[2].classList.toggle("menu-burger-close-second");
       // document.getElementById("menu-burger").classList.toggle("menu__burger__open");
       // document.getElementById("menu-burger").classList.toggle("menu__burger__close");
     },
-    menuBurgerClicked() {
+    isMenuOpened() {
       this.toggleMenu = !this.toggleMenu;
       console.log("isMenuOpen : " + this.toggleMenu);
     },

@@ -1,61 +1,17 @@
 <template>
-  <div
-    class="h-screen bg-rose-neon flex flex-row fixed z-[100] right-0 w-full md:w-1/2 transform translate-x-full"
-    id="bg"
-    :style="menuState"
-  >
-    <!-- Titre -->
-    <div class="my-auto flex flex-col place-content-between h-3/6 ml-16">
-      <ImageMenuOnHover
-        class="onHover w-fit"
-        imageSrc="/menu-work-small.png"
-        @mouseover="color"
-        id="work"
-      >
-        <div
-          class="font-black z-10 relative text-[42px] md:text-[85px] text-white hover:cursor-pointer leading-[78%]"
-        >
-          <span
-            data-color="#ffff00"
-            class="md:hover:ml-32 menu-text-overlay opacity-50 hover:opacity-100"
-            >WORK</span
-          >
-        </div>
-      </ImageMenuOnHover>
-      <ImageMenuOnHover
-        class="onHover w-fit mb-30"
-        imageSrc="/menu-services-small.png"
-        @mouseover="color"
-        id="services"
-      >
-        <div
-          class="text-[42px] md:text-[85px] text-white font-black z-10 relative"
-        >
-          <span
-            data-color="#974dff"
-            class="md:hover:ml-32 menu-text-overlay hover:cursor-pointer leading-[78%] opacity-50 hover:opacity-100"
-            >SERVICES</span
-          >
-        </div>
-      </ImageMenuOnHover>
-      <ImageMenuOnHover
-        class="onHover w-fit"
-        imageSrc="/menu-talents-small.png"
-        @mouseover="color"
-        id="talents"
-      >
-        <div class="text-white font-black z-10 relative">
-          <span
-            data-color="#99deff"
-            class="md:hover:ml-32 leading-[78%] text-[42px] md:text-[85px] menu-text-overlay hover:cursor-pointer opacity-50 hover:opacity-100"
-            >TALENTS</span
-          >
-        </div>
-      </ImageMenuOnHover>
-    </div>
-    <!-- Sidebar -->
-    <!-- <div class="flex flex-col place-content-between ml-auto mr-10 mb-10 mt-6"> -->
-    <!-- <div
+  <div>
+    <div
+      class="h-full bg-rose-neon w-80 right-0 fixed z-[101] transform translate-x-full"
+      id="separation"
+    ></div>
+    <div
+      class="h-screen bg-rose-neon flex flex-row fixed z-[100] right-0 w-full md:w-1/2 transform translate-x-full"
+      id="bg"
+      :style="menuState"
+    >
+      <!-- Sidebar -->
+      <!-- <div class="flex flex-col place-content-between ml-auto mr-10 mb-10 mt-6"> -->
+      <!-- <div
         id="menu-burger"
         class="ml-auto flex flex-row hover:cursor-pointer relative h-[50px] w-[38px]"
         @click="toggleMenu"
@@ -64,38 +20,101 @@
         <div class="menu-burger-open-second absolute left-[12px]"></div>
         <div class="menu-burger-open-third absolute right-0"></div>
       </div> -->
-    <!-- Reaseaux sociaux -->
-    <div id="social-network" class="absolute right-0 bottom-0 mr-8 mb-3">
-      <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
-        <linkedin class="text-[30px] w-auto text-white" />
-      </a>
+      <!-- Reaseaux sociaux -->
+      <div id="social-network" class="absolute right-0 bottom-0 mr-8 mb-3">
+        <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
+          <linkedin class="text-[30px] w-auto text-white" />
+        </a>
 
-      <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
-        <instagram class="text-[30px] w-auto" />
-      </a>
+        <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
+          <instagram class="text-[30px] w-auto" />
+        </a>
+      </div>
+    </div>
+    <div
+      class="absolute right-0 top-[300px] z-[100] transform translate-x-full"
+      id="title"
+    >
+      <!-- Titre -->
+      <div class="my-auto flex flex-col place-content-between h-3/6 ml-16">
+        <ImageMenuOnHover
+          class="onHover w-fit"
+          imageSrc="/menu-work-small.png"
+          @mouseover="color"
+          @mouseleave="defaultBGColor"
+          id="work"
+        >
+          <div
+            class="text-[42px] md:text-[80px] text-white font-black z-10 relative"
+          >
+            <span
+              data-color="#ffff00"
+              class="md:hover:ml-32 menu-text-overlay opacity-50 hover:opacity-100"
+              >WORK</span
+            >
+          </div>
+        </ImageMenuOnHover>
+        <ImageMenuOnHover
+          class="onHover w-fit"
+          imageSrc="/menu-services-small.png"
+          @mouseover="color"
+          @mouseleave="defaultBGColor"
+          id="services"
+        >
+          <div
+            class="text-[42px] md:text-[80px] text-white font-black z-10 relative"
+          >
+            <span
+              data-color="#974dff"
+              class="md:hover:ml-32 menu-text-overlay opacity-50 hover:opacity-100"
+              >SERVICES</span
+            >
+          </div>
+        </ImageMenuOnHover>
+        <ImageMenuOnHover
+          class="onHover w-fit"
+          imageSrc="/menu-talents-small.png"
+          @mouseover="color"
+          @mouseleave="defaultBGColor"
+          :menuOpen="toggleMenu"
+          id="talents"
+        >
+          <div
+            class="text-[42px] md:text-[80px] text-white font-black z-10 relative"
+          >
+            <span
+              data-color="#99deff"
+              class="md:hover:ml-32 menu-text-overlay opacity-50 hover:opacity-100"
+              >TALENTS</span
+            >
+          </div>
+        </ImageMenuOnHover>
+      </div>
     </div>
   </div>
-  <!-- </div> -->
 </template>
 
 <script>
 export default {
-  props: {
-    isMenuOpened: Boolean,
-  },
+  // props: {
+  //   isMenuOpened: Boolean,
+  // },
+  props: ["isMenuOpen"],
   data() {
     return {
       isMenuOpen: false,
       isTransitionEnded: false,
+      myProp: "myProp",
     };
   },
   mounted() {
     window.addEventListener("click", this.toggleMenu);
-    window.dede;
+    // window.dede;
+    console.log("my prop : " + this.myProp);
   },
   methods: {
     isMenuOpened() {
-      console.log("oui");
+      console.log(isMenuOpen);
       if (this.isMenuOpened) {
         document.getElementById("bg").style.transform = "translateX(0)";
         document.getElementById("bg").style.transition = "all 0.5s ease-in-out";
@@ -106,39 +125,57 @@ export default {
       return this.isMenuOpened;
     },
     toggleMenu() {
-      console.log("toggleMenu");
+      console.log("is menu open : " + this.isMenuOpen);
       this.isMenuOpen = !this.isMenuOpen;
       if (this.isMenuOpen) {
+        // En 3 parties
+        // Faire apparaitre l'élément à droite
+        // Faire défiler le background
+        // Faire apparaitre le texte
+
+        // separation
+        document.getElementById("separation").style.transform = "translateX(0)";
+        document.getElementById("separation").style.transition =
+          "all 0.1s ease-in-out";
+
+        // Title
+        setTimeout(function () {
+          document.getElementById("title").style.transform =
+            "translateX(-100%)";
+          document.getElementById("title").style.transition =
+            "all 0.5s ease-in-out";
+        }, 100);
+
+        // BG
         document.getElementById("bg").style.transform = "translateX(0)";
-        document.getElementById("bg").style.transition = "all 0.5s ease-in-out";
+        document.getElementById("bg").style.transition =
+          "all 0.5s cubic-bezier(0, 0.75, 0.83, 0.67)";
       } else {
-        document.getElementById("bg").style.transform = "translateX(100%)";
-        document.getElementById("bg").style.transition = "all 0.5s ease-in-out";
+        // separation
+        setTimeout(function () {
+          document.getElementById("separation").style.transform =
+            "translateX(100%)";
+          document.getElementById("separation").style.transition =
+            "all 0.1s ease-in-out";
+        }, 400);
+
+        // Title
+        document.getElementById("title").style.transform = "translateX(100%)";
+        document.getElementById("title").style.transition =
+          "all 0.5s ease-in-out";
+
+        // BG
+        setTimeout(function () {
+          document.getElementById("bg").style.transform = "translateX(100%)";
+          document.getElementById("bg").style.transition =
+            "all 0.5s cubic-bezier(.89,.06,.45,.97)";
+        }, 100);
       }
     },
+    defaultBGColor() {
+      document.getElementById("bg").style.backgroundColor = "#ff0066";
+    },
   },
-  // watch:
-  //   (props.isMenuOpened,
-  //   (first, second) => {
-  //     console.log(
-  //       "Watch props.selected function called with args:",
-  //       first,
-  //       second
-  //     );
-  //   }),
-  // watch: {
-  //   isMenuOpened(newValue, oldValue) {
-  //     // this.isMenuOpen = !this.isMenuOpen;
-  //     console.log("newValue : " + newValue + " oldValue : " + oldValue);
-  //     if (newValue) {
-  //       document.getElementById("bg").style.transform = "translateX(0)";
-  //       document.getElementById("bg").style.transition = "all 0.5s ease-in-out";
-  //     } else {
-  //       document.getElementById("bg").style.transform = "translateX(100%)";
-  //       document.getElementById("bg").style.transition = "all 0.5s ease-in-out";
-  //     }
-  //   },
-  // },
 };
 </script>
 

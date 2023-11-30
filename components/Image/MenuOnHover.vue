@@ -41,16 +41,21 @@ export default {
     window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
+    changeSeparationColor() {
+      // this.$emit("mouseover");
+    },
     showImage() {
       this.isVisible = true;
+      // Changer la couleur rose-neon
     },
     hideImage() {
       this.isVisible = false;
+      // Remettre la couleur rose-neon
+      // this.$emit("mouseout");
     },
     moveImage(event) {
       // this.imageX = event.pageX;
       this.imageX = event.pageX - window.innerWidth / 2;
-      console.log("imageX : " + this.imageX);
       this.imageY = event.pageY;
     },
     handleScroll(event) {
