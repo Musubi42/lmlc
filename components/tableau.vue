@@ -33,24 +33,27 @@ canvas {
   background: transparent;
 }
 </style>
-<script>
-import Matter from "matter-js";
 
-import {
-  Engine,
-  Render,
-  Bodies,
-  Mouse,
-  MouseConstraint,
-  Runner,
-  Composite,
-  Composites,
-  Vertices,
-  Common,
-  Events,
-  Body,
-  Constraint,
-} from "matter-js";
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script> -->
+<script>
+// import Matter from "matter-js";
+
+// import {
+//   Engine,
+//   Render,
+//   Bodies,
+//   Mouse,
+//   MouseConstraint,
+//   Runner,
+//   Composite,
+//   Composites,
+//   Vertices,
+//   Common,
+//   Events,
+//   Body,
+//   Constraint,
+// } from "matter-js";
+
 // import Phaser from "phaser";
 import decomp from "poly-decomp";
 
@@ -92,6 +95,19 @@ function dragElement(element, dragHandle) {
 }
 
 export default {
+  // head() {
+  //   return {
+  //     title: "Payment Page - My awesome project", // Other meta information
+  //     script: [
+  //       {
+  //         hid: "Matter",
+  //         src: "https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.js",
+  //         defer: true,
+  //         body: true,
+  //       },
+  //     ],
+  //   };
+  // },
   data: function () {
     return {
       debug: null,
@@ -132,84 +148,182 @@ export default {
   },
   mounted() {
     if (process.client) {
-      // Check if the code run on the client side
-      // document.getElementById("drawhere").innerHeight;
-      // this.handleSpotify();
-      let drawhereWidth = this.$refs.drawhere.offsetWidth;
-      let drawhereHeight = this.$refs.drawhere.offsetHeight;
+      this.loadScript(
+        "https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.js",
+        () => {
+          // From here how can I access the Matter object? Like Engine or Render
+          const Engine = Matter.Engine;
+          const Render = Matter.Render;
+          const Bodies = Matter.Bodies;
+          const Mouse = Matter.Mouse;
+          const MouseConstraint = Matter.MouseConstraint;
+          const Runner = Matter.Runner;
+          const Composite = Matter.Composite;
+          const Composites = Matter.Composites;
+          const Vertices = Matter.Vertices;
+          const Common = Matter.Common;
+          const Events = Matter.Events;
+          const Body = Matter.Body;
+          const Constraint = Matter.Constraint;
 
-      window.decomp = decomp;
-      let width = drawhereWidth,
-        height = drawhereHeight,
-        renderOptions = {
-          width,
-          height,
-          showAngleIndicator: false,
-          wireframes: false,
-          background: "transparent",
-        };
+          let drawhereWidth = this.$refs.drawhere.offsetWidth;
+          let drawhereHeight = this.$refs.drawhere.offsetHeight;
 
-      // create an engine
-      let engine = Engine.create(),
-        world = engine.world;
-      world.gravity.scale = 0;
-      world.gravity.x = 1;
-      world.gravity.y = 1;
+          window.decomp = decomp;
+          let width = drawhereWidth,
+            height = drawhereHeight,
+            renderOptions = {
+              width,
+              height,
+              showAngleIndicator: false,
+              wireframes: false,
+              background: "transparent",
+            };
 
-      // create a renderer
-      var render = Render.create({
-        element: document.querySelector("#drawhere"),
-        engine,
-        options: renderOptions,
-      });
+          // create an engine
+          let engine = Engine.create(),
+            world = engine.world;
+          world.gravity.scale = 0;
+          world.gravity.x = 1;
+          world.gravity.y = 1;
 
-      let offset = this.canvasProp.wallWidth,
-        options = { isStatic: true };
+          // create a renderer
+          var render = Render.create({
+            element: document.querySelector("#drawhere"),
+            engine,
+            options: renderOptions,
+          });
 
-      // Pour chaque items faire un SVG de la forme de l'item
-      const items = [
-        {
-          id: 1,
-          src: "/images/sac-bleu.png",
-          width: 300,
-          height: 315,
-          rotation: 0,
-        },
-        {
-          id: 2,
-          src: "/images/timur_berry.png",
-          width: 200,
-          height: 314,
-          rotation: 0,
-        },
-        {
-          id: 5,
-          src: "/images/bourges2024.png",
-          width: 250,
-          height: 280,
-          rotation: 0,
-        },
-      ];
+          let offset = this.canvasProp.wallWidth,
+            options = { isStatic: true };
 
-      // add all of the bodies to the world
-      // Pour le handbag blue
-      // Phaser
-      // this.game = new Phaser.Game(this.gameConfig);
+          // Pour chaque items faire un SVG de la forme de l'item
+          const items = [
+            {
+              id: 1,
+              src: "/images/sac-bleu.png",
+              width: 300,
+              height: 315,
+              rotation: 0,
+            },
+            {
+              id: 2,
+              src: "/images/timur_berry.png",
+              width: 200,
+              height: 314,
+              rotation: 0,
+            },
+            {
+              id: 5,
+              src: "/images/bourges2024.png",
+              width: 250,
+              height: 280,
+              rotation: 0,
+            },
+          ];
 
-      fetch("images/handbag-blue.json")
-        .then((response) => response.json())
-        .then((handbagPhysics) => {
-          this.handbagPhysics = handbagPhysics;
+          // add all of the bodies to the world
+          // Pour le handbag blue
+          // Phaser
+          // this.game = new Phaser.Game(this.gameConfig);
 
-          // const handbagBody =
-          //   Phaser.Physics.Matter.PhysicsEditorParser.parseBody(
-          //     0,
-          //     0,
-          //     this.handbagPhysics.handbag_blue,
-          //     1
-          //   );
+          fetch("images/handbag-blue.json")
+            .then((response) => response.json())
+            .then((handbagPhysics) => {
+              this.handbagPhysics = handbagPhysics;
 
-          // const handbag = Bodies.rectangle(
+              // const handbagBody =
+              //   Phaser.Physics.Matter.PhysicsEditorParser.parseBody(
+              //     0,
+              //     0,
+              //     this.handbagPhysics.handbag_blue,
+              //     1
+              //   );
+
+              // const handbag = Bodies.rectangle(
+              //   Math.random() * width,
+              //   Math.random() * height,
+              //   200,
+              //   200,
+              //   {
+              //     angle: 0 * (Math.PI / 180),
+              //     render: {
+              //       sprite: {
+              //         texture: "images/sac-bleu.png",
+              //         xScale: 200 / 800, // Adjust the scale as necessary
+              //         yScale: 200 / 800,
+              //       },
+              //     },
+              //     chamfer: { radius: 10 },
+              //   }
+              // );
+              // Body.setVertices(handbag, handbagBody.vertices);
+              // console.log(Body.getVertices(handbag));
+              // Composite.add(world, handbag);
+            });
+
+          Composite.add(world, [
+            Bodies.rectangle(
+              width / 2,
+              offset / -2,
+              width + offset * 2,
+              offset,
+              options
+            ),
+            Bodies.rectangle(
+              offset / -2,
+              height / 2,
+              offset,
+              height + offset * 2,
+              options
+            ),
+            Bodies.rectangle(
+              width + offset / 2,
+              height / 2,
+              offset,
+              height + offset * 2,
+              options
+            ),
+            Bodies.rectangle(
+              width / 2,
+              height + offset / 2,
+              width + offset * 2,
+              offset,
+              options
+            ),
+          ]);
+
+          items.forEach((item) => {
+            const body = Bodies.rectangle(
+              Math.random() * width,
+              Math.random() * height,
+              item.width,
+              item.height,
+              {
+                angle: item.rotation * (Math.PI / 180),
+                render: {
+                  sprite: {
+                    texture: item.src,
+                    xScale: item.width / 1000,
+                    yScale: item.height / 1000,
+                  },
+                  render: {
+                    fillStyle: "transparent", // Ajustez si nécessaire
+                    strokeStyle: "transparent", // Ajustez si nécessaire
+                    lineWidth: 0,
+                    sprite: {
+                      texture: item.src,
+                      xScale: item.width / 1000,
+                      yScale: item.height / 1000,
+                    },
+                  },
+                },
+              }
+            );
+            Composite.add(world, body);
+          });
+
+          // var gifObject = Bodies.rectangle(
           //   Math.random() * width,
           //   Math.random() * height,
           //   200,
@@ -218,194 +332,123 @@ export default {
           //     angle: 0 * (Math.PI / 180),
           //     render: {
           //       sprite: {
-          //         texture: "images/sac-bleu.png",
-          //         xScale: 200 / 800, // Adjust the scale as necessary
+          //         texture: gifFrames[this.currentFrame],
+          //         xScale: 200 / 800, // calculez l'échelle appropriée
           //         yScale: 200 / 800,
           //       },
           //     },
-          //     chamfer: { radius: 10 },
           //   }
           // );
-          // Body.setVertices(handbag, handbagBody.vertices);
-          // console.log(Body.getVertices(handbag));
-          // Composite.add(world, handbag);
-        });
+          this.$nextTick(() => {
+            let spotifyDraggable = document.querySelector(".spotify-draggable");
+            let spotifyHandle =
+              spotifyDraggable.querySelector(".spotify-handle");
+            if (spotifyDraggable && spotifyHandle) {
+              dragElement(spotifyDraggable, spotifyHandle);
+            }
+          });
 
-      Composite.add(world, [
-        Bodies.rectangle(
-          width / 2,
-          offset / -2,
-          width + offset * 2,
-          offset,
-          options
-        ),
-        Bodies.rectangle(
-          offset / -2,
-          height / 2,
-          offset,
-          height + offset * 2,
-          options
-        ),
-        Bodies.rectangle(
-          width + offset / 2,
-          height / 2,
-          offset,
-          height + offset * 2,
-          options
-        ),
-        Bodies.rectangle(
-          width / 2,
-          height + offset / 2,
-          width + offset * 2,
-          offset,
-          options
-        ),
-      ]);
-
-      items.forEach((item) => {
-        const body = Bodies.rectangle(
-          Math.random() * width,
-          Math.random() * height,
-          item.width,
-          item.height,
-          {
-            angle: item.rotation * (Math.PI / 180),
-            render: {
-              sprite: {
-                texture: item.src,
-                xScale: item.width / 1000,
-                yScale: item.height / 1000,
-              },
+          var bottle = Bodies.rectangle(
+            Math.random() * width,
+            Math.random() * height,
+            250,
+            333,
+            {
+              angle: 0 * (Math.PI / 180),
               render: {
-                fillStyle: "transparent", // Ajustez si nécessaire
-                strokeStyle: "transparent", // Ajustez si nécessaire
-                lineWidth: 0,
                 sprite: {
-                  texture: item.src,
-                  xScale: item.width / 1000,
-                  yScale: item.height / 1000,
+                  texture: "/images/monin.png",
+                  xScale: 250 / 800, // calculez l'échelle appropriée
+                  yScale: 333 / 800,
                 },
               },
-            },
-          }
-        );
-        Composite.add(world, body);
-      });
+            }
+          );
+          Composite.add(world, bottle);
 
-      // var gifObject = Bodies.rectangle(
-      //   Math.random() * width,
-      //   Math.random() * height,
-      //   200,
-      //   200,
-      //   {
-      //     angle: 0 * (Math.PI / 180),
-      //     render: {
-      //       sprite: {
-      //         texture: gifFrames[this.currentFrame],
-      //         xScale: 200 / 800, // calculez l'échelle appropriée
-      //         yScale: 200 / 800,
-      //       },
-      //     },
-      //   }
-      // );
-      this.$nextTick(() => {
-        let spotifyDraggable = document.querySelector(".spotify-draggable");
-        let spotifyHandle = spotifyDraggable.querySelector(".spotify-handle");
-        if (spotifyDraggable && spotifyHandle) {
-          dragElement(spotifyDraggable, spotifyHandle);
-        }
-      });
+          this.book = Composite.create({ label: "Book" });
 
-      var bottle = Bodies.rectangle(
-        Math.random() * width,
-        Math.random() * height,
-        250,
-        333,
-        {
-          angle: 0 * (Math.PI / 180),
-          render: {
-            sprite: {
-              texture: "/images/monin.png",
-              xScale: 250 / 800, // calculez l'échelle appropriée
-              yScale: 333 / 800,
-            },
-          },
+          // Ajoutez chaque page au composite de livre
+          // for (let i = 0; i < this.totalPages; i++) {
+          //   let page = Bodies.rectangle(400, 200, 150, 200, {
+          //     render: {
+          //       sprite: {
+          //         texture: "/images/" + this.pageTextures[i],
+          //         xScale: 1,
+          //         yScale: 1,
+          //       },
+          //     },
+          //   });
+          //   Composite.add(this.book, page);
+          // }
+
+          // Ajoutez le livre composite au monde
+          Composite.add(world, this.book);
+
+          // const updateTexture = () => {
+          //   const position = { x: gifObject.position.x, y: gifObject.position.y };
+          //   Composite.remove(world, gifObject);
+          //   gifObject = Bodies.rectangle(position.x, position.y, 200, 200, {
+          //     angle: 0 * (Math.PI / 180),
+          //     render: {
+          //       sprite: {
+          //         texture: gifFrames[this.currentFrame],
+          //         xScale: 200 / 800, // calculez l'échelle appropriée
+          //         yScale: 200 / 800,
+          //       },
+          //     },
+          //   });
+          //   Composite.add(world, gifObject);
+          // };
+
+          // Add an event to change the frame on each interval
+          // this.updateInterval = setInterval(() => {
+          //   this.currentFrame = (this.currentFrame + 1) % gifFrames.length;
+          //   updateTexture(gifObject);
+          // }, this.frameInterval);
+
+          var mouse = Mouse.create(render.canvas),
+            mouseConstraint = MouseConstraint.create(engine, {
+              mouse: mouse,
+              constraint: {
+                render: {
+                  visible: false,
+                },
+              },
+            });
+
+          Composite.add(world, mouseConstraint);
+
+          // keep the mouse in sync with rendering
+          render.mouse = mouse;
+
+          // fit the render viewport to the scene
+          Render.lookAt(render, {
+            min: { x: 0, y: 0 },
+            max: { x: width, y: height },
+          });
+
+          // run the engine
+          Runner.run(engine);
+          // run the renderer
+          Render.run(render);
         }
       );
-      Composite.add(world, bottle);
-
-      this.book = Composite.create({ label: "Book" });
-
-      // Ajoutez chaque page au composite de livre
-      // for (let i = 0; i < this.totalPages; i++) {
-      //   let page = Bodies.rectangle(400, 200, 150, 200, {
-      //     render: {
-      //       sprite: {
-      //         texture: "/images/" + this.pageTextures[i],
-      //         xScale: 1,
-      //         yScale: 1,
-      //       },
-      //     },
-      //   });
-      //   Composite.add(this.book, page);
-      // }
-
-      // Ajoutez le livre composite au monde
-      Composite.add(world, this.book);
-
-      // const updateTexture = () => {
-      //   const position = { x: gifObject.position.x, y: gifObject.position.y };
-      //   Composite.remove(world, gifObject);
-      //   gifObject = Bodies.rectangle(position.x, position.y, 200, 200, {
-      //     angle: 0 * (Math.PI / 180),
-      //     render: {
-      //       sprite: {
-      //         texture: gifFrames[this.currentFrame],
-      //         xScale: 200 / 800, // calculez l'échelle appropriée
-      //         yScale: 200 / 800,
-      //       },
-      //     },
-      //   });
-      //   Composite.add(world, gifObject);
-      // };
-
-      // Add an event to change the frame on each interval
-      // this.updateInterval = setInterval(() => {
-      //   this.currentFrame = (this.currentFrame + 1) % gifFrames.length;
-      //   updateTexture(gifObject);
-      // }, this.frameInterval);
-
-      var mouse = Mouse.create(render.canvas),
-        mouseConstraint = MouseConstraint.create(engine, {
-          mouse: mouse,
-          constraint: {
-            render: {
-              visible: false,
-            },
-          },
-        });
-
-      Composite.add(world, mouseConstraint);
-
-      // keep the mouse in sync with rendering
-      render.mouse = mouse;
-
-      // fit the render viewport to the scene
-      Render.lookAt(render, {
-        min: { x: 0, y: 0 },
-        max: { x: width, y: height },
-      });
-
-      // run the engine
-      Runner.run(engine);
-      // run the renderer
-      Render.run(render);
+      // Check if the code run on the client side
+      // document.getElementById("drawhere").innerHeight;
+      // this.handleSpotify();
     }
   },
   unmounted() {
     Events.off(engine, "beforeUpdate");
   },
   methods: {
+    loadScript(src, callback) {
+      let script = document.createElement("script");
+      script.src = src;
+      script.onload = callback;
+      document.body.appendChild(script);
+    },
     handleSpotify() {
       let drawhereWidth = this.$refs.drawhere.offsetWidth;
       let drawhereHeight = this.$refs.drawhere.offsetHeight;
