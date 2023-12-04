@@ -41,15 +41,25 @@ export default {
     return {
       toggleMenu: false,
     };
+  },  created() {
+    // Lorsque le composant est créé, vérifiez si un cookie de langue existe
+    const savedLang = Cookies.get('i18n_language');
+    
+    if (savedLang) {
+      // Si un cookie existe, utilisez-le pour définir la langue
+      this.$i18n.locale = savedLang;
+    } else {
+      // Sinon, utilisez la langue par défaut de votre application
+      this.$i18n.locale = 'fr'; // Mettez la langue par défaut de votre choix
+    }
   },
   mounted() {},
   unmounted() {},
   methods: {
     changeLanguage(locale) {
-      Cookies.remove("messages");
       Cookies.set("i18n_language", locale);
-      window.location.reload();
       this.$i18n.locale = locale;
+      
     },
     toggleMenuButton() {
       this.toggleMenu = !this.toggleMenu;

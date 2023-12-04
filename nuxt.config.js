@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   },
   modules: ["nuxt-svgo", "@nuxt/image",'@nuxtjs/i18n'],
   i18n: {
-    vueI18n: './i18n.config.ts' // if you are using custom path, default 
+    vueI18n: './i18n.config.js' // if you are using custom path, default 
   },
   svgo: {
     autoImportPath: "~/assets/icons/",
