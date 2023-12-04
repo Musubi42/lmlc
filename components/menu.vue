@@ -1,13 +1,13 @@
 <template>
   <div>
+    <!--  -->
     <div
-      class="h-full bg-rose-neon w-80 right-0 fixed z-[101] transform translate-x-full"
+      class="h-full bg-rose-neon w-10 md:w-80 right-0 fixed z-[100] transform translate-x-full"
       id="separation"
     ></div>
     <div
-      class="h-screen bg-rose-neon flex flex-row fixed z-[100] right-0 w-full md:w-1/2 transform translate-x-full"
+      class="h-screen bg-rose-neon flex flex-row fixed z-[20] right-0 w-full md:w-1/2 transform translate-x-full"
       id="bg"
-      :style="menuState"
     >
       <!-- Sidebar -->
       <!-- <div class="flex flex-col place-content-between ml-auto mr-10 mb-10 mt-6"> -->
@@ -20,118 +20,102 @@
         <div class="menu-burger-open-second absolute left-[12px]"></div>
         <div class="menu-burger-open-third absolute right-0"></div>
       </div> -->
-      <!-- Reaseaux sociaux -->
-      <div id="social-network" class="absolute right-0 bottom-0 mr-8 mb-3">
-        <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
-          <linkedin class="text-[30px] w-auto text-white" />
-        </a>
-
-        <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
-          <instagram class="text-[30px] w-auto" />
-        </a>
+      <div
+        class="absolute right-0 top-[300px] z-auto transform translate-x-full"
+        id="title"
+        @mousemove="titleOffset"
+      >
+        <!-- Titre -->
+        <div class="my-auto flex flex-col place-content-between h-3/6 ml-16">
+          <ImageMenuOnHover
+            class="onHover w-fit"
+            imageSrc="/menu-work-small.png"
+            @mouseover="color"
+            @mouseleave="defaultBGColor"
+            :offsetParent="offsetElement"
+            id="work"
+          >
+            <div
+              class="text-[42px] md:text-[80px] text-white font-black z-10 relative"
+            >
+              <span
+                data-color="#ffff00"
+                class="md:hover:transform md:hover:translate-x-32 block menu-text-overlay opacity-50 hover:opacity-100"
+                >WORK</span
+              >
+            </div>
+          </ImageMenuOnHover>
+          <ImageMenuOnHover
+            class="onHover w-fit"
+            imageSrc="/menu-services-small.png"
+            @mouseover="color"
+            @mouseleave="defaultBGColor"
+            :offsetParent="offsetElement"
+            id="services"
+          >
+            <div
+              class="text-[42px] md:text-[80px] text-white font-black z-10 relative"
+            >
+              <!-- TODO: Quand on quitte le title effet epileptique voir la menu-text-overlay -->
+              <span
+                data-color="#974dff"
+                class="md:hover:transform md:hover:translate-x-32 block menu-text-overlay opacity-50 hover:opacity-100"
+                >SERVICES</span
+              >
+            </div>
+          </ImageMenuOnHover>
+          <ImageMenuOnHover
+            class="onHover w-fit"
+            imageSrc="/menu-talents-small.png"
+            @mouseover="color"
+            @mouseleave="defaultBGColor"
+            :menuOpen="toggleMenu"
+            :offsetParent="offsetElement"
+            id="talents"
+          >
+            <div
+              class="text-[42px] md:text-[80px] text-white font-black z-10 relative"
+            >
+              <span
+                data-color="#99deff"
+                class="md:hover:transform md:hover:translate-x-32 block menu-text-overlay opacity-50 hover:opacity-100"
+                >TALENTS</span
+              >
+            </div>
+          </ImageMenuOnHover>
+        </div>
       </div>
     </div>
-    <div
-      class="absolute right-0 top-[300px] z-[100] transform translate-x-full"
-      id="title"
-    >
-      <!-- Titre -->
-      <div class="my-auto flex flex-col place-content-between h-3/6 ml-16">
-        <ImageMenuOnHover
-          class="onHover w-fit"
-          imageSrc="/menu-work-small.png"
-          @mouseover="color"
-          @mouseleave="defaultBGColor"
-          id="work"
-        >
-          <div
-            class="text-[42px] md:text-[80px] text-white font-black z-10 relative"
-          >
-            <span
-              data-color="#ffff00"
-              class="md:hover:ml-32 menu-text-overlay opacity-50 hover:opacity-100"
-              >WORK</span
-            >
-          </div>
-        </ImageMenuOnHover>
-        <ImageMenuOnHover
-          class="onHover w-fit"
-          imageSrc="/menu-services-small.png"
-          @mouseover="color"
-          @mouseleave="defaultBGColor"
-          id="services"
-        >
-          <div
-            class="text-[42px] md:text-[80px] text-white font-black z-10 relative"
-          >
-            <span
-              data-color="#974dff"
-              class="md:hover:ml-32 menu-text-overlay opacity-50 hover:opacity-100"
-              >SERVICES</span
-            >
-          </div>
-        </ImageMenuOnHover>
-        <ImageMenuOnHover
-          class="onHover w-fit"
-          imageSrc="/menu-talents-small.png"
-          @mouseover="color"
-          @mouseleave="defaultBGColor"
-          :menuOpen="toggleMenu"
-          id="talents"
-        >
-          <div
-            class="text-[42px] md:text-[80px] text-white font-black z-10 relative"
-          >
-            <span
-              data-color="#99deff"
-              class="md:hover:ml-32 menu-text-overlay opacity-50 hover:opacity-100"
-              >TALENTS</span
-            >
-          </div>
-        </ImageMenuOnHover>
-      </div>
+
+    <!-- Reaseaux sociaux -->
+    <!-- TODO: les faire disparaitre -->
+    <div id="social-network" class="fixed right-0 bottom-0 mr-8 mb-3 z-[1000]">
+      <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
+        <linkedin class="text-[30px] w-auto text-white" />
+      </a>
+
+      <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
+        <instagram class="text-[30px] w-auto" />
+      </a>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  // props: {
-  //   isMenuOpened: Boolean,
-  // },
   props: ["isMenuOpen"],
-  data() {
-    return {
-      isMenuOpen: false,
-      isTransitionEnded: false,
-      myProp: "myProp",
-    };
-  },
-  mounted() {
-    window.addEventListener("click", this.toggleMenu);
-    // window.dede;
-    console.log("my prop : " + this.myProp);
-  },
-  methods: {
-    isMenuOpened() {
-      console.log(isMenuOpen);
-      if (this.isMenuOpened) {
-        document.getElementById("bg").style.transform = "translateX(0)";
-        document.getElementById("bg").style.transition = "all 0.5s ease-in-out";
-      } else {
-        document.getElementById("bg").style.transform = "translateX(100%)";
-        document.getElementById("bg").style.transition = "all 0.5s ease-in-out";
-      }
-      return this.isMenuOpened;
-    },
-    toggleMenu() {
-      console.log("is menu open : " + this.isMenuOpen);
-      this.isMenuOpen = !this.isMenuOpen;
+  watch: {
+    isMenuOpen() {
       if (this.isMenuOpen) {
         // En 3 parties
         // Faire apparaitre l'élément à droite
         // Faire défiler le background
         // Faire apparaitre le texte
+
+        const separationWidth = (window.innerWidth / 2) * 0.2;
+        document.getElementById(
+          "separation"
+        ).style.width = `${separationWidth}px`;
 
         // separation
         document.getElementById("separation").style.transform = "translateX(0)";
@@ -140,17 +124,29 @@ export default {
 
         // Title
         setTimeout(function () {
-          document.getElementById("title").style.transform =
-            "translateX(-100%)";
+          // TODO: Calculer un translateX et width pour separation dynamique en fonction de la taille de l'écran
+
+          // document.getElementById("title").style.transform = "translateX(-50%)"; // Pour petit écran
+          document.getElementById(
+            "title"
+          ).style.transform = `translateX(-${separationWidth}px)`; // Pour grand écran
           document.getElementById("title").style.transition =
             "all 0.5s ease-in-out";
-        }, 100);
+        }, 0);
 
         // BG
         document.getElementById("bg").style.transform = "translateX(0)";
         document.getElementById("bg").style.transition =
           "all 0.5s cubic-bezier(0, 0.75, 0.83, 0.67)";
+
+        //  A la fin de l'animation faire disparaitre la séparation, pour que le changement de couleur soit fluide
+        setTimeout(function () {
+          document.getElementById("separation").style.display = "none";
+        }, 500);
       } else {
+        // Faire reaparaitre la separation pour faire disparaitre le texte derriere
+        document.getElementById("separation").style.display = "block";
+
         // separation
         setTimeout(function () {
           document.getElementById("separation").style.transform =
@@ -172,7 +168,23 @@ export default {
         }, 100);
       }
     },
+  },
+  data() {
+    return {
+      offsetElement: 0,
+    };
+  },
+  mounted() {},
+  methods: {
+    titleOffset(event) {
+      this.offsetElement = parseInt(
+        window.getComputedStyle(
+          event.srcElement.offsetParent.offsetParent.offsetParent
+        ).left
+      );
+    },
     defaultBGColor() {
+      document.getElementById("bg").style.transition = "none";
       document.getElementById("bg").style.backgroundColor = "#ff0066";
     },
   },
@@ -269,16 +281,13 @@ function toggleMenu(event) {
 }
 
 function color(value) {
-  console.log(value);
   if (typeof value === "string") {
     document.getElementById("bg").style.backgroundColor = value;
   } else {
+    document.getElementById("bg").style.transition = "none";
     document.getElementById("bg").style.backgroundColor =
       value.target.attributes["data-color"].value;
   }
-}
-function mouseup(event) {
-  console.log(event);
 }
 definePageMeta({
   layout: "menu",

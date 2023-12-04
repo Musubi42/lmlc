@@ -6,8 +6,11 @@
           {{ $t('intro') }}
         </p>
       </div>
-      <div class="absolute w-full h-[85%] md:h-[65%] bottom-0 shadow-sm tableau-shadow">
-        <!-- <tableau /> -->
+
+      <div
+        class="absolute w-full h-[85%] md:h-[65%] bottom-0 shadow-sm tableau-shadow"
+      >
+        <tableau />
       </div>
     </div>
     <div id="container"
