@@ -26,11 +26,13 @@
         @mousemove="titleOffset"
       >
         <!-- Titre -->
+        <!-- Capturer cet élémént et for each sur chacun de ses enfants -->
         <div class="my-auto flex flex-col place-content-between h-3/6 ml-16">
           <ImageMenuOnHover
+            ref="work"
             class="onHover w-fit"
             imageSrc="/menu-work-small.png"
-            @mouseover="color"
+            @mouseover="titleAnimation"
             @mouseleave="defaultBGColor"
             :offsetParent="offsetElement"
             id="work"
@@ -40,15 +42,17 @@
             >
               <span
                 data-color="#ffff00"
-                class="md:hover:transform md:hover:translate-x-32 block menu-text-overlay opacity-50 hover:opacity-100"
+                class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 w-fit"
+                id="workTitle"
                 >WORK</span
               >
             </div>
           </ImageMenuOnHover>
           <ImageMenuOnHover
+            ref="services"
             class="onHover w-fit"
             imageSrc="/menu-services-small.png"
-            @mouseover="color"
+            @mouseover="titleAnimation"
             @mouseleave="defaultBGColor"
             :offsetParent="offsetElement"
             id="services"
@@ -60,25 +64,29 @@
               <span
                 data-color="#974dff"
                 class="md:hover:transform md:hover:translate-x-32 block menu-text-overlay opacity-50 hover:opacity-100"
+                id="servicesTitle"
                 >SERVICES</span
               >
             </div>
           </ImageMenuOnHover>
           <ImageMenuOnHover
+            ref="talents"
             class="onHover w-fit"
             imageSrc="/menu-talents-small.png"
-            @mouseover="color"
+            @mouseover="titleAnimation"
             @mouseleave="defaultBGColor"
             :menuOpen="toggleMenu"
             :offsetParent="offsetElement"
             id="talents"
           >
+            <!-- TODO : On hover de cette div, animer le texte -->
             <div
               class="text-[42px] md:text-[80px] text-white font-black z-10 relative"
             >
               <span
                 data-color="#99deff"
                 class="md:hover:transform md:hover:translate-x-32 block menu-text-overlay opacity-50 hover:opacity-100"
+                id="talentsTitle"
                 >TALENTS</span
               >
             </div>
@@ -172,10 +180,38 @@ export default {
   data() {
     return {
       offsetElement: 0,
+      defaultBG: "#ff0066",
+      menuTitles: ["work", "services", "talents"],
     };
   },
   mounted() {},
   methods: {
+    titleAnimation(value) {
+      // Changement de couleur du Background
+
+      if (typeof value === "string") {
+        document.getElementById("bg").style.backgroundColor = value;
+      } else {
+        document.getElementById("bg").style.transition = "none";
+        document.getElementById("bg").style.backgroundColor =
+          value.target.attributes["data-color"].value;
+      }
+
+      const workTitle = document.getElementById("workTitle");
+      const servicesTitle = document.getElementById("servicesTitle");
+      const talentsTitle = document.getElementById("talentsTitle");
+
+      workTitle.classList.add("menu-text-overlay");
+      servicesTitle.classList.add("menu-text-overlay");
+      talentsTitle.classList.add("menu-text-overlay");
+      // Décaler la div du title pour faire l'effet de pagination
+      // tout le temps remttre le titre sur la gauche
+      const newElementID = value.target.outerText.toLowerCase();
+
+      // document.getElementById(
+      //   `${newElementID}Title`
+      // ).style.transform = `translateX(128px)`;
+    },
     titleOffset(event) {
       this.offsetElement = parseInt(
         window.getComputedStyle(
@@ -184,8 +220,28 @@ export default {
       );
     },
     defaultBGColor() {
+      // Retirer le before puis le translate pour éviter la boucle infinie
+      const workTitle = document.getElementById("workTitle");
+      const servicesTitle = document.getElementById("servicesTitle");
+      const talentsTitle = document.getElementById("talentsTitle");
+
+      workTitle.classList.remove("menu-text-overlay");
+      servicesTitle.classList.remove("menu-text-overlay");
+      talentsTitle.classList.remove("menu-text-overlay");
+
+      // workTitle.style.transform = "translateX(0px)";
+      // servicesTitle.style.transform = "translateX(0px)";
+      // talentsTitle.style.transform = "translateX(0px)";
+      // const work = this.$refs.work.$el;
+      // const services = this.$refs.services.$el;
+      // const talents = this.$refs.talents.$el;
+
+      // work.style.transform = "translateX(0px)";
+      // services.style.transform = "translateX(0px)";
+      // talents.style.transform = "translateX(0px)";
+
       document.getElementById("bg").style.transition = "none";
-      document.getElementById("bg").style.backgroundColor = "#ff0066";
+      document.getElementById("bg").style.backgroundColor = this.defaultBG;
     },
   },
 };
@@ -273,21 +329,6 @@ function toggleMenu(event) {
     document.getElementById("talents").style.transition =
       "all 0.5s ease-in-out";
   }, 1000);
-
-  // TODO : Navigation provisoire pour demo la transition
-  // setTimeout(function () {
-  //   window.location.href = "http://pre-prod.lmlccommunication.fr/";
-  // }, 1500);
-}
-
-function color(value) {
-  if (typeof value === "string") {
-    document.getElementById("bg").style.backgroundColor = value;
-  } else {
-    document.getElementById("bg").style.transition = "none";
-    document.getElementById("bg").style.backgroundColor =
-      value.target.attributes["data-color"].value;
-  }
 }
 definePageMeta({
   layout: "menu",
