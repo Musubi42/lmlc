@@ -14,7 +14,7 @@
       <div
         class="absolute w-full h-[85%] md:h-[65%] bottom-0 shadow-sm tableau-shadow"
       >
-        <!-- <tableau /> -->
+        <tableau />
       </div>
     </div>
     <div
