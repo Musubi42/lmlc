@@ -12,11 +12,12 @@
       </div>
       <div class="flex flex-row">
         <div
+        ref="languageSelectors"
           class="flex flex-row font-montserrat font-medium text-sm mt-[-4px] mr-16 md:mr-40 content-end cursor-pointer"
         >
-          <span @click="changeLanguage('fr')" class="mr-4">FR</span>
-          <span @click="changeLanguage('en')" class="mr-4">EN</span>
-          <span @click="changeLanguage('it')">IT</span>
+          <span @click="changeLanguage('fr')" class="mr-4 hover:italic" id="fr">FR</span>
+          <span @click="changeLanguage('en')" class="mr-4 hover:italic" id="en">EN</span>
+          <span @click="changeLanguage('it')" class="hover:italic" id="it">IT</span>
         </div>
         <div
           to="/menu"
@@ -32,7 +33,6 @@
 </template>
 
 <style>
-/* [class^="i-"][class*="__part1"] { */
 .part1-open {
   animation: part1-open-animation 0.6s none;
   animation-fill-mode: forwards;
@@ -314,6 +314,15 @@ export default {
       }
     },
     changeLanguage(locale) {
+      const languageSelectors = this.$refs.languageSelectors;
+      const allLanguageSelectors = languageSelectors.querySelectorAll('span');
+      allLanguageSelectors.forEach((languageSelector) => {
+        languageSelector.classList.remove('font-semibold');
+      });
+
+      const languageSelector = document.getElementById(locale);
+      languageSelector.classList.add('font-semibold');
+
       Cookies.set("i18n_language", locale);
       this.$i18n.locale = locale;
     },
