@@ -21,78 +21,303 @@
         <div
           to="/menu"
           id="menu-burger"
-          class="hover:cursor-pointer h-5 close z-[1000] fixed mr-6 md:mr-10 right-0"
-          @click="toggleMenuButton"
+          class="hover:cursor-pointer h-auto close z-[1000] fixed mr-6 md:mr-10 right-0"
+          @click=""
         >
-          <div class="menu-burger-close-first"></div>
-          <div class="menu-burger-close-second"></div>
-          <div class="menu-burger-close-second"></div>
+            <menuBurger class="text-[50px]" ref="menuBurger" @click="toggleMenuBurger" />
         </div>
       </div>
     </div>
   </div>
 </template>
 
+<style>
+/* [class^="i-"][class*="__part1"] { */
+.part1-open {
+  animation: part1-open-animation 0.6s none;
+  animation-fill-mode: forwards;
+}
+
+@keyframes part1-open-animation {
+  /* Start the animation right away */
+  0% {
+    transform: translateY(0px);
+    width: 32px;
+    height: 6px;
+    fill: black;
+  }
+
+  /* Finish changes by here */
+  35% {
+    transform: translate(3px, 7px);
+    /* transform: translateY(7px); */
+    width: 32px;
+    height: 6px;
+    fill: black;
+  }
+
+  60% {
+    transform: translate(3px, 7px);
+    width: 10px;
+    height: 6px;
+    fill: white;
+  }
+
+  /* Between 20% and 100%, nothing changes */
+  100% {
+    transform: translate(3px, 0px);
+    width: 10px;
+    height: 25px;
+    fill: white;
+  }
+}
+
+/* [class^="i-"][class*="__part2"] { */
+.part2-open {
+  animation: part2-open-animation 0.6s none;
+  animation-fill-mode: forwards;
+}
+
+@keyframes part2-open-animation {
+  /* Start the animation right away */
+  0% {
+    transform: translate(0px, 0px);
+    width: 32px;
+    height: 6px;
+    fill: black;
+  }
+
+  /* Finish changes by here */
+  35% {
+    transform: translate(0px, 0px);
+    width: 32px;
+    height: 6px;
+    fill: black;
+  }
+  
+  60% {
+    transform: translate(16px, 0px);
+    width: 10px;
+    height: 6px;
+    fill: white;
+  }
+
+  /* Between 20% and 100%, nothing changes */
+  100% {
+    transform: translate(16px, -7px);
+    width: 10px;
+    height: 50px;
+    fill: white;
+  }
+}
+
+.part3-open {
+  animation: part3-open-animation 0.6s none;
+  animation-fill-mode: forwards;
+}
+
+@keyframes part3-open-animation {
+  /* Start the animation right away */
+  0% {
+    transform: translateY(0px);
+    width: 32px;
+    height: 6px;
+    fill: black;
+  }
+
+  /* Finish changes by here */
+  35% {
+    transform: translate(0px, -7px);
+    width: 32px;
+    height: 6px;
+    fill: black;
+  }
+
+  60% {
+    transform: translate(29px, -7px);
+    width: 10px;
+    height: 6px;
+    fill: white;
+  }
+
+  /* Between 20% and 100%, nothing changes */
+  100% {
+    transform: translate(29px, -14px);
+    width: 10px;
+    height: 50px;
+    fill: white;
+  }
+}
+
+.part1-close {
+  animation: part1-close-animation 0.6s none;
+  animation-fill-mode: forwards;
+}
+
+@keyframes part1-close-animation {
+  0% {
+    transform: translate(0px, 0px);
+    width: 10px;
+    height: 25px;
+    fill: white;
+  }
+
+  35% {
+    transform: translate(0px, 7px);
+    width: 10px;
+    height: 6px;
+    fill: white;
+  }
+
+  60% {
+    transform: translate(0, 7px);
+    width: 32px;
+    height: 6px;
+    fill: black;
+  }
+
+  100% {
+    transform: translateY(0px);
+    width: 32px;
+    height: 6px;
+    fill: black;
+  }
+}
+
+.part2-close {
+  animation: part2-close-animation 0.6s none;
+  animation-fill-mode: forwards;
+}
+
+@keyframes part2-close-animation {
+  0% {
+    transform: translate(16px, -7px);
+    width: 10px;
+    height: 50px;
+    fill: white;
+  }
+
+  35% {
+    transform: translate(16px, 0px);
+    width: 10px;
+    height: 6px;
+    fill: white;
+  }
+
+  60% {
+    transform: translate(0px, 0px);
+    width: 32px;
+    height: 6px;
+    fill: black;
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+    width: 32px;
+    height: 6px;
+    fill: black;
+  }
+}
+
+.part3-close {
+  animation: part3-close-animation 0.6s none;
+  animation-fill-mode: forwards;
+}
+
+@keyframes part3-close-animation {
+  0% {
+    transform: translate(32px, -14px);
+    width: 10px;
+    height: 50px;
+    fill: white;
+  }
+
+  35% {
+    transform: translate(32px, -7px);
+    width: 10px;
+    height: 6px;
+    fill: white;
+  }
+
+  60% {
+    transform: translate(0px, -7px);
+    width: 32px;
+    height: 6px;
+    fill: black;
+  }
+
+  100% {
+    transform: translateY(0px);
+    width: 32px;
+    height: 6px;
+    fill: black;
+  }
+}
+</style>
+
 <!-- TODO: Comment faire l'animation https://codepen.io/chichichi/pen/YNaVKK -->
 <script>
 import Cookies from "js-cookie";
+import menuBurger from "assets/icons/menu_burger.svg";
+
 export default {
   data() {
     return {
       toggleMenu: false,
+      menuBurgerOpened: false,
     };
-  },  created() {
+  },
+  created() {
     // Lorsque le composant est créé, vérifiez si un cookie de langue existe
-    const savedLang = Cookies.get('i18n_language');
-    
+    const savedLang = Cookies.get("i18n_language");
+
     if (savedLang) {
       // Si un cookie existe, utilisez-le pour définir la langue
       this.$i18n.locale = savedLang;
     } else {
       // Sinon, utilisez la langue par défaut de votre application
-      this.$i18n.locale = 'fr'; // Mettez la langue par défaut de votre choix
+      this.$i18n.locale = "fr"; // Mettez la langue par défaut de votre choix
     }
   },
   mounted() {},
   unmounted() {},
+  components: {
+    menuBurger,
+  },
   methods: {
+    toggleMenuBurger() {
+      this.toggleMenu = !this.toggleMenu;
+      this.menuBurgerOpened = !this.menuBurgerOpened;
+      console.log(this.menuBurgerOpened);
+      const svgElement = this.$refs.menuBurger.$el;
+      const rectElements = svgElement.querySelectorAll('rect');
+      const rect1 = rectElements[0];
+      const rect2 = rectElements[1];
+      const rect3 = rectElements[2];
+      
+      if (this.menuBurgerOpened) {
+        rect1.classList.remove('part1-close');
+        rect2.classList.remove('part2-close');
+        rect3.classList.remove('part3-close');
+
+        rect1.classList.add('part1-open');
+        rect2.classList.add('part2-open');
+        rect3.classList.add('part3-open');
+      } else {
+        rect1.classList.remove('part1-open');
+        rect2.classList.remove('part2-open');
+        rect3.classList.remove('part3-open');
+
+        rect1.classList.add('part1-close');
+        rect2.classList.add('part2-close');
+        rect3.classList.add('part3-close');
+      }
+    },
     changeLanguage(locale) {
       Cookies.set("i18n_language", locale);
       this.$i18n.locale = locale;
-      
-    },
-    toggleMenuButton() {
-      this.toggleMenu = !this.toggleMenu;
-
-      document.querySelectorAll("#menu-burger")[0].classList.toggle("open");
-      document.querySelectorAll("#menu-burger")[0].classList.toggle("close");
-      document
-        .querySelectorAll("#menu-burger")[0]
-        .childNodes[0].classList.toggle("menu-burger-open-first");
-      document
-        .querySelectorAll("#menu-burger")[0]
-        .childNodes[0].classList.toggle("menu-burger-close-first");
-
-      document
-        .querySelectorAll("#menu-burger")[0]
-        .childNodes[1].classList.toggle("menu-burger-open-second");
-      document
-        .querySelectorAll("#menu-burger")[0]
-        .childNodes[1].classList.toggle("menu-burger-close-second");
-
-      document
-        .querySelectorAll("#menu-burger")[0]
-        .childNodes[2].classList.toggle("menu-burger-open-third");
-      document
-        .querySelectorAll("#menu-burger")[0]
-        .childNodes[2].classList.toggle("menu-burger-close-second");
-      // document.getElementById("menu-burger").classList.toggle("menu__burger__open");
-      // document.getElementById("menu-burger").classList.toggle("menu__burger__close");
     },
   },
 };
 </script>
 
-<script setup>
-import menuMobile from "assets/images/menu-black.svg";
-</script>

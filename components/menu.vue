@@ -114,6 +114,7 @@ export default {
   props: ["isMenuOpen"],
   watch: {
     isMenuOpen() {
+      console.log("hi");
       if (this.isMenuOpen) {
         // En 3 parties
         // Faire apparaitre l'élément à droite
