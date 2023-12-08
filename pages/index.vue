@@ -7,6 +7,7 @@
           class="text-[1rem] md:text-[2rem] xl:text-[3.2rem] font-black mx-auto w-[90%] md:w-[65%]"
           id="text-intro"
         >
+          {{ $t("intro") }}
         </p>
       </div>
 
@@ -177,6 +178,8 @@ export default {
         .typeString(this.textIntro)
         .pauseFor(300)
         .start();
+
+      // TODO : Supprimer le typewriter quand il a fini d'écrire et replace par le text en dur pour avoir la traduction qui fonctionne
     },
     calculateScrollSpeed(width) {
       if (width <= 350) {
