@@ -6,7 +6,7 @@
       id="separation"
     ></div>
     <div
-      class="h-screen bg-rose-neon flex flex-row fixed z-[20] right-0 w-full md:w-1/2 transform translate-x-full"
+      class="h-screen bg-rose-neon flex flex-row items-center fixed z-[20] right-0 w-full md:w-1/2 transform translate-x-full"
       id="bg"
     >
       <!-- Sidebar -->
@@ -21,13 +21,13 @@
         <div class="menu-burger-open-third absolute right-0"></div>
       </div> -->
       <div
-        class="absolute right-0 top-[300px] z-auto transform translate-x-full"
+        class="absolute right-0 z-auto transform translate-x-full"
         id="title"
         @mousemove="titleOffset"
       >
         <!-- Titre -->
         <!-- Capturer cet élémént et for each sur chacun de ses enfants -->
-        <div class="my-auto flex flex-col place-content-between h-3/6 ml-16">
+        <div class="text-[50px] md:text-[70px] xl:text-[80px] 2xl:text-[90px] my-auto flex flex-col place-content-between h-3/6 ml-16">
           <ImageMenuOnHover
             ref="work"
             class="onHover w-fit"
@@ -38,7 +38,7 @@
             id="work"
           >
             <div
-              class="text-[42px] md:text-[80px] text-white font-black z-10 relative"
+              class=" text-white font-black z-10 relative"
             >
               <span
                 data-color="#ffff00"
@@ -58,7 +58,7 @@
             id="services"
           >
             <div
-              class="text-[42px] md:text-[80px] text-white font-black z-10 relative"
+              class=" text-white font-black z-10 relative"
             >
               <!-- TODO: Quand on quitte le title effet epileptique voir la menu-text-overlay -->
               <span
@@ -81,7 +81,7 @@
           >
             <!-- TODO : On hover de cette div, animer le texte -->
             <div
-              class="text-[42px] md:text-[80px] text-white font-black z-10 relative"
+              class="text-white font-black z-10 relative"
             >
               <span
                 data-color="#99deff"
