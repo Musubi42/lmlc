@@ -12,13 +12,25 @@
       </div>
       <div class="flex flex-row">
         <div
-        ref="languageSelectors"
-          class="flex flex-row font-montserrat font-medium text-sm mt-[-4px] mr-16 md:mr-40 content-end cursor-pointer"
-        >
-          <span @click="changeLanguage('fr')" class="mr-4 hover:italic" id="fr">FR</span>
-          <span @click="changeLanguage('en')" class="mr-4 hover:italic" id="en">EN</span>
-          <span @click="changeLanguage('it')" class="hover:italic" id="it">IT</span>
-        </div>
+  ref="languageSelectors"
+  class="flex flex-row font-montserrat font-medium text-sm mt-[-4px] mr-16 md:mr-40 content-end cursor-pointer"
+>
+  <!-- Langue sélectionnée -->
+  <span class="md:hidden inline-block relative"> <!-- Masqué sur les écrans moyens et plus grands -->
+  <select @change="changeLanguage($event.target.value)" class="appearance-none py-2 px-4 leading-tight bg-white rounded-md !outline-none border-none border-none focus:border-none mr-5">
+    <option value="fr">FR</option>
+    <option value="en">EN</option>
+    <option value="it">IT</option>
+  </select>
+</span>
+
+  <!-- Options de langue visibles sur les écrans moyens et plus grands -->
+  <span class="hidden md:flex flex-row">
+    <span @click="changeLanguage('fr')" class="mr-4 hover:italic" id="fr">FR</span>
+    <span @click="changeLanguage('en')" class="mr-4 hover:italic" id="en">EN</span>
+    <span @click="changeLanguage('it')" class="hover:italic" id="it">IT</span>
+  </span>
+</div>
         <div
           to="/menu"
           id="menu-burger"
