@@ -15,20 +15,26 @@
   class="flex flex-row font-montserrat font-medium text-sm mt-[-4px] mr-16 md:mr-40 content-end cursor-pointer"
 >
 
-<div>
-    <button id="dropdownDefaultButton" @click="toggleDropdown" class="text-black md:hidden inline-block relative bg-white hover:bg-white focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center " type="button">
-      {{ language }}
-    </button>
+<div >
+  <button id="dropdownDefaultButton" @click="toggleDropdown" class="text-black md:hidden inline-block relative bg-white hover:bg-white focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
+    {{ language }}
+  </button>
 
-    <!-- Dropdown menu -->
-    <div v-show="isDropdownOpen" id="dropdown" class="z-20 absolute bg-white divide-y divide-gray-100 rounded-lg">
-      <ul class="py-2 text-sm text-gray-700 dark:text-white" aria-labelledby="dropdownDefaultButton">
-        <li v-for="lang in availableLanguages" :key="lang">
-          <a href="#" @click="changeLanguage(lang)" class="block px-4 py-2 hover:bg-gray-100 text-black hover:bg-black">{{ lang }}</a>
-        </li>
-      </ul>
-    </div>
+  <!-- Dropdown menu -->
+  <div v-show="isDropdownOpen" id="dropdown" class="z-20 absolute bg-white divide-y divide-gray-100 rounded-lg">
+    <ul class="py-2 text-sm text-gray-700 dark:text-white" aria-labelledby="dropdownDefaultButton">
+      <li>
+        <a href="#" @click="changeLanguage('fr')" class="block px-4 py-2 hover:bg-gray-100 text-black hover:bg-black text-center">FR</a>
+      </li>
+      <li>
+        <a href="#" @click="changeLanguage('en')" class="block px-4 py-2 hover:bg-gray-100 text-black hover:text-black text-center">EN</a>
+      </li>
+      <li>
+        <a href="#" @click="changeLanguage('it')" class="block px-4 py-2 hover:bg-gray-100 text-black hover:text-black text-center">IT</a>
+      </li>
+    </ul>
   </div>
+</div>
   <!-- Options de langue visibles sur les écrans moyens et plus grands -->
   <span class="hidden md:flex flex-row">
     <span @click="changeLanguage('fr')" class="mr-4 hover:italic" id="fr">FR</span>
@@ -282,7 +288,6 @@ export default {
     return {
       toggleMenu: false,
       menuBurgerOpened: false,
-      availableLanguages: ['FR', 'EN', 'IT'], // Add all your available languages here
       language: "FR",
       isDropdownOpen: false, // Add this line to track the dropdown state
     };
@@ -348,7 +353,6 @@ export default {
       const languageSelector = document.getElementById(locale);
       languageSelector.classList.add('font-semibold');
 
-      this.availableLanguages = this.availableLanguages.filter((item) => item !== locale.locale.toUpperCase());
       Cookies.set("i18n_language", locale);
       this.$i18n.locale = locale;
     },
