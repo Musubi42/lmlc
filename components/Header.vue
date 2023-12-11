@@ -8,22 +8,27 @@
           src="~/assets/images/logo-lmlc-black.png"
           alt="Logo LMLC couleur noir"
         />
-        <!-- TODO: revenir à la page d'accueil -->
       </div>
       <div class="flex flex-row">
         <div
   ref="languageSelectors"
   class="flex flex-row font-montserrat font-medium text-sm mt-[-4px] mr-16 md:mr-40 content-end cursor-pointer"
 >
-  <!-- Langue sélectionnée -->
-  <span class="md:hidden inline-block relative"> <!-- Masqué sur les écrans moyens et plus grands -->
-  <select @change="changeLanguage($event.target.value)" class="appearance-none py-2 px-4 leading-tight bg-white rounded-md !outline-none border-none border-none focus:border-none mr-5">
-    <option value="fr">FR</option>
-    <option value="en">EN</option>
-    <option value="it">IT</option>
-  </select>
-</span>
 
+<div>
+    <button id="dropdownDefaultButton" @click="toggleDropdown" class="text-black md:hidden inline-block relative bg-white hover:bg-white focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center " type="button">
+      {{ language }}
+    </button>
+
+    <!-- Dropdown menu -->
+    <div v-show="isDropdownOpen" id="dropdown" class="z-20 absolute bg-white divide-y divide-gray-100 rounded-lg">
+      <ul class="py-2 text-sm text-gray-700 dark:text-white" aria-labelledby="dropdownDefaultButton">
+        <li v-for="lang in availableLanguages" :key="lang">
+          <a href="#" @click="changeLanguage(lang)" class="block px-4 py-2 hover:bg-gray-100 text-black hover:bg-black">{{ lang }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
   <!-- Options de langue visibles sur les écrans moyens et plus grands -->
   <span class="hidden md:flex flex-row">
     <span @click="changeLanguage('fr')" class="mr-4 hover:italic" id="fr">FR</span>
@@ -277,6 +282,9 @@ export default {
     return {
       toggleMenu: false,
       menuBurgerOpened: false,
+      availableLanguages: ['FR', 'EN', 'IT'], // Add all your available languages here
+      language: "FR",
+      isDropdownOpen: false, // Add this line to track the dropdown state
     };
   },
   created() {
@@ -297,6 +305,11 @@ export default {
     menuBurger,
   },
   methods: {
+
+    toggleDropdown() {
+      // Toggle the dropdown state
+      this.isDropdownOpen = !this.isDropdownOpen;
+    },
     toggleMenuBurger() {
       this.toggleMenu = !this.toggleMenu;
       this.menuBurgerOpened = !this.menuBurgerOpened;
@@ -331,10 +344,11 @@ export default {
       allLanguageSelectors.forEach((languageSelector) => {
         languageSelector.classList.remove('font-semibold');
       });
-
+      this.language =  locale.toUpperCase()
       const languageSelector = document.getElementById(locale);
       languageSelector.classList.add('font-semibold');
 
+      this.availableLanguages = this.availableLanguages.filter((item) => item !== locale.locale.toUpperCase());
       Cookies.set("i18n_language", locale);
       this.$i18n.locale = locale;
     },
