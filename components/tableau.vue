@@ -196,27 +196,7 @@ canvas {
 }
 </style>
 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script> -->
 <script>
-// import Matter from "matter-js";
-
-// import {
-//   Engine,
-//   Render,
-//   Bodies,
-//   Mouse,
-//   MouseConstraint,
-//   Runner,
-//   Composite,
-//   Composites,
-//   Vertices,
-//   Common,
-//   Events,
-//   Body,
-//   Constraint,
-// } from "matter-js";
-
-// import Phaser from "phaser";
 import decomp from "poly-decomp";
 import "pathseg";
 
@@ -258,19 +238,6 @@ function dragElement(element, dragHandle) {
 }
 
 export default {
-  // head() {
-  //   return {
-  //     title: "Payment Page - My awesome project", // Other meta information
-  //     script: [
-  //       {
-  //         hid: "Matter",
-  //         src: "https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.js",
-  //         defer: true,
-  //         body: true,
-  //       },
-  //     ],
-  //   };
-  // },
   data: function () {
     return {
       debug: null,
@@ -291,22 +258,6 @@ export default {
       // ],
       handbagPhysics: null,
       game: null,
-      // gameConfig: {
-      //   type: Phaser.AUTO,
-      //   width: 800,
-      //   height: 600,
-      //   physics: {
-      //     default: "matter",
-      //     matter: {
-      //       gravity: { y: 0.5 },
-      //       debug: true,
-      //     },
-      //   },
-      //   scene: {
-      //     preload: this.preload,
-      //     create: this.create,
-      //   },
-      // },
     };
   },
   mounted() {
@@ -333,23 +284,28 @@ export default {
           let drawhereWidth = this.$refs.drawhere.offsetWidth;
           let drawhereHeight = this.$refs.drawhere.offsetHeight;
 
+          
+
+          console.log(drawhereHeight, drawhereWidth);
+
           window.decomp = decomp;
-          let width = drawhereWidth,
-            height = drawhereHeight,
-            renderOptions = {
-              width,
-              height,
-              showAngleIndicator: false,
-              wireframes: false,
-              background: "transparent",
-            };
+          const width = drawhereWidth;
+          const height = drawhereHeight;
+          const renderOptions = {
+            width,
+            height,
+            showAngleIndicator: false,
+            wireframes: false,
+            background: "transparent",
+          };
 
           // create an engine
-          let engine = Engine.create(),
-            world = engine.world;
-          world.gravity.scale = 0;
-          world.gravity.x = 1;
-          world.gravity.y = 1;
+          let engine = Engine.create();
+          let world = engine.world;
+
+          engine.world.gravity.scale = 0;
+          engine.world.gravity.y = 0;
+          engine.world.gravity.x = 0;
 
           // create a renderer
           var render = Render.create({
@@ -358,78 +314,50 @@ export default {
             options: renderOptions,
           });
 
-          let offset = this.canvasProp.wallWidth,
-            options = { isStatic: true };
+          const offset = this.canvasProp.wallWidth;
+          const options = { isStatic: true };
+          // const width = 100;
+          // Ce sont les murs du tableau
+          // Composite.add(world, [
+          //   Bodies.rectangle(
+          //     width / 2,
+          //     offset / -2,
+          //     width + offset * 2,
+          //     offset,
+          //     options
+          //   ),
 
-          // Pour chaque items faire un SVG de la forme de l'item
-          const items = [
-            // {
-            //   id: 1,
-            //   src: "/images/sac-bleu.png",
-            //   width: 300,
-            //   height: 315,
-            //   rotation: 0,
-            // },
-            // {
-            //   id: 2,
-            //   src: "/images/timur_berry.png",
-            //   width: 200,
-            //   height: 314,
-            //   rotation: 0,
-            // },
-            // {
-            //   id: 5,
-            //   src: "/images/bourges2024.png",
-            //   width: 250,
-            //   height: 280,
-            //   rotation: 0,
-            // },
-          ];
+          // Create the walls
+          let ground = Bodies.rectangle(
+            width / 2,
+            drawhereHeight,
+            
+            options
+          );
+          let ceiling = Bodies.rectangle(
+            drawhereWidth / 2,
+            0,
+            drawhereWidth,
+            -60,
+            { isStatic: true }
+          );
+          let leftWall = Bodies.rectangle(
+            0,
+            drawhereHeight / 2,
+            60,
+            drawhereHeight,
+            { isStatic: true }
+          );
+          let rightWall = Bodies.rectangle(
+            drawhereWidth,
+            drawhereHeight / 2,
+            60,
+            drawhereHeight,
+            { isStatic: true }
+          );
 
-          // add all of the bodies to the world
-          // Pour le handbag blue
-          // Phaser
-          // this.game = new Phaser.Game(this.gameConfig);
-
-          fetch("images/handbag-blue.json")
-            .then((response) => response.json())
-            .then((handbagPhysics) => {
-              this.handbagPhysics = handbagPhysics;
-
-              // const handbagBody =
-              //   Phaser.Physics.Matter.PhysicsEditorParser.parseBody(
-              //     0,
-              //     0,
-              //     this.handbagPhysics.handbag_blue,
-              //     1
-              //   );
-
-              // const handbag = Bodies.rectangle(
-              //   Math.random() * width,
-              //   Math.random() * height,
-              //   200,
-              //   200,
-              //   {
-              //     angle: 0 * (Math.PI / 180),
-              //     render: {
-              //       sprite: {
-              //         texture: "images/sac-bleu.png",
-              //         xScale: 200 / 800, // Adjust the scale as necessary
-              //         yScale: 200 / 800,
-              //       },
-              //     },
-              //     chamfer: { radius: 10 },
-              //   }
-              // );
-              // Body.setVertices(handbag, handbagBody.vertices);
-              // console.log(Body.getVertices(handbag));
-              // Composite.add(world, handbag);
-            });
-
-          const THICCNESS = 60;
-          const SVG_PATH_SELECTOR = "#matter-path";
-          const SVG_WIDTH_IN_PX = 100;
-          const SVG_WIDTH_AS_PERCENT_OF_CONTAINER_WIDTH = 0.3;
+          // Add the walls to the world
+          Composite.add(world, [ground, ceiling, leftWall, rightWall]);
 
           function monin() {
             const paths = document.querySelectorAll("#monin");
@@ -443,9 +371,12 @@ export default {
                 [vertices],
 
                 {
-                  // friction: 0.3,
-                  // frictionAir: 0.00001,
-                  restitution: 0,
+                  friction: 0.3,
+                  frictionAir: 0.2,
+                  frictionStatic: 0.7,
+                  setDensity: 1,
+                  restitution: 0.8,
+                  slop: 0.00001,
                   render: {
                     visible: false,
                   },
@@ -506,16 +437,16 @@ export default {
           }
 
           monin();
+          // monin();
 
           function sacBleu() {
             const paths = document.querySelectorAll("#sac");
             paths.forEach((path, index) => {
               let vertices = Svg.pathToVertices(path);
               let scaleFactor = 1.1;
-              console.log("vertices", vertices);
               vertices = Vertices.scale(vertices, scaleFactor, scaleFactor);
-              let body = Bodies.fromVertices(
-                500,
+              let sacBleuBody = Bodies.fromVertices(
+                200,
                 200,
                 [vertices],
 
@@ -532,13 +463,13 @@ export default {
                   removeDuplicatePoints: 1,
                 }
               );
-              
+
               // Create a separate body for the sprite
-              let spriteBody = Bodies.rectangle(
-                body.bounds.min.x,
-                body.bounds.min.y,
-                body.bounds.max.x,
-                body.bounds.max.y,
+              let sacBleuSprite = Bodies.rectangle(
+                sacBleuBody.bounds.min.x,
+                sacBleuBody.bounds.min.y,
+                sacBleuBody.bounds.max.x,
+                sacBleuBody.bounds.max.y,
                 {
                   collisionFilter: {
                     mask: 0,
@@ -555,10 +486,10 @@ export default {
               );
 
               // Constrain the sprite body to the SVG body
-              let constraint = Constraint.create({
-                bodyA: body,
-                bodyB: spriteBody,
-                stiffness: 1,
+              let sacBleuConstraint = Constraint.create({
+                bodyA: sacBleuSprite,
+                bodyB: sacBleuBody,
+                stiffness: 10,
                 length: 0,
                 // Pour ajuster le sprite sur le sac
                 pointB: {
@@ -569,19 +500,27 @@ export default {
 
               Events.on(engine, "beforeUpdate", function (event) {
                 // Set the angle of the spriteBody to the angle of the body
-                Body.setAngle(spriteBody, body.angle);
+                Body.setAngle(sacBleuSprite, sacBleuBody.angle);
               });
               // Add the bodies and constraint to the world
-              Composite.add(engine.world, [body, spriteBody, constraint]);
+              Composite.add(engine.world, [
+                sacBleuSprite,
+                sacBleuBody,
+                sacBleuConstraint,
+              ]);
             });
           }
 
-          sacBleu();
+          console.log(Composite.allBodies(world));
 
-
+          // sacBleu();
+          console.log(Composite.allBodies(world));
 
           // createBlueBag();
 
+          // const offset = this.canvasProp.wallWidth;
+          // const options = { isStatic: true };
+          // const width = 100;
           // Ce sont les murs du tableau
           Composite.add(world, [
             Bodies.rectangle(
@@ -606,43 +545,43 @@ export default {
               options
             ),
             Bodies.rectangle(
-              width / 2,
-              height + offset / 2,
-              width + offset * 2,
+              width + offset / 2,
+              height / 2,
               offset,
+              height + offset * 2,
               options
             ),
           ]);
 
-          items.forEach((item) => {
-            const body = Bodies.rectangle(
-              Math.random() * width,
-              Math.random() * height,
-              item.width,
-              item.height,
-              {
-                angle: item.rotation * (Math.PI / 180),
-                render: {
-                  sprite: {
-                    texture: item.src,
-                    xScale: item.width / 1000,
-                    yScale: item.height / 1000,
-                  },
-                  render: {
-                    fillStyle: "transparent", // Ajustez si nécessaire
-                    strokeStyle: "transparent", // Ajustez si nécessaire
-                    lineWidth: 0,
-                    sprite: {
-                      texture: item.src,
-                      xScale: item.width / 1000,
-                      yScale: item.height / 1000,
-                    },
-                  },
-                },
-              }
-            );
-            Composite.add(world, body);
-          });
+          // items.forEach((item) => {
+          //   const body = Bodies.rectangle(
+          //     Math.random() * width,
+          //     Math.random() * height,
+          //     item.width,
+          //     item.height,
+          //     {
+          //       angle: item.rotation * (Math.PI / 180),
+          //       render: {
+          //         sprite: {
+          //           texture: item.src,
+          //           xScale: item.width / 1000,
+          //           yScale: item.height / 1000,
+          //         },
+          //         render: {
+          //           fillStyle: "transparent", // Ajustez si nécessaire
+          //           strokeStyle: "transparent", // Ajustez si nécessaire
+          //           lineWidth: 0,
+          //           sprite: {
+          //             texture: item.src,
+          //             xScale: item.width / 1000,
+          //             yScale: item.height / 1000,
+          //           },
+          //         },
+          //       },
+          //     }
+          //   );
+          //   Composite.add(world, body);
+          // });
 
           // var gifObject = Bodies.rectangle(
           //   Math.random() * width,
@@ -668,24 +607,6 @@ export default {
           //     dragElement(spotifyDraggable, spotifyHandle);
           //   }
           // });
-
-          var bottle = Bodies.rectangle(
-            Math.random() * width,
-            Math.random() * height,
-            250,
-            333,
-            {
-              angle: 0 * (Math.PI / 180),
-              render: {
-                sprite: {
-                  texture: "/images/monin.png",
-                  xScale: 250 / 800, // calculez l'échelle appropriée
-                  yScale: 333 / 800,
-                },
-              },
-            }
-          );
-          // Composite.add(world, bottle);
 
           // this.book = Composite.create({ label: "Book" });
 
@@ -786,11 +707,12 @@ export default {
         };
 
       // create an engine
-      let engine = Engine.create(),
-        world = engine.world;
+      let engine = Engine.create();
+      (engine.positionIterations = 20), (engine.velocityIterations = 10);
+      let world = engine.world;
       world.gravity.scale = 0;
-      world.gravity.x = 1;
-      world.gravity.y = 1;
+      world.gravity.x = 0;
+      world.gravity.y = 0;
 
       // create a renderer
       var render = Render.create({
