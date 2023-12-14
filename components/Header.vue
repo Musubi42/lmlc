@@ -22,7 +22,7 @@
         <div
           to="/menu"
           id="menu-burger"
-          class="hover:cursor-pointer h-auto close z-[1000] fixed mr-6 md:mr-10 right-0"
+          class="hover:cursor-pointer h-auto close z-[1000] fixed mt-[-7px] mr-6 md:mr-10 right-0"
           @click=""
         >
             <menuBurger class="text-[50px]" ref="menuBurger" @click="toggleMenuBurger" />
