@@ -5137,6 +5137,11 @@ pathe@^1.0.0, pathe@^1.1.0, pathe@^1.1.1:
   resolved "https://registry.npmjs.org/pathe/-/pathe-1.1.1.tgz"
   integrity sha512-d+RQGp0MAYTIaDBIMmOfMwz3E+LOZnxx1HZd5R18mmCZY0QBlK0LDZfPc8FW8Ed2DlvsuE6PRjroDY+wg4+j/Q==
 
+pathseg@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/pathseg/-/pathseg-1.2.1.tgz#50b3fc4fc05c64f4a52f8c04156f6f3975b0df3c"
+  integrity sha512-LtvemzPvcGamWBbNWJaIrgfUzpynXfwYrP6SSFVRhNHVcCaq6SVm4kRGJNuIV8qzBKgCN3fEXFZZ16YETFIXoA==
+
 perfect-debounce@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/perfect-debounce/-/perfect-debounce-1.0.0.tgz"
