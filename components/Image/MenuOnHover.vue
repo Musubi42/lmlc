@@ -30,7 +30,6 @@ export default {
       imageX: 0,
       decalageX: 0,
       imageY: 0,
-      decalageY: 0,
       scrollPos: 0,
       right: 0,
     };
@@ -52,12 +51,10 @@ export default {
       this.isVisible = false;
     },
     moveImage(event) {
-      console.log(event);
       this.right =
         event.pageX - window.innerWidth / 2 + (window.innerWidth / 2) * 0.2;
 
       this.imageY = event.pageY;
-      this.decalageY = event.clientY / 4;
     },
     handleScroll(event) {
       this.scrollPos = window.scrollY;
@@ -68,7 +65,7 @@ export default {
       return {
         position: "fixed",
         left: `${this.right - this.decalageX}px`,
-        top: `${this.imageY - this.scrollPos - this.decalageY}px`,
+        top: `${this.imageY - this.scrollPos}px`,
         transform: "translate(-50%, -120%)",
         pointerEvents: "none",
         zIndex: 9,
