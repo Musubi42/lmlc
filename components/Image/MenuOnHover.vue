@@ -33,6 +33,9 @@ export default {
       decalageY: 0,
       scrollPos: 0,
       right: 0,
+      clientY: 0,
+      clientX: 0,
+      initialX: 0,
     };
   },
   mounted() {
@@ -45,14 +48,20 @@ export default {
     window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
-    showImage() {
+    showImage(event) {
+      // Premiere position de l'image
+      this.initialX = event.clientX
+      console.log("oui", this.initialX);
       this.isVisible = true;
     },
     hideImage() {
+      // Reset la position de l'image
       this.isVisible = false;
     },
     moveImage(event) {
       console.log(event);
+      this.clientX = event.clientX;
+      this.clientY = event.clientY;
       this.right =
         event.pageX - window.innerWidth / 2 + (window.innerWidth / 2) * 0.2;
 
@@ -66,10 +75,12 @@ export default {
   computed: {
     imageStyle() {
       return {
-        position: "fixed",
-        left: `${this.right - this.decalageX}px`,
-        top: `${this.imageY - this.scrollPos - this.decalageY}px`,
-        transform: "translate(-50%, -120%)",
+        position: "absolute",
+        // left: `${this.right - this.decalageX - 180}px`,
+        // top: `${this.imageY - this.scrollPos - this.decalageY + 200}px`,
+        right: `${0 - 128 + (this.initialX - this.clientX)}px`,
+        top: `${this.clientY - 175}px`,
+        transform: "translate(-50%, -100%)",
         pointerEvents: "none",
         zIndex: 9,
       };
