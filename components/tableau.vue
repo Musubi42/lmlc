@@ -165,6 +165,129 @@
       />
     </svg>
 
+    <!-- Timur -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="90.7487mm"
+      height="120.998mm"
+      viewBox="0 0 1029 1372"
+      class="hidden"
+    >
+      <path
+        id="timur"
+        fill="none"
+        stroke="black"
+        stroke-width="1"
+        d="M 216.00,315.97
+           C 214.31,316.35 213.12,316.92 211.41,315.97
+             209.37,314.75 203.68,301.87 202.42,299.00
+             202.42,299.00 184.67,261.00 184.67,261.00
+             180.35,253.18 175.85,244.12 182.39,236.04
+             188.49,228.51 205.97,223.16 215.00,217.91
+             215.00,217.91 263.00,194.69 263.00,194.69
+             263.00,194.69 295.00,179.86 295.00,179.86
+             295.00,179.86 306.00,175.67 306.00,175.67
+             306.00,175.67 330.00,164.58 330.00,164.58
+             330.00,164.58 343.00,158.46 343.00,158.46
+             343.00,158.46 357.00,153.22 357.00,153.22
+             362.25,150.74 374.42,145.43 380.00,145.75
+             389.84,146.32 393.42,154.28 396.86,162.00
+             396.86,162.00 405.57,181.00 405.57,181.00
+             405.57,181.00 414.78,203.00 414.78,203.00
+             418.05,209.92 422.72,216.13 421.00,224.00
+             434.66,230.61 424.73,243.46 418.69,251.58
+             418.69,251.58 411.81,261.00 411.81,261.00
+             409.69,263.77 407.40,266.34 407.22,270.00
+             406.94,276.00 413.68,283.75 416.67,289.00
+             423.60,301.21 430.40,323.46 440.30,332.48
+             445.96,337.64 451.91,337.81 459.04,338.81
+             459.04,338.81 491.00,343.05 491.00,343.05
+             491.00,343.05 525.96,347.86 525.96,347.86
+             525.96,347.86 564.00,353.91 564.00,353.91
+             572.42,356.32 585.02,361.78 592.72,366.03
+             606.05,373.40 621.65,389.82 629.28,403.00
+             629.28,403.00 646.26,439.00 646.26,439.00
+             646.26,439.00 667.45,485.00 667.45,485.00
+             670.24,493.41 665.46,495.43 665.01,500.41
+             664.76,503.26 666.59,507.45 667.78,510.00
+             667.78,510.00 792.31,777.00 792.31,777.00
+             792.31,777.00 875.31,955.00 875.31,955.00
+             875.31,955.00 887.14,980.00 887.14,980.00
+             887.14,980.00 898.22,1003.00 898.22,1003.00
+             905.51,1013.56 909.53,1007.80 915.78,1016.09
+             915.78,1016.09 932.37,1050.00 932.37,1050.00
+             932.37,1050.00 937.40,1059.00 937.40,1059.00
+             937.40,1059.00 950.31,1086.00 950.31,1086.00
+             953.69,1093.38 957.41,1102.29 957.57,1110.58
+             957.79,1122.17 949.83,1131.99 941.83,1139.41
+             927.13,1153.05 896.43,1167.06 878.00,1177.03
+             878.00,1177.03 851.00,1191.74 851.00,1191.74
+             851.00,1191.74 838.00,1197.82 838.00,1197.82
+             838.00,1197.82 828.00,1203.73 828.00,1203.73
+             828.00,1203.73 810.00,1212.25 810.00,1212.25
+             810.00,1212.25 792.00,1221.74 792.00,1221.74
+             792.00,1221.74 756.00,1238.31 756.00,1238.31
+             756.00,1238.31 717.00,1256.65 717.00,1256.65
+             717.00,1256.65 709.00,1259.34 709.00,1259.34
+             709.00,1259.34 691.00,1267.65 691.00,1267.65
+             691.00,1267.65 683.00,1270.32 683.00,1270.32
+             683.00,1270.32 671.00,1275.65 671.00,1275.65
+             671.00,1275.65 664.00,1277.95 664.00,1277.95
+             664.00,1277.95 654.00,1282.54 654.00,1282.54
+             654.00,1282.54 618.00,1295.95 618.00,1295.95
+             603.94,1301.18 595.47,1305.67 579.99,1305.97
+             564.86,1306.28 554.10,1299.94 546.32,1286.83
+             546.32,1286.83 541.74,1277.00 541.74,1277.00
+             541.74,1277.00 529.69,1251.00 529.69,1251.00
+             529.69,1251.00 515.69,1221.00 515.69,1221.00
+             513.84,1216.96 510.45,1211.10 509.53,1207.00
+             507.57,1198.27 513.80,1194.98 511.56,1188.00
+             510.04,1183.28 506.96,1179.23 504.66,1174.91
+             504.66,1174.91 492.78,1150.00 492.78,1150.00
+             492.78,1150.00 455.69,1070.00 455.69,1070.00
+             455.69,1070.00 417.78,990.00 417.78,990.00
+             417.78,990.00 399.74,951.00 399.74,951.00
+             399.74,951.00 384.94,921.00 384.94,921.00
+             384.94,921.00 285.69,708.00 285.69,708.00
+             283.46,703.14 277.74,690.04 274.47,686.85
+             269.14,681.63 264.79,684.11 259.96,676.98
+             259.96,676.98 251.74,660.00 251.74,660.00
+             251.74,660.00 235.69,628.00 235.69,628.00
+             225.57,605.95 216.86,592.97 214.17,568.00
+             211.46,542.83 219.02,518.32 232.20,497.01
+             232.20,497.01 246.50,476.00 246.50,476.00
+             246.50,476.00 261.42,453.09 261.42,453.09
+             270.12,439.86 287.86,417.37 286.91,401.00
+             286.41,392.40 283.90,390.98 280.26,384.00
+             280.26,384.00 269.24,360.00 269.24,360.00
+             266.63,352.61 264.62,342.58 257.90,337.50
+             254.04,334.59 249.17,335.71 244.70,335.68
+             234.77,335.62 214.44,336.53 214.42,322.00
+             214.41,319.89 215.28,317.94 216.00,315.97 Z"
+      />
+    </svg>
+
+    <!-- Bourges -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="88.8967mm"
+      height="121.351mm"
+      viewBox="0 0 1008 1376"
+      class="hidden"
+    >
+      <path
+        id="bourges"
+        fill="none"
+        stroke="black"
+        stroke-width="1"
+        d="M 0.00,0.00
+           C 0.00,0.00 1008.00,0.00 1008.00,0.00
+             1008.00,0.00 1008.00,1376.00 1008.00,1376.00
+             1008.00,1376.00 0.00,1376.00 0.00,1376.00
+             0.00,1376.00 0.00,0.00 0.00,0.00 Z"
+      />
+    </svg>
+
     <div id="drawhere" class="h-auto -z-10"></div>
     <div class="spotify-draggable absolute top-[50px] left-[50px] z-20">
       <div
@@ -196,15 +319,15 @@ canvas {
 }
 </style>
 
-<script>
+<script async>
 import decomp from "poly-decomp";
 import "pathseg";
 
-// const gifFrames = [
-//   "/images/gif/frame_0.gif",
-//   "/images/gif/frame_1.gif",
-//   "/images/gif/frame_2.gif",
-// ];
+const gifFrames = [
+  "/images/gif/frame_0.gif",
+  "/images/gif/frame_1.gif",
+  "/images/gif/frame_2.gif",
+];
 
 function dragElement(element, dragHandle) {
   var pos1 = 0,
@@ -251,11 +374,11 @@ export default {
       book: null,
       currentPage: 1,
       totalPages: 3,
-      // pageTextures: [
-      //   "/images/gif/frame_0.gif",
-      //   "/images/gif/frame_1.gif",
-      //   "/images/gif/frame_2.gif",
-      // ],
+      pageTextures: [
+        "/images/gif/frame_0.gif",
+        "/images/gif/frame_1.gif",
+        "/images/gif/frame_2.gif",
+      ],
       handbagPhysics: null,
       game: null,
     };
@@ -273,7 +396,7 @@ export default {
           const MouseConstraint = Matter.MouseConstraint;
           const Runner = Matter.Runner;
           const Composite = Matter.Composite;
-          const Composites = Matter.Composites;
+          // const Composites = Matter.Composites;
           const Vertices = Matter.Vertices;
           const Common = Matter.Common;
           const Events = Matter.Events;
@@ -283,8 +406,6 @@ export default {
 
           let drawhereWidth = this.$refs.drawhere.offsetWidth;
           let drawhereHeight = this.$refs.drawhere.offsetHeight;
-
-          
 
           console.log(drawhereHeight, drawhereWidth);
 
@@ -316,58 +437,16 @@ export default {
 
           const offset = this.canvasProp.wallWidth;
           const options = { isStatic: true };
-          // const width = 100;
-          // Ce sont les murs du tableau
-          // Composite.add(world, [
-          //   Bodies.rectangle(
-          //     width / 2,
-          //     offset / -2,
-          //     width + offset * 2,
-          //     offset,
-          //     options
-          //   ),
-
-          // Create the walls
-          let ground = Bodies.rectangle(
-            width / 2,
-            drawhereHeight,
-            
-            options
-          );
-          let ceiling = Bodies.rectangle(
-            drawhereWidth / 2,
-            0,
-            drawhereWidth,
-            -60,
-            { isStatic: true }
-          );
-          let leftWall = Bodies.rectangle(
-            0,
-            drawhereHeight / 2,
-            60,
-            drawhereHeight,
-            { isStatic: true }
-          );
-          let rightWall = Bodies.rectangle(
-            drawhereWidth,
-            drawhereHeight / 2,
-            60,
-            drawhereHeight,
-            { isStatic: true }
-          );
-
-          // Add the walls to the world
-          Composite.add(world, [ground, ceiling, leftWall, rightWall]);
 
           function monin() {
             const paths = document.querySelectorAll("#monin");
             paths.forEach((path, index) => {
               let vertices = Svg.pathToVertices(path);
-              let scaleFactor = 0.3;
+              let scaleFactor = 0.25;
               vertices = Vertices.scale(vertices, scaleFactor, scaleFactor);
               let body = Bodies.fromVertices(
-                200,
-                200,
+                Math.random() * width,
+                Math.random() * height,
                 [vertices],
 
                 {
@@ -407,12 +486,6 @@ export default {
                   },
                 }
               );
-              console.log(
-                spriteBody.bounds.min.x,
-                spriteBody.bounds.min.y,
-                spriteBody.bounds.max.x,
-                spriteBody.bounds.max.y
-              );
 
               // Constrain the sprite body to the SVG body
               let constraint = Constraint.create({
@@ -421,14 +494,14 @@ export default {
                 stiffness: 1,
                 length: 0,
                 pointB: {
-                  x: 0,
+                  x: -5,
                   y: 20,
                 },
               });
 
               Events.on(engine, "beforeUpdate", function (event) {
                 // Set the angle of the spriteBody to the angle of the body
-                Body.setAngle(spriteBody, body.angle - 270);
+                Body.setAngle(spriteBody, body.angle);
               });
               // Add the bodies and constraint to the world
               // Composite.add(engine.world, [body, spriteBody, constraint]);
@@ -439,21 +512,24 @@ export default {
           monin();
           // monin();
 
-          function sacBleu() {
-            const paths = document.querySelectorAll("#sac");
+          function bourges() {
+            const paths = document.querySelectorAll("#bourges");
             paths.forEach((path, index) => {
               let vertices = Svg.pathToVertices(path);
-              let scaleFactor = 1.1;
+              let scaleFactor = 0.2;
               vertices = Vertices.scale(vertices, scaleFactor, scaleFactor);
-              let sacBleuBody = Bodies.fromVertices(
-                200,
-                200,
+              let body = Bodies.fromVertices(
+                Math.random() * width,
+                Math.random() * height,
                 [vertices],
 
                 {
-                  // friction: 0.3,
-                  // frictionAir: 0.00001,
+                  friction: 0.3,
+                  frictionAir: 0.2,
+                  frictionStatic: 0.7,
+                  setDensity: 0,
                   restitution: 0,
+                  slop: 0.00001,
                   render: {
                     visible: false,
                   },
@@ -464,12 +540,86 @@ export default {
                 }
               );
 
-              // Create a separate body for the sprite
-              let sacBleuSprite = Bodies.rectangle(
-                sacBleuBody.bounds.min.x,
-                sacBleuBody.bounds.min.y,
-                sacBleuBody.bounds.max.x,
-                sacBleuBody.bounds.max.y,
+              // Create a separate to put the image on
+              let spriteBody = Bodies.rectangle(
+                body.bounds.min.x,
+                body.bounds.min.y,
+                body.bounds.max.x,
+                body.bounds.max.y,
+                {
+                  collisionFilter: {
+                    mask: 0,
+                  },
+                  render: {
+                    opacity: 1,
+                    sprite: {
+                      texture: "./images/bourges1.png",
+                      xOffset: 0,
+                      yOffset: 0,
+                    },
+                  },
+                }
+              );
+
+              // Constrain the sprite body to the SVG body
+              let constraint = Constraint.create({
+                bodyA: body,
+                bodyB: spriteBody,
+                stiffness: 1,
+                length: 0,
+                pointB: {
+                  x: 5,
+                  y: -4,
+                },
+              });
+
+              Events.on(engine, "beforeUpdate", function (event) {
+                // Set the angle of the spriteBody to the angle of the body
+                Body.setAngle(spriteBody, body.angle);
+              });
+              // Add the bodies and constraint to the world
+              // Composite.add(engine.world, [body, spriteBody, constraint]);
+              Composite.add(world, [body, spriteBody, constraint]);
+            });
+          }
+
+          bourges();
+
+          function sacBleu() {
+            const paths = document.querySelectorAll("#sac");
+            paths.forEach((path, index) => {
+              let vertices = Svg.pathToVertices(path);
+              let scaleFactor = 1.1;
+              vertices = Vertices.scale(vertices, scaleFactor, scaleFactor);
+              let body = Bodies.fromVertices(
+                Math.random() * width,
+                Math.random() * height,
+                [vertices],
+
+                {
+                  friction: 0.3,
+                  frictionAir: 0.2,
+                  frictionStatic: 0.7,
+                  setDensity: 0,
+                  restitution: 0,
+                  slop: 0.00001,
+                  render: {
+                    visible: false,
+                  },
+                  flagInternal: false,
+                  removeCollinear: 1,
+                  minimumArea: 0.1,
+                  removeDuplicatePoints: 1,
+                }
+              );
+
+              // Create a separate to put the image on
+              let spriteBody = Bodies.rectangle(
+                body.bounds.min.x,
+                body.bounds.min.y,
+                body.bounds.max.x,
+                body.bounds.max.y,
+
                 {
                   collisionFilter: {
                     mask: 0,
@@ -491,7 +641,6 @@ export default {
                 bodyB: sacBleuBody,
                 stiffness: 10,
                 length: 0,
-                // Pour ajuster le sprite sur le sac
                 pointB: {
                   x: 3,
                   y: -6,
@@ -503,24 +652,89 @@ export default {
                 Body.setAngle(sacBleuSprite, sacBleuBody.angle);
               });
               // Add the bodies and constraint to the world
-              Composite.add(engine.world, [
-                sacBleuSprite,
-                sacBleuBody,
-                sacBleuConstraint,
-              ]);
+              // Composite.add(engine.world, [body, spriteBody, constraint]);
+              Composite.add(world, [body, spriteBody, constraint]);
             });
           }
 
-          console.log(Composite.allBodies(world));
+          sacBleu();
 
-          // sacBleu();
-          console.log(Composite.allBodies(world));
+          function timur() {
+            const paths = document.querySelectorAll("#timur");
+            paths.forEach((path, index) => {
+              let vertices = Svg.pathToVertices(path);
+              let scaleFactor = 0.15;
+              vertices = Vertices.scale(vertices, scaleFactor, scaleFactor);
+              let body = Bodies.fromVertices(
+                Math.random() * width,
+                Math.random() * height,
+                [vertices],
 
-          // createBlueBag();
+                {
+                  friction: 0.3,
+                  frictionAir: 0.2,
+                  frictionStatic: 0.7,
+                  setDensity: 0,
+                  restitution: 0,
+                  slop: 0.00001,
+                  render: {
+                    visible: false,
+                  },
+                  flagInternal: false,
+                  removeCollinear: 1,
+                  minimumArea: 0.1,
+                  removeDuplicatePoints: 1,
+                }
+              );
 
-          // const offset = this.canvasProp.wallWidth;
-          // const options = { isStatic: true };
-          // const width = 100;
+              console.log(body);
+
+              // Create a separate to put the image on
+              let spriteBody = Bodies.rectangle(
+                body.bounds.min.x,
+                body.bounds.min.y,
+                body.bounds.max.x,
+                body.bounds.max.y,
+                {
+                  collisionFilter: {
+                    mask: 0,
+                  },
+                  render: {
+                    opacity: 1,
+                    sprite: {
+                      texture: "./images/timur1.png",
+                      xOffset: 0,
+                      yOffset: 0,
+                    },
+                  },
+                }
+              );
+
+              // Constrain the sprite body to the SVG body
+              let constraint = Constraint.create({
+                bodyA: body,
+                bodyB: spriteBody,
+                stiffness: 1,
+                length: 0,
+                pointB: {
+                  x: 5,
+                  y: 10,
+                },
+              });
+
+              Events.on(engine, "beforeUpdate", function (event) {
+                // Set the angle of the spriteBody to the angle of the body
+                Body.setAngle(spriteBody, body.angle);
+              });
+              // Add the bodies and constraint to the world
+              // Composite.add(engine.world, [body, spriteBody, constraint]);
+              Composite.add(world, [body, spriteBody, constraint]);
+            });
+          }
+
+          timur();
+
+
           // Ce sont les murs du tableau
           Composite.add(world, [
             Bodies.rectangle(
@@ -583,34 +797,34 @@ export default {
           //   Composite.add(world, body);
           // });
 
-          // var gifObject = Bodies.rectangle(
-          //   Math.random() * width,
-          //   Math.random() * height,
-          //   200,
-          //   200,
-          //   {
-          //     angle: 0 * (Math.PI / 180),
-          //     render: {
-          //       sprite: {
-          //         texture: gifFrames[this.currentFrame],
-          //         xScale: 200 / 800, // calculez l'échelle appropriée
-          //         yScale: 200 / 800,
-          //       },
-          //     },
-          //   }
-          // );
-          // this.$nextTick(() => {
-          //   let spotifyDraggable = document.querySelector(".spotify-draggable");
-          //   let spotifyHandle =
-          //     spotifyDraggable.querySelector(".spotify-handle");
-          //   if (spotifyDraggable && spotifyHandle) {
-          //     dragElement(spotifyDraggable, spotifyHandle);
-          //   }
-          // });
+          var gifObject = Bodies.rectangle(
+            Math.random() * width,
+            Math.random() * height,
+            200,
+            200,
+            {
+              angle: 0 * (Math.PI / 180),
+              render: {
+                sprite: {
+                  texture: gifFrames[this.currentFrame],
+                  xScale: 200 / 800, // calculez l'échelle appropriée
+                  yScale: 200 / 800,
+                },
+              },
+            }
+          );
+          this.$nextTick(() => {
+            let spotifyDraggable = document.querySelector(".spotify-draggable");
+            let spotifyHandle =
+              spotifyDraggable.querySelector(".spotify-handle");
+            if (spotifyDraggable && spotifyHandle) {
+              dragElement(spotifyDraggable, spotifyHandle);
+            }
+          });
 
           // this.book = Composite.create({ label: "Book" });
 
-          // Ajoutez chaque page au composite de livre
+          // // Ajoutez chaque page au composite de livre
           // for (let i = 0; i < this.totalPages; i++) {
           //   let page = Bodies.rectangle(400, 200, 150, 200, {
           //     render: {
@@ -624,7 +838,7 @@ export default {
           //   Composite.add(this.book, page);
           // }
 
-          // Ajoutez le livre composite au monde
+          // // Ajoutez le livre composite au monde
           // Composite.add(world, this.book);
 
           // const updateTexture = () => {
@@ -658,6 +872,16 @@ export default {
                 },
               },
             });
+
+          // Allow to scoll on the canvas
+          mouseConstraint.mouse.element.removeEventListener(
+            "mousewheel",
+            mouseConstraint.mouse.mousewheel
+          );
+          mouseConstraint.mouse.element.removeEventListener(
+            "DOMMouseScroll",
+            mouseConstraint.mouse.mousewheel
+          );
 
           Composite.add(world, mouseConstraint);
 

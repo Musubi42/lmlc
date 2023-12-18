@@ -14,7 +14,7 @@
       <div
         class="absolute w-full h-[85%] md:h-[65%] bottom-0 shadow-sm tableau-shadow"
       >
-        <tableau />
+        <tableau v-if="oui" :is="oui" />
       </div>
     </div>
     <div
@@ -98,6 +98,7 @@
 
 <script>
 import Typewriter from "typewriter-effect/dist/core";
+import { defineAsyncComponent } from "vue";
 export default {
   data() {
     return {
@@ -111,8 +112,11 @@ export default {
       scrollSpeed: this.calculateScrollSpeed(),
       windowHeight: 0,
       paragraphSpacing: 0,
+      oui: null,
     };
   },
+
+
 
   computed: {
     firstParagraphWords() {
@@ -152,6 +156,13 @@ export default {
       });
     });
 
+
+
+    // setTimeout(() => {
+      this.oui = defineAsyncComponent(() => import('../components/tableau.vue'));
+    // }, 5000);
+    // this.oui = defineAsyncComponent(() => import('../components/tableau.vue'));
+  
     window.addEventListener("scroll", this.handleScroll);
   },
 
@@ -174,10 +185,7 @@ export default {
         onCreateTextNode: customNodeCreator,
       });
 
-      typewriter
-        .typeString(this.textIntro)
-        .pauseFor(300)
-        .start();
+      typewriter.typeString(this.textIntro).pauseFor(300).start();
 
       // TODO : Supprimer le typewriter quand il a fini d'écrire et replace par le text en dur pour avoir la traduction qui fonctionne
     },
@@ -268,6 +276,8 @@ export default {
       this.thirdPararaphText = this.$t("thirdParagraph");
     },
   },
+
+
 };
 </script>
 

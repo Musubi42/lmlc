@@ -32,6 +32,9 @@ export default {
       imageY: 0,
       scrollPos: 0,
       right: 0,
+      clientY: 0,
+      clientX: 0,
+      initialX: 0,
     };
   },
   mounted() {
@@ -44,10 +47,14 @@ export default {
     window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
-    showImage() {
+    showImage(event) {
+      // Premiere position de l'image
+      this.initialX = event.clientX
+      console.log("oui", this.initialX);
       this.isVisible = true;
     },
     hideImage() {
+      // Reset la position de l'image
       this.isVisible = false;
     },
     moveImage(event) {
