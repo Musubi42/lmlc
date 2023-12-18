@@ -453,8 +453,8 @@ export default {
                   friction: 0.3,
                   frictionAir: 0.2,
                   frictionStatic: 0.7,
-                  setDensity: 0,
-                  restitution: 0,
+                  setDensity: 1,
+                  restitution: 0.8,
                   slop: 0.00001,
                   render: {
                     visible: false,
@@ -510,6 +510,7 @@ export default {
           }
 
           monin();
+          // monin();
 
           function bourges() {
             const paths = document.querySelectorAll("#bourges");
@@ -618,6 +619,7 @@ export default {
                 body.bounds.min.y,
                 body.bounds.max.x,
                 body.bounds.max.y,
+
                 {
                   collisionFilter: {
                     mask: 0,
@@ -634,10 +636,10 @@ export default {
               );
 
               // Constrain the sprite body to the SVG body
-              let constraint = Constraint.create({
-                bodyA: body,
-                bodyB: spriteBody,
-                stiffness: 1,
+              let sacBleuConstraint = Constraint.create({
+                bodyA: sacBleuSprite,
+                bodyB: sacBleuBody,
+                stiffness: 10,
                 length: 0,
                 pointB: {
                   x: 3,
@@ -647,7 +649,7 @@ export default {
 
               Events.on(engine, "beforeUpdate", function (event) {
                 // Set the angle of the spriteBody to the angle of the body
-                Body.setAngle(spriteBody, body.angle);
+                Body.setAngle(sacBleuSprite, sacBleuBody.angle);
               });
               // Add the bodies and constraint to the world
               // Composite.add(engine.world, [body, spriteBody, constraint]);
@@ -732,6 +734,8 @@ export default {
 
           timur();
 
+
+          // Ce sont les murs du tableau
           Composite.add(world, [
             Bodies.rectangle(
               width / 2,
@@ -755,10 +759,10 @@ export default {
               options
             ),
             Bodies.rectangle(
-              width / 2,
-              height + offset / 2,
-              width + offset * 2,
+              width + offset / 2,
+              height / 2,
               offset,
+              height + offset * 2,
               options
             ),
           ]);
