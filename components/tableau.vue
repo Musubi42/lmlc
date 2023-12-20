@@ -12,7 +12,8 @@
       class="hidden"
     >
       <path
-        id="sac"
+        id="sacBleu"
+        class="gif"
         fill="none"
         stroke="black"
         stroke-width="1"
@@ -55,6 +56,7 @@
     >
       <path
         id="monin"
+        class="gif"
         fill="none"
         stroke="black"
         stroke-width="1"
@@ -175,6 +177,7 @@
     >
       <path
         id="timur"
+        class="gif"
         fill="none"
         stroke="black"
         stroke-width="1"
@@ -276,7 +279,7 @@
       class="hidden"
     >
       <path
-        id="bourges"
+        id="bourges2024"
         fill="none"
         stroke="black"
         stroke-width="1"
@@ -369,7 +372,7 @@ export default {
       },
       currentFrame: 0,
       // maxFrame: gifFrames.length - 1,
-      frameInterval: 1000, // Interval in ms for changing frames
+      frameInterval: 5000, // Interval in ms for changing frames
       frameTimer: 0, // A timer for frame changes
       book: null,
       currentPage: 1,
@@ -381,6 +384,13 @@ export default {
       ],
       handbagPhysics: null,
       game: null,
+      furtherGifbody: null,
+      initialGifBody: null,
+      velocity: {},
+      position: {
+        x: 0,
+        y: 0,
+      },
     };
   },
   mounted() {
@@ -422,6 +432,9 @@ export default {
 
           // create an engine
           let engine = Engine.create();
+          engine.positionIterations = 200;
+          engine.velocityIterations = 100;
+
           let world = engine.world;
 
           engine.world.gravity.scale = 0;
@@ -435,36 +448,200 @@ export default {
             options: renderOptions,
           });
 
-          const offset = this.canvasProp.wallWidth;
-          const options = { isStatic: true };
+          const meubles = {
+            sacBleu: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: -0.04,
+                scaleFactor: 1.1,
+              },
+              sprite: {
+                xScale: 0.5,
+                yScale: 0.5,
+                image: "./images/sac-bleu.png",
+              },
+              constraint: {
+                x: 3,
+                y: -9,
+              },
+            },
+            monin: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 270,
+                scaleFactor: 0.3,
+              },
+              sprite: {
+                xScale: 0.3,
+                yScale: 0.3,
+                image: "./images/monin.png",
+              },
+              constraint: {
+                x: -5,
+                y: 30,
+              },
+            },
+            timur: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 0.45,
+                scaleFactor: 0.25,
+              },
+              sprite: {
+                xScale: 0.25,
+                yScale: 0.25,
+                image: "./images/Timur.png",
+              },
+              constraint: {
+                x: 10,
+                y: 20,
+              },
+            },
+            bourges2024: {
+              body: {
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 0,
+                scaleFactor: 0.25,
+              },
+              sprite: {
+                xScale: 0.25,
+                yScale: 0.25,
+                image: "./images/bourges2024.png",
+              },
+              constraint: {
+                x: 0,
+                y: 1,
+              },
+            },
+            // poufRouge: {
+            //   body: {
+            // position: {
+            //   x: 0,
+            //   y: 0,
+            // },
+            // velocity: {
+            //   x: 0,
+            //   y: 0,
+            // },
+            //     scaleFactor: 0.25,
+            //   },
+            //   sprite: {
+            //     xScale: 0.25,
+            //     yScale: 0.25,
+            //     image: "./images/poufRouge.png",
+            //   },
+            //   constraint: {
+            //       x: 5,
+            //       y: -4,
+            //     },
+            // },
+            // lampeRouge: {
+            //   body: {
+            // position: {
+            //   x: 0,
+            //   y: 0,
+            // },
+            // velocity: {
+            //   x: 0,
+            //   y: 0,
+            // },
+            //     scaleFactor: 0.25,
+            //   },
+            //   sprite: {
+            //     xScale: 0.25,
+            //     yScale: 0.25,
+            //     image: "./images/lampeRouge.png",
+            //   },
+            //   constraint: {
+            //       x: 5,
+            //       y: -4,
+            //     },
+            // },
+            // placardRouge: {
+            //   body: {
+            // position: {
+            //   x: 0,
+            //   y: 0,
+            // },
+            // velocity: {
+            //   x: 0,
+            //   y: 0,
+            // },
+            //     scaleFactor: 0.25,
+            //   },
+            //   sprite: {
+            //     xScale: 0.25,
+            //     yScale: 0.25,
+            //     image: "./images/placardRouge.png",
+            //   },
+            //   constraint: {
+            //       x: 5,
+            //       y: -4,
+            //     },
+            // },
+          };
 
-          function monin() {
-            const paths = document.querySelectorAll("#monin");
-            paths.forEach((path, index) => {
+          function CreateBody(key, render = false) {
+            return new Promise((resolve, reject) => {
+              const path = document.querySelector(`#${key}`);
               let vertices = Svg.pathToVertices(path);
-              let scaleFactor = 0.25;
+              let scaleFactor = meubles[key].body.scaleFactor;
               vertices = Vertices.scale(vertices, scaleFactor, scaleFactor);
-              let body = Bodies.fromVertices(
-                Math.random() * width,
-                Math.random() * height,
-                [vertices],
 
-                {
-                  friction: 0.3,
-                  frictionAir: 0.2,
-                  frictionStatic: 0.7,
-                  setDensity: 1,
-                  restitution: 0.8,
-                  slop: 0.00001,
-                  render: {
-                    visible: false,
-                  },
-                  flagInternal: false,
-                  removeCollinear: 1,
-                  minimumArea: 0.1,
-                  removeDuplicatePoints: 1,
-                }
-              );
+              // On peut s'amuser à faire un algo, qui à chaque pop d'objet calcul d'espacer assez des bordures, mais aussi de trouver un endroit où il n'y a pas encore d'objet pour éviter des collisions et donc de changer l'angle d'un objet
+              const positionX = meubles[key].body.position.x;
+              const positionY = meubles[key].body.position.y;
+              console.log("positionX", positionX);
+              console.log("positionY", positionY);
+              let body = Bodies.fromVertices(positionX, positionY, [vertices], {
+                render: {
+                  visible: false,
+                },
+              });
+
+              // Ne pas travailler avec de la velocity, mais pas de la speed
+              // Body.setVelocity(body, {
+              //   x: meubles[key].body.velocity.x,
+              //   y: meubles[key].body.velocity.y,
+              // });
+
+              // Body.setVelocity(body, {
+              //   x: 0,
+              //   y: 0,
+              // });
+
+              Body.setAngle(body, meubles[key].body.angle);
 
               // Create a separate to put the image on
               let spriteBody = Bodies.rectangle(
@@ -479,13 +656,20 @@ export default {
                   render: {
                     opacity: 1,
                     sprite: {
-                      texture: "./images/monin10.png",
+                      texture: meubles[key].sprite.image,
+                      xScale: meubles[key].sprite.xScale,
+                      yScale: meubles[key].sprite.yScale,
                       xOffset: 0,
                       yOffset: 0,
                     },
                   },
                 }
               );
+
+              // Body.setVelocity(spriteBody, {
+              //   x: 0,
+              //   y: 0,
+              // });
 
               // Constrain the sprite body to the SVG body
               let constraint = Constraint.create({
@@ -494,8 +678,11 @@ export default {
                 stiffness: 1,
                 length: 0,
                 pointB: {
-                  x: -5,
-                  y: 20,
+                  x: meubles[key].constraint.x,
+                  y: meubles[key].constraint.y,
+                },
+                render: {
+                  visible: false, // Hide the circle in the middle
                 },
               });
 
@@ -503,299 +690,147 @@ export default {
                 // Set the angle of the spriteBody to the angle of the body
                 Body.setAngle(spriteBody, body.angle);
               });
+
+              console.log(render);
               // Add the bodies and constraint to the world
-              // Composite.add(engine.world, [body, spriteBody, constraint]);
-              Composite.add(world, [body, spriteBody, constraint]);
+              if (render) {
+                Composite.add(world, [body, spriteBody, constraint]);
+              }
+
+              resolve({ body, spriteBody, constraint });
+
+              reject("error");
             });
           }
 
-          monin();
-          // monin();
-
-          function bourges() {
-            const paths = document.querySelectorAll("#bourges");
-            paths.forEach((path, index) => {
-              let vertices = Svg.pathToVertices(path);
-              let scaleFactor = 0.2;
-              vertices = Vertices.scale(vertices, scaleFactor, scaleFactor);
-              let body = Bodies.fromVertices(
-                Math.random() * width,
-                Math.random() * height,
-                [vertices],
-
-                {
-                  friction: 0.3,
-                  frictionAir: 0.2,
-                  frictionStatic: 0.7,
-                  setDensity: 0,
-                  restitution: 0,
-                  slop: 0.00001,
-                  render: {
-                    visible: false,
-                  },
-                  flagInternal: false,
-                  removeCollinear: 1,
-                  minimumArea: 0.1,
-                  removeDuplicatePoints: 1,
-                }
-              );
-
-              // Create a separate to put the image on
-              let spriteBody = Bodies.rectangle(
-                body.bounds.min.x,
-                body.bounds.min.y,
-                body.bounds.max.x,
-                body.bounds.max.y,
-                {
-                  collisionFilter: {
-                    mask: 0,
-                  },
-                  render: {
-                    opacity: 1,
-                    sprite: {
-                      texture: "./images/bourges1.png",
-                      xOffset: 0,
-                      yOffset: 0,
-                    },
-                  },
-                }
-              );
-
-              // Constrain the sprite body to the SVG body
-              let constraint = Constraint.create({
-                bodyA: body,
-                bodyB: spriteBody,
-                stiffness: 1,
-                length: 0,
-                pointB: {
-                  x: 5,
-                  y: -4,
-                },
-              });
-
-              Events.on(engine, "beforeUpdate", function (event) {
-                // Set the angle of the spriteBody to the angle of the body
-                Body.setAngle(spriteBody, body.angle);
-              });
-              // Add the bodies and constraint to the world
-              // Composite.add(engine.world, [body, spriteBody, constraint]);
-              Composite.add(world, [body, spriteBody, constraint]);
-            });
+          function createsUniqueBody() {
+            for (let key in meubles) {
+              CreateBody(key, true);
+            }
           }
 
-          bourges();
+          createsUniqueBody();
 
-          function sacBleu() {
-            const paths = document.querySelectorAll("#sac");
-            paths.forEach((path, index) => {
-              let vertices = Svg.pathToVertices(path);
-              let scaleFactor = 1.1;
-              vertices = Vertices.scale(vertices, scaleFactor, scaleFactor);
-              let body = Bodies.fromVertices(
-                Math.random() * width,
-                Math.random() * height,
-                [vertices],
+          var mouse = Mouse.create(render.canvas),
+          mouseConstraint = MouseConstraint.create(engine, {
+            mouse: mouse,
+            constraint: {
+              render: {
+                visible: false,
+              },
+            },
+          });
 
-                {
-                  friction: 0.3,
-                  frictionAir: 0.2,
-                  frictionStatic: 0.7,
-                  setDensity: 0,
-                  restitution: 0,
-                  slop: 0.00001,
-                  render: {
-                    visible: false,
-                  },
-                  flagInternal: false,
-                  removeCollinear: 1,
-                  minimumArea: 0.1,
-                  removeDuplicatePoints: 1,
-                }
-              );
+          // Allow to scoll on the canvas
+          mouseConstraint.mouse.element.removeEventListener(
+            "mousewheel",
+            mouseConstraint.mouse.mousewheel
+          );
+          mouseConstraint.mouse.element.removeEventListener(
+            "DOMMouseScroll",
+            mouseConstraint.mouse.mousewheel
+          );
 
-              // Create a separate to put the image on
-              let spriteBody = Bodies.rectangle(
-                body.bounds.min.x,
-                body.bounds.min.y,
-                body.bounds.max.x,
-                body.bounds.max.y,
+          Composite.add(world, mouseConstraint);
 
-                {
-                  collisionFilter: {
-                    mask: 0,
-                  },
-                  render: {
-                    opacity: 1,
-                    sprite: {
-                      texture: "./images/sac1.png",
-                      xOffset: 0,
-                      yOffset: 0,
-                    },
-                  },
-                }
-              );
+          // keep the mouse in sync with rendering
+          render.mouse = mouse;
 
-              // Constrain the sprite body to the SVG body
-              let sacBleuConstraint = Constraint.create({
-                bodyA: sacBleuSprite,
-                bodyB: sacBleuBody,
-                stiffness: 10,
-                length: 0,
-                pointB: {
-                  x: 3,
-                  y: -6,
-                },
+          const gifObjects = ["bourges2024", "timur", "sacBleu"];
+
+          async function animateGif() {
+            // Preload bodies for all frames
+            const preloadedBodies = await Promise.all(gifObjects.map(key => CreateBody(key, false)));
+
+            let currentFrame = 0;
+            let initialGifBody = preloadedBodies[currentFrame];
+            console.log(initialGifBody);
+            
+
+            setInterval(() => {
+              // If there's a body from the last frame, remove it
+              var oldConstraint = initialGifBody.constraint;
+              if (initialGifBody) {
+
+
+                // Increment the frame
+                let nextFrame = (currentFrame + 1) % gifObjects.length;
+
+                // meubles[gifObjects[nextFrame]].body.velocity.x = initialGifBody.body.velocity.x;
+                // meubles[gifObjects[nextFrame]].body.velocity.y = initialGifBody.body.velocity.y;
+
+                var speed = Body.getVelocity(initialGifBody.body);
+                console.log(speed);
+
+                meubles[gifObjects[nextFrame]].body.position.x = initialGifBody.body.position.x;
+                meubles[gifObjects[nextFrame]].body.position.y = initialGifBody.body.position.y;
+
+                Body.setVelocity(initialGifBody.body, 0);
+                Body.setVelocity(initialGifBody.spriteBody, 0);
+
+                Composite.remove(world, initialGifBody.body, true);
+                Composite.remove(world, initialGifBody.spriteBody, true);
+                // Composite.remove(world, initialGifBody.constraint, true);
+              }
+
+              currentFrame = (currentFrame + 1) % gifObjects.length;
+
+              
+              // Get the preloaded body for the next frame
+              initialGifBody = preloadedBodies[currentFrame];
+
+              Body.setPosition(initialGifBody.body, {
+                x: meubles[gifObjects[currentFrame]].body.position.x,
+                y: meubles[gifObjects[currentFrame]].body.position.y,
               });
 
-              Events.on(engine, "beforeUpdate", function (event) {
-                // Set the angle of the spriteBody to the angle of the body
-                Body.setAngle(sacBleuSprite, sacBleuBody.angle);
-              });
-              // Add the bodies and constraint to the world
-              // Composite.add(engine.world, [body, spriteBody, constraint]);
-              Composite.add(world, [body, spriteBody, constraint]);
-            });
+              Body.setVelocity(initialGifBody.body, speed);
+              Body.setVelocity(initialGifBody.spriteBody, speed);
+
+              // Add the body to the world
+              Composite.add(world, [initialGifBody.body, initialGifBody.spriteBody, initialGifBody.constraint]);
+
+            }, 3000);
           }
 
-          sacBleu();
+          animateGif();
 
-          function timur() {
-            const paths = document.querySelectorAll("#timur");
-            paths.forEach((path, index) => {
-              let vertices = Svg.pathToVertices(path);
-              let scaleFactor = 0.15;
-              vertices = Vertices.scale(vertices, scaleFactor, scaleFactor);
-              let body = Bodies.fromVertices(
-                Math.random() * width,
-                Math.random() * height,
-                [vertices],
+          // Add an event to change the frame on each interval
+          this.updateInterval = setInterval(async () => {
+            if (this.initialGifBody === null) {
+              // this.initialGifBody = await CreateBody("bourges2024");
+              // console.log("premier");
+              // console.log(this.initialGifBody);
+              // var velocity = {
+              //   x: this.initialGifBody.velocity.x,
+              //   y: this.initialGifBody.velocity.y,
+              // };
+              // var position = {
+              //   x: this.initialGifBody.position.x,
+              //   y: this.initialGifBody.position.y,
+              // };
+              // Composite.remove(world, this.initialGifBody);
+            } else {
+              // console.log(this.furtherGifbody);
+              // var velocity = {
+              //   x: this.furtherGifbody.velocity.x,
+              //   y: this.furtherGifbody.velocity.y,
+              // };
+              // var position = {
+              //   x: this.furtherGifbody.position.x,
+              //   y: this.furtherGifbody.position.y,
+              // };
+              // Composite.remove(world, this.furtherGifbody);
+            }
 
-                {
-                  friction: 0.3,
-                  frictionAir: 0.2,
-                  frictionStatic: 0.7,
-                  setDensity: 0,
-                  restitution: 0,
-                  slop: 0.00001,
-                  render: {
-                    visible: false,
-                  },
-                  flagInternal: false,
-                  removeCollinear: 1,
-                  minimumArea: 0.1,
-                  removeDuplicatePoints: 1,
-                }
-              );
-
-              console.log(body);
-
-              // Create a separate to put the image on
-              let spriteBody = Bodies.rectangle(
-                body.bounds.min.x,
-                body.bounds.min.y,
-                body.bounds.max.x,
-                body.bounds.max.y,
-                {
-                  collisionFilter: {
-                    mask: 0,
-                  },
-                  render: {
-                    opacity: 1,
-                    sprite: {
-                      texture: "./images/timur1.png",
-                      xOffset: 0,
-                      yOffset: 0,
-                    },
-                  },
-                }
-              );
-
-              // Constrain the sprite body to the SVG body
-              let constraint = Constraint.create({
-                bodyA: body,
-                bodyB: spriteBody,
-                stiffness: 1,
-                length: 0,
-                pointB: {
-                  x: 5,
-                  y: 10,
-                },
-              });
-
-              Events.on(engine, "beforeUpdate", function (event) {
-                // Set the angle of the spriteBody to the angle of the body
-                Body.setAngle(spriteBody, body.angle);
-              });
-              // Add the bodies and constraint to the world
-              // Composite.add(engine.world, [body, spriteBody, constraint]);
-              Composite.add(world, [body, spriteBody, constraint]);
-            });
-          }
-
-          timur();
-
-
-          // Ce sont les murs du tableau
-          Composite.add(world, [
-            Bodies.rectangle(
-              width / 2,
-              offset / -2,
-              width + offset * 2,
-              offset,
-              options
-            ),
-            Bodies.rectangle(
-              offset / -2,
-              height / 2,
-              offset,
-              height + offset * 2,
-              options
-            ),
-            Bodies.rectangle(
-              width + offset / 2,
-              height / 2,
-              offset,
-              height + offset * 2,
-              options
-            ),
-            Bodies.rectangle(
-              width + offset / 2,
-              height / 2,
-              offset,
-              height + offset * 2,
-              options
-            ),
-          ]);
-
-          // items.forEach((item) => {
-          //   const body = Bodies.rectangle(
-          //     Math.random() * width,
-          //     Math.random() * height,
-          //     item.width,
-          //     item.height,
-          //     {
-          //       angle: item.rotation * (Math.PI / 180),
-          //       render: {
-          //         sprite: {
-          //           texture: item.src,
-          //           xScale: item.width / 1000,
-          //           yScale: item.height / 1000,
-          //         },
-          //         render: {
-          //           fillStyle: "transparent", // Ajustez si nécessaire
-          //           strokeStyle: "transparent", // Ajustez si nécessaire
-          //           lineWidth: 0,
-          //           sprite: {
-          //             texture: item.src,
-          //             xScale: item.width / 1000,
-          //             yScale: item.height / 1000,
-          //           },
-          //         },
-          //       },
-          //     }
-          //   );
-          //   Composite.add(world, body);
-          // });
+            // this.furtherGifbody = await CreateBody(gifObjects[this.currentFrame]);
+            // console.log(this.furtherGifbody);
+            // Body.setVelocity(this.furtherGifbody, velocity);
+            // Body.setPosition(this.furtherGifbody, position);
+            // Composite.add(world, this.furtherGifbody);
+            // this.currentFrame = (this.currentFrame + 1) % gifFrames.length;
+            // updateTexture(gifObject);
+          }, this.frameInterval);
 
           var gifObject = Bodies.rectangle(
             Math.random() * width,
@@ -813,80 +848,67 @@ export default {
               },
             }
           );
-          this.$nextTick(() => {
-            let spotifyDraggable = document.querySelector(".spotify-draggable");
-            let spotifyHandle =
-              spotifyDraggable.querySelector(".spotify-handle");
-            if (spotifyDraggable && spotifyHandle) {
-              dragElement(spotifyDraggable, spotifyHandle);
-            }
-          });
 
-          // this.book = Composite.create({ label: "Book" });
-
-          // // Ajoutez chaque page au composite de livre
-          // for (let i = 0; i < this.totalPages; i++) {
-          //   let page = Bodies.rectangle(400, 200, 150, 200, {
-          //     render: {
-          //       sprite: {
-          //         texture: "/images/" + this.pageTextures[i],
-          //         xScale: 1,
-          //         yScale: 1,
-          //       },
-          //     },
-          //   });
-          //   Composite.add(this.book, page);
-          // }
-
-          // // Ajoutez le livre composite au monde
-          // Composite.add(world, this.book);
-
-          // const updateTexture = () => {
-          //   const position = { x: gifObject.position.x, y: gifObject.position.y };
-          //   Composite.remove(world, gifObject);
-          //   gifObject = Bodies.rectangle(position.x, position.y, 200, 200, {
-          //     angle: 0 * (Math.PI / 180),
-          //     render: {
-          //       sprite: {
-          //         texture: gifFrames[this.currentFrame],
-          //         xScale: 200 / 800, // calculez l'échelle appropriée
-          //         yScale: 200 / 800,
-          //       },
-          //     },
-          //   });
-          //   Composite.add(world, gifObject);
-          // };
-
-          // Add an event to change the frame on each interval
-          // this.updateInterval = setInterval(() => {
-          //   this.currentFrame = (this.currentFrame + 1) % gifFrames.length;
-          //   updateTexture(gifObject);
-          // }, this.frameInterval);
-
-          var mouse = Mouse.create(render.canvas),
-            mouseConstraint = MouseConstraint.create(engine, {
-              mouse: mouse,
-              constraint: {
-                render: {
-                  visible: false,
+          const updateTexture = () => {
+            const position = {
+              x: gifObject.position.x,
+              y: gifObject.position.y,
+            };
+            console.log(gifObject.velocity);
+            Composite.remove(world, gifObject);
+            gifObject = Bodies.rectangle(position.x, position.y, 200, 200, {
+              angle: 0 * (Math.PI / 180),
+              render: {
+                sprite: {
+                  texture: gifFrames[this.currentFrame],
+                  xScale: 200 / 800, // calculez l'échelle appropriée
+                  yScale: 200 / 800,
                 },
               },
             });
+            Composite.add(world, gifObject);
+          };
 
-          // Allow to scoll on the canvas
-          mouseConstraint.mouse.element.removeEventListener(
-            "mousewheel",
-            mouseConstraint.mouse.mousewheel
-          );
-          mouseConstraint.mouse.element.removeEventListener(
-            "DOMMouseScroll",
-            mouseConstraint.mouse.mousewheel
-          );
+          const offset = this.canvasProp.wallWidth;
+          const options = {
+            isStatic: true,
+            removeCollinear: 0,
+            restitution: 0,
+          };
 
-          Composite.add(world, mouseConstraint);
+          // Ce sont les murs du tableau
+          Composite.add(world, [
+            Bodies.rectangle(
+              width / 2,
+              offset / -2,
+              width + offset * 2,
+              offset,
+              options
+            ), // Plafond
+            Bodies.rectangle(
+              offset / -2,
+              height / 2,
+              offset,
+              height + offset * 2,
+              options
+            ), // Mur gauche
+            Bodies.rectangle(
+              width + offset / 2,
+              height / 2,
+              offset,
+              height + offset * 2,
+              options
+            ), // Mur droit
+            Bodies.rectangle(
+              width / 2,
+              height + offset / 2,
+              width + offset * 2,
+              offset,
+              options
+            ), // Sol
+          ]);
 
-          // keep the mouse in sync with rendering
-          render.mouse = mouse;
+          
 
           // fit the render viewport to the scene
           // Render.lookAt(render, {
@@ -934,7 +956,7 @@ export default {
       let engine = Engine.create();
       (engine.positionIterations = 20), (engine.velocityIterations = 10);
       let world = engine.world;
-      world.gravity.scale = 0;
+      world.gravity.scale = 10;
       world.gravity.x = 0;
       world.gravity.y = 0;
 
