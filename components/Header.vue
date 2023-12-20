@@ -11,44 +11,86 @@
       </div>
       <div class="flex flex-row">
         <div
-  ref="languageSelectors"
-  class="flex flex-row font-montserrat font-medium text-sm mt-[-4px] mr-16 md:mr-40 content-end cursor-pointer"
->
+          ref="languageSelectors"
+          class="flex flex-row font-montserrat font-medium text-sm mt-[-4px] mr-16 md:mr-40 content-end cursor-pointer"
+        >
+          <div>
+            <button
+              id="dropdownDefaultButton"
+              @click="toggleDropdown"
+              class="text-black md:hidden inline-block relative bg-white hover:bg-white focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+              type="button"
+            >
+              {{ language }}
+            </button>
 
-<div >
-  <button id="dropdownDefaultButton" @click="toggleDropdown" class="text-black md:hidden inline-block relative bg-white hover:bg-white focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
-    {{ language }}
-  </button>
-
-  <!-- Dropdown menu -->
-  <div v-show="isDropdownOpen" id="dropdown" class="z-20 absolute bg-white divide-y divide-gray-100 rounded-lg">
-    <ul class="py-2 text-sm text-gray-700 dark:text-white" aria-labelledby="dropdownDefaultButton">
-      <li>
-        <a href="#" @click="changeLanguage('fr')" class="block px-4 py-2 hover:bg-gray-100 text-black hover:bg-black text-center">FR</a>
-      </li>
-      <li>
-        <a href="#" @click="changeLanguage('en')" class="block px-4 py-2 hover:bg-gray-100 text-black hover:text-black text-center">EN</a>
-      </li>
-      <li>
-        <a href="#" @click="changeLanguage('it')" class="block px-4 py-2 hover:bg-gray-100 text-black hover:text-black text-center">IT</a>
-      </li>
-    </ul>
-  </div>
-</div>
-  <!-- Options de langue visibles sur les écrans moyens et plus grands -->
-  <span class="hidden md:flex flex-row">
-    <span @click="changeLanguage('fr')" class="mr-4 hover:italic" id="fr">FR</span>
-    <span @click="changeLanguage('en')" class="mr-4 hover:italic" id="en">EN</span>
-    <span @click="changeLanguage('it')" class="hover:italic" id="it">IT</span>
-  </span>
-</div>
+            <!-- Dropdown menu -->
+            <div
+              v-show="isDropdownOpen"
+              id="dropdown"
+              class="z-20 absolute bg-white divide-y divide-gray-100 rounded-lg"
+            >
+              <ul
+                class="py-2 text-sm text-gray-700 dark:text-white"
+                aria-labelledby="dropdownDefaultButton"
+              >
+                <li>
+                  <a
+                    href="#"
+                    @click="changeLanguage('fr')"
+                    class="block px-4 py-2 hover:bg-gray-100 text-black hover:bg-black text-center"
+                    >FR</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    @click="changeLanguage('en')"
+                    class="block px-4 py-2 hover:bg-gray-100 text-black hover:text-black text-center"
+                    >EN</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    @click="changeLanguage('it')"
+                    class="block px-4 py-2 hover:bg-gray-100 text-black hover:text-black text-center"
+                    >IT</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Options de langue visibles sur les écrans moyens et plus grands -->
+          <span class="hidden md:flex flex-row">
+            <span
+              @click="changeLanguage('fr')"
+              class="mr-4 hover:italic"
+              id="fr"
+              >FR</span
+            >
+            <span
+              @click="changeLanguage('en')"
+              class="mr-4 hover:italic"
+              id="en"
+              >EN</span
+            >
+            <span @click="changeLanguage('it')" class="hover:italic" id="it"
+              >IT</span
+            >
+          </span>
+        </div>
         <div
           to="/menu"
           id="menu-burger"
           class="hover:cursor-pointer h-auto close z-[1000] fixed mt-[-7px] mr-6 md:mr-10 right-0"
           @click=""
         >
-            <menuBurger class="text-[50px]" ref="menuBurger" @click="toggleMenuBurger" />
+          <menuBurger
+            class="text-[50px]"
+            ref="menuBurger"
+            @click="toggleMenuBurger"
+          />
         </div>
       </div>
     </div>
@@ -117,7 +159,7 @@
     height: 6px;
     fill: black;
   }
-  
+
   60% {
     transform: translate(16px, 0px);
     width: 10px;
@@ -310,7 +352,6 @@ export default {
     menuBurger,
   },
   methods: {
-
     toggleDropdown() {
       // Toggle the dropdown state
       this.isDropdownOpen = !this.isDropdownOpen;
@@ -320,38 +361,38 @@ export default {
       this.menuBurgerOpened = !this.menuBurgerOpened;
       console.log(this.menuBurgerOpened);
       const svgElement = this.$refs.menuBurger.$el;
-      const rectElements = svgElement.querySelectorAll('rect');
+      const rectElements = svgElement.querySelectorAll("rect");
       const rect1 = rectElements[0];
       const rect2 = rectElements[1];
       const rect3 = rectElements[2];
-      
+
       if (this.menuBurgerOpened) {
-        rect1.classList.remove('part1-close');
-        rect2.classList.remove('part2-close');
-        rect3.classList.remove('part3-close');
+        rect1.classList.remove("part1-close");
+        rect2.classList.remove("part2-close");
+        rect3.classList.remove("part3-close");
 
-        rect1.classList.add('part1-open');
-        rect2.classList.add('part2-open');
-        rect3.classList.add('part3-open');
+        rect1.classList.add("part1-open");
+        rect2.classList.add("part2-open");
+        rect3.classList.add("part3-open");
       } else {
-        rect1.classList.remove('part1-open');
-        rect2.classList.remove('part2-open');
-        rect3.classList.remove('part3-open');
+        rect1.classList.remove("part1-open");
+        rect2.classList.remove("part2-open");
+        rect3.classList.remove("part3-open");
 
-        rect1.classList.add('part1-close');
-        rect2.classList.add('part2-close');
-        rect3.classList.add('part3-close');
+        rect1.classList.add("part1-close");
+        rect2.classList.add("part2-close");
+        rect3.classList.add("part3-close");
       }
     },
     changeLanguage(locale) {
       const languageSelectors = this.$refs.languageSelectors;
-      const allLanguageSelectors = languageSelectors.querySelectorAll('span');
+      const allLanguageSelectors = languageSelectors.querySelectorAll("span");
       allLanguageSelectors.forEach((languageSelector) => {
-        languageSelector.classList.remove('font-semibold');
+        languageSelector.classList.remove("font-semibold");
       });
-      this.language =  locale.toUpperCase()
+      this.language = locale.toUpperCase();
       const languageSelector = document.getElementById(locale);
-      languageSelector.classList.add('font-semibold');
+      languageSelector.classList.add("font-semibold");
 
       Cookies.set("i18n_language", locale);
       this.$i18n.locale = locale;
@@ -359,4 +400,3 @@ export default {
   },
 };
 </script>
-

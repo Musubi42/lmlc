@@ -97,7 +97,7 @@
 
     <!-- Reaseaux sociaux -->
     <!-- TODO: les faire disparaitre -->
-    <div id="social-network" class="fixed right-0 bottom-0 mr-8 mb-3 z-[1000]">
+    <div id="social-network" class="hidden fixed right-0 bottom-0 mr-8 mb-3 z-[1000]">
       <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
         <linkedin class="text-[30px] w-auto text-white" />
       </a>
@@ -114,12 +114,14 @@ export default {
   props: ["isMenuOpen"],
   watch: {
     isMenuOpen() {
-      console.log("hi");
+        // toggle la class hidden sur les réseaux sociaux
+        document.getElementById("social-network").classList.toggle("hidden");
       if (this.isMenuOpen) {
         // En 3 parties
         // Faire apparaitre l'élément à droite
         // Faire défiler le background
         // Faire apparaitre le texte
+
 
         const separationWidth = (window.innerWidth / 2) * 0.2;
         document.getElementById(

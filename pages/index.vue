@@ -65,6 +65,10 @@
       id="contact"
       class="text-[90px] font-medium text-blue w-auto fixed left-4 bg-transparent bottom-0 contact-spin color-white mix-blend-difference"
     />
+
+    <!-- <div class="fixed w-screen bottom-0">
+      <Spotify />
+    </div> -->
   </div>
 </template>
 
