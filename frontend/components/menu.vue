@@ -27,22 +27,22 @@
       >
         <!-- Titre -->
         <!-- Capturer cet élémént et for each sur chacun de ses enfants -->
-        <div class="text-[50px] md:text-[70px] xl:text-[80px] 2xl:text-[90px] my-auto flex flex-col place-content-between h-3/6 ml-16">
+        <div
+          class="text-[40px] md:text-[60px] xl:text-[70px] 2xl:text-[80px] my-auto flex flex-col place-content-between h-3/6 ml-16"
+        >
           <ImageMenuOnHover
             ref="work"
-            class="onHover w-fit"
+            class="w-fit"
             imageSrc="/menu-work-small.png"
             @mouseover="titleAnimation"
             @mouseleave="defaultBGColor"
             :offsetParent="offsetElement"
             id="work"
           >
-            <div
-              class=" text-white font-black z-10 relative"
-            >
+            <div class="text-white font-black z-10 relative">
               <span
                 data-color="#ffff00"
-                class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 w-fit"
+                class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 cursor-pointer"
                 id="workTitle"
                 >WORK</span
               >
@@ -50,20 +50,18 @@
           </ImageMenuOnHover>
           <ImageMenuOnHover
             ref="services"
-            class="onHover w-fit"
+            class="w-fit"
             imageSrc="/menu-services-small.png"
             @mouseover="titleAnimation"
             @mouseleave="defaultBGColor"
             :offsetParent="offsetElement"
             id="services"
           >
-            <div
-              class=" text-white font-black z-10 relative"
-            >
+            <div class="text-white font-black z-10 relative">
               <!-- TODO: Quand on quitte le title effet epileptique voir la menu-text-overlay -->
               <span
                 data-color="#974dff"
-                class="md:hover:transform md:hover:translate-x-32 block menu-text-overlay opacity-50 hover:opacity-100"
+                class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 cursor-pointer"
                 id="servicesTitle"
                 >SERVICES</span
               >
@@ -71,26 +69,40 @@
           </ImageMenuOnHover>
           <ImageMenuOnHover
             ref="talents"
-            class="onHover w-fit"
+            class="w-fit"
             imageSrc="/menu-talents-small.png"
             @mouseover="titleAnimation"
-            @mouseleave="defaultBGColor"
-            :menuOpen="toggleMenu"
             :offsetParent="offsetElement"
             id="talents"
           >
             <!-- TODO : On hover de cette div, animer le texte -->
-            <div
-              class="text-white font-black z-10 relative"
-            >
+            <div class="text-white font-black z-10 relative">
               <span
                 data-color="#99deff"
-                class="md:hover:transform md:hover:translate-x-32 block menu-text-overlay opacity-50 hover:opacity-100"
+                class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 cursor-pointer"
                 id="talentsTitle"
                 >TALENTS</span
               >
             </div>
           </ImageMenuOnHover>
+          <div
+            ref="contact"
+            class="w-fit"
+            @click="goToContact"
+            @mouseover="titleAnimation"
+            @mouseleave="defaultBGColor"
+            :offsetParent="offsetElement"
+            id="contact"
+          >
+            <div class="text-white font-black z-10 relative">
+              <span
+                data-color=""
+                class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 cursor-pointer"
+                id="contactTitle"
+                >CONTACT</span
+              >
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -112,74 +124,6 @@
 <script>
 export default {
   props: ["isMenuOpen"],
-  watch: {
-    isMenuOpen() {
-        // toggle la class hidden sur les réseaux sociaux
-        document.getElementById("social-network").classList.toggle("hidden");
-      if (this.isMenuOpen) {
-        // En 3 parties
-        // Faire apparaitre l'élément à droite
-        // Faire défiler le background
-        // Faire apparaitre le texte
-
-
-        const separationWidth = (window.innerWidth / 2) * 0.2;
-        document.getElementById(
-          "separation"
-        ).style.width = `${separationWidth}px`;
-
-        // separation
-        document.getElementById("separation").style.transform = "translateX(0)";
-        document.getElementById("separation").style.transition =
-          "all 0.1s ease-in-out";
-
-        // Title
-        setTimeout(function () {
-          // TODO: Calculer un translateX et width pour separation dynamique en fonction de la taille de l'écran
-
-          // document.getElementById("title").style.transform = "translateX(-50%)"; // Pour petit écran
-          document.getElementById(
-            "title"
-          ).style.transform = `translateX(-${separationWidth}px)`; // Pour grand écran
-          document.getElementById("title").style.transition =
-            "all 0.5s ease-in-out";
-        }, 0);
-
-        // BG
-        document.getElementById("bg").style.transform = "translateX(0)";
-        document.getElementById("bg").style.transition =
-          "all 0.5s cubic-bezier(0, 0.75, 0.83, 0.67)";
-
-        //  A la fin de l'animation faire disparaitre la séparation, pour que le changement de couleur soit fluide
-        setTimeout(function () {
-          document.getElementById("separation").style.display = "none";
-        }, 500);
-      } else {
-        // Faire reaparaitre la separation pour faire disparaitre le texte derriere
-        document.getElementById("separation").style.display = "block";
-
-        // separation
-        setTimeout(function () {
-          document.getElementById("separation").style.transform =
-            "translateX(100%)";
-          document.getElementById("separation").style.transition =
-            "all 0.1s ease-in-out";
-        }, 400);
-
-        // Title
-        document.getElementById("title").style.transform = "translateX(100%)";
-        document.getElementById("title").style.transition =
-          "all 0.5s ease-in-out";
-
-        // BG
-        setTimeout(function () {
-          document.getElementById("bg").style.transform = "translateX(100%)";
-          document.getElementById("bg").style.transition =
-            "all 0.5s cubic-bezier(.89,.06,.45,.97)";
-        }, 100);
-      }
-    },
-  },
   data() {
     return {
       offsetElement: 0,
@@ -187,39 +131,39 @@ export default {
       menuTitles: ["work", "services", "talents"],
     };
   },
+  watch: {
+    isMenuOpen() {
+      this.isMenuOpen ? this.openMenu() : this.closeMenu();
+    },
+  },
   mounted() {},
   methods: {
     titleAnimation(value) {
       // Changement de couleur du Background
-
-      if (typeof value === "string") {
-        document.getElementById("bg").style.backgroundColor = value;
-      } else {
-        document.getElementById("bg").style.transition = "none";
-        document.getElementById("bg").style.backgroundColor =
-          value.target.attributes["data-color"].value;
+      if (value.target.innerHTML !== "CONTACT") {
+        if (typeof value === "string") {
+          document.getElementById("bg").style.backgroundColor = value;
+        } else {
+          document.getElementById("bg").style.transition = "none";
+          document.getElementById("bg").style.backgroundColor =
+            value.target.attributes["data-color"].value;
+        }
       }
 
       const workTitle = document.getElementById("workTitle");
       const servicesTitle = document.getElementById("servicesTitle");
       const talentsTitle = document.getElementById("talentsTitle");
+      const contactTitle = document.getElementById("contactTitle");
 
       workTitle.classList.add("menu-text-overlay");
       servicesTitle.classList.add("menu-text-overlay");
       talentsTitle.classList.add("menu-text-overlay");
-      // Décaler la div du title pour faire l'effet de pagination
-      // tout le temps remttre le titre sur la gauche
-      const newElementID = value.target.outerText.toLowerCase();
-
-      // document.getElementById(
-      //   `${newElementID}Title`
-      // ).style.transform = `translateX(128px)`;
+      contactTitle.classList.add("menu-text-overlay");
     },
     titleOffset(event) {
       this.offsetElement = parseInt(
-        window.getComputedStyle(
-          event.srcElement.offsetParent.offsetParent.offsetParent
-        ).left
+        window.getComputedStyle(event.srcElement.offsetParent.offsetParent.offsetParent)
+          .left
       );
     },
     defaultBGColor() {
@@ -227,10 +171,12 @@ export default {
       const workTitle = document.getElementById("workTitle");
       const servicesTitle = document.getElementById("servicesTitle");
       const talentsTitle = document.getElementById("talentsTitle");
+      const contactTitle = document.getElementById("contactTitle");
 
       workTitle.classList.remove("menu-text-overlay");
       servicesTitle.classList.remove("menu-text-overlay");
       talentsTitle.classList.remove("menu-text-overlay");
+      contactTitle.classList.remove("menu-text-overlay");
 
       // workTitle.style.transform = "translateX(0px)";
       // servicesTitle.style.transform = "translateX(0px)";
@@ -246,6 +192,82 @@ export default {
       document.getElementById("bg").style.transition = "none";
       document.getElementById("bg").style.backgroundColor = this.defaultBG;
     },
+    goToContact() {
+      console.log("clic");
+      this.$nextTick(() => {
+        const footerElement = document.querySelector("footer");
+        if (footerElement) {
+          footerElement.scrollIntoView({ behavior: "smooth" });
+          this.toggleMenuBurger();
+          this.closeMenu();
+        }
+      });
+    },
+    toggleMenuBurger() {
+      const menuBurger = document.getElementById("menu-burger");
+      const rectElements = menuBurger.querySelectorAll("rect");
+      const rect1 = rectElements[0];
+      const rect2 = rectElements[1];
+      const rect3 = rectElements[2];
+
+      rect1.classList.remove("part1-open");
+      rect2.classList.remove("part2-open");
+      rect3.classList.remove("part3-open");
+
+      rect1.classList.add("part1-close");
+      rect2.classList.add("part2-close");
+      rect3.classList.add("part3-close");
+    },
+    openMenu() {
+      const separationWidth = (window.innerWidth / 2) * 0.2;
+      document.getElementById("separation").style.width = `${separationWidth}px`;
+      
+        // separation
+        document.getElementById("separation").style.transform = "translateX(0)";
+        document.getElementById("separation").style.transition = "all 0.1s ease-in-out";
+
+        // Title
+        setTimeout(function () {
+          // TODO: Calculer un translateX et width pour separation dynamique en fonction de la taille de l'écran
+
+          // document.getElementById("title").style.transform = "translateX(-50%)"; // Pour petit écran
+          document.getElementById(
+            "title"
+          ).style.transform = `translateX(-${separationWidth}px)`; // Pour grand écran
+          document.getElementById("title").style.transition = "all 0.5s ease-in-out";
+        }, 0);
+
+        // BG
+        document.getElementById("bg").style.transform = "translateX(0)";
+        document.getElementById("bg").style.transition =
+          "all 0.5s cubic-bezier(0, 0.75, 0.83, 0.67)";
+
+        //  A la fin de l'animation faire disparaitre la séparation, pour que le changement de couleur soit fluide
+        setTimeout(function () {
+          document.getElementById("separation").style.display = "none";
+        }, 500);
+    },
+    closeMenu() {
+      // Faire reaparaitre la separation pour faire disparaitre le texte derriere
+      document.getElementById("separation").style.display = "block";
+
+      // separation
+      setTimeout(function () {
+        document.getElementById("separation").style.transform = "translateX(100%)";
+        document.getElementById("separation").style.transition = "all 0.1s ease-in-out";
+      }, 400);
+
+      // Title
+      document.getElementById("title").style.transform = "translateX(100%)";
+      document.getElementById("title").style.transition = "all 0.5s ease-in-out";
+
+      // BG
+      setTimeout(function () {
+        document.getElementById("bg").style.transform = "translateX(100%)";
+        document.getElementById("bg").style.transition =
+          "all 0.5s cubic-bezier(.89,.06,.45,.97)";
+      }, 100);
+    },
   },
 };
 </script>
@@ -254,94 +276,86 @@ export default {
 import tiktok from "assets/icons/tiktok.svg";
 import instagram from "assets/icons/instagram-opacity.svg";
 import linkedin from "assets/icons/linkedin.svg";
-const name = ref("Vue.js");
 
-function toggleMenu(event) {
-  if (event.target.id === "menu-burger") {
-    var menuBurgerFirst = event.target.children[0];
-    var menuBurgerSecond = event.target.children[1];
-    var menuBurgerThird = event.target.children[2];
-  } else {
-    // Le coup ou on clique pas sur le burger, mais sur les barres
-    var menuBurgerFirst = event.srcElement.offsetParent.children[0];
-    var menuBurgerSecond = event.srcElement.offsetParent.children[1];
-    var menuBurgerThird = event.srcElement.offsetParent.children[2];
-  }
+// function toggleMenu(event) {
+//   if (event.target.id === "menu-burger") {
+//     var menuBurgerFirst = event.target.children[0];
+//     var menuBurgerSecond = event.target.children[1];
+//     var menuBurgerThird = event.target.children[2];
+//   } else {
+//     // Le coup ou on clique pas sur le burger, mais sur les barres
+//     var menuBurgerFirst = event.srcElement.offsetParent.children[0];
+//     var menuBurgerSecond = event.srcElement.offsetParent.children[1];
+//     var menuBurgerThird = event.srcElement.offsetParent.children[2];
+//   }
 
-  menuBurgerFirst.style.height = "6px";
-  menuBurgerFirst.style.width = "6px";
-  menuBurgerFirst.style.transition =
-    "height 0.5s cubic-bezier(.47,1.64,.41,.8)";
+//   menuBurgerFirst.style.height = "6px";
+//   menuBurgerFirst.style.width = "6px";
+//   menuBurgerFirst.style.transition = "height 0.5s cubic-bezier(.47,1.64,.41,.8)";
 
-  menuBurgerSecond.style.height = "6px";
-  menuBurgerSecond.style.width = "6px";
-  menuBurgerSecond.style.transform = "translateY(20px)";
-  menuBurgerSecond.style.transition = "all 0.5s cubic-bezier(.47,1.64,.41,.8)";
-  menuBurgerThird.style.height = "6px";
-  menuBurgerThird.style.width = "6px";
-  menuBurgerThird.style.transform = "translateY(40px)";
-  menuBurgerThird.style.transition = "all 0.5s cubic-bezier(.47,1.64,.41,.8)";
+//   menuBurgerSecond.style.height = "6px";
+//   menuBurgerSecond.style.width = "6px";
+//   menuBurgerSecond.style.transform = "translateY(20px)";
+//   menuBurgerSecond.style.transition = "all 0.5s cubic-bezier(.47,1.64,.41,.8)";
+//   menuBurgerThird.style.height = "6px";
+//   menuBurgerThird.style.width = "6px";
+//   menuBurgerThird.style.transform = "translateY(40px)";
+//   menuBurgerThird.style.transition = "all 0.5s cubic-bezier(.47,1.64,.41,.8)";
 
-  setTimeout(function () {
-    menuBurgerFirst.style.backgroundColor = "black";
-    menuBurgerFirst.style.width = "35px";
-    menuBurgerFirst.style.transition = "width 0.3s ease-in-out";
+//   setTimeout(function () {
+//     menuBurgerFirst.style.backgroundColor = "black";
+//     menuBurgerFirst.style.width = "35px";
+//     menuBurgerFirst.style.transition = "width 0.3s ease-in-out";
 
-    menuBurgerSecond.style.backgroundColor = "black";
-    menuBurgerSecond.style.width = "35px";
-    menuBurgerSecond.style.transform = "translate(-12px, 8px)";
+//     menuBurgerSecond.style.backgroundColor = "black";
+//     menuBurgerSecond.style.width = "35px";
+//     menuBurgerSecond.style.transform = "translate(-12px, 8px)";
 
-    menuBurgerThird.style.backgroundColor = "black";
-    menuBurgerThird.style.width = "35px";
-    menuBurgerThird.style.transform = "translate(1px, 16px)";
-  }, 500);
+//     menuBurgerThird.style.backgroundColor = "black";
+//     menuBurgerThird.style.width = "35px";
+//     menuBurgerThird.style.transform = "translate(1px, 16px)";
+//   }, 500);
 
-  // Make the elements disapear
-  // Menu burger
-  // setTimeout(function () {
-  //   menuBurgerFirst.style.opacity = "0";
-  //   menuBurgerSecond.style.opacity = "0";
-  //   menuBurgerThird.style.opacity = "0";
-  // }, 1000);
+//   // Make the elements disapear
+//   // Menu burger
+//   // setTimeout(function () {
+//   //   menuBurgerFirst.style.opacity = "0";
+//   //   menuBurgerSecond.style.opacity = "0";
+//   //   menuBurgerThird.style.opacity = "0";
+//   // }, 1000);
 
-  // Social Networks
-  setTimeout(function () {
-    document.getElementById("social-network").style.transform =
-      "translateX(120px)";
-    document.getElementById("social-network").style.transition =
-      "all 0.5s ease-in-out";
-  }, 1000);
+//   // Social Networks
+//   setTimeout(function () {
+//     document.getElementById("social-network").style.transform = "translateX(120px)";
+//     document.getElementById("social-network").style.transition = "all 0.5s ease-in-out";
+//   }, 1000);
 
-  // Link
-  // Work
-  setTimeout(function () {
-    document.getElementById("work").style.transform = "translateX(-400px)";
-    document.getElementById("work").style.transition = "all 0.5s ease-in-out";
-  }, 1000);
+//   // Link
+//   // Work
+//   setTimeout(function () {
+//     document.getElementById("work").style.transform = "translateX(-400px)";
+//     document.getElementById("work").style.transition = "all 0.5s ease-in-out";
+//   }, 1000);
 
-  // Services
-  setTimeout(function () {
-    document.getElementById("services").style.transform = "translateY(-600px)";
-    document.getElementById("services").style.transition =
-      "all 0.5s ease-in-out";
-  }, 1000);
+//   // Services
+//   setTimeout(function () {
+//     document.getElementById("services").style.transform = "translateY(-600px)";
+//     document.getElementById("services").style.transition = "all 0.5s ease-in-out";
+//   }, 1000);
 
-  // Talents
-  setTimeout(function () {
-    document.getElementById("talents").style.transform = "translateY(600px)";
-    document.getElementById("talents").style.transition =
-      "all 0.5s ease-in-out";
-  }, 1000);
-}
+//   // Talents
+//   setTimeout(function () {
+//     document.getElementById("talents").style.transform = "translateY(600px)";
+//     document.getElementById("talents").style.transition = "all 0.5s ease-in-out";
+//   }, 1000);
+
+//   // Contact
+//   setTimeout(function () {
+//     document.getElementById("contact").style.transform = "translateY(600px)";
+//     document.getElementById("contact").style.transition = "all 0.5s ease-in-out";
+//   }, 1000);
+// }
 definePageMeta({
   layout: "menu",
 });
 </script>
-
-<style scoped>
-.onHover:hover {
-  /* transition: ease 0.2s all; */
-  color: black;
-  cursor: default;
-}
-</style>

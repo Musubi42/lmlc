@@ -1,10 +1,7 @@
 <template>
   <!-- TODO: Pour faire l'effet d'image qui follow sur le hover -->
   <!-- https://codepen.io/coreDeiv/pen/YzqzRKK -->
-  <footer
-    class="bottom-0 bg-black text-white w-full h-auto pb-14"
-    data-footer-element
-  >
+  <footer class="bottom-0 bg-black text-white w-full h-auto pb-14" data-footer-element>
     <div class="flex flex-row px-[10%] py-[5%]" data-footer-element>
       <div class="flex-1 mb-24 md:mb-0" data-footer-element>
         <div class="mb-3 md:mb-8 w-fit" data-footer-element>
@@ -91,15 +88,16 @@
         <div class="z-10 relative" data-footer-element>PARIS, FR</div>
       </div>
 
-      <div class="flex-1" data-footer-element>
-        <div
+      <div
+          ref="languageSelectors" class="flex-1" data-footer-element>
+        <span
           data-footer-element
           class="hidden md:flex flex-row font-montserrat font-medium text-sm w-fit ml-auto"
         >
-          <span class="mr-4" data-footer-element>FR</span>
-          <span class="mr-4" data-footer-element>EN</span>
-          <span data-footer-element>IT</span>
-        </div>
+          <span class="mr-4 hover:italic cursor-pointer" @click="changeLanguage('fr')" id="fr-footer">FR</span>
+          <span class="mr-4 hover:italic cursor-pointer" @click="changeLanguage('en')" id="en-footer">EN</span>
+          <span class="hover:italic cursor-pointer" @click="changeLanguage('it')" id="it-footer">IT</span>
+        </span>
       </div>
     </div>
     <div class="relative w-full" data-footer-element>
@@ -112,10 +110,7 @@
           target="_blank"
           data-footer-element
         >
-          <instagram
-            class="text-[30px] w-auto text-white"
-            data-footer-element
-          />
+          <instagram class="text-[30px] w-auto text-white" data-footer-element />
         </a>
         <!-- TODO : Ajouter le lien vers mentions-legales une fois la page crée -->
         <NuxtLink
@@ -129,8 +124,44 @@
   </footer>
 </template>
 
-<script setup>
+<script>
 import instagram from "assets/icons/instagram.svg";
+import Cookies from "js-cookie";
+
+export default {
+  data() {
+    return {
+      language: "FR",
+    };
+  },
+  created() {
+    // Lorsque le composant est créé, vérifiez si un cookie de langue existe
+    const savedLang = Cookies.get("i18n_language");
+
+    if (savedLang) {
+      // Si un cookie existe, utilisez-le pour définir la langue
+      this.$i18n.locale = savedLang;
+    } else {
+      // Sinon, utilisez la langue par défaut de votre application
+      this.$i18n.locale = "fr"; // Mettez la langue par défaut de votre choix
+    }
+  },
+  methods: {
+    changeLanguage(locale) {
+      const languageSelectors = this.$refs.languageSelectors;
+      const allLanguageSelectors = languageSelectors.querySelectorAll("span");
+      allLanguageSelectors.forEach((languageSelector) => {
+        languageSelector.classList.remove("font-semibold");
+      });
+      this.language = locale.toUpperCase();
+      const languageSelector = document.getElementById(locale);
+      document.getElementById(`${locale}-footer`).classList.add("font-semibold");
+
+      Cookies.set("i18n_language", locale);
+      this.$i18n.locale = locale;
+    },
+  },
+};
 </script>
 
 <style scoped>

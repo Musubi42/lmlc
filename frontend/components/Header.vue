@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-white">
     <Menu :isMenuOpen="toggleMenu" />
     <div class="place-content-between py-6 pl-6 md:px-10 flex flex-row">
       <div class="">
@@ -83,10 +83,10 @@
         <div
           to="/menu"
           id="menu-burger"
-          class="hover:cursor-pointer h-auto close z-[1000] fixed mt-[-7px] mr-6 md:mr-10 right-0"
+          class="hover:cursor-pointer h-auto close z-[1000] fixed mt-[-7px] mr-6 md:mr-10 right-0 text-white blend-mode"
           @click=""
         >
-          <menuBurger
+          <IconsMenuBurger
             class="text-[50px]"
             ref="menuBurger"
             @click="toggleMenuBurger"
@@ -98,6 +98,10 @@
 </template>
 
 <style>
+.blend-mode {
+  mix-blend-mode: difference;
+}
+
 .part1-open {
   animation: part1-open-animation 0.6s none;
   animation-fill-mode: forwards;
@@ -238,14 +242,14 @@
     transform: translate(0, 7px);
     width: 32px;
     height: 6px;
-    fill: black;
+    fill: white;
   }
 
   100% {
     transform: translateY(0px);
     width: 32px;
     height: 6px;
-    fill: black;
+    fill: white;
   }
 }
 
@@ -273,14 +277,14 @@
     transform: translate(0px, 0px);
     width: 32px;
     height: 6px;
-    fill: black;
+    fill: white;
   }
 
   100% {
     transform: translate(0px, 0px);
     width: 32px;
     height: 6px;
-    fill: black;
+    fill: white;
   }
 }
 
@@ -308,14 +312,14 @@
     transform: translate(0px, -7px);
     width: 32px;
     height: 6px;
-    fill: black;
+    fill: white;
   }
 
   100% {
     transform: translateY(0px);
     width: 32px;
     height: 6px;
-    fill: black;
+    fill: white;
   }
 }
 </style>
@@ -368,6 +372,8 @@ export default {
       const rect3 = rectElements[2];
 
       if (this.menuBurgerOpened) {
+        document.getElementById("menu-burger").classList.toggle("blend-mode");
+
         rect1.classList.remove("part1-close");
         rect2.classList.remove("part2-close");
         rect3.classList.remove("part3-close");
@@ -383,6 +389,10 @@ export default {
         rect1.classList.add("part1-close");
         rect2.classList.add("part2-close");
         rect3.classList.add("part3-close");
+
+        setTimeout(() => {
+          document.getElementById("menu-burger").classList.toggle("blend-mode");
+        }, 600);
       }
     },
     changeLanguage(locale) {

@@ -7,7 +7,7 @@
           class="text-[1rem] md:text-[2rem] xl:text-[3.2rem] font-black mx-auto w-[90%] md:w-[65%]"
           id="text-intro"
         >
-          {{ $t("intro") }}
+          <!-- {{ $t("intro") }} -->
         </p>
       </div>
 
@@ -15,7 +15,7 @@
         class="absolute w-full h-[85%] md:h-[65%] bottom-0 shadow-sm tableau-shadow"
       >
         <!-- <tableau v-if="oui" :is="oui" /> -->
-        <worker />
+        <!-- <worker /> -->
       </div>
     </div>
     <div
@@ -62,35 +62,14 @@
         ></p>
       </div>
     </div>
-    <contactSVG
+    <!-- <contactSVG
       id="contact"
       class="text-[90px] font-medium text-blue w-auto fixed left-4 bg-transparent bottom-0 contact-spin color-white mix-blend-difference"
-    />
+    /> -->
   </div>
 </template>
 
 <style scoped>
-.blend-mode {
-  mix-blend-mode: difference;
-}
-
-.contact-spin {
-  animation-name: spin;
-  animation-duration: 7000ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .tableau-shadow {
   box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.1),
     0px -5px 10px 1px rgba(0, 0, 0, 0.1);
@@ -138,7 +117,7 @@ export default {
 
   mounted() {
     this.setLanguageTexts();
-    this.typeWriteText();
+    // this.typeWriteText();
     this.$nextTick(() => {
       window.addEventListener("scroll", this.handleScroll);
       this.paragraphSpacing = document.getElementById("paragraphSpacing");

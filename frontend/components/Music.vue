@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-bleu-ciel/70 h-16 flex bg-opacity-70">
+  <div class="h-16 flex">
     <!-- Infos sur le son -->
     <div
       class="flex flex-1 flex-row gap-4 ml-4 mr-4 content-start center-content items-center"
@@ -18,7 +18,7 @@
       </button>
       <!-- Toggle song -->
       <button
-        class="flex w-12 h-12 bg-white rounded-full center-content justify-center items-center"
+        class="flex w-12 h-12 bg-black text-white rounded-full center-content justify-center items-center"
         @click="toggleAudio"
       >
         <iconsLoading
@@ -220,9 +220,9 @@ export default {
     const runtimeConfig = useRuntimeConfig();
     this.APIStreamAudioBaseUrl = runtimeConfig.public.APIStreamAudioBaseUrl;
 
-    console.log(this.APIStreamAudioBaseUrl);
-    const response = await fetch(`${this.APIStreamAudioBaseUrl}/audio/metadata/${this.trackID}`);
-    this.songMetadata = await response.json();
+    // console.log(this.APIStreamAudioBaseUrl);
+    // const response = await fetch(`${this.APIStreamAudioBaseUrl}/audio/metadata/${this.trackID}`);
+    // this.songMetadata = await response.json();
   },
   beforeDestroy() {
     // Remove event listeners
