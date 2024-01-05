@@ -128,7 +128,7 @@ onMounted(() => {
 });
 const time = () => {
   // window.addEventListener("load", () => {
-  let birthday = "2024/01/15";
+  let birthday = "2024/02/15";
 
   (function () {
     const second = 1000;
