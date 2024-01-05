@@ -80,6 +80,7 @@
 import Typewriter from "typewriter-effect/dist/core";
 import { defineAsyncComponent } from "vue";
 import Music from "../components/Music.vue";
+
 export default {
   data() {
     return {
@@ -96,9 +97,6 @@ export default {
       oui: null,
     };
   },
-
-
-
   computed: {
     firstParagraphWords() {
       return this.firstParagraphText.split(" ");
@@ -146,7 +144,7 @@ export default {
   
     window.addEventListener("scroll", this.handleScroll);
   },
-
+  
   unmounted() {
     window.removeEventListener("scroll", this.handleScroll);
   },
@@ -184,7 +182,7 @@ export default {
       } else if (width <= 1280) {
         return 6;
       } else if (width <= 1440) {
-        return 9;
+        return 15;
       } else if (width <= 1920) {
         return 13;
       } else {
