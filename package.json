@@ -33,7 +33,7 @@
     "vue-i18n": "^9.8.0"
   },
   "engines": {
-    "node": ">=v20.6.1"
+    "node": ">=v18.17.0"
   },
   "packageManager": "pnpm@8.12.1"
 }
