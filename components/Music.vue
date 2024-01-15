@@ -207,7 +207,7 @@ export default {
       // const response = await fetch(`${this.APIStreamAudioBaseUrl}/playlistMetadata/`);
 
       // const response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata/`);
-      const response = await axios.get(`http://localhost:3000/api/playlistMetadata/`);
+      const response = await axios.get(`https://lmlc-communication-git-preprod-musubi42s-projects.vercel.app//api/playlistMetadata/`);
       this.playlistMetadataKeys = Object.keys(response.data);
       this.playlistMetadata = response.data;
       
@@ -220,7 +220,7 @@ export default {
         this.isLoading = true;
 
         // const audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/audio/${trackID}`);
-        const audioResponse = await fetch(`http://localhost:3000/api/music/${trackID}`);
+        const audioResponse = await fetch(`https://lmlc-communication-git-preprod-musubi42s-projects.vercel.app//api/music/${trackID}`);
         const blob = await audioResponse.blob();
         this.audioSource = new Audio(URL.createObjectURL(blob));
         this.audioSource.volume = this.volume / 100;
