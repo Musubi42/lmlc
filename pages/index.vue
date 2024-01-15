@@ -14,8 +14,7 @@
       <div
         class="absolute w-full h-[85%] md:h-[65%] bottom-0 shadow-sm tableau-shadow"
       >
-        <!-- <tableau v-if="oui" :is="oui" /> -->
-        <!-- <worker /> -->
+        <tableau />
       </div>
     </div>
     <div
@@ -135,13 +134,6 @@ export default {
       });
     });
 
-
-
-    // setTimeout(() => {
-      this.oui = defineAsyncComponent(() => import('../components/tableau.vue'));
-    // }, 5000);
-    // this.oui = defineAsyncComponent(() => import('../components/tableau.vue'));
-  
     window.addEventListener("scroll", this.handleScroll);
   },
   

@@ -270,7 +270,7 @@
       />
     </svg>
 
-    <!-- Bourges -->
+    <!-- Bourges2024 -->
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="88.8967mm"
@@ -288,6 +288,323 @@
              1008.00,0.00 1008.00,1376.00 1008.00,1376.00
              1008.00,1376.00 0.00,1376.00 0.00,1376.00
              0.00,1376.00 0.00,0.00 0.00,0.00 Z"
+      />
+    </svg>
+
+    <!-- tableRouge -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="564.374mm"
+      height="282.187mm"
+      viewBox="0 0 1600 800"
+      class="hidden"
+    >
+      <path
+        id="tableRouge"
+        fill="none"
+        stroke="black"
+        stroke-width="1"
+        d="M 663.00,103.11
+           C 663.00,103.11 696.00,103.11 696.00,103.11
+             696.00,103.11 755.00,103.11 755.00,103.11
+             755.00,103.11 909.00,103.11 909.00,103.11
+             909.00,103.11 923.00,104.00 923.00,104.00
+             923.00,104.00 927.00,104.00 927.00,104.00
+             927.00,104.00 940.00,105.00 940.00,105.00
+             940.00,105.00 959.00,105.00 959.00,105.00
+             959.00,105.00 975.00,106.00 975.00,106.00
+             975.00,106.00 992.00,107.00 992.00,107.00
+             1003.00,107.05 1015.57,107.23 1020.79,119.00
+             1022.84,123.64 1022.99,128.05 1023.00,133.00
+             1023.00,133.00 1023.00,199.00 1023.00,199.00
+             1023.00,199.00 1022.00,219.00 1022.00,219.00
+             1022.00,219.00 1021.00,234.00 1021.00,234.00
+             1021.00,234.00 1021.00,603.00 1021.00,603.00
+             1020.98,614.52 1018.01,633.71 1011.07,642.99
+             1005.62,650.28 995.26,655.83 987.00,659.42
+             969.47,667.05 962.53,669.16 944.00,673.35
+             917.26,679.40 890.36,684.09 863.00,686.09
+             863.00,686.09 852.00,687.04 852.00,687.04
+             852.00,687.04 840.00,687.04 840.00,687.04
+             840.00,687.04 829.00,688.00 829.00,688.00
+             829.00,688.00 811.00,689.00 811.00,689.00
+             811.00,689.00 769.00,689.00 769.00,689.00
+             769.00,689.00 737.00,687.00 737.00,687.00
+             737.00,687.00 723.00,687.00 723.00,687.00
+             723.00,687.00 693.00,684.16 693.00,684.16
+             666.37,681.32 636.35,675.63 611.00,667.00
+             598.25,662.66 579.21,654.46 572.83,642.00
+             569.90,636.26 569.01,625.49 569.00,619.00
+             569.00,619.00 569.00,430.00 569.00,430.00
+             569.00,430.00 567.96,418.00 567.96,418.00
+             567.96,418.00 567.96,408.00 567.96,408.00
+             567.96,408.00 566.00,388.00 566.00,388.00
+             566.00,388.00 566.00,266.00 566.00,266.00
+             566.00,266.00 565.00,251.00 565.00,251.00
+             565.00,251.00 565.00,169.00 565.00,169.00
+             565.00,169.00 564.00,148.00 564.00,148.00
+             563.87,137.06 560.06,123.21 569.33,114.53
+             574.65,109.54 582.12,108.71 589.00,107.73
+             604.73,105.48 620.14,105.18 636.00,105.00
+             636.00,105.00 663.00,103.11 663.00,103.11 Z"
+      />
+    </svg>
+
+    <!-- fauteuilRouge -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="529.101mm"
+      height="529.101mm"
+      viewBox="0 0 2000 2000"
+      class="hidden"
+    >
+      <path
+        id="fauteuilRouge"
+        fill="none"
+        stroke="black"
+        stroke-width="1"
+        d="M 423.00,1480.00
+           C 419.26,1474.87 418.04,1474.86 414.25,1470.82
+             414.25,1470.82 402.78,1457.82 402.78,1457.82
+             398.22,1452.42 387.83,1436.45 384.65,1430.00
+             367.08,1394.37 360.59,1350.12 355.72,1311.00
+             355.72,1311.00 352.17,1281.00 352.17,1281.00
+             352.17,1281.00 350.91,1258.00 350.91,1258.00
+             350.91,1258.00 349.00,1236.00 349.00,1236.00
+             349.00,1236.00 348.00,1215.00 348.00,1215.00
+             348.00,1215.00 347.00,1194.00 347.00,1194.00
+             347.00,1194.00 346.00,1176.00 346.00,1176.00
+             346.00,1176.00 346.00,1161.00 346.00,1161.00
+             346.00,1161.00 345.00,1144.00 345.00,1144.00
+             345.00,1144.00 345.00,1121.00 345.00,1121.00
+             345.00,1121.00 344.00,1104.00 344.00,1104.00
+             344.00,1104.00 344.00,1077.00 344.00,1077.00
+             344.00,1077.00 343.11,1065.28 343.11,1065.28
+             343.11,1065.28 343.11,1041.00 343.11,1041.00
+             343.11,1041.00 342.00,1024.00 342.00,1024.00
+             342.00,1024.00 342.00,996.00 342.00,996.00
+             342.00,996.00 343.00,979.00 343.00,979.00
+             343.00,979.00 343.00,960.00 343.00,960.00
+             343.00,960.00 344.00,941.00 344.00,941.00
+             344.00,941.00 344.96,928.00 344.96,928.00
+             346.38,895.50 351.61,863.97 364.86,834.00
+             375.82,809.21 392.73,785.01 412.13,766.14
+             422.68,755.89 438.04,744.60 450.00,735.63
+             479.59,713.44 511.67,695.18 546.00,681.45
+             570.40,671.69 595.76,664.77 621.00,657.58
+             656.08,647.58 691.39,638.48 727.00,630.58
+             816.99,610.59 908.80,598.93 1001.00,600.00
+             1001.00,600.00 1015.00,601.00 1015.00,601.00
+             1015.00,601.00 1045.00,602.00 1045.00,602.00
+             1045.00,602.00 1055.00,602.91 1055.00,602.91
+             1055.00,602.91 1093.00,605.83 1093.00,605.83
+             1130.15,609.38 1167.14,613.38 1204.00,619.57
+             1281.59,632.58 1359.56,648.94 1433.00,677.80
+             1488.38,699.56 1548.89,734.89 1591.00,777.00
+             1610.74,796.74 1630.24,821.27 1641.56,847.00
+             1650.03,866.23 1653.63,887.17 1655.09,908.00
+             1655.09,908.00 1656.00,918.00 1656.00,918.00
+             1656.00,918.00 1657.00,939.00 1657.00,939.00
+             1657.00,939.00 1657.00,1000.00 1657.00,1000.00
+             1657.00,1000.00 1656.00,1016.00 1656.00,1016.00
+             1656.00,1016.00 1656.00,1044.00 1656.00,1044.00
+             1656.00,1044.00 1655.00,1059.00 1655.00,1059.00
+             1655.00,1059.00 1655.00,1080.00 1655.00,1080.00
+             1655.00,1080.00 1654.00,1095.00 1654.00,1095.00
+             1654.00,1095.00 1654.00,1112.00 1654.00,1112.00
+             1654.00,1112.00 1653.00,1124.00 1653.00,1124.00
+             1653.00,1124.00 1653.00,1133.00 1653.00,1133.00
+             1653.00,1133.00 1652.18,1140.00 1652.18,1140.00
+             1652.18,1140.00 1652.87,1148.00 1652.87,1148.00
+             1652.87,1148.00 1652.00,1161.00 1652.00,1161.00
+             1652.00,1161.00 1651.11,1177.00 1651.11,1177.00
+             1651.11,1177.00 1651.11,1185.00 1651.11,1185.00
+             1651.11,1185.00 1651.11,1193.00 1651.11,1193.00
+             1651.11,1193.00 1651.11,1209.00 1651.11,1209.00
+             1651.11,1209.00 1650.00,1220.00 1650.00,1220.00
+             1650.00,1220.00 1650.00,1224.00 1650.00,1224.00
+             1650.00,1224.00 1649.00,1242.00 1649.00,1242.00
+             1649.00,1242.00 1645.17,1277.00 1645.17,1277.00
+             1640.89,1321.02 1632.12,1361.22 1617.54,1403.00
+             1617.54,1403.00 1615.07,1411.00 1615.07,1411.00
+             1615.07,1411.00 1601.61,1439.00 1601.61,1439.00
+             1601.61,1439.00 1591.45,1455.58 1591.45,1455.58
+             1591.45,1455.58 1582.00,1468.00 1582.00,1468.00
+             1582.00,1468.00 1579.00,1467.00 1579.00,1467.00
+             1579.00,1467.00 1579.00,1472.00 1579.00,1472.00
+             1579.00,1472.00 1576.00,1471.00 1576.00,1471.00
+             1574.03,1478.54 1571.94,1477.34 1567.23,1482.73
+             1560.35,1490.60 1546.87,1503.49 1538.00,1508.79
+             1533.22,1511.65 1522.69,1515.70 1520.00,1520.00
+             1520.00,1520.00 1511.49,1525.23 1511.49,1525.23
+             1511.49,1525.23 1501.00,1531.00 1501.00,1531.00
+             1501.00,1531.00 1497.00,1530.00 1497.00,1530.00
+             1497.00,1530.00 1494.00,1535.00 1494.00,1535.00
+             1494.00,1535.00 1490.00,1535.00 1490.00,1535.00
+             1490.00,1535.00 1492.00,1535.00 1492.00,1535.00
+             1492.00,1535.00 1492.00,1536.00 1492.00,1536.00
+             1492.00,1536.00 1486.00,1536.00 1486.00,1536.00
+             1481.81,1541.61 1468.69,1543.94 1462.00,1545.91
+             1462.00,1545.91 1440.00,1553.33 1440.00,1553.33
+             1435.36,1554.29 1430.70,1553.95 1426.00,1554.00
+             1419.86,1554.08 1418.40,1555.01 1413.00,1555.86
+             1413.00,1555.86 1402.00,1555.86 1402.00,1555.86
+             1402.00,1555.86 1403.00,1558.00 1403.00,1558.00
+             1400.20,1558.00 1396.17,1557.08 1395.00,1560.00
+             1395.00,1560.00 1360.00,1565.68 1360.00,1565.68
+             1360.00,1565.68 1341.00,1568.26 1341.00,1568.26
+             1341.00,1568.26 1326.00,1571.90 1326.00,1571.90
+             1326.00,1571.90 1316.00,1571.90 1316.00,1571.90
+             1316.00,1571.90 1309.00,1573.74 1309.00,1573.74
+             1309.00,1573.74 1302.00,1574.32 1302.00,1574.32
+             1302.00,1574.32 1290.17,1576.46 1290.17,1576.46
+             1290.17,1576.46 1285.83,1578.01 1285.83,1578.01
+             1285.83,1578.01 1277.00,1578.01 1277.00,1578.01
+             1277.00,1578.01 1271.00,1579.97 1271.00,1579.97
+             1271.00,1579.97 1264.00,1579.97 1264.00,1579.97
+             1264.00,1579.97 1248.00,1582.00 1248.00,1582.00
+             1248.00,1582.00 1236.00,1583.99 1236.00,1583.99
+             1236.00,1583.99 1227.00,1583.99 1227.00,1583.99
+             1227.00,1583.99 1218.00,1586.00 1218.00,1586.00
+             1218.00,1586.00 1208.00,1586.00 1208.00,1586.00
+             1208.00,1586.00 1198.00,1587.92 1198.00,1587.92
+             1198.00,1587.92 1179.00,1587.92 1179.00,1587.92
+             1179.00,1587.92 1161.00,1590.00 1161.00,1590.00
+             1161.00,1590.00 1143.00,1590.00 1143.00,1590.00
+             1143.00,1590.00 1124.00,1592.00 1124.00,1592.00
+             1124.00,1592.00 1049.00,1592.00 1049.00,1592.00
+             1049.00,1592.00 1032.00,1594.00 1032.00,1594.00
+             1032.00,1594.00 1001.00,1594.00 1001.00,1594.00
+             1001.00,1594.00 983.00,1592.00 983.00,1592.00
+             983.00,1592.00 932.00,1592.00 932.00,1592.00
+             932.00,1592.00 906.00,1590.00 906.00,1590.00
+             906.00,1590.00 888.00,1590.00 888.00,1590.00
+             888.00,1590.00 871.00,1588.00 871.00,1588.00
+             871.00,1588.00 854.00,1588.00 854.00,1588.00
+             854.00,1588.00 834.00,1586.00 834.00,1586.00
+             834.00,1586.00 812.00,1584.04 812.00,1584.04
+             812.00,1584.04 798.00,1584.04 798.00,1584.04
+             798.00,1584.04 779.00,1581.91 779.00,1581.91
+             779.00,1581.91 770.00,1581.91 770.00,1581.91
+             770.00,1581.91 758.00,1580.00 758.00,1580.00
+             758.00,1580.00 743.00,1578.06 743.00,1578.06
+             743.00,1578.06 735.00,1578.06 735.00,1578.06
+             735.00,1578.06 728.00,1576.26 728.00,1576.26
+             728.00,1576.26 722.00,1575.70 722.00,1575.70
+             722.00,1575.70 714.00,1573.96 714.00,1573.96
+             714.00,1573.96 707.00,1573.96 707.00,1573.96
+             707.00,1573.96 700.00,1572.13 700.00,1572.13
+             700.00,1572.13 688.00,1570.84 688.00,1570.84
+             688.00,1570.84 668.91,1566.26 668.91,1566.26
+             668.91,1566.26 661.00,1565.68 661.00,1565.68
+             661.00,1565.68 643.00,1562.04 643.00,1562.04
+             643.00,1562.04 636.00,1562.04 636.00,1562.04
+             636.00,1562.04 623.00,1560.00 623.00,1560.00
+             623.00,1560.00 624.00,1557.77 624.00,1557.77
+             620.60,1558.00 615.14,1558.22 612.00,1557.77
+             612.00,1557.77 606.00,1555.98 606.00,1555.98
+             606.00,1555.98 598.00,1555.98 598.00,1555.98
+             591.24,1555.18 577.23,1553.41 571.00,1551.71
+             571.00,1551.71 556.00,1545.62 556.00,1545.62
+             556.00,1545.62 531.00,1541.23 531.00,1541.23
+             522.16,1538.57 514.28,1534.01 506.00,1530.12
+             506.00,1530.12 489.17,1523.13 489.17,1523.13
+             489.17,1523.13 477.84,1516.03 477.84,1516.03
+             477.84,1516.03 449.00,1499.02 449.00,1499.02
+             444.48,1495.91 439.56,1493.53 438.00,1488.00
+             432.98,1487.61 427.44,1483.33 425.00,1479.00
+             425.00,1479.00 423.00,1480.00 423.00,1480.00 Z
+           M 1579.00,1466.00
+           C 1579.00,1466.00 1578.00,1466.00 1578.00,1466.00
+             1578.00,1466.00 1579.00,1467.00 1579.00,1467.00
+             1579.00,1467.00 1579.00,1466.00 1579.00,1466.00 Z
+           M 1578.00,1469.00
+           C 1578.00,1469.00 1577.00,1469.00 1577.00,1469.00
+             1577.00,1469.00 1578.00,1470.00 1578.00,1470.00
+             1578.00,1470.00 1578.00,1469.00 1578.00,1469.00 Z
+           M 1510.00,1524.00
+           C 1510.00,1524.00 1509.00,1524.00 1509.00,1524.00
+             1509.00,1524.00 1510.00,1525.00 1510.00,1525.00
+             1510.00,1525.00 1510.00,1524.00 1510.00,1524.00 Z"
+      />
+    </svg>
+
+    <!-- lampeRouge -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="331.57mm"
+      height="422.222mm"
+      viewBox="0 0 940 1197"
+      class="hidden"
+    >
+      <path
+        id="lampeRouge"
+        fill="none"
+        stroke="black"
+        stroke-width="1"
+        d="M 425.00,176.14
+           C 425.00,176.14 457.00,176.14 457.00,176.14
+             457.00,176.14 514.00,176.14 514.00,176.14
+             514.00,176.14 541.00,177.91 541.00,177.91
+             554.92,178.86 569.04,178.77 582.00,184.89
+             589.92,188.62 598.98,196.98 606.00,202.60
+             606.00,202.60 657.00,244.12 657.00,244.12
+             674.18,256.78 692.38,269.54 708.00,284.09
+             714.07,289.74 722.29,297.93 717.55,306.96
+             712.37,316.82 689.29,319.39 679.00,321.08
+             679.00,321.08 634.00,326.83 634.00,326.83
+             634.00,326.83 615.00,328.17 615.00,328.17
+             615.00,328.17 593.00,330.00 593.00,330.00
+             593.00,330.00 562.00,332.00 562.00,332.00
+             550.36,332.13 533.33,331.58 525.65,342.04
+             520.79,348.65 520.49,358.14 519.91,366.00
+             519.91,366.00 516.84,396.00 516.84,396.00
+             516.84,396.00 513.17,427.00 513.17,427.00
+             513.17,427.00 511.83,446.00 511.83,446.00
+             511.83,446.00 510.00,469.00 510.00,469.00
+             510.00,469.00 510.00,545.00 510.00,545.00
+             510.00,545.00 512.00,575.00 512.00,575.00
+             512.00,575.00 512.00,595.00 512.00,595.00
+             512.00,595.00 512.91,607.00 512.91,607.00
+             512.91,607.00 517.84,654.00 517.84,654.00
+             517.84,654.00 532.58,762.00 532.58,762.00
+             532.58,762.00 565.25,964.00 565.25,964.00
+             565.25,964.00 584.42,1075.00 584.42,1075.00
+             584.42,1075.00 594.00,1134.00 594.00,1134.00
+             594.06,1139.83 594.06,1144.43 591.88,1150.00
+             588.64,1158.29 581.21,1164.81 574.00,1169.64
+             557.51,1180.70 531.56,1184.82 512.00,1187.15
+             512.00,1187.15 491.00,1189.00 491.00,1189.00
+             491.00,1189.00 437.00,1189.00 437.00,1189.00
+             422.81,1188.98 398.62,1183.21 385.00,1178.67
+             369.98,1173.66 353.27,1166.09 347.55,1150.00
+             345.69,1144.78 345.94,1139.46 346.00,1134.00
+             346.00,1134.00 355.58,1075.00 355.58,1075.00
+             355.58,1075.00 366.58,1008.00 366.58,1008.00
+             366.58,1008.00 370.43,980.00 370.43,980.00
+             370.43,980.00 377.58,939.00 377.58,939.00
+             390.23,857.48 403.36,775.93 413.15,694.00
+             413.15,694.00 424.00,602.00 424.00,602.00
+             424.00,602.00 425.09,575.00 425.09,575.00
+             425.09,575.00 426.00,563.00 426.00,563.00
+             426.00,563.00 426.00,487.00 426.00,487.00
+             426.00,487.00 424.00,464.00 424.00,464.00
+             424.00,464.00 424.00,455.00 424.00,455.00
+             424.00,455.00 421.83,433.00 421.83,433.00
+             421.83,433.00 415.15,382.00 415.15,382.00
+             413.77,370.42 411.90,347.06 402.91,339.39
+             396.01,333.51 388.26,334.32 380.00,333.96
+             380.00,333.96 358.00,332.04 358.00,332.04
+             358.00,332.04 344.00,332.04 344.00,332.04
+             344.00,332.04 321.00,330.09 321.00,330.09
+             290.39,327.99 272.39,326.28 242.00,320.20
+             232.60,318.32 212.37,316.69 212.20,304.00
+             212.09,296.68 218.91,291.03 224.00,286.75
+             224.00,286.75 260.00,255.80 260.00,255.80
+             260.00,255.80 294.00,228.42 294.00,228.42
+             294.00,228.42 322.00,207.35 322.00,207.35
+             331.92,199.67 344.52,187.80 356.00,183.70
+             377.06,176.17 403.07,179.54 425.00,176.14 Z"
       />
     </svg>
 
@@ -309,12 +626,6 @@
     </div>
   </div>
 </template>
-<style lang="scss" scoped>
-// .content {
-//   // overflow: hidden;
-//   /* Hide scrollbars */
-// }
-</style>
 
 <style>
 canvas {
@@ -325,12 +636,6 @@ canvas {
 <script async>
 import decomp from "poly-decomp";
 import "pathseg";
-
-const gifFrames = [
-  "/images/gif/frame_0.gif",
-  "/images/gif/frame_1.gif",
-  "/images/gif/frame_2.gif",
-];
 
 function dragElement(element, dragHandle) {
   var pos1 = 0,
@@ -373,7 +678,6 @@ export default {
       currentFrame: 0,
       // maxFrame: gifFrames.length - 1,
       frameInterval: 5000, // Interval in ms for changing frames
-      frameTimer: 0, // A timer for frame changes
       book: null,
       currentPage: 1,
       totalPages: 3,
@@ -382,15 +686,6 @@ export default {
         "/images/gif/frame_1.gif",
         "/images/gif/frame_2.gif",
       ],
-      handbagPhysics: null,
-      game: null,
-      furtherGifbody: null,
-      initialGifBody: null,
-      velocity: {},
-      position: {
-        x: 0,
-        y: 0,
-      },
     };
   },
   mounted() {
@@ -406,18 +701,12 @@ export default {
           const MouseConstraint = Matter.MouseConstraint;
           const Runner = Matter.Runner;
           const Composite = Matter.Composite;
-          // const Composites = Matter.Composites;
-          const Vertices = Matter.Vertices;
-          const Common = Matter.Common;
           const Events = Matter.Events;
           const Body = Matter.Body;
           const Constraint = Matter.Constraint;
-          const Svg = Matter.Svg;
 
           let drawhereWidth = this.$refs.drawhere.offsetWidth;
           let drawhereHeight = this.$refs.drawhere.offsetHeight;
-
-          console.log(drawhereHeight, drawhereWidth);
 
           window.decomp = decomp;
           const width = drawhereWidth;
@@ -544,166 +833,129 @@ export default {
                 y: 1,
               },
             },
-            // poufRouge: {
-            //   body: {
-            // position: {
-            //   x: 0,
-            //   y: 0,
-            // },
-            // velocity: {
-            //   x: 0,
-            //   y: 0,
-            // },
-            //     scaleFactor: 0.25,
-            //   },
-            //   sprite: {
-            //     xScale: 0.25,
-            //     yScale: 0.25,
-            //     image: "./images/poufRouge.png",
-            //   },
-            //   constraint: {
-            //       x: 5,
-            //       y: -4,
-            //     },
-            // },
-            // lampeRouge: {
-            //   body: {
-            // position: {
-            //   x: 0,
-            //   y: 0,
-            // },
-            // velocity: {
-            //   x: 0,
-            //   y: 0,
-            // },
-            //     scaleFactor: 0.25,
-            //   },
-            //   sprite: {
-            //     xScale: 0.25,
-            //     yScale: 0.25,
-            //     image: "./images/lampeRouge.png",
-            //   },
-            //   constraint: {
-            //       x: 5,
-            //       y: -4,
-            //     },
-            // },
-            // placardRouge: {
-            //   body: {
-            // position: {
-            //   x: 0,
-            //   y: 0,
-            // },
-            // velocity: {
-            //   x: 0,
-            //   y: 0,
-            // },
-            //     scaleFactor: 0.25,
-            //   },
-            //   sprite: {
-            //     xScale: 0.25,
-            //     yScale: 0.25,
-            //     image: "./images/placardRouge.png",
-            //   },
-            //   constraint: {
-            //       x: 5,
-            //       y: -4,
-            //     },
-            // },
+            fauteuilRouge: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: -0.04,
+                scaleFactor: 1.1,
+              },
+              sprite: {
+                xScale: 0.25,
+                yScale: 0.25,
+                image: "./images/fauteuilRouge.png",
+              },
+              constraint: {
+                x: 0,
+                y: 30,
+              },
+            },
+            lampeRouge: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: -0.04,
+                scaleFactor: 1.1,
+              },
+              sprite: {
+                xScale: 0.25,
+                yScale: 0.25,
+                image: "./images/lampeRouge.png",
+              },
+              constraint: {
+                x: 0,
+                y: 15,
+              },
+            },
+            tableRouge: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: -0.04,
+                scaleFactor: 1.1,
+              },
+              sprite: {
+                xScale: 0.25,
+                yScale: 0.25,
+                image: "./images/tableRouge.png",
+              },
+              constraint: {
+                x: -1,
+                y: -4,
+              },
+            },
           };
 
-          function CreateBody(key, render = false) {
-            return new Promise((resolve, reject) => {
-              const path = document.querySelector(`#${key}`);
-              let vertices = Svg.pathToVertices(path);
-              let scaleFactor = meubles[key].body.scaleFactor;
-              vertices = Vertices.scale(vertices, scaleFactor, scaleFactor);
+          const worker = new Worker(
+            new URL("/workers/tableau.js", import.meta.url),
+            { type: "module" }
+          );
+          // import MyWorker from '@/assets/workers/workerVite?worker'
 
-              // On peut s'amuser à faire un algo, qui à chaque pop d'objet calcul d'espacer assez des bordures, mais aussi de trouver un endroit où il n'y a pas encore d'objet pour éviter des collisions et donc de changer l'angle d'un objet
-              const positionX = meubles[key].body.position.x;
-              const positionY = meubles[key].body.position.y;
-              console.log("positionX", positionX);
-              console.log("positionY", positionY);
-              let body = Bodies.fromVertices(positionX, positionY, [vertices], {
-                render: {
-                  visible: false,
-                },
-              });
-
-              Body.setAngle(body, meubles[key].body.angle);
-
-              // Create a separate to put the image on
-              let spriteBody = Bodies.rectangle(
-                body.bounds.min.x,
-                body.bounds.min.y,
-                body.bounds.max.x,
-                body.bounds.max.y,
-                {
-                  collisionFilter: {
-                    mask: 0,
-                  },
-                  render: {
-                    opacity: 1,
-                    sprite: {
-                      texture: meubles[key].sprite.image,
-                      xScale: meubles[key].sprite.xScale,
-                      yScale: meubles[key].sprite.yScale,
-                      xOffset: 0,
-                      yOffset: 0,
-                    },
-                  },
-                }
-              );
-              
-              // Constrain the sprite body to the SVG body
-              let constraint = Constraint.create({
-                bodyA: body,
-                bodyB: spriteBody,
-                stiffness: 1,
-                length: 0,
-                pointB: {
-                  x: meubles[key].constraint.x,
-                  y: meubles[key].constraint.y,
-                },
-                render: {
-                  visible: false, // Hide the circle in the middle
-                },
-              });
-
-              Events.on(engine, "beforeUpdate", function (event) {
-                // Set the angle of the spriteBody to the angle of the body
-                Body.setAngle(spriteBody, body.angle);
-              });
-
-              console.log(render);
-              // Add the bodies and constraint to the world
-              if (render) {
-                Composite.add(world, [body, spriteBody, constraint]);
-              }
-
-              resolve({ body, spriteBody, constraint });
-
-              reject("error");
-            });
-          }
-
+          const uniqueBody = { sacBleu, monin, timur, bourges2024 };
           function createsUniqueBody() {
-            for (let key in meubles) {
-              CreateBody(key, true);
+            const forMainThread = true;
+            for (let key in uniqueBody) {
+              worker.postMessage({
+                functionName: "createBody",
+                args: [key, meubles, forMainThread],
+              });
             }
           }
 
           createsUniqueBody();
 
+
+          worker.onmessage = function (event) {
+            const { functionName, args } = event.data;
+
+            console.log(event.data);
+
+            if (functionName === "createBody") {
+              const [body, spriteBody, constraint] = args;
+              // TODO: La frequence de rafraichissement de la physique est trop lente, ce qui fait que les objets ne sont pas dans le même axe
+              Events.on(engine, "beforeUpdate", function (event) {
+                // Set the angle of the spriteBody to the angle of the body
+                Body.setAngle(spriteBody, body.angle);
+              });
+
+              Composite.add(world, [body, spriteBody, constraint]);
+            } 
+
+            // Render the world
+            Render.run(render);
+          };
+
           var mouse = Mouse.create(render.canvas),
-          mouseConstraint = MouseConstraint.create(engine, {
-            mouse: mouse,
-            constraint: {
-              render: {
-                visible: false,
+            mouseConstraint = MouseConstraint.create(engine, {
+              mouse: mouse,
+              constraint: {
+                render: {
+                  visible: false,
+                },
               },
-            },
-          });
+            });
 
           // Allow to scoll on the canvas
           mouseConstraint.mouse.element.removeEventListener(
@@ -720,46 +972,115 @@ export default {
           // keep the mouse in sync with rendering
           render.mouse = mouse;
 
-          const gifObjects = ["bourges2024", "timur", "sacBleu"];
+          const gifObjects = ["fauteuilRouge", "lampeRouge", "tableRouge"];
+
+          async function CreateBodyFromJSON(key) {
+            // Fetch the file from the public folder
+            const response = await fetch(`/images/${key}.json`);
+            if (!response.ok) {
+              console.error(`Error fetching file: ${response.statusText}`);
+              return;
+            }
+            const fileContent = await response.json();
+
+            const positionX = meubles[key].body.position.x;
+            const positionY = meubles[key].body.position.y;
+            let body = Bodies.fromVertices(
+              positionX,
+              positionY,
+              [fileContent],
+              {
+                render: {
+                  visible: false,
+                },
+              }
+            );
+
+            Body.setAngle(body, meubles[key].body.angle);
+
+            console.log(body.bounds.min.x,
+              body.bounds.min.y,
+              body.bounds.max.x,
+              body.bounds.max.y,);
+            let spriteBody = Bodies.rectangle(
+              body.bounds.min.x,
+              body.bounds.min.y,
+              body.bounds.max.x,
+              body.bounds.max.y,
+              {
+                collisionFilter: {
+                  mask: 0,
+                },
+                render: {
+                  opacity: 1,
+                  sprite: {
+                    texture: meubles[key].sprite.image,
+                    // xScale: meubles[key].sprite.xScale,
+                    // yScale: meubles[key].sprite.yScale,
+                    xScale: 1,
+                    yScale: 1,
+                    xOffset: 0,
+                    yOffset: 0,
+                  },
+                },
+              }
+            );
+
+            let constraint = Constraint.create({
+              bodyA: body,
+              bodyB: spriteBody,
+              stiffness: 1,
+              length: 0,
+              pointB: {
+                x: meubles[key].constraint.x,
+                y: meubles[key].constraint.y,
+              },
+              render: {
+                visible: false,
+              },
+            });
+
+
+            Events.on(engine, "beforeUpdate", function (event) {
+              // Set the angle of the spriteBody to the angle of the body
+              Body.setAngle(spriteBody, body.angle);
+            });
+
+            return { body, spriteBody, constraint };
+          }
 
           async function animateGif() {
             // Preload bodies for all frames
-            const preloadedBodies = await Promise.all(gifObjects.map(key => CreateBody(key, false)));
+            const preloadedBodies = await Promise.all(
+              gifObjects.map((key) => CreateBodyFromJSON(key))
+            );
 
             let currentFrame = 0;
             let initialGifBody = preloadedBodies[currentFrame];
-            console.log(initialGifBody);
-            
 
             setInterval(() => {
               // If there's a body from the last frame, remove it
-              var oldConstraint = initialGifBody.constraint;
               if (initialGifBody) {
-
-
                 // Increment the frame
                 let nextFrame = (currentFrame + 1) % gifObjects.length;
 
-                // meubles[gifObjects[nextFrame]].body.velocity.x = initialGifBody.body.velocity.x;
-                // meubles[gifObjects[nextFrame]].body.velocity.y = initialGifBody.body.velocity.y;
-
                 var speed = Body.getVelocity(initialGifBody.body);
-                console.log(speed);
 
-                meubles[gifObjects[nextFrame]].body.position.x = initialGifBody.body.position.x;
-                meubles[gifObjects[nextFrame]].body.position.y = initialGifBody.body.position.y;
+                meubles[gifObjects[nextFrame]].body.position.x =
+                  initialGifBody.body.position.x;
+                meubles[gifObjects[nextFrame]].body.position.y =
+                  initialGifBody.body.position.y;
 
                 Body.setVelocity(initialGifBody.body, 0);
                 Body.setVelocity(initialGifBody.spriteBody, 0);
 
                 Composite.remove(world, initialGifBody.body, true);
                 Composite.remove(world, initialGifBody.spriteBody, true);
-                // Composite.remove(world, initialGifBody.constraint, true);
+                Composite.remove(world, initialGifBody.constraint, true);
               }
 
               currentFrame = (currentFrame + 1) % gifObjects.length;
 
-              
               // Get the preloaded body for the next frame
               initialGifBody = preloadedBodies[currentFrame];
 
@@ -772,86 +1093,15 @@ export default {
               Body.setVelocity(initialGifBody.spriteBody, speed);
 
               // Add the body to the world
-              Composite.add(world, [initialGifBody.body, initialGifBody.spriteBody, initialGifBody.constraint]);
-
+              Composite.add(world, [
+                initialGifBody.body,
+                initialGifBody.spriteBody,
+                initialGifBody.constraint,
+              ]);
             }, 3000);
           }
 
           animateGif();
-
-          // Add an event to change the frame on each interval
-          this.updateInterval = setInterval(async () => {
-            if (this.initialGifBody === null) {
-              // this.initialGifBody = await CreateBody("bourges2024");
-              // console.log("premier");
-              // console.log(this.initialGifBody);
-              // var velocity = {
-              //   x: this.initialGifBody.velocity.x,
-              //   y: this.initialGifBody.velocity.y,
-              // };
-              // var position = {
-              //   x: this.initialGifBody.position.x,
-              //   y: this.initialGifBody.position.y,
-              // };
-              // Composite.remove(world, this.initialGifBody);
-            } else {
-              // console.log(this.furtherGifbody);
-              // var velocity = {
-              //   x: this.furtherGifbody.velocity.x,
-              //   y: this.furtherGifbody.velocity.y,
-              // };
-              // var position = {
-              //   x: this.furtherGifbody.position.x,
-              //   y: this.furtherGifbody.position.y,
-              // };
-              // Composite.remove(world, this.furtherGifbody);
-            }
-
-            // this.furtherGifbody = await CreateBody(gifObjects[this.currentFrame]);
-            // console.log(this.furtherGifbody);
-            // Body.setVelocity(this.furtherGifbody, velocity);
-            // Body.setPosition(this.furtherGifbody, position);
-            // Composite.add(world, this.furtherGifbody);
-            // this.currentFrame = (this.currentFrame + 1) % gifFrames.length;
-            // updateTexture(gifObject);
-          }, this.frameInterval);
-
-          var gifObject = Bodies.rectangle(
-            Math.random() * width,
-            Math.random() * height,
-            200,
-            200,
-            {
-              angle: 0 * (Math.PI / 180),
-              render: {
-                sprite: {
-                  texture: gifFrames[this.currentFrame],
-                  xScale: 200 / 800, // calculez l'échelle appropriée
-                  yScale: 200 / 800,
-                },
-              },
-            }
-          );
-
-          const updateTexture = () => {
-            const position = {
-              x: gifObject.position.x,
-              y: gifObject.position.y,
-            };
-            console.log(gifObject.velocity);
-            Composite.remove(world, gifObject);
-            gifObject = Bodies.rectangle(position.x, position.y, 200, 200, {
-              angle: 0 * (Math.PI / 180),
-              render: {
-                sprite: {
-                  texture: gifFrames[this.currentFrame],
-                  xScale: 200 / 800, // calculez l'échelle appropriée
-                  yScale: 200 / 800,
-                },
-              },
-            });
-            Composite.add(world, gifObject);
-          };
 
           const offset = this.canvasProp.wallWidth;
           const options = {
@@ -891,14 +1141,6 @@ export default {
               options
             ), // Sol
           ]);
-
-          
-
-          // fit the render viewport to the scene
-          // Render.lookAt(render, {
-          //   min: { x: 0, y: 0 },
-          //   max: { x: width, y: height },
-          // });
 
           // run the engine
           Runner.run(engine);
