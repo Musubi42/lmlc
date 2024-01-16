@@ -210,17 +210,16 @@ export default {
       this.APIStreamAudioBaseUrl = runtimeConfig.public.APIStreamAudioBaseUrl;
     },
     async getPlaylistMetadata() {
-      // const response = await fetch(`${this.APIStreamAudioBaseUrl}/playlistMetadata/`);
+      try {
+        const response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata/`);
+        this.playlistMetadataKeys = Object.keys(response.data);
+        this.playlistMetadata = response.data;
 
-      const response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata/`);
-      // const response = await axios.get(
-      //   `https://lmlc-communication-git-preprod-musubi42s-projects.vercel.app/api/playlistMetadata/`
-      // );
-      this.playlistMetadataKeys = Object.keys(response.data);
-      this.playlistMetadata = response.data;
-
-      this.trackID = this.playlistMetadataKeys[0];
-      this.playlistLenght = this.playlistMetadataKeys.length;
+        this.trackID = this.playlistMetadataKeys[0];
+        this.playlistLenght = this.playlistMetadataKeys.length;
+      } catch (error) {
+        console.error(error);
+      }
     },
 
     async loadAndPlayAudio(trackID) {

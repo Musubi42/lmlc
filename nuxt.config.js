@@ -30,6 +30,16 @@ export default defineNuxtConfig({
   // router: {
   //   middleware: 'maintenance'
   // },
+  // Global
+  security: {
+    corsHandler: {
+      origin: '*',
+      methods: '*',
+      allowHeaders: '*',
+      exposeHeaders: '*',
+      credentials: true,
+    }
+  },
   components: true,
   css: ["~/assets/css/main.css"],
   postcss: {
