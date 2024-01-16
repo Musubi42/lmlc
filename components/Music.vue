@@ -1,9 +1,10 @@
 <template>
   <div class="h-16 flex">
-    <div class="flex flex-1 justify-between"> 
+    <div class="flex flex-1 justify-between">
       <!-- Infos sur le son -->
       <div
-        class="flex flex-row gap-4 ml-4 mr-4 content-start center-content items-center">
+        class="flex flex-row gap-4 ml-4 mr-4 content-start center-content items-center"
+      >
         <img
           class="h-4/5 aspect-square flex mix-blend-difference"
           :src="songMetadata ? songMetadata.thumbnail : ''"
@@ -22,10 +23,15 @@
           class="video-item flex flex-row items-center mb-4 cursor-pointer text-sm"
           @click="loadAndPlayAudio(index)"
         >
-          <img class="h-16 w-16 object-cover mix-blend-difference" :src="song.thumbnail" />
+          <img
+            class="h-16 w-16 object-cover mix-blend-difference"
+            :src="song.thumbnail"
+          />
           <div class="ml-4 max-w-24">
             <p class="font-medium">{{ song.author }}</p>
-            <p class="text-ellipsis overflow-hidden whitespace-nowrap">{{ song.title }}</p>
+            <p class="text-ellipsis overflow-hidden whitespace-nowrap">
+              {{ song.title }}
+            </p>
           </div>
         </div>
       </div>
@@ -65,7 +71,7 @@
           type="range"
           class="rounded-full ml-2"
           min="0"
-          :max='songMetadata ? songMetadata.duration : 0'
+          :max="songMetadata ? songMetadata.duration : 0"
           v-model="currentTime"
           @input="changeTime"
         />
@@ -170,7 +176,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      APIStreamAudioBaseUrl: '',
+      APIStreamAudioBaseUrl: "",
       trackID: "",
       playlistMetadata: [],
       playlistMetadataKeys: [],
@@ -188,7 +194,7 @@ export default {
       duration: 200,
       spotifyPlayer: null, // Instance du Web Playback SDK
       deviceId: null, // ID du dispositif pour le SDK
-      spotifyToken: 'votre-token-daccès-spotify', // Token d'accès OAuth
+      spotifyToken: "votre-token-daccès-spotify", // Token d'accès OAuth
     };
   },
   watch: {
@@ -206,11 +212,13 @@ export default {
     async getPlaylistMetadata() {
       // const response = await fetch(`${this.APIStreamAudioBaseUrl}/playlistMetadata/`);
 
-      // const response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata/`);
-      const response = await axios.get(`https://lmlc-communication-git-preprod-musubi42s-projects.vercel.app/api/playlistMetadata/`);
+      const response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata/`);
+      // const response = await axios.get(
+      //   `https://lmlc-communication-git-preprod-musubi42s-projects.vercel.app/api/playlistMetadata/`
+      // );
       this.playlistMetadataKeys = Object.keys(response.data);
       this.playlistMetadata = response.data;
-      
+
       this.trackID = this.playlistMetadataKeys[0];
       this.playlistLenght = this.playlistMetadataKeys.length;
     },
@@ -219,8 +227,10 @@ export default {
       try {
         this.isLoading = true;
 
-        // const audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/audio/${trackID}`);
-        const audioResponse = await fetch(`https://lmlc-communication-git-preprod-musubi42s-projects.vercel.app/api/music/${trackID}`);
+        const audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/music/${trackID}`);
+        // const audioResponse = await fetch(
+        //   `https://lmlc-communication-git-preprod-musubi42s-projects.vercel.app/api/music/${trackID}`
+        // );
         const blob = await audioResponse.blob();
         this.audioSource = new Audio(URL.createObjectURL(blob));
         this.audioSource.volume = this.volume / 100;
@@ -235,7 +245,7 @@ export default {
         this.isPlaying = true;
       } catch (error) {
         this.isLoading = false;
-        console.error('An error occurred:', error);
+        console.error("An error occurred:", error);
         // TODO: Handle the error as you see fit
       }
     },
@@ -260,7 +270,8 @@ export default {
     },
 
     async playNextSong() {
-      const nextTrackPosition = (this.playlistMetadataKeys.indexOf(this.trackID) + 1) % this.playlistLenght; 
+      const nextTrackPosition =
+        (this.playlistMetadataKeys.indexOf(this.trackID) + 1) % this.playlistLenght;
       const nextTrackID = this.playlistMetadataKeys[nextTrackPosition];
       this.loadMetaData(nextTrackID);
       this.audioSource.pause();
@@ -272,8 +283,12 @@ export default {
     },
 
     async playPreviousSong() {
-      const previousTrackPosition = (this.playlistMetadataKeys.indexOf(this.trackID) - 1) % this.playlistLenght;
-      const previousTrackID = (previousTrackPosition < 0) ? this.playlistMetadataKeys[this.playlistLenght - 1] : this.playlistMetadataKeys[previousTrackPosition];
+      const previousTrackPosition =
+        (this.playlistMetadataKeys.indexOf(this.trackID) - 1) % this.playlistLenght;
+      const previousTrackID =
+        previousTrackPosition < 0
+          ? this.playlistMetadataKeys[this.playlistLenght - 1]
+          : this.playlistMetadataKeys[previousTrackPosition];
       this.loadMetaData(previousTrackID);
       this.audioSource.pause();
       this.audioSource = null;
@@ -319,7 +334,6 @@ export default {
     this.$refs.audioRef.ontimeupdate = () => {
       this.currentTime = this.$refs.audioRef.currentTime;
     };
-
   },
   async created() {
     // TODO: Faire une petite gestion d'erreur

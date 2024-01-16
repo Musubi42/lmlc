@@ -7,8 +7,8 @@ export default defineNuxtConfig({
       MAINTENANCE: process.env.MAINTENANCE,
       APIStreamAudioBaseUrl:
         process.env.NODE_ENV === "development"
-          ? "http://localhost:3001"
-          : "https://stream.lmlc.musubi.dev",
+          ? "http://localhost:3000/api"
+          : "https://lmlc-communication-git-preprod-musubi42s-projects.vercel.app/api",
     },
   },
   env: {

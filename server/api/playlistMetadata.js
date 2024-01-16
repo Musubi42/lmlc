@@ -4,16 +4,25 @@ import { readFile } from 'fs/promises';
 
 export default defineEventHandler(async (event) => {
   try {
+
+    event.res.setHeader('Access-Control-Allow-Credentials', true)
+    event.res.setHeader('Access-Control-Allow-Origin', '*')
+    // another common pattern
+    // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+    event.res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+    event.res.setHeader(
+      'Access-Control-Allow-Headers',
+      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    )
+    if (event.req.method === 'OPTIONS') {
+      event.res.status(200).end()
+      return
+    }
     // Read the JSON file
     const data = await readFile('public/playlistMetadata.json', 'utf8');
 
     // Parse the JSON string to an object
     const metadata = JSON.parse(data);
-
-    // Set CORS headers
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
     // Send the metadata in the response
     return metadata;
