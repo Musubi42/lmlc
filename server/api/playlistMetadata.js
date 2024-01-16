@@ -19,7 +19,8 @@ export default defineEventHandler(async (event) => {
       return
     }
     // Read the JSON file
-    const data = await readFile('public/playlistMetadata.json', 'utf8');
+    const filePath = path.join(process.cwd(), 'vercelFiles', 'playlistMetadata.json');
+    const data = await readFile(filePath, 'utf8');
 
     // Parse the JSON string to an object
     const metadata = JSON.parse(data);
