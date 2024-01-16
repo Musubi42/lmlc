@@ -1,6 +1,7 @@
 // In server/api/playlistMetadata.js
 
 import { readFile } from 'fs/promises';
+import path from 'path';
 
 export default defineEventHandler(async (event) => {
   try {
