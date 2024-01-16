@@ -10,6 +10,11 @@ export default defineEventHandler(async (event) => {
     // Parse the JSON string to an object
     const metadata = JSON.parse(data);
 
+    // Set CORS headers
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
     // Send the metadata in the response
     return metadata;
   } catch (err) {
