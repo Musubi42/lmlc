@@ -211,6 +211,7 @@ export default {
     },
     async getPlaylistMetadata() {
       try {
+        console.log(this.APIStreamAudioBaseUrl);
         const response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata/`);
         this.playlistMetadataKeys = Object.keys(response.data);
         this.playlistMetadata = response.data;

@@ -4,6 +4,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "NODE_ENV=dev nuxt dev",
+    "prod": "NODE_ENV=prod nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"

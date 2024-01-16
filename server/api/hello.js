@@ -1,3 +1,7 @@
-module.exports = (req, res) => {
-  res.status(200).json({ message: 'Hello, World!' });
-};
+export default defineEventHandler(async (event) => {
+  return {
+    body: {
+      message: "Hello World",
+    },
+  }
+});
