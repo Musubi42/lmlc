@@ -211,7 +211,8 @@ export default {
     },
     async getPlaylistMetadata() {
       try {
-        const response = await axios.get(`${this.APIStreamAudioBaseUrl}/api/playlistMetadata/`);
+        https://hoqkaarkmynimv8r.public.blob.vercel-storage.com/playlistMetadata.json
+        const response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata.json`);
 
         this.playlistMetadataKeys = Object.keys(response.data);
         this.playlistMetadata = response.data;
@@ -226,8 +227,7 @@ export default {
     async loadAndPlayAudio(trackID) {
       try {
         this.isLoading = true;
-
-        const audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/api/music/${trackID}`);
+        const audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/${trackID}.mp3`);
         
         const blob = await audioResponse.blob();
         this.audioSource = new Audio(URL.createObjectURL(blob));
