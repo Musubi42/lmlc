@@ -211,7 +211,6 @@ export default {
     },
     async getPlaylistMetadata() {
       try {
-        https://hoqkaarkmynimv8r.public.blob.vercel-storage.com/playlistMetadata.json
         const response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata.json`);
 
         this.playlistMetadataKeys = Object.keys(response.data);
