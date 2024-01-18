@@ -14,8 +14,9 @@ export default {
       backgroundImage: {
         "footer-job": "url('/assets/images/footer-job.png')",
         "footer-tuned": "url('/assets/images/footer-tuned.png')",
-        "footer-questions": "url('/assets/images/footer-questions.png')",
-        "fond-tableau": "url('/assets/images/BG-tableau.png')",
+        "footer-questions": "url('/assets/images/Interactive-whiteboard.svg')",
+        "fond-tableau": "url('/assets/images/Interactive-whiteboard.svg')",
+        "interactive-whiteboard": "url('/assets/images/Interactive-whiteboard.svg')",
       },
       colors: {
         primary: "#0000ff",

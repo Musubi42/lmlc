@@ -211,7 +211,12 @@ export default {
     },
     async getPlaylistMetadata() {
       try {
-        const response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata.json`);
+        var response;
+        if (process.env.NODE_ENV === "development") {
+            response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata`);
+        } else {
+            response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata.json`);
+        }
 
         this.playlistMetadataKeys = Object.keys(response.data);
         this.playlistMetadata = response.data;
@@ -226,7 +231,13 @@ export default {
     async loadAndPlayAudio(trackID) {
       try {
         this.isLoading = true;
-        const audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/${trackID}.mp3`);
+        var audioResponse;
+
+        if (process.env.NODE_ENV === "development") {
+          audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/music/${trackID}`);
+        } else {
+          audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/${trackID}.mp3`);
+        }
         
         const blob = await audioResponse.blob();
         this.audioSource = new Audio(URL.createObjectURL(blob));
@@ -343,7 +354,7 @@ export default {
     // Load metaData of the first song
     this.loadMetaData(this.trackID);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     // Remove event listeners
     this.$refs.audio.removeEventListener("loadedmetadata", this.updateTime);
     this.$refs.audio.removeEventListener("timeupdate", this.updateTime);

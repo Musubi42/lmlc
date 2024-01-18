@@ -7,7 +7,8 @@
     "prod": "NODE_ENV=prod nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "convert-svg-to-vertices": "nodemon ./scripts/convert-svg-to-vertices.js"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.0.6",

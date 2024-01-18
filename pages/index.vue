@@ -2,19 +2,19 @@
   <div id="home" class="bg-white">
     <div class="h-screen">
       <!-- TODO: Toujours faire chevaucher le texte sur le tableau quelque soit l'écran, les valeurs absolues peuvent être bien -->
-      <div class="absolute top-[100px] md:top-[200px] w-full z-10">
+      <div class="relative w-full z-10">
         <p
           class="text-[1rem] md:text-[2rem] xl:text-[3.2rem] font-black mx-auto w-[90%] md:w-[65%]"
           id="text-intro"
         >
-          <!-- {{ $t("intro") }} -->
+          {{ $t("intro") }}
         </p>
       </div>
 
       <div
-        class="absolute w-full h-[85%] md:h-[65%] bottom-0 shadow-sm tableau-shadow"
+        class="relative w-full h-[85%] md:h-[85%] bottom-0 shadow-sm tableau-shadow"
       >
-        <tableau />
+        <tableauTest />
       </div>
     </div>
     <div

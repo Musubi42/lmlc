@@ -15,7 +15,8 @@ self.onmessage = async function (event) {
 
   async function createBody(key, meubles, forMainThread) {
     // Fetch the file from the public folder
-    const response = await fetch(`/images/${key}.json`);
+    const response = await fetch(`@/../../tableau/vertices/${key}.json`);
+    
     if (!response.ok) {
       console.error(`Error fetching file: ${response.statusText}`);
       return;
@@ -26,7 +27,7 @@ self.onmessage = async function (event) {
     const positionY = meubles[key].body.position.y;
     let body = Bodies.fromVertices(positionX, positionY, [fileContent], {
       render: {
-        visible: false,
+        visible: meubles[key].sprite.image.match('timur.png') ? true : false,
       },
     });
 
@@ -64,7 +65,7 @@ self.onmessage = async function (event) {
         y: meubles[key].constraint.y,
       },
       render: {
-        visible: false,
+        visible: meubles[key].sprite.image.endsWith('.svg') ? true : false,
       },
     });
 

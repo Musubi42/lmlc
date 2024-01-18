@@ -46,6 +46,20 @@
       />
     </svg>
 
+    <path
+      id="timurBig"
+    />
+    <path
+      id="timurQualiSVG"
+    />
+
+    <path
+      id="timurQualiPNG"
+    />
+
+    <path
+      id="moninShadow"
+    />
     <!-- Monin -->
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -753,7 +767,7 @@ export default {
               sprite: {
                 xScale: 0.5,
                 yScale: 0.5,
-                image: "./images/sac-bleu.png",
+                image: "_nuxt/assets/tableau/images/sac-bleu.png",
               },
               constraint: {
                 x: 3,
@@ -775,9 +789,57 @@ export default {
                 scaleFactor: 0.3,
               },
               sprite: {
-                xScale: 0.3,
-                yScale: 0.3,
-                image: "./images/monin.png",
+                xScale: 0.5,
+                yScale: 0.5,
+                image: "_nuxt/assets/tableau/images/monin.png",
+              },
+              constraint: {
+                x: -5,
+                y: 30,
+              },
+            },
+            moninShadow: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 270,
+                scaleFactor: 0.3,
+              },
+              sprite: {
+                xScale: 0.5,
+                yScale: 0.5,
+                image: "_nuxt/assets/tableau/images/moninShadow.png",
+              },
+              constraint: {
+                x: -5,
+                y: 30,
+              },
+            },
+            moninSmall: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 270,
+                scaleFactor: 0.3,
+              },
+              sprite: {
+                xScale: 1,
+                yScale: 1,
+                image: "_nuxt/assets/tableau/images/moninSmallQuali.png",
               },
               constraint: {
                 x: -5,
@@ -801,7 +863,79 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "./images/Timur.png",
+                image: "_nuxt/assets/tableau/images/timur.png",
+              },
+              constraint: {
+                x: 10,
+                y: 20,
+              },
+            },
+            timurBig: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 0.45,
+                scaleFactor: 0.25,
+              },
+              sprite: {
+                xScale: 0.5,
+                yScale: 0.5,
+                image: "_nuxt/assets/tableau/images/timur.png",
+              },
+              constraint: {
+                x: 10,
+                y: 20,
+              },
+            },
+            timurQualiSVG: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 0.45,
+                scaleFactor: 0.25,
+              },
+              sprite: {
+                xScale: 1,
+                yScale: 1,
+                image: "_nuxt/assets/tableau/images/timurQuali.svg",
+              },
+              constraint: {
+                x: 10,
+                y: 20,
+              },
+            },
+            timurQualiPNG: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 0.45,
+                scaleFactor: 0.25,
+              },
+              sprite: {
+                xScale: 1,
+                yScale: 1,
+                image: "_nuxt/assets/tableau/images/timurQuali.png",
               },
               constraint: {
                 x: 10,
@@ -824,7 +958,7 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "./images/bourges2024.png",
+                image: "_nuxt/assets/tableau/images/bourges2024.png",
               },
               constraint: {
                 x: 0,
@@ -848,7 +982,7 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "./images/fauteuilRouge.png",
+                image: "_nuxt/assets/tableau/images/fauteuilRouge.png",
               },
               constraint: {
                 x: 0,
@@ -872,7 +1006,7 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "./images/lampeRouge.png",
+                image: "_nuxt/assets/tableau/images/lampeRouge.png",
               },
               constraint: {
                 x: 0,
@@ -896,7 +1030,7 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "./images/tableRouge.png",
+                image: "_nuxt/assets/tableau/images/tableRouge.png",
               },
               constraint: {
                 x: -1,
@@ -905,16 +1039,14 @@ export default {
             },
           };
 
-          // const worker = new Worker(
-          //   new URL("/workers/tableau.js", import.meta.url),
-          //   { type: "module" }
-          // );
           const worker = new Worker(
             new URL("/assets/workers/tableau.js", import.meta.url),
             { type: "module" }
           );
 
-          const uniqueBody = { sacBleu, monin, timur, bourges2024 };
+          const uniqueBody = { timur, timurBig, timurQualiSVG, timurQualiPNG, moninShadow };
+          // const uniqueBody = { sacBleu, monin, timur, bourges2024 };
+
           function createsUniqueBody() {
             const forMainThread = true;
             for (let key in uniqueBody) {
@@ -927,11 +1059,15 @@ export default {
 
           createsUniqueBody();
 
+          // scaleVertices = function (vertices, scaleFactor) {
+          //   for (let i = 0; i < vertices.length; i++) {
+          //     vertices[i].x *= scaleFactor;
+          //     vertices[i].y *= scaleFactor;
+          //   }
+          // };
 
           worker.onmessage = function (event) {
             const { functionName, args } = event.data;
-
-            console.log(event.data);
 
             if (functionName === "createBody") {
               const [body, spriteBody, constraint] = args;
@@ -942,7 +1078,7 @@ export default {
               });
 
               Composite.add(world, [body, spriteBody, constraint]);
-            } 
+            }
 
             // Render the world
             Render.run(render);
@@ -977,7 +1113,7 @@ export default {
 
           async function CreateBodyFromJSON(key) {
             // Fetch the file from the public folder
-            const response = await fetch(`/images/${key}.json`);
+            const response = await fetch(`/assets/tableau/vertices/${key}.json`);
             if (!response.ok) {
               console.error(`Error fetching file: ${response.statusText}`);
               return;
@@ -986,23 +1122,20 @@ export default {
 
             const positionX = meubles[key].body.position.x;
             const positionY = meubles[key].body.position.y;
-            let body = Bodies.fromVertices(
-              positionX,
-              positionY,
-              [fileContent],
-              {
-                render: {
-                  visible: false,
-                },
-              }
-            );
+            let body = Bodies.fromVertices(positionX, positionY, [fileContent], {
+              render: {
+                visible: false,
+              },
+            });
 
             Body.setAngle(body, meubles[key].body.angle);
 
-            console.log(body.bounds.min.x,
+            console.log(
+              body.bounds.min.x,
               body.bounds.min.y,
               body.bounds.max.x,
-              body.bounds.max.y,);
+              body.bounds.max.y
+            );
             let spriteBody = Bodies.rectangle(
               body.bounds.min.x,
               body.bounds.min.y,
@@ -1040,7 +1173,6 @@ export default {
                 visible: false,
               },
             });
-
 
             Events.on(engine, "beforeUpdate", function (event) {
               // Set the angle of the spriteBody to the angle of the body
@@ -1102,7 +1234,7 @@ export default {
             }, 3000);
           }
 
-          animateGif();
+          // animateGif();
 
           const offset = this.canvasProp.wallWidth;
           const options = {
@@ -1113,13 +1245,7 @@ export default {
 
           // Ce sont les murs du tableau
           Composite.add(world, [
-            Bodies.rectangle(
-              width / 2,
-              offset / -2,
-              width + offset * 2,
-              offset,
-              options
-            ), // Plafond
+            Bodies.rectangle(width / 2, offset / -2, width + offset * 2, offset, options), // Plafond
             Bodies.rectangle(
               offset / -2,
               height / 2,
