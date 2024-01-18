@@ -815,7 +815,7 @@ export default {
               sprite: {
                 xScale: 0.5,
                 yScale: 0.5,
-                image: "_nuxt/assets/tableau/images/moninShadow.png",
+                image: "./tableau/images/moninShadow.png",
               },
               constraint: {
                 x: -5,
@@ -863,7 +863,7 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "_nuxt/assets/tableau/images/timur.png",
+                image: "./tableau/images/timur.png",
               },
               constraint: {
                 x: 10,
@@ -887,7 +887,7 @@ export default {
               sprite: {
                 xScale: 0.5,
                 yScale: 0.5,
-                image: "_nuxt/assets/tableau/images/timur.png",
+                image: "./tableau/images/timur.png",
               },
               constraint: {
                 x: 10,
@@ -911,7 +911,7 @@ export default {
               sprite: {
                 xScale: 1,
                 yScale: 1,
-                image: "_nuxt/assets/tableau/images/timurQuali.svg",
+                image: "./tableau/images/timurQuali.svg",
               },
               constraint: {
                 x: 10,
@@ -935,7 +935,7 @@ export default {
               sprite: {
                 xScale: 1,
                 yScale: 1,
-                image: "_nuxt/assets/tableau/images/timurQuali.png",
+                image: "./tableau/images/timurQuali.png",
               },
               constraint: {
                 x: 10,
