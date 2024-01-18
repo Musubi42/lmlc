@@ -15,7 +15,10 @@ self.onmessage = async function (event) {
 
   async function createBody(key, meubles, forMainThread) {
     // Fetch the file from the public folder
-    const response = await fetch(`@/../../tableau/vertices/${key}.json`);
+    // const response = await fetch(`@/../../tableau/vertices/${key}.json`);
+    // Repasser sur public pour éviter les fetch qui fails
+    const response = await fetch(`_nuxt/assets/tableau/vertices/${key}.json`);
+    
     
     if (!response.ok) {
       console.error(`Error fetching file: ${response.statusText}`);
