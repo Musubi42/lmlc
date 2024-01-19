@@ -9,5 +9,19 @@
       <!-- <Spotify /> -->
       <Music />
     </div>
+    <CustomCursor />
   </div>
 </template>
+
+// <script>
+// import CustomCursor from '~/components/CustomCursor.vue';
+
+// export default {
+//   components: {
+//     CustomCursor
+//   },
+//   mounted() {
+//     this.$nuxt.config.globalProperties.$customCursor = this.$refs.customCursor;
+//   }
+// };
+// </script> 

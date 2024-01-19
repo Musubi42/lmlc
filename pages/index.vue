@@ -14,7 +14,7 @@
       <div
         class="relative w-full h-[85%] md:h-[85%] bottom-0 shadow-sm tableau-shadow"
       >
-        <tableauTest />
+        <tableauTest class="cursor-pointer" v-cursorAnimation />
       </div>
     </div>
     <div

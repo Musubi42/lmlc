@@ -2,26 +2,18 @@
   <div>
     <!--  -->
     <div
-      class="h-full bg-rose-neon w-10 md:w-80 right-0 fixed z-[100] transform translate-x-full"
+      class="h-full bg-rose-neon w-10 md:w-80 right-0 fixed z-[20] transform translate-x-full"
+      :class="{ animate: !isMenuOpen }"
       id="separation"
     ></div>
     <div
       class="h-screen bg-rose-neon flex flex-row items-center fixed z-[20] right-0 w-full md:w-1/2 transform translate-x-full"
+      :class="{ animate: !isMenuOpen }"
       id="bg"
     >
-      <!-- Sidebar -->
-      <!-- <div class="flex flex-col place-content-between ml-auto mr-10 mb-10 mt-6"> -->
-      <!-- <div
-        id="menu-burger"
-        class="ml-auto flex flex-row hover:cursor-pointer relative h-[50px] w-[38px]"
-        @click="toggleMenu"
-      >
-        <div class="menu-burger-open-first absolute left-0"></div>
-        <div class="menu-burger-open-second absolute left-[12px]"></div>
-        <div class="menu-burger-open-third absolute right-0"></div>
-      </div> -->
       <div
         class="absolute right-0 z-auto transform translate-x-full"
+        :class="{ animate: !isMenuOpen }"
         id="title"
         @mousemove="titleOffset"
       >
@@ -33,11 +25,12 @@
           <ImageMenuOnHover
             ref="work"
             class="w-fit"
-            imageSrc="/menu-work-small.png"
+            imageSrc="/menu-work.png"
             @mouseover="titleAnimation"
             @mouseleave="defaultBGColor"
             :offsetParent="offsetElement"
             id="work"
+            v-cursorAnimation
           >
             <div class="text-white font-black z-10 relative">
               <span
@@ -51,11 +44,12 @@
           <ImageMenuOnHover
             ref="services"
             class="w-fit"
-            imageSrc="/menu-services-small.png"
+            imageSrc="/menu-services.png"
             @mouseover="titleAnimation"
             @mouseleave="defaultBGColor"
             :offsetParent="offsetElement"
             id="services"
+            v-cursorAnimation
           >
             <div class="text-white font-black z-10 relative">
               <!-- TODO: Quand on quitte le title effet epileptique voir la menu-text-overlay -->
@@ -70,10 +64,12 @@
           <ImageMenuOnHover
             ref="talents"
             class="w-fit"
-            imageSrc="/menu-talents-small.png"
+            imageSrc="/menu-talents.png"
             @mouseover="titleAnimation"
+            @mouseleave="defaultBGColor"
             :offsetParent="offsetElement"
             id="talents"
+            v-cursorAnimation
           >
             <!-- TODO : On hover de cette div, animer le texte -->
             <div class="text-white font-black z-10 relative">
@@ -99,6 +95,7 @@
                 data-color=""
                 class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 cursor-pointer"
                 id="contactTitle"
+          v-cursorAnimation
                 >CONTACT</span
               >
             </div>
@@ -121,6 +118,55 @@
   </div>
 </template>
 
+<style scoped>
+#separation {
+  transition: all 0.1s ease-in-out;
+  transform: translateX(0);
+}
+
+#separation.animate {
+  transform: translateX(100%);
+}
+
+#title {
+  transition: all 0.5s ease-in-out;
+  transform: translateX(0);
+}
+
+#title.animate {
+  transform: translateX(100%);
+}
+
+#bg {
+  transition: all 0.5s cubic-bezier(.89,.06,.45,.97);
+  transform: translateX(0);
+}
+
+#bg.animate {
+  transform: translateX(100%);
+}
+
+.part1-close {
+  animation: part1-close-animation 0.6s none;
+  animation-fill-mode: forwards;
+}
+
+@keyframes part1-close-animation {
+  0% {
+    transform: translate(0px, 0px);
+    width: 10px;
+    height: 25px;
+    fill: white;
+  }
+
+  35% {
+    transform: translate(0px, 7px);
+    width: 10px;
+    height: 6px;
+    fill: white;
+  }
+}
+</style>
 <script>
 export default {
   props: ["isMenuOpen"],
@@ -133,22 +179,24 @@ export default {
   },
   watch: {
     isMenuOpen() {
-      this.isMenuOpen ? this.openMenu() : this.closeMenu();
+      console.log(this.isMenuOpen, !this.isMenuOpen);
+      // this.isMenuOpen ? this.openMenu() : this.closeMenu();
     },
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {
     titleAnimation(value) {
       // Changement de couleur du Background
-      if (value.target.innerHTML !== "CONTACT") {
-        if (typeof value === "string") {
-          document.getElementById("bg").style.backgroundColor = value;
-        } else {
-          document.getElementById("bg").style.transition = "none";
-          document.getElementById("bg").style.backgroundColor =
-            value.target.attributes["data-color"].value;
-        }
+      // if (value.target.innerHTML !== "CONTACT") {
+      if (typeof value === "string") {
+        document.getElementById("bg").style.backgroundColor = value;
+      } else {
+        document.getElementById("bg").style.transition = "none";
+        document.getElementById("bg").style.backgroundColor =
+          value.target.attributes["data-color"].value;
       }
+      // }
 
       const workTitle = document.getElementById("workTitle");
       const servicesTitle = document.getElementById("servicesTitle");
@@ -193,22 +241,32 @@ export default {
       document.getElementById("bg").style.backgroundColor = this.defaultBG;
     },
     goToContact() {
-      console.log("clic");
       this.$nextTick(() => {
+        // Enable the scrolling on the page
+        document.body.style.overflow = "auto";
+
         const footerElement = document.querySelector("footer");
         if (footerElement) {
           footerElement.scrollIntoView({ behavior: "smooth" });
-          this.toggleMenuBurger();
+          
+          // Il y'a un bug, je pense que c'est du au fait que le thread est saturé pour pouvoir correctement gérer les timeout, donc l'animation est degueu
           this.closeMenu();
+
+          // setTimeout(() => {
+            this.toggleMenuBurger();
+          // }, 200);
         }
       });
     },
     toggleMenuBurger() {
       const menuBurger = document.getElementById("menu-burger");
       const rectElements = menuBurger.querySelectorAll("rect");
+
       const rect1 = rectElements[0];
       const rect2 = rectElements[1];
       const rect3 = rectElements[2];
+
+      // Add to rect1 the CSS property "fill: black"
 
       rect1.classList.remove("part1-open");
       rect2.classList.remove("part2-open");
@@ -221,31 +279,31 @@ export default {
     openMenu() {
       const separationWidth = (window.innerWidth / 2) * 0.2;
       document.getElementById("separation").style.width = `${separationWidth}px`;
-      
-        // separation
-        document.getElementById("separation").style.transform = "translateX(0)";
-        document.getElementById("separation").style.transition = "all 0.1s ease-in-out";
 
-        // Title
-        setTimeout(function () {
-          // TODO: Calculer un translateX et width pour separation dynamique en fonction de la taille de l'écran
+      // separation
+      document.getElementById("separation").style.transform = "translateX(0)";
+      document.getElementById("separation").style.transition = "all 0.1s ease-in-out";
 
-          // document.getElementById("title").style.transform = "translateX(-50%)"; // Pour petit écran
-          document.getElementById(
-            "title"
-          ).style.transform = `translateX(-${separationWidth}px)`; // Pour grand écran
-          document.getElementById("title").style.transition = "all 0.5s ease-in-out";
-        }, 0);
+      // Title
+      setTimeout(function () {
+        // TODO: Calculer un translateX et width pour separation dynamique en fonction de la taille de l'écran
 
-        // BG
-        document.getElementById("bg").style.transform = "translateX(0)";
-        document.getElementById("bg").style.transition =
-          "all 0.5s cubic-bezier(0, 0.75, 0.83, 0.67)";
+        // document.getElementById("title").style.transform = "translateX(-50%)"; // Pour petit écran
+        document.getElementById(
+          "title"
+        ).style.transform = `translateX(-${separationWidth}px)`; // Pour grand écran
+        document.getElementById("title").style.transition = "all 0.5s ease-in-out";
+      }, 0);
 
-        //  A la fin de l'animation faire disparaitre la séparation, pour que le changement de couleur soit fluide
-        setTimeout(function () {
-          document.getElementById("separation").style.display = "none";
-        }, 500);
+      // BG
+      document.getElementById("bg").style.transform = "translateX(0)";
+      document.getElementById("bg").style.transition =
+        "all 0.5s cubic-bezier(0, 0.75, 0.83, 0.67)";
+
+      //  A la fin de l'animation faire disparaitre la séparation, pour que le changement de couleur soit fluide
+      setTimeout(function () {
+        document.getElementById("separation").style.display = "none";
+      }, 500);
     },
     closeMenu() {
       // Faire reaparaitre la separation pour faire disparaitre le texte derriere
@@ -277,84 +335,6 @@ import tiktok from "assets/icons/tiktok.svg";
 import instagram from "assets/icons/instagram-opacity.svg";
 import linkedin from "assets/icons/linkedin.svg";
 
-// function toggleMenu(event) {
-//   if (event.target.id === "menu-burger") {
-//     var menuBurgerFirst = event.target.children[0];
-//     var menuBurgerSecond = event.target.children[1];
-//     var menuBurgerThird = event.target.children[2];
-//   } else {
-//     // Le coup ou on clique pas sur le burger, mais sur les barres
-//     var menuBurgerFirst = event.srcElement.offsetParent.children[0];
-//     var menuBurgerSecond = event.srcElement.offsetParent.children[1];
-//     var menuBurgerThird = event.srcElement.offsetParent.children[2];
-//   }
-
-//   menuBurgerFirst.style.height = "6px";
-//   menuBurgerFirst.style.width = "6px";
-//   menuBurgerFirst.style.transition = "height 0.5s cubic-bezier(.47,1.64,.41,.8)";
-
-//   menuBurgerSecond.style.height = "6px";
-//   menuBurgerSecond.style.width = "6px";
-//   menuBurgerSecond.style.transform = "translateY(20px)";
-//   menuBurgerSecond.style.transition = "all 0.5s cubic-bezier(.47,1.64,.41,.8)";
-//   menuBurgerThird.style.height = "6px";
-//   menuBurgerThird.style.width = "6px";
-//   menuBurgerThird.style.transform = "translateY(40px)";
-//   menuBurgerThird.style.transition = "all 0.5s cubic-bezier(.47,1.64,.41,.8)";
-
-//   setTimeout(function () {
-//     menuBurgerFirst.style.backgroundColor = "black";
-//     menuBurgerFirst.style.width = "35px";
-//     menuBurgerFirst.style.transition = "width 0.3s ease-in-out";
-
-//     menuBurgerSecond.style.backgroundColor = "black";
-//     menuBurgerSecond.style.width = "35px";
-//     menuBurgerSecond.style.transform = "translate(-12px, 8px)";
-
-//     menuBurgerThird.style.backgroundColor = "black";
-//     menuBurgerThird.style.width = "35px";
-//     menuBurgerThird.style.transform = "translate(1px, 16px)";
-//   }, 500);
-
-//   // Make the elements disapear
-//   // Menu burger
-//   // setTimeout(function () {
-//   //   menuBurgerFirst.style.opacity = "0";
-//   //   menuBurgerSecond.style.opacity = "0";
-//   //   menuBurgerThird.style.opacity = "0";
-//   // }, 1000);
-
-//   // Social Networks
-//   setTimeout(function () {
-//     document.getElementById("social-network").style.transform = "translateX(120px)";
-//     document.getElementById("social-network").style.transition = "all 0.5s ease-in-out";
-//   }, 1000);
-
-//   // Link
-//   // Work
-//   setTimeout(function () {
-//     document.getElementById("work").style.transform = "translateX(-400px)";
-//     document.getElementById("work").style.transition = "all 0.5s ease-in-out";
-//   }, 1000);
-
-//   // Services
-//   setTimeout(function () {
-//     document.getElementById("services").style.transform = "translateY(-600px)";
-//     document.getElementById("services").style.transition = "all 0.5s ease-in-out";
-//   }, 1000);
-
-//   // Talents
-//   setTimeout(function () {
-//     document.getElementById("talents").style.transform = "translateY(600px)";
-//     document.getElementById("talents").style.transition = "all 0.5s ease-in-out";
-//   }, 1000);
-
-//   // Contact
-//   setTimeout(function () {
-//     document.getElementById("contact").style.transform = "translateY(600px)";
-//     document.getElementById("contact").style.transition = "all 0.5s ease-in-out";
-//   }, 1000);
-// }
 definePageMeta({
   layout: "menu",
 });

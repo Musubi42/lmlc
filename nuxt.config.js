@@ -27,19 +27,10 @@ export default defineNuxtConfig({
   svgo: {
     autoImportPath: "~/assets/icons/",
   },
-  // router: {
-  //   middleware: 'maintenance'
-  // },
-  // Global
-  security: {
-    corsHandler: {
-      origin: '*',
-      methods: '*',
-      allowHeaders: '*',
-      exposeHeaders: '*',
-      credentials: true,
-    }
-  },
+  plugins: [
+    '/plugins/hover-directive.js',
+    '/plugins/cursor-state.js',
+  ],
   components: true,
   css: ["~/assets/css/main.css"],
   postcss: {

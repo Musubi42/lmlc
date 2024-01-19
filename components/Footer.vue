@@ -88,7 +88,7 @@
         <div class="z-10 relative" data-footer-element>PARIS, FR</div>
       </div>
 
-      <div
+      <!-- <div
           ref="languageSelectors" class="flex-1" data-footer-element>
         <span
           data-footer-element
@@ -98,7 +98,7 @@
           <span class="mr-4 hover:italic cursor-pointer" @click="changeLanguage('en')" id="en-footer">EN</span>
           <span class="hover:italic cursor-pointer" @click="changeLanguage('it')" id="it-footer">IT</span>
         </span>
-      </div>
+      </div> -->
     </div>
     <div class="relative w-full" data-footer-element>
       <div

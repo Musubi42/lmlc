@@ -1044,7 +1044,7 @@ export default {
             { type: "module" }
           );
 
-          const uniqueBody = { timur, timurBig, timurQualiSVG, timurQualiPNG, moninShadow };
+          const uniqueBody = { timur, timurBig, timurQualiSVG, timurQualiPNG, moninShadow, tableRouge };
           // const uniqueBody = { sacBleu, monin, timur, bourges2024 };
 
           function createsUniqueBody() {

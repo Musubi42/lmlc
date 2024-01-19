@@ -7,6 +7,7 @@
   >
     <slot></slot>
     <img
+      id="image"
       v-if="isVisible"
       :src="imageSrc"
       :style="imageStyle"
@@ -30,7 +31,6 @@ export default {
       imageX: 0,
       decalageX: 0,
       imageY: 0,
-      scrollPos: 0,
       right: 0,
       clientY: 0,
       clientX: 0,
@@ -39,18 +39,17 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.scrollPos = window.scrollY;
-      window.addEventListener("scroll", this.handleScroll);
+      console.log(this.$refs.image.offsetHeight);
     });
   },
   unmounted() {
-    window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     showImage(event) {
       // Premiere position de l'image
+      console.log(event);
       this.initialX = event.clientX
-      console.log("oui", this.initialX);
+      
       this.isVisible = true;
     },
     hideImage() {
@@ -58,21 +57,19 @@ export default {
       this.isVisible = false;
     },
     moveImage(event) {
+      // console.log("hey");
       this.right =
         event.pageX - window.innerWidth / 2 + (window.innerWidth / 2) * 0.2;
 
       this.imageY = event.pageY;
-    },
-    handleScroll(event) {
-      this.scrollPos = window.scrollY;
     },
   },
   computed: {
     imageStyle() {
       return {
         position: "fixed",
-        left: `${this.right - this.decalageX}px`,
-        top: `${this.imageY - this.scrollPos}px`,
+        left: `${this.right - this.decalageX }px`,
+        top: `${this.imageY }px`,
         transform: "translate(-50%, -120%)",
         pointerEvents: "none",
         zIndex: 9,

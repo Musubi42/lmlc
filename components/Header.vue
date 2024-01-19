@@ -1,12 +1,14 @@
 <template>
-  <div class="bg-white">
+  <div class="">
     <Menu :isMenuOpen="toggleMenu" />
     <div class="place-content-between py-6 pl-6 md:px-10 flex flex-row">
-      <div class="">
+      <div
+       class="">
         <img
-          class="h-[11px] w-auto"
+          class="h-[11px] w-auto cursor-pointer"
           src="~/assets/images/logo-lmlc-black.png"
           alt="Logo LMLC couleur noir"
+          v-cursorAnimation
         />
       </div>
       <div class="flex flex-row">
@@ -62,7 +64,7 @@
             </div>
           </div>
           <!-- Options de langue visibles sur les écrans moyens et plus grands -->
-          <span class="hidden md:flex flex-row">
+          <!-- <span class="hidden md:flex flex-row">
             <span
               @click="changeLanguage('fr')"
               class="mr-4 hover:italic"
@@ -78,18 +80,21 @@
             <span @click="changeLanguage('it')" class="hover:italic" id="it"
               >IT</span
             >
-          </span>
+          </span> -->
+          <switchLanguage v-cursorAnimation />
         </div>
         <div
           to="/menu"
           id="menu-burger"
-          class="hover:cursor-pointer h-auto close z-[1000] fixed mt-[-7px] mr-6 md:mr-10 right-0 text-white blend-mode"
+          class="hover:cursor-pointer h-auto close z-[1000] fixed mt-[-7px] mr-6 md:mr-10 right-0 text-black"
           @click=""
+
         >
           <IconsMenuBurger
             class="text-[50px]"
             ref="menuBurger"
             @click="toggleMenuBurger"
+            v-cursorAnimation
           />
         </div>
       </div>
@@ -242,14 +247,14 @@
     transform: translate(0, 7px);
     width: 32px;
     height: 6px;
-    fill: white;
+    fill: black;
   }
 
   100% {
     transform: translateY(0px);
     width: 32px;
     height: 6px;
-    fill: white;
+    fill: black;
   }
 }
 
@@ -277,14 +282,14 @@
     transform: translate(0px, 0px);
     width: 32px;
     height: 6px;
-    fill: white;
+    fill: black;
   }
 
   100% {
     transform: translate(0px, 0px);
     width: 32px;
     height: 6px;
-    fill: white;
+    fill: black;
   }
 }
 
@@ -312,14 +317,14 @@
     transform: translate(0px, -7px);
     width: 32px;
     height: 6px;
-    fill: white;
+    fill: black;
   }
 
   100% {
     transform: translateY(0px);
     width: 32px;
     height: 6px;
-    fill: white;
+    fill: black;
   }
 }
 </style>
@@ -364,7 +369,7 @@ export default {
     toggleMenuBurger() {
       this.toggleMenu = !this.toggleMenu;
       this.menuBurgerOpened = !this.menuBurgerOpened;
-      console.log(this.menuBurgerOpened);
+      
       const svgElement = this.$refs.menuBurger.$el;
       const rectElements = svgElement.querySelectorAll("rect");
       const rect1 = rectElements[0];
@@ -372,7 +377,8 @@ export default {
       const rect3 = rectElements[2];
 
       if (this.menuBurgerOpened) {
-        document.getElementById("menu-burger").classList.toggle("blend-mode");
+        // Block the scrolling, so no problem with the image on hover
+        document.body.style.overflow = "hidden";
 
         rect1.classList.remove("part1-close");
         rect2.classList.remove("part2-close");
@@ -382,6 +388,8 @@ export default {
         rect2.classList.add("part2-open");
         rect3.classList.add("part3-open");
       } else {
+        document.body.style.overflow = "auto";
+
         rect1.classList.remove("part1-open");
         rect2.classList.remove("part2-open");
         rect3.classList.remove("part3-open");
@@ -389,10 +397,6 @@ export default {
         rect1.classList.add("part1-close");
         rect2.classList.add("part2-close");
         rect3.classList.add("part3-close");
-
-        setTimeout(() => {
-          document.getElementById("menu-burger").classList.toggle("blend-mode");
-        }, 600);
       }
     },
     changeLanguage(locale) {
