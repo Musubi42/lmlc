@@ -5,20 +5,19 @@
       <div
         class="flex flex-row gap-4 ml-4 mr-4 content-start center-content items-center"
       >
-        <div class="aspect-content" style="background-color: white !important;">
-  <img
-    class="w-full h-full object-cover"
-    :src="songMetadata ? songMetadata.thumbnail : ''"
-  />
-</div>
-        <div class="justify-center flex flex-col">
-          <p class="font-medium">{{ songMetadata ? songMetadata.author : "" }}</p>
-          <p>{{ songMetadata ? songMetadata.title : "" }}</p>
+        <img
+          class="h-4/5 aspect-square object-cover"
+          :src="songMetadata ? songMetadata.thumbnail : ''"
+        />
+        <div class="justify-center flex flex-col text-ellipsis whitespace-nowrap overflow-hidden">
+          <p class="hidden md:font-medium md:block">{{ songMetadata ? songMetadata.author : "" }}</p>
+          <p class="font-medium md:font-normal truncate" >{{ songMetadata ? songMetadata.title : "" }}</p>
         </div>
       </div>
     </div>
+
     <!-- Pause/start previous/next -->
-    <div class="flex mx-10 items-center justify-center">
+    <div class="flex mx-4 md:mx-10 items-center justify-center">
       <!-- Play previous song -->
       <button class="center-content mr-2" @click="playPreviousSong">
         <iconsPrevious class="w-[24px]" v-cursorAnimation />
@@ -37,11 +36,17 @@
       <button class="center-content" @click="playNextSong" v-cursorAnimation>
         <iconsNext class="w-[24px] ml-2" />
       </button>
+
+
+      <div class="block md:hidden ml-4" >
+        <iconsSoundOn @click="toggleSound" v-if="isSound" class="text-[24px]" />
+        <iconsSoundOff @click="toggleSound" v-else class="text-[24px]" />
+      </div>
     </div>
-    <!-- Control durée  et volume son -->
+
+    <!-- Control volume son -->
     <div
-      class="flex flex-1 flex-row gap-4 ml-4 mr-4 content-end center-content items-center justify-end"
-    >
+      class="hidden md:flex md:flex-1 md:flex-row gap-4 ml-4 mr-4 content-end center-content items-center justify-end" >
       <!-- Volume -->
       <div class="flex items-center">
         <iconsNoSound class="w-[24px]" />
@@ -285,8 +290,7 @@ export default {
     },
   },
 
-  mounted() {
-  },
+  mounted() {},
   async created() {
     // TODO: Faire une petite gestion d'erreur
     // Function create the audio player

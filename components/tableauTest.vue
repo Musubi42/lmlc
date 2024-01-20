@@ -767,7 +767,7 @@ export default {
               sprite: {
                 xScale: 0.5,
                 yScale: 0.5,
-                image: "_nuxt/assets/tableau/images/sac-bleu.png",
+                image: "./tableau/images/sac-bleu.png",
               },
               constraint: {
                 x: 3,
@@ -791,7 +791,7 @@ export default {
               sprite: {
                 xScale: 0.5,
                 yScale: 0.5,
-                image: "_nuxt/assets/tableau/images/monin.png",
+                image: "./tableau/images/monin.png",
               },
               constraint: {
                 x: -5,
@@ -839,7 +839,7 @@ export default {
               sprite: {
                 xScale: 1,
                 yScale: 1,
-                image: "_nuxt/assets/tableau/images/moninSmallQuali.png",
+                image: "./tableau/images/moninSmallQuali.png",
               },
               constraint: {
                 x: -5,
@@ -958,7 +958,7 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "_nuxt/assets/tableau/images/bourges2024.png",
+                image: "./tableau/images/bourges2024.png",
               },
               constraint: {
                 x: 0,
@@ -982,7 +982,7 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "_nuxt/assets/tableau/images/fauteuilRouge.png",
+                image: "./tableau/images/fauteuilRouge.png",
               },
               constraint: {
                 x: 0,
@@ -1006,7 +1006,7 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "_nuxt/assets/tableau/images/lampeRouge.png",
+                image: "./tableau/images/lampeRouge.png",
               },
               constraint: {
                 x: 0,
@@ -1030,7 +1030,7 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "_nuxt/assets/tableau/images/tableRouge.png",
+                image: "./tableau/images/tableRouge.png",
               },
               constraint: {
                 x: -1,
@@ -1044,16 +1044,17 @@ export default {
             { type: "module" }
           );
 
-          const uniqueBody = { timur, timurBig, timurQualiSVG, timurQualiPNG, moninShadow };
+          // Changer l'ordre de rendu des objets permet de faire passer les uns au-dessus des autres
+          const uniqueBody = {timur, timurBig, timurQualiSVG, timurQualiPNG };
           // const uniqueBody = { sacBleu, monin, timur, bourges2024 };
-          // const uniqueBody = { moninShadow };
+          // const uniqueBody = { timur, moninShadow };
 
           function createsUniqueBody() {
             const forMainThread = true;
             for (let key in uniqueBody) {
               worker.postMessage({
                 functionName: "createBody",
-                args: [key, meubles, forMainThread],
+                args: [key, meubles, forMainThread, drawhereWidth, drawhereHeight],
               });
             }
           }
@@ -1072,18 +1073,47 @@ export default {
 
             if (functionName === "createBody") {
               const [body, spriteBody, constraint] = args;
+              console.log(spriteBody.parts[0].render.sprite.texture);
               // TODO: La frequence de rafraichissement de la physique est trop lente, ce qui fait que les objets ne sont pas dans le même axe
               Events.on(engine, "beforeUpdate", function (event) {
                 // Set the angle of the spriteBody to the angle of the body
                 Body.setAngle(spriteBody, body.angle);
               });
 
-              Composite.add(world, [body, spriteBody, constraint]);
+              if (spriteBody.parts[0].render.sprite.texture.match("moninShadow")) {
+                Composite.add(world, body);
+              } else {
+                Composite.add(world, [body, spriteBody, constraint]);
+              }
             }
 
             // Render the world
             Render.run(render);
           };
+
+
+          Composite.add(world, Bodies.rectangle(
+            200,
+            200,
+            200,
+            200,
+            {
+              collisionFilter: {
+                category: 0x0002, // You can set your own category here
+                mask: 0x0002, // Enable or disable collision based on collisionEnabled
+              },
+              render: {
+                opacity: 1,
+                sprite: {
+                  texture: meubles["moninShadow"].sprite.image,
+                  xScale: meubles["moninShadow"].sprite.xScale,
+                  yScale: meubles["moninShadow"].sprite.yScale,
+                  xOffset: 0,
+                  yOffset: 0,
+                }
+              }
+            }
+          ))
 
           var mouse = Mouse.create(render.canvas),
             mouseConstraint = MouseConstraint.create(engine, {
@@ -1092,6 +1122,9 @@ export default {
                 render: {
                   visible: false,
                 },
+              },
+              collisionFilter: {
+                category: 0x0002 // Adjust this value as needed
               },
             });
 
@@ -1131,12 +1164,6 @@ export default {
 
             Body.setAngle(body, meubles[key].body.angle);
 
-            console.log(
-              body.bounds.min.x,
-              body.bounds.min.y,
-              body.bounds.max.x,
-              body.bounds.max.y
-            );
             let spriteBody = Bodies.rectangle(
               body.bounds.min.x,
               body.bounds.min.y,
@@ -1242,6 +1269,10 @@ export default {
             isStatic: true,
             // removeCollinear: 0,
             restitution: 0,
+            collisionFilter: {
+              category: 0xFFFFFFFF, // You can set your own category here
+              // mask: 0x0002, // Enable or disable collision based on collisionEnabled
+            },
           };
 
           // Ce sont les murs du tableau

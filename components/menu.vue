@@ -106,13 +106,16 @@
 
     <!-- Reaseaux sociaux -->
     <!-- TODO: les faire disparaitre -->
-    <div id="social-network" class="hidden fixed right-0 bottom-0 mr-8 mb-3 z-[1000]">
+    <div 
+      id="social-network" 
+      class="fixed right-0 bottom-0 mr-8 mb-3 z-[1000]"
+      v-show="isMenuOpen">
       <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
         <linkedin class="text-[30px] w-auto text-white" />
       </a>
 
       <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
-        <instagram class="text-[30px] w-auto" />
+        <instagram class="text-[30px] w-auto text-blue-500" />
       </a>
     </div>
   </div>
@@ -179,8 +182,8 @@ export default {
   },
   watch: {
     isMenuOpen() {
-      console.log(this.isMenuOpen, !this.isMenuOpen);
-      // this.isMenuOpen ? this.openMenu() : this.closeMenu();
+      // console.log(this.isMenuOpen, !this.isMenuOpen);
+      this.isMenuOpen ? this.openMenu() : this.closeMenu();
     },
   },
   mounted() {
@@ -251,9 +254,10 @@ export default {
           
           // Il y'a un bug, je pense que c'est du au fait que le thread est saturé pour pouvoir correctement gérer les timeout, donc l'animation est degueu
           this.closeMenu();
+      this.$emit('update:isMenuOpen', !this.isMenuOpen);
 
           // setTimeout(() => {
-            this.toggleMenuBurger();
+            // this.toggleMenuBurger();
           // }, 200);
         }
       });

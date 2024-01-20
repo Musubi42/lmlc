@@ -31,3 +31,7 @@ snyk-macos
 
 *.zip
 .vercel
+
+stories/
+storybook-static/
+.storybook/

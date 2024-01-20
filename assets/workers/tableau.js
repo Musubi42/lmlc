@@ -13,7 +13,7 @@ self.onmessage = async function (event) {
     createBody(...args);
   } 
 
-  async function createBody(key, meubles, forMainThread) {
+  async function createBody(key, meubles, forMainThread, drawHereWidth, drawHereHeight) {
     // Fetch the file from the public folder
     // const response = await fetch(`@/../../tableau/vertices/${key}.json`);
     // Repasser sur public pour éviter les fetch qui fails
@@ -31,9 +31,10 @@ self.onmessage = async function (event) {
 
     const isMoninShadow = meubles[key].sprite.image.match('moninShadow.png');
 
-    let body = Bodies.fromVertices(300, 500, [fileContent], {
+    let body = Bodies.fromVertices(300, 300, [fileContent], {
       // collisionFilter: {
-      //   mask: isMoninShadow ? -1 : 0,
+      //   // category: 2, // You can set your own category here
+      //   mask: 0, // Enable or disable collision based on collisionEnabled
       // },
       render: {
         // visible: meubles[key].sprite.image.match('timur.png') ? true : false,
@@ -41,17 +42,30 @@ self.onmessage = async function (event) {
       },
     });
 
-    if (isMoninShadow) {
-      // body.collisionFilter.mask = -1;
-      body.collisionFilter = {
-  'group': -1,
-  'category': 2,
-  'mask': 0,
-};
-    }
+    // if (isMoninShadow) {
+    //   // body.collisionFilter.mask = -1;
+    //   body.collisionFilter = {
+    //     category: 1, // You can set your own category here
+    //     mask: 0, // Enable or disable collision based on collisionEnabled
+    //   };
+    // }
     
 
     Body.setAngle(body, meubles[key].body.angle);
+
+
+    let width = body.bounds.max.x - body.bounds.min.x;
+    let height = body.bounds.max.y - body.bounds.min.y;
+
+    console.log('Width: ', width);
+    console.log('Height: ', height);
+
+    let position = {
+      x: Math.random() * (drawHereWidth - width),
+      y: Math.random() * (drawHereHeight - height)
+    };
+
+    Body.setPosition(body, position);
 
     let spriteBody = Bodies.rectangle(
       body.bounds.min.x,

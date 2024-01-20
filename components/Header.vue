@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <Menu :isMenuOpen="toggleMenu" />
+    <Menu :isMenuOpen="toggleMenu" @update:isMenuOpen="handleMenuUpdate" />
     <div class="place-content-between py-6 pl-6 md:px-10 flex flex-row">
       <div
        class="">
@@ -366,6 +366,11 @@ export default {
     menuBurger,
   },
   methods: {
+    handleMenuUpdate(event) {
+      console.log(event);
+      // this.menuBurgerOpened = event; 
+      this.toggleMenuBurger();
+    },
     toggleDropdown() {
       // Toggle the dropdown state
       this.isDropdownOpen = !this.isDropdownOpen;
