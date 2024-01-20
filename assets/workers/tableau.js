@@ -28,11 +28,28 @@ self.onmessage = async function (event) {
 
     const positionX = meubles[key].body.position.x;
     const positionY = meubles[key].body.position.y;
-    let body = Bodies.fromVertices(positionX, positionY, [fileContent], {
+
+    const isMoninShadow = meubles[key].sprite.image.match('moninShadow.png');
+
+    let body = Bodies.fromVertices(300, 500, [fileContent], {
+      // collisionFilter: {
+      //   mask: isMoninShadow ? -1 : 0,
+      // },
       render: {
-        visible: meubles[key].sprite.image.match('timur.png') ? true : false,
+        // visible: meubles[key].sprite.image.match('timur.png') ? true : false,
+        visible: true,
       },
     });
+
+    if (isMoninShadow) {
+      // body.collisionFilter.mask = -1;
+      body.collisionFilter = {
+  'group': -1,
+  'category': 2,
+  'mask': 0,
+};
+    }
+    
 
     Body.setAngle(body, meubles[key].body.angle);
 

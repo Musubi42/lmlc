@@ -1044,8 +1044,9 @@ export default {
             { type: "module" }
           );
 
-          const uniqueBody = { timur, timurBig, timurQualiSVG, timurQualiPNG, moninShadow, tableRouge };
+          const uniqueBody = { timur, timurBig, timurQualiSVG, timurQualiPNG, moninShadow };
           // const uniqueBody = { sacBleu, monin, timur, bourges2024 };
+          // const uniqueBody = { moninShadow };
 
           function createsUniqueBody() {
             const forMainThread = true;
@@ -1239,7 +1240,7 @@ export default {
           const offset = this.canvasProp.wallWidth;
           const options = {
             isStatic: true,
-            removeCollinear: 0,
+            // removeCollinear: 0,
             restitution: 0,
           };
 

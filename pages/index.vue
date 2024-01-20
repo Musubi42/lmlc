@@ -2,9 +2,9 @@
   <div id="home" class="bg-white">
     <div class="h-screen">
       <!-- TODO: Toujours faire chevaucher le texte sur le tableau quelque soit l'écran, les valeurs absolues peuvent être bien -->
-      <div class="relative w-full z-10">
+      <div class="relative w-full z-10 mt-20">
         <p
-          class="text-[1rem] md:text-[2rem] xl:text-[3.2rem] font-black mx-auto w-[90%] md:w-[65%]"
+          class="text-[1rem] md:text-[2rem] xl:text-[3.2rem] font-black mx-auto w-[90%] md:w-[65%] text-center"
           id="text-intro"
         >
           {{ $t("intro") }}
@@ -12,14 +12,14 @@
       </div>
 
       <div
-        class="relative w-full h-[85%] md:h-[85%] bottom-0 shadow-sm tableau-shadow"
+        class=" w-full h-[85%] md:h-[85%] bottom-0"
       >
         <tableauTest class="cursor-pointer" v-cursorAnimation />
       </div>
     </div>
     <div
       id="container"
-      class="font-medium md:max-w-[75%] text-[1.5rem] md:text-[2rem] xl:text-[3.2rem] leading-[1] mx-[5%] md:mx-[10%] pb-20 md:pb-80"
+      class="mt-24 font-medium md:max-w-[75%] text-[1.5rem] md:text-[2rem] xl:text-[3.2rem] leading-[1] mx-[5%] md:mx-[10%] pb-20 md:pb-80"
     >
       <div
         id="first-paragraph"

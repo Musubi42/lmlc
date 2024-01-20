@@ -5,7 +5,7 @@
       <div
        class="">
         <img
-          class="h-[11px] w-auto cursor-pointer"
+          class="h-[11px] w-auto cursor-pointer fixed"
           src="~/assets/images/logo-lmlc-black.png"
           alt="Logo LMLC couleur noir"
           v-cursorAnimation
@@ -86,11 +86,11 @@
         <div
           to="/menu"
           id="menu-burger"
-          class="hover:cursor-pointer h-auto close z-[1000] fixed mt-[-7px] mr-6 md:mr-10 right-0 text-black"
-          @click=""
-
+          class="hover:cursor-pointer h-auto close z-[1000] fixed mr-6 md:mr-10 right-0 text-black"
         >
           <IconsMenuBurger
+            :style="{ height: burgerHeight + 'px', y: y + 'px' }"
+            :y="y"
             class="text-[50px]"
             ref="menuBurger"
             @click="toggleMenuBurger"
@@ -342,6 +342,10 @@ export default {
       menuBurgerOpened: false,
       language: "FR",
       isDropdownOpen: false, // Add this line to track the dropdown state
+      burgerHeight: 24,
+      burgerWidth: 38,
+      x: 0,
+      y: 0,
     };
   },
   created() {
@@ -369,12 +373,19 @@ export default {
     toggleMenuBurger() {
       this.toggleMenu = !this.toggleMenu;
       this.menuBurgerOpened = !this.menuBurgerOpened;
-      
+
+      // change the height here
+      this.burgerHeight = this.menuBurgerOpened ? 50 : 24;
+
       const svgElement = this.$refs.menuBurger.$el;
       const rectElements = svgElement.querySelectorAll("rect");
       const rect1 = rectElements[0];
       const rect2 = rectElements[1];
       const rect3 = rectElements[2];
+
+      rect1.style.y = this.menuBurgerOpened ? "-13px" : "0px";
+      rect2.style.y = this.menuBurgerOpened ? "-6px" : "8px";
+      rect3.style.y = this.menuBurgerOpened ? "1px" : "16px";
 
       if (this.menuBurgerOpened) {
         // Block the scrolling, so no problem with the image on hover

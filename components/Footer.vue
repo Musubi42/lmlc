@@ -87,18 +87,6 @@
         </div>
         <div class="z-10 relative" data-footer-element>PARIS, FR</div>
       </div>
-
-      <!-- <div
-          ref="languageSelectors" class="flex-1" data-footer-element>
-        <span
-          data-footer-element
-          class="hidden md:flex flex-row font-montserrat font-medium text-sm w-fit ml-auto"
-        >
-          <span class="mr-4 hover:italic cursor-pointer" @click="changeLanguage('fr')" id="fr-footer">FR</span>
-          <span class="mr-4 hover:italic cursor-pointer" @click="changeLanguage('en')" id="en-footer">EN</span>
-          <span class="hover:italic cursor-pointer" @click="changeLanguage('it')" id="it-footer">IT</span>
-        </span>
-      </div> -->
     </div>
     <div class="relative w-full" data-footer-element>
       <div
@@ -117,6 +105,7 @@
           data-footer-element
           to="/"
           class="font-monteserrat font-extralight text-sm mt-4 mb-6"
+          v-cursorAnimation
           >mentions légales</NuxtLink
         >
       </div>
@@ -127,41 +116,6 @@
 <script>
 import instagram from "assets/icons/instagram.svg";
 import Cookies from "js-cookie";
-
-export default {
-  data() {
-    return {
-      language: "FR",
-    };
-  },
-  created() {
-    // Lorsque le composant est créé, vérifiez si un cookie de langue existe
-    const savedLang = Cookies.get("i18n_language");
-
-    if (savedLang) {
-      // Si un cookie existe, utilisez-le pour définir la langue
-      this.$i18n.locale = savedLang;
-    } else {
-      // Sinon, utilisez la langue par défaut de votre application
-      this.$i18n.locale = "fr"; // Mettez la langue par défaut de votre choix
-    }
-  },
-  methods: {
-    changeLanguage(locale) {
-      const languageSelectors = this.$refs.languageSelectors;
-      const allLanguageSelectors = languageSelectors.querySelectorAll("span");
-      allLanguageSelectors.forEach((languageSelector) => {
-        languageSelector.classList.remove("font-semibold");
-      });
-      this.language = locale.toUpperCase();
-      const languageSelector = document.getElementById(locale);
-      document.getElementById(`${locale}-footer`).classList.add("font-semibold");
-
-      Cookies.set("i18n_language", locale);
-      this.$i18n.locale = locale;
-    },
-  },
-};
 </script>
 
 <style scoped>

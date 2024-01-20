@@ -1,11 +1,11 @@
 <template>
   <button
-    class="w-12 h-12 rounded-full flex items-center justify-center"
+    class="fixed z-50 w-12 h-12 text-center rounded-full cursor-pointer select-none text-a_bg right-24 top-3 border-black border-[1px]"
     @click="changeLanguage"
   >
-    <IconsFlagsFr class="text-[50px] rounded-full" v-if="currentLanguage === 'fr'" />
-    <IconsFlagsEng class="text-[50px] rounded-full" v-if="currentLanguage === 'en'" />
-    <IconsFlagsIt class="text-[50px] rounded-full" v-if="currentLanguage === 'it'" />
+    <div class="absolute text-xs top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 dark:text-[#000]" >   
+      {{ currentLanguage }}
+    </div>
   </button>
 </template>
 
@@ -17,11 +17,6 @@ export default {
     return {
       currentLanguage: 'fr',
       languages: ['fr', 'en', 'it'],
-      flags: {
-        fr: 'path/to/france-flag.png',
-        en: 'path/to/england-flag.png',
-        it: 'path/to/italy-flag.png',
-      },
     };
   },
   created() {

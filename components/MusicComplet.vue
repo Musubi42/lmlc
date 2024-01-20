@@ -5,15 +5,34 @@
       <div
         class="flex flex-row gap-4 ml-4 mr-4 content-start center-content items-center"
       >
-        <div class="aspect-content" style="background-color: white !important;">
-  <img
-    class="w-full h-full object-cover"
-    :src="songMetadata ? songMetadata.thumbnail : ''"
-  />
-</div>
+        <img
+          class="h-4/5 aspect-square flex mix-blend-difference"
+          :src="songMetadata ? songMetadata.thumbnail : ''"
+        />
         <div class="justify-center flex flex-col">
           <p class="font-medium">{{ songMetadata ? songMetadata.author : "" }}</p>
           <p>{{ songMetadata ? songMetadata.title : "" }}</p>
+        </div>
+      </div>
+
+      <!-- Playlist selector -->
+      <div @click="" class="video-container no-scrollbar flex flex-col overflow-auto">
+        <div
+          v-for="(song, index) in playlistMetadata"
+          :key="index"
+          class="video-item flex flex-row items-center mb-4 cursor-pointer text-sm"
+          @click="loadAndPlayAudio(index)"
+        >
+          <img
+            class="h-16 w-16 object-cover mix-blend-difference"
+            :src="song.thumbnail"
+          />
+          <div class="ml-4 max-w-24">
+            <p class="font-medium">{{ song.author }}</p>
+            <p class="text-ellipsis overflow-hidden whitespace-nowrap">
+              {{ song.title }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -21,20 +40,19 @@
     <div class="flex mx-10 items-center justify-center">
       <!-- Play previous song -->
       <button class="center-content mr-2" @click="playPreviousSong">
-        <iconsPrevious class="w-[24px]" v-cursorAnimation />
+        <iconsPrevious class="w-[24px]" />
       </button>
       <!-- Toggle song -->
       <button
         class="flex w-12 h-12 bg-black text-white rounded-full center-content justify-center items-center"
         @click="toggleAudio"
-        v-cursorAnimation
       >
         <iconsLoading class="w-[24px]" v-if="isLoading" src="" alt="Loading..." />
         <iconsStart class="ml-[3px] w-[24px]" v-if="!isPlaying && !isLoading" />
         <iconsPause class="w-[24px]" v-if="isPlaying && !isLoading" />
       </button>
       <!-- Play next song -->
-      <button class="center-content" @click="playNextSong" v-cursorAnimation>
+      <button class="center-content" @click="playNextSong">
         <iconsNext class="w-[24px] ml-2" />
       </button>
     </div>
@@ -42,21 +60,49 @@
     <div
       class="flex flex-1 flex-row gap-4 ml-4 mr-4 content-end center-content items-center justify-end"
     >
-      <!-- Volume -->
-      <div class="flex items-center">
-        <iconsNoSound class="w-[24px]" />
+      <!-- Music timeline -->
+      <div class="flex w-full items-center">
+        <div class="flex flex-row gap-1 cursor-default">
+          <p ref="audioRef">{{ formatTime(currentTime) }}</p>
+          /
+          <p>{{ formatTime(songMetadata ? songMetadata.duration : 0) }}</p>
+        </div>
         <input
           type="range"
-          :title="`volume ${volume}%`"
+          class="rounded-full ml-2"
           min="0"
-          max="100"
-          step="0.5"
-          v-model="volume"
-          class="rounded-full mx-2 cursor-pointer"
-          style="--inputValue: 100%; width: 80px"
-          v-cursorAnimation
+          :max="songMetadata ? songMetadata.duration : 0"
+          v-model="currentTime"
+          @input="changeTime"
         />
-        <iconsSoundOn class="w-[24px]" />
+      </div>
+      <!-- Volume -->
+      <div
+        class="flex flex-col relative h-20 justify-center items-center cursor-pointer"
+        @mouseenter="showVolume = true"
+        @mouseleave="showVolume = false"
+      >
+        <div class="z-10">
+          <iconsSoundOn @click="toggleSound" v-if="isSound" class="w-[24px]" />
+          <iconsSoundOff @click="toggleSound" v-else class="w-[24px]" />
+        </div>
+        <!-- <transition name="slide"> -->
+        <div
+          class="absolute bottom-full transform translate-y-full mb-[25px]"
+          v-show="showVolume"
+        >
+          <input
+            type="range"
+            :title="`volume ${volume}%`"
+            min="0"
+            max="100"
+            step="0.5"
+            v-model="volume"
+            class="vertical rotate-[270deg] rounded-full"
+            style="--inputValue: 100%; width: 80px"
+          />
+        </div>
+        <!-- </transition> -->
       </div>
     </div>
   </div>
@@ -167,11 +213,9 @@ export default {
       try {
         var response;
         if (process.env.NODE_ENV === "development") {
-          response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata`);
+            response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata`);
         } else {
-          response = await axios.get(
-            `${this.APIStreamAudioBaseUrl}/playlistMetadata.json`
-          );
+            response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata.json`);
         }
 
         this.playlistMetadataKeys = Object.keys(response.data);
@@ -194,7 +238,7 @@ export default {
         } else {
           audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/${trackID}.mp3`);
         }
-
+        
         const blob = await audioResponse.blob();
         this.audioSource = new Audio(URL.createObjectURL(blob));
         this.audioSource.volume = this.volume / 100;
@@ -286,6 +330,18 @@ export default {
   },
 
   mounted() {
+    // Update the total duration when the music is loaded
+    // this.$refs.audio.addEventListener("loadedmetadata", () => {
+    //   this.duration = this.$refs.audio.duration;
+    // });
+    // Update the slider value every second
+    // this.$refs.audio.addEventListener("timeupdate", this.updateTime);
+
+    // Get the first song
+
+    this.$refs.audioRef.ontimeupdate = () => {
+      this.currentTime = this.$refs.audioRef.currentTime;
+    };
   },
   async created() {
     // TODO: Faire une petite gestion d'erreur
@@ -302,6 +358,8 @@ export default {
     // Remove event listeners
     this.$refs.audio.removeEventListener("loadedmetadata", this.updateTime);
     this.$refs.audio.removeEventListener("timeupdate", this.updateTime);
+
+    this.$refs.audioRef.ontimeupdate = null;
   },
 };
 </script>
