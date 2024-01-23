@@ -10,8 +10,8 @@
           :src="songMetadata ? songMetadata.thumbnail : ''"
         />
         <div class="justify-center flex flex-col text-ellipsis whitespace-nowrap overflow-hidden">
-          <p class="hidden md:font-medium md:block">{{ songMetadata ? songMetadata.author : "" }}</p>
-          <p class="font-medium md:font-normal truncate" >{{ songMetadata ? songMetadata.title : "" }}</p>
+          <p class="hidden md:font-semibold text-lg md:block truncate">{{ songMetadata ? songMetadata.title : "" }}</p>
+          <p class="font-light md:font-light truncate" >{{ songMetadata ? songMetadata.author : "" }}</p>
         </div>
       </div>
     </div>
@@ -100,7 +100,7 @@ input[type="range"] {
   appearance: none;
   width: 100%; /* Full width */
   height: 10px; /* Specified height */
-  background: #ddd; /* Grey background */
+  background: grey; /* Grey background */
   outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (it will be visible when mouse hover) */
   transition: opacity 0.2s; /* Transition effect when mouse hover */
@@ -116,7 +116,7 @@ input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   width: 15px; /* Set a specific slider handle width */
   height: 15px; /* Slider handle height */
-  background: #974dff; /* Green background */
+  background: black; /* Green background */
   cursor: pointer; /* Cursor on hover */
   border-radius: 9999px;
 }
