@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed-background bg-cover bg-center bg-fixed bg-interactive-whiteboard">
+  <div class=" bg-cover bg-center bg-fixed bg-interactive-whiteboard">
     <div id="carousel-container" class="relative w-full h-screen ">
       <!-- Background Image -->
       <div class="absolute top-0 left-0 w-full h-full z-0 opacity-100 transition-opacity"
@@ -44,71 +44,74 @@
       </button>
     </div>
 
-    <div class="fixed-background bg-cover bg-center h-screen bg-fixed flex items-center justify-center bg-interactive-whiteboard mt-96" >
-      <div class="container fixed-background-content relative z-10">
-        <div class="flex flex-row">
-          <div class="basis-1/2">
-            <div id="monElement" class="flotter-container ">
-              <img src=" /assets/images/sac-bleu.png" alt="Image à flotter" class="flotter-image">
-            </div>
-          </div>
-          <div class="basis-1/4"></div>
-          <div class="basis-1/2"></div>
+    <div class="fixed-background bg-cover bg-center h-screen bg-fixed flex items-center justify-center bg-interactive-whiteboard mt-96">
+  <div class="container fixed-background-content relative z-10">
+    <div class="flex flex-row">
+      <div class="basis-1/2">
+        <div id="monElement" class="flotter-container ">
+          <img src="/assets/images/sac-bleu.png" alt="Image à flotter" class="flotter-image">
         </div>
-        <div class="text-container text-black text-4xl font-bold z-1">
-          <p class="text-black">
-            La quête infinie de l'humanité pour comprendre l'univers trouve son expression la plus audacieuse dans
-            l'exploration spatiale. Des sondes qui parcourent les confins du système solaire aux télescopes puissants qui
-            scrutent les mystères des étoiles lointaines, chaque mission spatiale élargit notre compréhension de l'espace
-            et
-            de notre place en son sein.
-          </p>
-        </div>
-        <div class="flex flex-row">
-          <div class="basis-1/2">
-          </div>
-          <div class="basis-1/4"></div>
-          <div class="basis-1/2"></div>
-        </div>
-        <div class="text-container text-black text-4xl font-bold my-52">
-          <p class="text-black">
-            Dans un monde confronté à des défis environnementaux croissants, la durabilité est devenue un impératif. De la
-            réduction des émissions de carbone à la préservation de la biodiversité, les efforts pour créer un avenir plus
-            durable s'étendent à tous les domaines de la société. Les choix que nous faisons aujourd'hui façonnent la
-            qualité de vie des générations futures.
-          </p>
-        </div>
-        <div class="flex flex-row">
-          <div class="basis-1/2">
-
-          </div>
-          <div class="basis-1/4">
-            <div id="monElement" class="flotter-container ">
-              <img src=" /assets/images/sac-bleu.png" alt="Image à flotter" class="flotter-image">
-            </div>
-          </div>
-          <div class="basis-1/2"></div>
-        </div>
-        <div class="text-container text-black text-4xl font-bold mb-96">
-          <p class="text-black">
-            L'exploration spatiale a captivé l'imagination de l'humanité depuis des décennies. Des premiers pas de l'homme
-            sur la Lune aux missions robotiques qui explorent les confins de notre système solaire, l'aventure spatiale
-            continue de repousser les limites de notre compréhension. Chaque découverte, chaque cliché de planètes
-            lointaines, nous offre un aperçu fascinant de l'univers infini qui nous entoure.
-          </p>
-        </div>
-        <div class="flex flex-row">
-          <div class="basis-1/2">
-            <div id="monElement" class="flotter-container">
-              <img src=" /assets/images/sac-bleu.png" alt="Image à flotter" class="flotter-image">
-            </div>
-          </div>
-          <div class="basis-1/4"></div>
-          <div class="basis-1/2"></div>
-        </div>
-        <div class="h-96"></div>
       </div>
+      <div class="basis-1/4"></div>
+      <div class="basis-1/2"></div>
     </div>
+
+    <div class="flex sticky text-container text-black text-4xl font-bold z-1">
+      <p class="text-black">
+        La quête infinie de l'humanité pour comprendre l'univers trouve son expression la plus audacieuse dans
+        l'exploration spatiale. Des sondes qui parcourent les confins du système solaire aux télescopes puissants qui
+        scrutent les mystères des étoiles lointaines, chaque mission spatiale élargit notre compréhension de l'espace
+        et de notre place en son sein.
+      </p>
+    </div>
+
+    <div class="flex flex-row">
+      <div class="basis-1/2"></div>
+      <div class="basis-1/4"></div>
+      <div class="basis-1/2"></div>
+    </div>
+
+    <div class="text-container text-black text-4xl font-bold my-52">
+      <p class="text-black">
+        Dans un monde confronté à des défis environnementaux croissants, la durabilité est devenue un impératif. De la
+        réduction des émissions de carbone à la préservation de la biodiversité, les efforts pour créer un avenir plus
+        durable s'étendent à tous les domaines de la société. Les choix que nous faisons aujourd'hui façonnent la
+        qualité de vie des générations futures.
+      </p>
+    </div>
+
+    <div class="flex flex-row">
+      <div class="basis-1/2"></div>
+      <div class="basis-1/4">
+        <div id="monElement" class="flotter-container ">
+          <img src="/assets/images/sac-bleu.png" alt="Image à flotter" class="flotter-image">
+        </div>
+      </div>
+      <div class="basis-1/2"></div>
+    </div>
+
+    <div class="text-container text-black text-4xl font-bold mb-96">
+      <p class="text-black texts">
+        L'exploration spatiale a captivé l'imagination de l'humanité depuis des décennies. Des premiers pas de l'homme
+        sur la Lune aux missions robotiques qui explorent les confins de notre système solaire, l'aventure spatiale
+        continue de repousser les limites de notre compréhension. Chaque découverte, chaque cliché de planètes
+        lointaines, nous offre un aperçu fascinant de l'univers infini qui nous entoure.
+      </p>
+    </div>
+
+    <div class="flex flex-row">
+      <div class="basis-1/2">
+        <div id="monElement" class="flotter-container">
+          <img src="/assets/images/sac-bleu.png" alt="Image à flotter" class="flotter-image">
+        </div>
+      </div>
+      <div class="basis-1/4"></div>
+      <div class="basis-1/2"></div>
+    </div>
+
+    <div class="h-96"></div>
+  </div>
+</div>
   </div>
 </template>
 
@@ -177,6 +180,9 @@ export default {
   height: 50%;
 }
 
+.texts{
+  position: absolute;
+}
 @keyframes flotterAnimation {
   0% {
     transform: translateY(0);
