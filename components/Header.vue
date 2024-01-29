@@ -1,9 +1,10 @@
 <template>
-  <div class="">
+  <div class="fixed w-full z-50">
     <Menu :isMenuOpen="toggleMenu" @update:isMenuOpen="handleMenuUpdate" />
     <div class="place-content-between py-6 pl-6 md:px-10 flex flex-row">
       <div
-       class="">
+        class="duration-300 transition-opacity"
+        :style="dynamicStyle">
         <img
           class="h-[11px] w-auto cursor-pointer fixed"
           src="~/assets/images/logo-lmlc-black.png"
@@ -12,81 +13,12 @@
         />
       </div>
       <div class="flex flex-row">
-        <div
-          ref="languageSelectors"
-          class="flex flex-row font-montserrat font-medium text-sm mt-[-4px] mr-16 md:mr-40 content-end cursor-pointer"
-        >
-          <div>
-            <button
-              id="dropdownDefaultButton"
-              @click="toggleDropdown"
-              class="text-black md:hidden inline-block relative bg-white hover:bg-white focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
-              type="button"
-            >
-              {{ language }}
-            </button>
-
-            <!-- Dropdown menu -->
-            <div
-              v-show="isDropdownOpen"
-              id="dropdown"
-              class="z-20 absolute bg-white divide-y divide-gray-100 rounded-lg"
-            >
-              <ul
-                class="py-2 text-sm text-gray-700 dark:text-white"
-                aria-labelledby="dropdownDefaultButton"
-              >
-                <li>
-                  <a
-                    href="#"
-                    @click="changeLanguage('fr')"
-                    class="block px-4 py-2 hover:bg-gray-100 text-black hover:bg-black text-center"
-                    >FR</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    @click="changeLanguage('en')"
-                    class="block px-4 py-2 hover:bg-gray-100 text-black hover:text-black text-center"
-                    >EN</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    @click="changeLanguage('it')"
-                    class="block px-4 py-2 hover:bg-gray-100 text-black hover:text-black text-center"
-                    >IT</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- Options de langue visibles sur les écrans moyens et plus grands -->
-          <!-- <span class="hidden md:flex flex-row">
-            <span
-              @click="changeLanguage('fr')"
-              class="mr-4 hover:italic"
-              id="fr"
-              >FR</span
-            >
-            <span
-              @click="changeLanguage('en')"
-              class="mr-4 hover:italic"
-              id="en"
-              >EN</span
-            >
-            <span @click="changeLanguage('it')" class="hover:italic" id="it"
-              >IT</span
-            >
-          </span> -->
-          <switchLanguage v-cursorAnimation />
-        </div>
+        <switchLanguage :languageStyle="dynamicStyle" v-cursorAnimation />
+        
         <div
           to="/menu"
           id="menu-burger"
-          class="hover:cursor-pointer h-auto close z-[1000] fixed mr-6 md:mr-10 right-0 text-black"
+          class="hover:cursor-pointer h-auto close z-[1000] fixed mr-4 right-0 text-black"
         >
           <IconsMenuBurger
             :style="{ height: burgerHeight + 'px', y: y + 'px' }"
@@ -336,6 +268,12 @@ import menuBurger from "assets/icons/menu_burger.svg";
 // import 
 
 export default {
+  props: {
+    dynamicStyle: {
+      type: Object,
+      required: false
+    },
+  },
   data() {
     return {
       toggleMenu: false,

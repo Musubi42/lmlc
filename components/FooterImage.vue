@@ -81,6 +81,14 @@
                   </button>
                 </div>
             </template>
+            <template #content>
+              <span
+                class="font-extralight z-10 relative bg-black mix-blend-difference text-white"
+                data-footer-element
+              >
+                Ajouter champs pour récupérer email
+              </span>
+            </template>
           </ImageFooterOnHover>
           <!-- opacity: 0; width: 100%; height: auto; max-width: 400px; box-sizing:
           border-box; transition: ease .2s; position: absolute; transform:

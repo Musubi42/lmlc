@@ -10,8 +10,8 @@
           :src="songMetadata ? songMetadata.thumbnail : ''"
         />
         <div class="justify-center flex flex-col text-ellipsis whitespace-nowrap overflow-hidden">
-          <p class="hidden md:font-semibold text-lg md:block truncate">{{ songMetadata ? songMetadata.title : "" }}</p>
-          <p class="font-light md:font-light truncate" >{{ songMetadata ? songMetadata.author : "" }}</p>
+          <p class="hidden md:font-medium text-base md:block truncate">{{ songMetadata ? songMetadata.title : "" }}</p>
+          <p class="font-light md:font-light text-sm truncate" >{{ songMetadata ? songMetadata.author : "" }}</p>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
         v-cursorAnimation
       >
         <iconsLoading class="w-[24px]" v-if="isLoading" src="" alt="Loading..." />
-        <iconsStart class="ml-[3px] w-[24px]" v-if="!isPlaying && !isLoading" />
+        <iconsLecture class="ml-[4px] w-[24px]" v-if="!isPlaying && !isLoading" />
         <iconsPause class="w-[24px]" v-if="isPlaying && !isLoading" />
       </button>
       <!-- Play next song -->

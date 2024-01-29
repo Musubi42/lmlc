@@ -102,7 +102,6 @@
             style="--inputValue: 100%; width: 80px"
           />
         </div>
-        <!-- </transition> -->
       </div>
     </div>
   </div>
@@ -213,9 +212,11 @@ export default {
       try {
         var response;
         if (process.env.NODE_ENV === "development") {
-            response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata`);
+          response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata`);
         } else {
-            response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata.json`);
+          response = await axios.get(
+            `${this.APIStreamAudioBaseUrl}/playlistMetadata.json`
+          );
         }
 
         this.playlistMetadataKeys = Object.keys(response.data);
@@ -238,7 +239,7 @@ export default {
         } else {
           audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/${trackID}.mp3`);
         }
-        
+
         const blob = await audioResponse.blob();
         this.audioSource = new Audio(URL.createObjectURL(blob));
         this.audioSource.volume = this.volume / 100;

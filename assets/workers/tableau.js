@@ -17,12 +17,27 @@ self.onmessage = async function (event) {
     // Fetch the file from the public folder
     // const response = await fetch(`@/../../tableau/vertices/${key}.json`);
     // Repasser sur public pour éviter les fetch qui fails
-    const response = await fetch(`/tableau/vertices/${key}.json`);
+
+    // Vrai vertices
+    // const response = await fetch(`/tableau/vertices/${key}.json`);
+
+    // Vertices pour test les tailles
+    var response = "";
+
+    
+    try {
+      response = await fetch(`/tableau/vertices/${key}.json`);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+      // response = await fetch(`/tableau/vertices/monin.json`);
+    }
     
     
     if (!response.ok) {
       console.error(`Error fetching file: ${response.statusText}`);
-      return;
+      response = await fetch(`/tableau/vertices/monin.json`);
+      // return;
     }
     const fileContent = await response.json();
 
@@ -57,8 +72,8 @@ self.onmessage = async function (event) {
     let width = body.bounds.max.x - body.bounds.min.x;
     let height = body.bounds.max.y - body.bounds.min.y;
 
-    console.log('Width: ', width);
-    console.log('Height: ', height);
+    // console.log('Width: ', width);
+    // console.log('Height: ', height);
 
     let position = {
       x: Math.random() * (drawHereWidth - width),

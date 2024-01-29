@@ -20,5 +20,9 @@ export default defineI18nConfig(() => ({
       thirdParagraph: "con i nostri clienti, scriviamo storie a lungo termine.",
     },
   },
-  
+  inputGetEmail: {
+    fr: "Entrez votre email",
+    en: "Enter your email",
+    it: "Inserisci la tua email",
+  },
 }));

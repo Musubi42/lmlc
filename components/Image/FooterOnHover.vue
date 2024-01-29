@@ -1,7 +1,8 @@
 <template>
   <!-- <div> -->
   <!--  -->
-  <div @mousemove="moveImage" @mouseenter="showImage" @mouseleave="hideImage">
+  <!-- <div @mousemove="moveImage" @mouseenter="showImage" @mouseleave="hideImage"> -->
+  <div >
     <img
       v-if="isVisible"
       :src="imageSrc"
