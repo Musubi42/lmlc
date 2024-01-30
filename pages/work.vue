@@ -1,9 +1,10 @@
 <template>
   <div class="bg-cover bg-center bg-fixed bg-interactive-whiteboard">
-    <div class="relative slide w-full h-screen">
+    <div class="relative slide w-full h-screen ">
       <div class="carousel-inner relative overflow-hidden h-screen z-1">
         <div v-for="(img, i) in images" :id="`slide-${i}`" :key="i" :class="`${active === i ? 'active' : 'left-full'}`"
-          class="carousel-item inset-0 relative h-screen transform transition-all duration-1000 ease-in-out">
+          class="carousel-item inset-0 relative h-screen transform transition-all duration-1000 ease-in">
+          <div :style="{ backgroundColor: img.backgroundColor }">
           <img class="block w-full" :src="img.image" alt=${img.description} />
           <div id="carousel-text"
             class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center">
@@ -11,10 +12,9 @@
             <p class="text-2xl">{{ img.description }}</p>
           </div>
         </div>
+        </div>
       </div>
     </div>
-
-
 
     <button type="button"
       class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
@@ -40,8 +40,7 @@
         <span class="sr-only">Next</span>
       </span>
     </button>
-  </div>
-
+    
   <div
     class="fixed-background bg-cover bg-center h-screen bg-fixed flex items-center justify-center bg-interactive-whiteboard mt-96">
     <div class="container fixed-background-content relative z-10">
@@ -111,6 +110,7 @@
       <div class="h-96"></div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -124,21 +124,15 @@ export default {
       imageTop: 0,
       active: 0,
       images: [
-        { image: "/services.png", title: "Titre 1", description: "Description 1", alt: "truc" },
-        { image: "/talents.png", title: "Titre 2", description: "Description 2", alt: "truc" },
-        { image: "/work.png", title: "Titre 3", description: "Description 3", alt: "truc" },
-        { image: "/footer-job.png", title: "Titre 4", description: "Description 4", alt: "truc" },
+        { image: "/services.png", title: "Titre 1", description: "Description 1", alt: "truc", backgroundColor : "#974dff" },
+        { image: "/talents.png", title: "Titre 2", description: "Description 2", alt: "truc", backgroundColor : "#974dff" },
+        { image: "/work.png", title: "Titre 3", description: "Description 3", alt: "truc", backgroundColor : "#974dff" },
+        { image: "/footer-job.png", title: "Titre 4", description: "Description 4", alt: "truc", backgroundColor : "#974dff" },
       ],
       test: 0
     };
   },
   methods: {
-    prevSlide() {
-      this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
-    },
-    nextSlide() {
-      this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-    },
     handleScroll() {
       const threshold = 50;
       const scrollY = window.scrollY;
@@ -156,23 +150,25 @@ export default {
       }
     },
 
+    goPrev() {
+      console.log("test");
+      this.test--;
+
+      if (this.test < 0) {
+        this.test = this.images.length - 1;
+      }
+
+      this.active = this.test;
+    },
     goNext() {
       console.log("test")
+      this.test++;
+
       if (this.test > this.images.length - 1) {
         this.test = 0;
       }
       this.active = this.test;
-      this.test++;
-    },
-
-    goPrev() {
-      console.log("test");
-      if (this.test < 0) {
-        this.test = this.images.length - 1;
-      }
-      this.active = this.test;
-      this.test--;
-    },
+    }
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
@@ -230,4 +226,5 @@ export default {
   100% {
     transform: translateY(-10px);
   }
-}</style>
+}
+</style>
