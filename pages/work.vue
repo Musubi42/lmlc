@@ -197,6 +197,23 @@ export default {
   left: 0;
 }
 
+.left-full {
+  left: -100%;
+}
+
+.carousel-item {
+  float: left;
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-right: -100%;
+  backface-visibility: hidden;
+}
+
+.carousel-item.active {
+  left: 0;
+}
+
 .text-container {
   z-index: 100;
   position: relative;
@@ -215,8 +232,10 @@ export default {
 }
 
 .texts {
+.texts {
   position: absolute;
 }
+
 
 @keyframes flotterAnimation {
   0% {
@@ -226,5 +245,4 @@ export default {
   100% {
     transform: translateY(-10px);
   }
-}
-</style>
+}</style>
