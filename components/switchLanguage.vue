@@ -9,9 +9,9 @@
   </button> -->
   <span class="hidden relative mt-[6px] md:flex flex-row text-xs font-medium right-24 bottom-[-1px] duration-300 transition-opacity" ref="languageSelectors" :style="languageStyle">
     <div class="fixed" >
-      <span @click="changeLanguage('fr')" class="mr-4 hover:italic hover:cursor-pointer" id="fr" v-cursorAnimation>FR</span>
-      <span @click="changeLanguage('en')" class="mr-4 hover:italic hover:cursor-pointer" id="en" v-cursorAnimation>EN</span>
-      <span @click="changeLanguage('it')" class="hover:italic hover:cursor-pointer" id="it" v-cursorAnimation>IT</span>
+      <span @click="changeLanguage('fr')" class="mr-4 font-semibold hover:cursor-pointer" id="fr" v-cursorAnimation>FR</span>
+      <span @click="changeLanguage('en')" class="mr-4  hover:cursor-pointer" id="en" v-cursorAnimation>EN</span>
+      <span @click="changeLanguage('it')" class=" hover:cursor-pointer" id="it" v-cursorAnimation>IT</span>
     </div>
   </span>
 

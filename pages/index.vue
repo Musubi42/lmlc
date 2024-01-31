@@ -4,13 +4,13 @@
       <div
         class=" w-full h-[100%] md:h-[100%]"
       >
-        <tableauTest class="cursor-pointer" v-cursorAnimation />
+        <!-- <tableauTest class="cursor-pointer" v-cursorAnimation /> -->
       </div>
     </div>
-    <!-- TODO: Padding footer pour l'effet scroll :  -->
+    <!-- TODO: Padding footer pour l'effet scroll : pb-20 md:pb-80 -->
     <div
       id="container"
-      class=" font-medium mt-8 md:max-w-[75%] text-[1.5rem] md:text-[2rem] xl:text-[3.2rem] leading-[1] mx-[5%] md:mx-[10%]"
+      class=" font-medium mt-8 md:max-w-[75%] text-[1.5rem] md:text-[2rem] xl:text-[3.2rem] leading-[1] mx-[5%] md:mx-[10%] pb-10 "
     >
       <div
         id="first-paragraph"
