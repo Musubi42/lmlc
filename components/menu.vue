@@ -33,11 +33,12 @@
             v-cursorAnimation
           >
             <div class="text-white font-black z-10 relative">
-              <span
+              <NuxtLink
+                to="/work"
                 data-color="#ffff00"
                 class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 cursor-pointer"
                 id="workTitle"
-                >WORK</span
+                >WORK</NuxtLink
               >
             </div>
           </ImageMenuOnHover>
@@ -73,11 +74,12 @@
           >
             <!-- TODO : On hover de cette div, animer le texte -->
             <div class="text-white font-black z-10 relative">
-              <span
+              <NuxtLink
+                to="/studio"
                 data-color="#99deff"
                 class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 cursor-pointer"
                 id="talentsTitle"
-                >TALENTS</span
+                >STUDIO</NuxtLink
               >
             </div>
           </ImageMenuOnHover>
