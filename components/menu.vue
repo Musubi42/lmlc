@@ -339,7 +339,7 @@ import tiktok from "assets/icons/tiktok.svg";
 import instagram from "assets/icons/instagram-opacity.svg";
 import linkedin from "assets/icons/linkedin.svg";
 
-definePageMeta({
-  layout: "menu",
-});
+// definePageMeta({
+//   layout: "menu",
+// });
 </script>

@@ -38,9 +38,9 @@ export default {
     };
   },
   mounted() {
-    this.$nextTick(() => {
-      console.log(this.$refs.image.offsetHeight);
-    });
+    // this.$nextTick(() => {
+    //   console.log(this.$refs.image.offsetHeight);
+    // });
   },
   unmounted() {
   },

@@ -7,10 +7,12 @@
       {{ currentLanguage }}
     </div>
   </button> -->
-  <span class="hidden md:flex flex-row text-xs font-medium absolute right-24 bottom-[-1px] duration-300 transition-opacity" ref="languageSelectors" :style="languageStyle">
-    <span @click="changeLanguage('fr')" class="mr-4 hover:italic hover:cursor-pointer" id="fr" v-cursorAnimation>FR</span>
-    <span @click="changeLanguage('en')" class="mr-4 hover:italic hover:cursor-pointer" id="en" v-cursorAnimation>EN</span>
-    <span @click="changeLanguage('it')" class="hover:italic hover:cursor-pointer" id="it" v-cursorAnimation>IT</span>
+  <span class="hidden relative mt-[6px] md:flex flex-row text-xs font-medium right-24 bottom-[-1px] duration-300 transition-opacity" ref="languageSelectors" :style="languageStyle">
+    <div class="fixed" >
+      <span @click="changeLanguage('fr')" class="mr-4 hover:italic hover:cursor-pointer" id="fr" v-cursorAnimation>FR</span>
+      <span @click="changeLanguage('en')" class="mr-4 hover:italic hover:cursor-pointer" id="en" v-cursorAnimation>EN</span>
+      <span @click="changeLanguage('it')" class="hover:italic hover:cursor-pointer" id="it" v-cursorAnimation>IT</span>
+    </div>
   </span>
 
   <div
@@ -28,11 +30,10 @@
             </button>
 
             <!-- Dropdown menu -->
-            <div
+            <!-- <div
               v-show="isDropdownOpen"
               id="dropdown"
-              class="z-20 absolute bg-white divide-y divide-gray-100 rounded-lg"
-            >
+              class="z-20 absolute bg-white divide-y divide-gray-100 rounded-lg" >
               <ul
                 class="py-2 text-sm text-gray-700 dark:text-white"
                 aria-labelledby="dropdownDefaultButton"
@@ -62,7 +63,7 @@
                   >
                 </li>
               </ul>
-            </div>
+            </div> -->
           </div>
           <!-- Options de langue visibles sur les écrans moyens et plus grands -->
           <!-- <span class="hidden md:flex flex-row">
@@ -99,6 +100,7 @@ export default {
     return {
       currentLanguage: "fr",
       languages: ["fr", "en", "it"],
+      language: "FR",
     };
   },
   created() {

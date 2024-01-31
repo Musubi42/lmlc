@@ -100,7 +100,7 @@
           target="_blank"
           data-footer-element
         >
-          <instagram class="text-[30px] w-auto text-white" data-footer-element />
+          <!-- <instagram class="text-[30px] w-auto text-white" data-footer-element /> -->
         </a>
         <!-- TODO : Ajouter le lien vers mentions-legales une fois la page crée -->
         <NuxtLink
