@@ -1,16 +1,21 @@
 <template>
-  <div class="w-full z-50">
+  <div class="w-full z-50 absolute">
     <Menu :isMenuOpen="toggleMenu" @update:isMenuOpen="handleMenuUpdate" />
     <div class="relative z-50 place-content-between py-6 pl-6 md:px-10 flex flex-row">
       <div
         class="duration-300 transition-opacity"
         :style="dynamicStyle">
-        <img
-          class="h-[11px] w-auto cursor-pointer fixed"
-          src="~/assets/images/logo-lmlc-black.png"
-          alt="Logo LMLC couleur noir"
+        <NuxtLink
+          to="/"
+          class="hover:cursor-pointer" 
           v-cursorAnimation
-        />
+        >
+          <img
+            class="h-[11px] w-auto cursor-pointer fixed"
+            src="~/assets/images/logo-lmlc-black.png"
+            alt="Logo LMLC couleur noir"
+          />
+        </NuxtLink>
       </div>
       <div class="flex flex-row">
         <switchLanguage :languageStyle="dynamicStyle" v-cursorAnimation />
