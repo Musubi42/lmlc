@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-cover h-full w-full bg-interactive-whiteboard relative overflow-hidden"
+    class="bg-cover h-full w-full bg-white relative overflow-hidden"
     ref="drawhere"
   >
     <!-- sac bleu svg -->

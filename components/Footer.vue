@@ -68,11 +68,11 @@
               <span
                 class="font-bold text-sm md:text-lg z-10 relative leading-3 bg-black mix-blend-difference text-white"
                 data-footer-element
-                >TUNED !</span>
+                >TUNED</span>
                 <div class="flex items-center">
-                  <input type="email" v-model="email" placeholder="contact@gmail.com" class="rounded-full placeholder:italic placeholder:text-gray-400 block bg-white w-full border border-gray-300 shadow-sm focus:outline-none focus:border-rose-neon focus:ring-rose-neon text-gray-700 py-2 px-4 leading-tight focus:ring-1" v-cursorAnimation />
+                  <input type="email" v-model="email" placeholder="mail" class="placeholder:italic placeholder:text-gray-400 block bg-white w-full border border-gray-300 shadow-sm focus:outline-none focus:border-rose-neon focus:ring-rose-neon text-gray-700 py-2 px-4 leading-tight focus:ring-1" v-cursorAnimation />
                   <button 
-                    class="bg-rose-neon text-white rounded-full p-2 ml-2 active:bg-rose-neon/50" 
+                    class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50" 
                     v-cursorAnimation
                     @click="sendDataToMake" >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
