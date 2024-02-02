@@ -1,8 +1,6 @@
 <template>
   <div class="mouse-container">
-    <!-- <img v-for="(image, index) in images" :key="index" :src="image" :style="{ left: `${lastMousePosition.x}px`, top: `${lastMousePosition.y}px` }" /> -->
     <img v-for="(image, index) in images" :key="index" :src="image" />
-    <p>{{ lastMousePosition }}</p>
   </div>
 </template>
 
@@ -38,7 +36,10 @@ export default {
         "/services-mouse-animation/cocktail-totem.png",
         "/services-mouse-animation/monin-chamaica.png",
         "/services-mouse-animation/monin-vanilla.png",
-        "/services-mouse-animation/sac-jaune.png",
+        // "/services-mouse-animation/sac-jaune.png",
+        "/services-mouse-animation/yellow-bag.png",
+        "/services-mouse-animation/fauteuil.png",
+        "/services-mouse-animation/meuble-kaki.png",
       ],
       activeIndex: -1,
       callCount: 0,
@@ -52,7 +53,7 @@ export default {
           Math.pow(event.clientY - this.lastMousePosition.y, 2)
       );
 
-      if (distance > 60) {
+      if (distance > 80) {
         const allImages = document.querySelectorAll(".mouse-container img");
         if (false) {
           console.log(allImages);

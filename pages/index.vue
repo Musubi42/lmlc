@@ -4,7 +4,7 @@
       <div
         class=" w-full h-[100%] md:h-[100%]"
       >
-        <!-- <tableauTest class="cursor-pointer" v-cursorAnimation /> -->
+        <tableauTest class="cursor-pointer" v-cursorAnimation />
       </div>
     </div>
     <!-- TODO: Padding footer pour l'effet scroll : pb-20 md:pb-80 -->

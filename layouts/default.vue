@@ -6,7 +6,6 @@
     <div
       class="fixed w-screen bottom-0 bg-white mix-blend-difference border-t-2 border-gray-200"
     >
-      <!-- <Spotify /> -->
       <Music />
     </div>
     <CustomCursor />
@@ -26,8 +25,8 @@ export default {
   methods: {
     handleScroll() {
       const actualYPosition = window.scrollY || window.pageYOffset;
-      this.headerStyle.opacity = this.pastYPosition < actualYPosition ? 0 : 1;
-      this.pastYPosition = actualYPosition;
+      // this.headerStyle.opacity = this.pastYPosition < actualYPosition ? 0 : 1;
+      // this.pastYPosition = actualYPosition;
     },
   },
   mounted() {
