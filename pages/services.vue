@@ -64,7 +64,7 @@
         mollit anim id est laborum."
       </p>
   
-    <!-- <ServicesAnimation /> -->
+    <ServicesAnimation />
   </div>
 </template>
 
