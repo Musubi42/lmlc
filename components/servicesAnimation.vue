@@ -53,7 +53,7 @@ export default {
           Math.pow(event.clientY - this.lastMousePosition.y, 2)
       );
 
-      if (distance > 80) {
+      if (distance > 50) {
         const allImages = document.querySelectorAll(".mouse-container img");
         if (false) {
           console.log(allImages);
