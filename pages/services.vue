@@ -4,7 +4,7 @@
     <section class="h-screen flex flex-row pt-40 justify-around mx-8 gap-2 scrollbar-hide">
 
 
-      <!-- <ServicesAnimation /> -->
+      <ServicesAnimation />
       <div class="flex-1">
         <h3 class="font-semibold text-xl">stratégie</h3>
         <ul>
