@@ -21,16 +21,8 @@
 export default {
   setup() {    
     const scrollContainer = ref(null);
-    // var isScroll = ref(null);
 
     const ScrollHorizontal = isScrollHorizontal();
-    // isScroll = ScrollHorizontal.value;
-    // setInterval(() => {
-    //   ScrollHorizontal.value = false;
-    // }, 2000);
-    
-    // console.log(isScroll.value);
-
     return {
       // isScroll,
       ScrollHorizontal,
@@ -54,7 +46,8 @@ export default {
   },
   methods: {
     maMethode(scroll) {
-      // console.log(this.scroll);
+      // Pour arrêter l'inertie du scrolling
+      document.body.style.overflow = 'hidden'
       const { deltaX, deltaY } = scroll;
       if (this.scrollContainer) {
         if (Math.abs(deltaY) > Math.abs(deltaX)) {
@@ -65,7 +58,6 @@ export default {
         if (this.scrollContainer.scrollLeft === 0) {
           // Renvoyer au prent qu'on est au début du scroll
           this.ScrollHorizontal = false;
-          console.log("Start of scroll reached");
           return;
         }
 
@@ -75,8 +67,7 @@ export default {
           this.scrollContainer.scrollWidth
         ) {
           // Renvoyer au parent qu'on est à la fin du scroll
-          this.ScrollHorizontal = true;
-          console.log("End of scroll reached");
+          this.ScrollHorizontal = false;
           return;
         }
 
@@ -89,7 +80,6 @@ export default {
         if (this.scrollContainer.scrollLeft === 0) {
           // Renvoyer au prent qu'on est au début du scroll
           this.ScrollHorizontal = false;
-          console.log("Start of scroll reached");
           return;
         }
 
@@ -99,22 +89,13 @@ export default {
           this.scrollContainer.scrollWidth
         ) {
           // Renvoyer au parent qu'on est à la fin du scroll
-          this.ScrollHorizontal = true;
-          console.log("End of scroll reached");
+          this.ScrollHorizontal = false;
           return;
       }
       }
     },
-
-    // A while function that will call callScroll every 100ms
-    infiniteScroll() {
-      setInterval(() => {
-        console.log(this.scroll);
-      }, 100);
-    },
   },
   mounted() {
-    // this.infiniteScroll();
   },
   computed: {
   },

@@ -1,7 +1,10 @@
 <template>
-  <div @wheel="handleWheelEvent">
-    <div class="flex flex-row pt-40 justify-between mx-8 gap-2 scrollbar-hide">
-      <!-- Partie service -->
+  <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200">
+    <!-- Partie métiers -->
+    <section class="h-screen flex flex-row pt-40 justify-around mx-8 gap-2 scrollbar-hide">
+
+
+      <!-- <ServicesAnimation /> -->
       <div class="flex-1">
         <h3 class="font-semibold text-xl">stratégie</h3>
         <ul>
@@ -32,7 +35,7 @@
         </ul>
       </div>
 
-      <div class="flex-1">
+      <div class="min-w-[200px]">
         <h3 class="font-semibold text-xl">brandcontent</h3>
         <ul>
           <li>production film</li>
@@ -42,36 +45,33 @@
           <li>print &#x26; edition</li>
         </ul>
       </div>
-      
-    </div>
+    </section>
     <!-- Partie talents -->
-    <div ref="servicesTalents" class="h-screen block relative">
-    <p>{{ ScrollHorizontal }}</p>
-      <ServicesTalents 
+    <section ref="servicesTalents" class="h-screen block relative">
+      <ServicesTalents
         ref="servicesTalents"
         :scroll="scroll"
         class="relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-         />
-    <p>{{ ScrollHorizontal }}</p>
-    </div>
-      <p>
-        Le passage de Lorem Ipsum standard, utilisé depuis 1500 "Lorem ipsum dolor sit
-        amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum."
-      </p>
-  
-    <ServicesAnimation />
+      />
+    </section>
   </div>
 </template>
+
+<style>
+  .bg-black {
+    /* background-color: black; */
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .bg-white {
+    background-color: white;
+  }
+</style>
 
 <script>
 
 export default {
-  setup() { 
+  setup() {
     const ScrollHorizontal = isScrollHorizontal();
 
     return {
@@ -80,77 +80,83 @@ export default {
   },
   data() {
     return {
-      message: "Hello World!",
       scroll: { deltaY: 0, deltaX: 0},
-      scrollDirection: 'oui',
       isScroll: true,
+      body: null
     };
   },
   methods: {
-    oui() {
-      setInterval(() => {
-        console.log(this.isScroll);
-      }, 1000);
-    },
-    // Il en faut pour détecter quand on fait le scroll bas donc la droite
-    // Et un autre pour détecter quand on fait le scroll haut donc la gauche
-    handleIntersection(entries) {
+    handleScrollHorizontal(entries) {
       const [entry] = entries;
-      // console.log(entry);
       if (entry.isIntersecting) {
-        this.scrollDirection = 'down';
-        console.log('ServicesTalents is at the middle of the screen');
-        // Perform any action when ServicesTalents is at the middle of the screen
-        // this.handleWheel();
+        document.body.style.overflow = 'hidden';
+        this.ScrollHorizontal = true;
+      }
+    },
+
+    handleAddBgBlack(entries) {
+      console.log("Add black");
+      const [entry] = entries;
+      if (entry.isIntersecting) {
+        const body = this.$refs.body;
+        body.classList.remove('bg-white');
+        body.classList.add('bg-black');
+      }
+    },
+
+    handleRemoveBgBlack(entries) {
+      // TODO: Il ne rentre pas dans le if
+      const body = this.$refs.body;
+      body.classList.remove('bg-black');
+      body.classList.add('bg-white');
+      const [entry] = entries;
+      if (entry.isIntersecting) {
+        console.log("je suis dedans");
+        const body = this.$refs.body;
+        body.classList.remove('bg-black');
+        body.classList.add('bg-white');
       }
     },
 
     handleWheelEvent(event) {
-      if (this.scrollDirection === 'down') {
-        document.body.style.overflow = 'hidden';
-        console.log(this.ScrollHorizontal);
-        if (this.ScrollHorizontal) {
-          document.body.style.overflow = '';
-          return;
-        }
-
+      if (this.ScrollHorizontal) {
         event.preventDefault();
         this.scroll.deltaY = event.deltaY;
         this.scroll.deltaX = event.deltaX;
-        // this.$emit('scroll', this.scroll);
       }
+
+      document.body.style.overflow = '';
     },
-    // handleWheelEvent(event) {
-    //   if (this.scrollDirection === 'down') {
-    //     event.preventDefault();
-    //     this.scroll.deltaY = event.deltaY;
-    //     this.scroll.deltaX = event.deltaX;
-    //     // this.$emit('scroll', this.scroll);
-    //   }
-    // },
   },
   mounted() {
-    // this.oui();
-    this.observer = new IntersectionObserver(this.handleIntersection, {
+    this.observerScrollHorizontal = new IntersectionObserver(this.handleScrollHorizontal, {
       root: null, // observing for viewport
       threshold: 0.9 // The element is completely visible when it's fully in the viewport
     });
 
-    // window.addEventListener('wheel', this.handleWheel);
+    this.handleAddBgBlack = new IntersectionObserver(this.handleAddBgBlack, {
+      root: null, // observing for viewport
+      threshold: 0.7 // The element is completely visible when it's fully in the viewport
+    });
+
+    this.handleRemoveBgBlack = new IntersectionObserver(this.handleRemoveBgBlack, {
+      root: null, // observing for viewport
+      threshold: 0.6 // The element is completely visible when it's fully in the viewport
+    });
 
     this.$nextTick(() => {
-      // TODO : Utiliser une vraie ref
-      // console.log(this.$refs.servicesTalents);
       const servicesTalentsEl = this.$refs.servicesTalents;
-      // const servicesTalentsEl = document.getElementById('servicesTalents');
       if (servicesTalentsEl) {
-        this.observer.observe(servicesTalentsEl);
+        this.observerScrollHorizontal.observe(servicesTalentsEl);
+        this.handleAddBgBlack.observe(servicesTalentsEl);
+        this.handleRemoveBgBlack.observe(servicesTalentsEl);
       }
     });
   },
   beforeDestroy() {
-    if (this.observer) {
-      this.observer.disconnect();
+    if (this.observerScrollHorizontal) {
+      this.observerScrollHorizontal.disconnect();
+      this.observerChangeBgColor.disconnect();
     }
   }
 }

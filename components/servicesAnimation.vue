@@ -104,7 +104,8 @@ export default {
             lastImageDOM.classList.add("is-active");
             lastImageDOM.style.top = `${event.clientY}px`;
             lastImageDOM.style.left = `${event.clientX}px`;
-            lastImageDOM.style.zIndex += 4;
+            console.log(typeof parseInt(lastImageDOM.style.zIndex));
+            lastImageDOM.style.zIndex = parseInt(lastImageDOM.style.zIndex) + 6;
           }, 50);
 
 

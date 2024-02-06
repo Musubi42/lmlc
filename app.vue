@@ -4,9 +4,15 @@
   <!-- </div> -->
 </template>
 
-// <script setup>
-// definePageMeta({
-//   layout: "default",
-// });
+<script>
 
-// </script>
+export default {
+  setup() {
+    // definePageMeta({
+    //   layout: "default",
+    // });
+  },
+  mounted() {
+  },
+}
+</script>

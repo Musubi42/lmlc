@@ -3,7 +3,7 @@
     <div class="flex flex-1 justify-between">
       <!-- Infos sur le son -->
       <div
-        class="flex flex-row gap-4 ml-4 mr-4 content-start center-content items-center"
+        class="flex flex-row gap-4 content-start center-content items-center"
       >
         <img
           class="h-4/5 aspect-square object-cover"
@@ -17,14 +17,14 @@
     </div>
 
     <!-- Pause/start previous/next -->
-    <div class="flex mx-4 md:mx-10 items-center justify-center">
+    <div class="flex mr-3 ml-4 md:mr-9 md:ml-10 items-center justify-center">
       <!-- Play previous song -->
       <button class="center-content mr-2" @click="playPreviousSong">
-        <iconsPrevious class="w-[24px]" v-cursorAnimation />
+        <iconsPrevious class="w-[24px] cursor-none" v-cursorAnimation />
       </button>
       <!-- Toggle song -->
       <button
-        class="flex w-12 h-12 bg-black text-white rounded-full center-content justify-center items-center"
+        class="flex w-12 h-12 bg-black text-white rounded-full center-content justify-center items-center cursor-none"
         @click="toggleAudio"
         v-cursorAnimation
       >
@@ -34,7 +34,7 @@
       </button>
       <!-- Play next song -->
       <button class="center-content" @click="playNextSong" v-cursorAnimation>
-        <iconsNext class="w-[24px] ml-2" />
+        <iconsNext class="w-[24px] ml-2 cursor-none" />
       </button>
 
 
@@ -46,7 +46,7 @@
 
     <!-- Control volume son -->
     <div
-      class="hidden md:flex md:flex-1 md:flex-row gap-4 ml-4 mr-4 content-end center-content items-center justify-end" >
+      class="hidden md:flex md:flex-1 md:flex-row gap-4 content-end center-content items-center justify-end" >
       <!-- Volume -->
       <div class="flex items-center">
         <iconsNoSound class="w-[24px]" />
@@ -57,7 +57,7 @@
           max="100"
           step="0.5"
           v-model="volume"
-          class="rounded-full mx-2 cursor-pointer"
+          class="rounded-full mx-2 cursor-none"
           style="--inputValue: 100%; width: 80px"
           v-cursorAnimation
         />
@@ -104,7 +104,6 @@ input[type="range"] {
   outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (it will be visible when mouse hover) */
   transition: opacity 0.2s; /* Transition effect when mouse hover */
-  cursor: pointer; /* Cursor on hover */
 }
 
 input[type="range"]:hover {
@@ -117,7 +116,6 @@ input[type="range"]::-webkit-slider-thumb {
   width: 15px; /* Set a specific slider handle width */
   height: 15px; /* Slider handle height */
   background: black; /* Green background */
-  cursor: pointer; /* Cursor on hover */
   border-radius: 9999px;
 }
 
@@ -125,7 +123,6 @@ input[type="range"]::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
   background: #4caf50; /* Green background */
-  cursor: pointer; /* Cursor on hover */
 }
 </style>
 
@@ -300,7 +297,13 @@ export default {
     await this.getPlaylistMetadata();
 
     // Load metaData of the first song
-    this.loadMetaData(this.trackID);
+    await this.loadMetaData(this.trackID);
+
+    // TODO: On ne peut pas lancer un son automatiquement
+    // https://developer.chrome.com/blog/autoplay/
+    // arc://media-engagement/
+    // Auto start a sound
+    // await this.toggleAudio();
   },
   beforeUnmount() {
     // Remove event listeners

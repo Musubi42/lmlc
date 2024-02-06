@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="cursor-none">
     <div
       class="h-full bg-rose-neon w-10 md:w-80 right-0 fixed z-[20] transform translate-x-full"
       :class="{ animate: !isMenuOpen }"
@@ -35,7 +35,7 @@
               <NuxtLink
                 to="/work"
                 data-color="#ffff00"
-                class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 cursor-pointer"
+                class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 cursor-none"
                 id="workTitle"
                 @click="goToPage"
                 >WORK</NuxtLink
@@ -57,32 +57,10 @@
               <NuxtLink
                 to="/services"
                 data-color="#974dff"
-                class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 cursor-pointer"
+                class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 cursor-none"
                 id="servicesTitle"
                 @click="goToPage"
                 >SERVICES</NuxtLink
-              >
-            </div>
-          </ImageMenuOnHover>
-          <ImageMenuOnHover
-            ref="talents"
-            class="w-fit"
-            imageSrc="/menu-talents.png"
-            @mouseover="titleAnimation"
-            @mouseleave="defaultBGColor"
-            :offsetParent="offsetElement"
-            id="talents"
-            v-cursorAnimation
-          >
-            <!-- TODO : On hover de cette div, animer le texte -->
-            <div class="text-white font-black z-10 relative">
-              <NuxtLink
-                to="/studio"
-                data-color="#99deff"
-                class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 cursor-pointer"
-                id="talentsTitle"
-                @click="goToPage"
-                >STUDIO</NuxtLink
               >
             </div>
           </ImageMenuOnHover>
@@ -97,8 +75,8 @@
           >
             <div class="text-white font-black z-10 relative">
               <span
-                data-color=""
-                class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 cursor-pointer"
+                data-color="#99deff"
+                class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100"
                 id="contactTitle"
           v-cursorAnimation
                 >CONTACT</span
@@ -183,7 +161,7 @@ export default {
     return {
       offsetElement: 0,
       defaultBG: "#ff0066",
-      menuTitles: ["work", "services", "talents"],
+      menuTitles: ["work", "services"],
     };
   },
   watch: {
@@ -196,6 +174,7 @@ export default {
   },
   methods: {
     titleAnimation(value) {
+      console.log(value.target.attributes["data-color"].value);
       // Changement de couleur du Background
       // if (value.target.innerHTML !== "CONTACT") {
       if (typeof value === "string") {
@@ -209,12 +188,10 @@ export default {
 
       const workTitle = document.getElementById("workTitle");
       const servicesTitle = document.getElementById("servicesTitle");
-      const talentsTitle = document.getElementById("talentsTitle");
       const contactTitle = document.getElementById("contactTitle");
 
       workTitle.classList.add("menu-text-overlay");
       servicesTitle.classList.add("menu-text-overlay");
-      talentsTitle.classList.add("menu-text-overlay");
       contactTitle.classList.add("menu-text-overlay");
     },
     titleOffset(event) {
@@ -227,12 +204,10 @@ export default {
       // Retirer le before puis le translate pour éviter la boucle infinie
       const workTitle = document.getElementById("workTitle");
       const servicesTitle = document.getElementById("servicesTitle");
-      const talentsTitle = document.getElementById("talentsTitle");
       const contactTitle = document.getElementById("contactTitle");
 
       workTitle.classList.remove("menu-text-overlay");
       servicesTitle.classList.remove("menu-text-overlay");
-      talentsTitle.classList.remove("menu-text-overlay");
       contactTitle.classList.remove("menu-text-overlay");
 
       // workTitle.style.transform = "translateX(0px)";
@@ -320,6 +295,8 @@ export default {
       }, 500);
     },
     closeMenu() {
+      this.defaultBGColor();
+      
       // Faire reaparaitre la separation pour faire disparaitre le texte derriere
       document.getElementById("separation").style.display = "block";
 

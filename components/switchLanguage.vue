@@ -1,6 +1,6 @@
 <template>
   <!-- <button
-    class="fixed z-50 w-12 h-12 text-center rounded-full cursor-pointer select-none text-a_bg right-24 top-3 border-black border-[1px]"
+    class="fixed z-50 w-12 h-12 text-center rounded-full select-none text-a_bg right-24 top-3 border-black border-[1px]"
     @click="changeLanguage"
   >
     <div class="absolute text-xs top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 dark:text-[#000]" >   
@@ -9,15 +9,15 @@
   </button> -->
   <span class="hidden relative mt-[6px] md:flex flex-row text-xs font-medium right-24 bottom-[-1px] duration-300 transition-opacity" ref="languageSelectors" :style="languageStyle">
     <div class="fixed" >
-      <span @click="changeLanguage('fr')" class="mr-4 font-semibold hover:cursor-pointer" id="fr" v-cursorAnimation>FR</span>
-      <span @click="changeLanguage('en')" class="mr-4  hover:cursor-pointer" id="en" v-cursorAnimation>EN</span>
-      <span @click="changeLanguage('it')" class=" hover:cursor-pointer" id="it" v-cursorAnimation>IT</span>
+      <span @click="changeLanguage('fr')" class="mr-4 font-semibold" id="fr" v-cursorAnimation>FR</span>
+      <span @click="changeLanguage('en')" class="mr-4 " id="en" v-cursorAnimation>EN</span>
+      <span @click="changeLanguage('it')" class="" id="it" v-cursorAnimation>IT</span>
     </div>
   </span>
 
   <div
 
-          class="flex flex-row font-montserrat font-medium text-sm mt-[-4px] mr-10 content-end cursor-pointer"
+          class="flex flex-row font-montserrat font-medium text-sm mt-[-4px] mr-10 content-end"
         >
           <div>
             <button

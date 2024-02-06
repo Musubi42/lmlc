@@ -611,7 +611,7 @@
     <div id="drawhere" class="h-auto -z-10"></div>
     <div class="spotify-draggable absolute top-[50px] left-[50px] z-20">
       <div
-        class="spotify-handle absolute top-[-30px] left-0 w-full h-[30px] bg-[#ccc] cursor-move flex justify-center items-center"
+        class="spotify-handle absolute top-[-30px] left-0 w-full h-[30px] bg-[#ccc] flex justify-center items-center"
       >
         <!-- Vous pouvez mettre une image de flèche ici ou utiliser une icône de fonte -->
         <!-- <p>tire moi</p> -->

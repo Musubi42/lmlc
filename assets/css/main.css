@@ -75,6 +75,7 @@
 
 body {
   font-family: "Montserrat", sans-serif;
+  cursor: none;
 }
 .custom_class {
   /* To create unique component */

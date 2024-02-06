@@ -12,10 +12,10 @@ export default defineNuxtPlugin((nuxtApp) => {
         hoverState.isHovered = false;
       });
     },
-    unmounted(el) {
-      el.removeEventListener('mouseenter');
-      el.removeEventListener('mouseleave');
-    }
+    // unmounted(el) {
+    //   el.removeEventListener('mouseenter');
+    //   el.removeEventListener('mouseleave');
+    // }
   });
 });
 

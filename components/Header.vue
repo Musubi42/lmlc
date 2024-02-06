@@ -7,11 +7,11 @@
         :style="dynamicStyle">
         <NuxtLink
           to="/"
-          class="hover:cursor-pointer" 
+          class="" 
           v-cursorAnimation
         >
           <img
-            class="h-[11px] w-auto cursor-pointer fixed"
+            class="h-[11px] w-auto fixed cursor-none"
             src="~/assets/images/logo-lmlc-black.png"
             alt="Logo LMLC couleur noir"
           />
@@ -23,7 +23,7 @@
         <div
           to="/menu"
           id="menu-burger"
-          class="hover:cursor-pointer h-auto close z-[1000] fixed mr-4 right-0 text-black"
+          class=" h-auto close z-[1000] fixed mr-4 right-0 text-black"
         >
           <IconsMenuBurger
             :style="{ height: burgerHeight + 'px', y: y + 'px' }"

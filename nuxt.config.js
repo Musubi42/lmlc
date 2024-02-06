@@ -30,6 +30,7 @@ export default defineNuxtConfig({
   plugins: [
     '/plugins/hover-directive.js',
     '/plugins/cursor-state.js',
+    '/plugins/axeptio.js',
   ],
   components: true,
   css: ["~/assets/css/main.css"],
