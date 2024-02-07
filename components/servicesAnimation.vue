@@ -62,16 +62,13 @@ export default {
             console.log(allImages[i].currentSrc + " " + allImages[i].className);
             // allImages[i].classList.add('is-inactive');
           }
-          console.log("série images: ");
-          console.log(this.images);
           images.push(this.images.shift());
           // console.log(allImages);
         }
 
         // Compte le nombre d'image, tant qu'on en a pas fait le tour on fait apparaitre toutes les images
         if (this.callCount <= this.images.length - 1) {
-          console.log(this.callCount);
-          console.log(allImages[this.callCount]);
+          console.log("Y : " + event.clientY);
           allImages[this.callCount].classList.add("is-active");
           allImages[this.callCount].style.top = `${event.clientY}px`;
           allImages[this.callCount].style.left = `${event.clientX}px`;
@@ -91,8 +88,8 @@ export default {
           // var lastImageDOM = document.querySelector(`[src="${lastImageList}"]`);
           // console.log(document.querySelector(`[src="${this.lastImage}"]`));
           // console.log(this.images.length);
-          console.log(this.lastImage);
-          console.log(this.images[this.lastImage]);
+          // console.log(this.lastImage);
+          // console.log(this.images[this.lastImage]);
           var lastImageDOM = document.querySelector(
             `[src="${this.images[this.lastImage]}"]`
           );
@@ -101,10 +98,12 @@ export default {
 
           // Maintenant que la dernière image est cachée, on peut la faire reapparaitre à la position de la souris
           setTimeout(() => {
+            console.log("distance Y : " + event.scrollTop);
+            console.log("Y : " + event.clientY);
             lastImageDOM.classList.add("is-active");
             lastImageDOM.style.top = `${event.clientY}px`;
             lastImageDOM.style.left = `${event.clientX}px`;
-            console.log(typeof parseInt(lastImageDOM.style.zIndex));
+            // console.log(typeof parseInt(lastImageDOM.style.zIndex));
             lastImageDOM.style.zIndex = parseInt(lastImageDOM.style.zIndex) + 6;
           }, 50);
 

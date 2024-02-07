@@ -1,5 +1,5 @@
 <template>
-  <div class="cursor-none">
+  <div ref="menu" class="cursor-none">
     <div
       class="h-full bg-rose-neon w-10 md:w-80 right-0 fixed z-[20] transform translate-x-full"
       :class="{ animate: !isMenuOpen }"
@@ -43,24 +43,24 @@
             </div>
           </ImageMenuOnHover>
           <ImageMenuOnHover
-            ref="services"
+            ref="about"
             class="w-fit"
             imageSrc="/menu-services.png"
             @mouseover="titleAnimation"
             @mouseleave="defaultBGColor"
             :offsetParent="offsetElement"
-            id="services"
+            id="about"
             v-cursorAnimation
           >
             <div class="text-white font-black z-10 relative">
               <!-- TODO: Quand on quitte le title effet epileptique voir la menu-text-overlay -->
               <NuxtLink
-                to="/services"
+                to="/about"
                 data-color="#974dff"
                 class="md:hover:transform md:hover:translate-x-32 block opacity-50 hover:opacity-100 cursor-none"
-                id="servicesTitle"
+                id="aboutTitle"
                 @click="goToPage"
-                >SERVICES</NuxtLink
+                >ABOUT</NuxtLink
               >
             </div>
           </ImageMenuOnHover>
@@ -161,8 +161,13 @@ export default {
     return {
       offsetElement: 0,
       defaultBG: "#ff0066",
-      menuTitles: ["work", "services"],
+      menuTitles: ["work", "about"],
     };
+  },
+  setup() {
+    const menu = ref(null);
+    defineExpose({ menu });
+    // return { menu };
   },
   watch: {
     isMenuOpen() {
@@ -187,11 +192,11 @@ export default {
       // }
 
       const workTitle = document.getElementById("workTitle");
-      const servicesTitle = document.getElementById("servicesTitle");
+      const aboutTitle = document.getElementById("aboutTitle");
       const contactTitle = document.getElementById("contactTitle");
 
       workTitle.classList.add("menu-text-overlay");
-      servicesTitle.classList.add("menu-text-overlay");
+      aboutTitle.classList.add("menu-text-overlay");
       contactTitle.classList.add("menu-text-overlay");
     },
     titleOffset(event) {
@@ -203,11 +208,11 @@ export default {
     defaultBGColor() {
       // Retirer le before puis le translate pour éviter la boucle infinie
       const workTitle = document.getElementById("workTitle");
-      const servicesTitle = document.getElementById("servicesTitle");
+      const aboutTitle = document.getElementById("aboutTitle");
       const contactTitle = document.getElementById("contactTitle");
 
       workTitle.classList.remove("menu-text-overlay");
-      servicesTitle.classList.remove("menu-text-overlay");
+      aboutTitle.classList.remove("menu-text-overlay");
       contactTitle.classList.remove("menu-text-overlay");
 
       // workTitle.style.transform = "translateX(0px)";

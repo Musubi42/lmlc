@@ -1427,8 +1427,8 @@ export default {
     }
   },
   unmounted() {
-    Events.off(engine, "beforeUpdate");
-    worker.terminate();
+    // Events.off(engine, "beforeUpdate");
+    // worker.terminate();
   },
   methods: {
     loadScript(src, callback) {
