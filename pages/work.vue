@@ -3,14 +3,12 @@
     <div class="relative slide w-full h-screen ">
       <div class="carousel-inner relative overflow-hidden h-screen z-1">
         <div v-for="(img, i) in images" :id="`slide-${i}`" :key="i" :class="`${active === i ? 'active' : 'left-full'}`"
-          class="carousel-item inset-0 relative h-screen transform transition-all duration-1000 ease-in">
-          <div :style="{ backgroundColor: img.backgroundColor }">
+          class="carousel-item inset-0 relative h-screen transform transition-all duration-1000 ease-in bg-black">
 
-            <div id="carousel-text"
-              class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center">
-              <h2 class="text-9xl font-bold text-white ">{{ img.title }}</h2>
-              <p class="text-2xl text-white ">{{ img.description }}</p>
-            </div>
+          <div id="carousel-text"
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center">
+            <h2 class="text-8xl font-bold text-white text-left">{{ img.title }}</h2>
+            <p class="text-2xl text-white ">{{ img.description }}</p>
           </div>
         </div>
       </div>
@@ -39,21 +37,11 @@
     </button>
   </div>
 
-  <div id="client" class="container mx-auto p-8 h-screen">
-    <div class="flex items-center mb-8">
-      <div>
-      <h1 class="text-9xl font-bold mr-4">MONIN</h1>
-      <p class="text-lg mb-4">Leader mondial des sirops et première référence du <br> monde de la mixologie, notre agence
-        accompagne<br> l’entreprise familiale dans des projets de <br> brandcontent et de social media.</p>
-      <p class="text-base mb-4 ">
-        social media<br>
-        community management<br>
-        production audiovisuelle<br>
-        shooting photo
-      </p>
-    </div>
-      <img src="/monin.gif" alt="GIF" class="h-1/4 ml-auto" loop>
-    </div>
+  <div v-if="active == 0">
+    <Monin />
+  </div>
+  <div v-if="active == 1">
+    <Bourges2028 />
   </div>
 </template>
 
@@ -70,33 +58,33 @@ export default {
       active: 0,
       images: [
         { title: "MONIN", description: "mixologie", alt: "truc", backgroundColor: "#974dff" },
-        { title: "CAPITALE EUROPEENNE DE LA CULTURE", description: "", alt: "truc", backgroundColor: "#974dff" },
-        {  title: "Titre 3", description: "Description 3", alt: "truc", backgroundColor: "#974dff" },
-        {  title: "Titre 4", description: "Description 4", alt: "truc", backgroundColor: "#974dff" },
+        { title: "CAPITALE EUROPEENNE DE LA CULTURE", description: "culture", alt: "truc", backgroundColor: "#974dff" },
+        { title: "Titre 3", description: "Description 3", alt: "truc", backgroundColor: "#974dff" },
+        { title: "Titre 4", description: "Description 4", alt: "truc", backgroundColor: "#974dff" },
       ],
       test: 0
     };
   },
   methods: {
     handleScroll() {
-    this.scrollPosition = window.scrollY;
+      this.scrollPosition = window.scrollY;
 
-    // Check if the user has scrolled to a certain position to trigger the scroll to the client section
-    const clientSectionOffset = document.getElementById("client").offsetTop;
-    if (this.scrollPosition >= clientSectionOffset - window.innerHeight / 2) {
-      this.scrollToClientSection();
+      // Check if the user has scrolled to a certain position to trigger the scroll to the client section
+      const clientSectionOffset = document.getElementById("client").offsetTop;
+      if (this.scrollPosition >= clientSectionOffset - window.innerHeight / 2) {
+        this.scrollToClientSection();
 
-      // Remove the scroll event listener after triggering the scroll
-      window.removeEventListener("scroll", this.handleScroll);
-    }
-  },
+        // Remove the scroll event listener after triggering the scroll
+        window.removeEventListener("scroll", this.handleScroll);
+      }
+    },
 
-  scrollToClientSection() {
-    const clientSection = document.getElementById("client");
+    scrollToClientSection() {
+      const clientSection = document.getElementById("client");
 
-    // Use smooth scrolling to scroll to the client section
-    clientSection.scrollIntoView({ behavior: "smooth" });
-  },
+      // Use smooth scrolling to scroll to the client section
+      clientSection.scrollIntoView({ behavior: "smooth" });
+    },
 
     goPrev() {
       console.log("test");
@@ -119,11 +107,11 @@ export default {
     }
   },
   mounted() {
-  window.addEventListener("scroll", this.handleScroll);
-},
-beforeDestroy() {
-  window.removeEventListener("scroll", this.handleScroll);
-},
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
 };
 </script>
 
