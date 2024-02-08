@@ -1,5 +1,5 @@
 <template>
-  <div @click="closeMenuIfOpen" ref="enfant">
+  <div @click="closeMenuIfOpen" >
     <Header :dynamicStyle="headerStyle" />
     <NuxtPage />
     <Footer />
@@ -20,10 +20,15 @@ export default {
         opacity: 1,
       },
       pastYPosition: 0,
+      moreThanOnce: 0,
     };
   },
   setup() {
-    const enfant = ref(null);
+    const isMenuOpen = stateMenuOpen();
+
+    return {
+      isMenuOpen,
+    };
   },
   methods: {
     handleScroll() {
@@ -31,26 +36,18 @@ export default {
       // this.headerStyle.opacity = this.pastYPosition < actualYPosition ? 0 : 1;
       // this.pastYPosition = actualYPosition;
     },
+    // TODO: Il ne faut pas que ça se trigger si je clique sur le menu
     closeMenuIfOpen(event) {
-      console.log("hey");
-      console.log(this.$refs.menu);
-      // Vérifiez si le clic a eu lieu à l'intérieur du menu
-      if (this.$refs.menu && this.$refs.menu.contains(event.target)) {
-        return;
+      console.log("oui");
+      console.log(event.target);
+      if (this.moreThanOnce > 0 && this.isMenuOpen) {
+        this.isMenuOpen = !this.isMenuOpen;
       }
-
-      // Fermez le menu si il est ouvert
-      if (this.isMenuOpen) {
-        this.isMenuOpen = false;
-      }
+      this.moreThanOnce++;
     },
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
-    // if (this.$refs.enfant) {
-    //   console.log("he");
-    //   this.$refs.enfant.addEventListener('click', this.closeMenuIfOpen);
-    // }
   },
   unmounted() {
     window.removeEventListener('scroll', this.handleScroll);

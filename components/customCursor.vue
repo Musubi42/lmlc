@@ -51,8 +51,10 @@ export default {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: rgba(255, 255, 0, 0.5);
-  background: rgba(255, 0, 102, 0.5);
+  /* background: rgba(255, 255, 0, 0.5); */
+  /* background: rgba(255, 0, 102, 0.5); */
+  background: rgba(0, 0, 0, 0.5);
+  
   pointer-events: none;
   transform: translate(-50%, -50%);
   transition: width 0.6s cubic-bezier(0.79, 0.14, 0.15, 0.86),

@@ -291,6 +291,23 @@ export default {
       y: 0,
     };
   },
+  setup() {
+    const isMenuOpen = stateMenuOpen();
+
+    return {
+      isMenuOpen,
+    };
+  },
+  watch: {
+    isMenuOpen: {
+      handler: function(newVal, oldVal) {
+        if (newVal === false) {
+          this.toggleMenuBurger();
+        }
+      },
+      deep: true, // Ceci est nécessaire si 'isMenuOpen' est un objet
+    },
+  },
   created() {
     // Lorsque le composant est créé, vérifiez si un cookie de langue existe
     const savedLang = Cookies.get("i18n_language");
@@ -305,9 +322,6 @@ export default {
   },
   mounted() {},
   unmounted() {},
-  components: {
-    menuBurger,
-  },
   methods: {
     handleMenuUpdate(event) {
       console.log(event);
@@ -319,6 +333,7 @@ export default {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
     toggleMenuBurger() {
+      this.isMenuOpen = !this.isMenuOpen;
       this.toggleMenu = !this.toggleMenu;
       this.menuBurgerOpened = !this.menuBurgerOpened;
 

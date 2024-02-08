@@ -1,19 +1,19 @@
 <template>
-  <div ref="menu" class="cursor-none">
+  <div class="cursor-none">
     <div
-      class="h-full bg-rose-neon w-10 md:w-80 right-0 fixed z-[20] transform translate-x-full"
+      class="h-full bg-rose-neon w-10 md:w-80 right-0 fixed z-[200] transform translate-x-full"
       :class="{ animate: !isMenuOpen }"
       id="separation"
     ></div>
     <div
-      class="h-screen bg-rose-neon flex flex-row items-center fixed z-[20] right-0 w-full md:w-1/2 transform translate-x-full"
-      :class="{ animate: !isMenuOpen }"
+      class="bg-close h-screen bg-rose-neon flex flex-row items-center fixed z-[20] right-0 w-full md:w-1/2 transform translate-x-full"
+      
       id="bg"
     >
       <div
         class="absolute right-0 z-auto transform translate-x-full"
-        :class="{ animate: !isMenuOpen }"
         id="title"
+        :class="{ animate: !isMenuOpen }"
         @mousemove="titleOffset"
       >
         <!-- Titre -->
@@ -46,8 +46,6 @@
             ref="about"
             class="w-fit"
             imageSrc="/menu-services.png"
-            @mouseover="titleAnimation"
-            @mouseleave="defaultBGColor"
             :offsetParent="offsetElement"
             id="about"
             v-cursorAnimation
@@ -64,13 +62,19 @@
               >
             </div>
           </ImageMenuOnHover>
-          <div
+          <!-- <div
             ref="contact"
             class="w-fit"
             @click="goToContact"
             @mouseover="titleAnimation"
             @mouseleave="defaultBGColor"
             :offsetParent="offsetElement"
+            id="contact"
+          > -->
+          <div
+            ref="contact"
+            class="w-fit"
+            @click="goToContact"
             id="contact"
           >
             <div class="text-white font-black z-10 relative">
@@ -107,7 +111,6 @@
 <style scoped>
 #separation {
   transition: all 0.1s ease-in-out;
-  transform: translateX(0);
 }
 
 #separation.animate {
@@ -116,7 +119,6 @@
 
 #title {
   transition: all 0.5s ease-in-out;
-  transform: translateX(0);
 }
 
 #title.animate {
@@ -125,11 +127,34 @@
 
 #bg {
   transition: all 0.5s cubic-bezier(.89,.06,.45,.97);
-  transform: translateX(0);
 }
 
 #bg.animate {
   transform: translateX(100%);
+}
+
+.eparation-open {
+  transform: translateX(100%);
+}
+
+.eparation-close {
+  transform: translateX(0px);
+}
+
+.title-open {
+  transform: translateX(100%);
+}
+
+.title-close {
+  transform: translateX(0px);
+}
+
+.bg-close {
+  transform: translateX(100%);
+}
+
+.bg-open {
+  transform: translateX(0px);
 }
 
 .part1-close {
@@ -162,12 +187,17 @@ export default {
       offsetElement: 0,
       defaultBG: "#ff0066",
       menuTitles: ["work", "about"],
+      animateSeparation: false,
+      animateTitle: false,
+      animateBg: false,
     };
   },
   setup() {
-    const menu = ref(null);
-    defineExpose({ menu });
-    // return { menu };
+    const isMenuOpen = stateMenuOpen();
+
+    return {
+      isMenuOpen,
+    };
   },
   watch: {
     isMenuOpen() {
@@ -179,7 +209,7 @@ export default {
   },
   methods: {
     titleAnimation(value) {
-      console.log(value.target.attributes["data-color"].value);
+      // console.log(value.target.attributes["data-color"].value);
       // Changement de couleur du Background
       // if (value.target.innerHTML !== "CONTACT") {
       if (typeof value === "string") {
@@ -188,6 +218,10 @@ export default {
         document.getElementById("bg").style.transition = "none";
         document.getElementById("bg").style.backgroundColor =
           value.target.attributes["data-color"].value;
+        setTimeout(() => {
+          document.getElementById("bg").style.transition =
+            "all 0.5s cubic-bezier(.89,.06,.45,.97)";
+        }, 0);
       }
       // }
 
@@ -228,29 +262,23 @@ export default {
 
       document.getElementById("bg").style.transition = "none";
       document.getElementById("bg").style.backgroundColor = this.defaultBG;
+      setTimeout(() => {
+        document.getElementById("bg").style.transition =
+          "all 0.5s cubic-bezier(.89,.06,.45,.97)";
+      }, 0);
+
     },
     goToContact() {
       this.$nextTick(() => {
-        // Enable the scrolling on the page
         document.body.style.overflow = "auto";
 
         const footerElement = document.querySelector("footer");
-        if (footerElement) {
-          footerElement.scrollIntoView({ behavior: "smooth" });
-          
-          // Il y'a un bug, je pense que c'est du au fait que le thread est saturé pour pouvoir correctement gérer les timeout, donc l'animation est degueu
-          this.closeMenu();
-          this.$emit('update:isMenuOpen', !this.isMenuOpen);
-
-          // setTimeout(() => {
-            // this.toggleMenuBurger();
-          // }, 200);
-        }
+        footerElement.scrollIntoView({ behavior: "smooth" });
       });
     },
     goToPage(page) {
-      this.closeMenu();
-      this.$emit('update:isMenuOpen', !this.isMenuOpen);
+      // this.closeMenu();
+      // this.$emit('update:isMenuOpen', !this.isMenuOpen);
     },
     toggleMenuBurger() {
       const menuBurger = document.getElementById("menu-burger");
@@ -290,18 +318,29 @@ export default {
       }, 0);
 
       // BG
-      document.getElementById("bg").style.transform = "translateX(0)";
+      // document.getElementById("bg").style.transform = "translateX(0)";
+      // document.getElementById("bg").classList.toggle("bg-close");
+      // document.getElementById("bg").classList.toggle("bg-open");
+
+      document.getElementById("bg").classList.remove("bg-close");
+      document.getElementById("bg").classList.add("bg-open");
       document.getElementById("bg").style.transition =
         "all 0.5s cubic-bezier(0, 0.75, 0.83, 0.67)";
 
       //  A la fin de l'animation faire disparaitre la séparation, pour que le changement de couleur soit fluide
-      setTimeout(function () {
-        document.getElementById("separation").style.display = "none";
-      }, 500);
+      // setTimeout(function () {
+      //   document.getElementById("separation").style.display = "none";
+      // }, 500);
     },
     closeMenu() {
-      this.defaultBGColor();
       
+      // document.getElementById("title").style.transform = "translateX(100%)";
+
+      // this.animateSeparation = true;
+      // this.animateTitle = true;
+      // this.animateBg = !this.animateBg;
+      // console.log(this.animateBg);
+      // console.log("oui");
       // Faire reaparaitre la separation pour faire disparaitre le texte derriere
       document.getElementById("separation").style.display = "block";
 
@@ -317,10 +356,16 @@ export default {
 
       // BG
       setTimeout(function () {
-        document.getElementById("bg").style.transform = "translateX(100%)";
-        document.getElementById("bg").style.transition =
-          "all 0.5s cubic-bezier(.89,.06,.45,.97)";
+        console.log("iciciciccici");
+        document.getElementById("bg").classList.remove("bg-open");
+        document.getElementById("bg").classList.add("bg-close");
+        // document.getElementById("bg").style.transition =
+        //   "all 0.5s cubic-bezier(.89,.06,.45,.97)";
+        // document.getElementById("bg").style.transform = "translateX(100%)";
       }, 100);
+
+
+      this.defaultBGColor();
     },
   },
 };

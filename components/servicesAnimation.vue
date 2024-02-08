@@ -55,41 +55,15 @@ export default {
 
       if (distance > 50) {
         const allImages = document.querySelectorAll(".mouse-container img");
-        if (false) {
-          console.log(allImages);
-          console.log("série current SRC: ");
-          for (let i = 0; i < allImages.length; i++) {
-            console.log(allImages[i].currentSrc + " " + allImages[i].className);
-            // allImages[i].classList.add('is-inactive');
-          }
-          images.push(this.images.shift());
-          // console.log(allImages);
-        }
 
         // Compte le nombre d'image, tant qu'on en a pas fait le tour on fait apparaitre toutes les images
         if (this.callCount <= this.images.length - 1) {
-          console.log("Y : " + event.clientY);
+          // console.log("Y : " + event.clientY);
           allImages[this.callCount].classList.add("is-active");
           allImages[this.callCount].style.top = `${event.clientY}px`;
           allImages[this.callCount].style.left = `${event.clientX}px`;
           allImages[this.callCount].style.zIndex = `${this.callCount}`;
         } else {
-          // Quand on a fait le tour :
-          // this.images.push(this.images.shift()); // La premiere image devient la dernière
-
-          // Pas besoin de faire tourner les images,
-          // Je peux avoir une var currentImage qui va être incrémentée à chaque fois et une fois qu'elle est égale à la longueur de l'array, on la remet à 0
-
-          // Faire changer le z-index de chaque image pour créer l'effet de superposition adéquat
-          // Je peux identifier les images avec la valeur de src
-
-          // Faire disparaitre la dernière image de la liste
-          // var lastImageList = this.images[this.images.length - 1]
-          // var lastImageDOM = document.querySelector(`[src="${lastImageList}"]`);
-          // console.log(document.querySelector(`[src="${this.lastImage}"]`));
-          // console.log(this.images.length);
-          // console.log(this.lastImage);
-          // console.log(this.images[this.lastImage]);
           var lastImageDOM = document.querySelector(
             `[src="${this.images[this.lastImage]}"]`
           );
@@ -98,35 +72,14 @@ export default {
 
           // Maintenant que la dernière image est cachée, on peut la faire reapparaitre à la position de la souris
           setTimeout(() => {
-            console.log("distance Y : " + event.scrollTop);
-            console.log("Y : " + event.clientY);
+            // console.log("distance Y : " + event.scrollTop);
+            // console.log("Y : " + event.clientY);
             lastImageDOM.classList.add("is-active");
             lastImageDOM.style.top = `${event.clientY}px`;
             lastImageDOM.style.left = `${event.clientX}px`;
             // console.log(typeof parseInt(lastImageDOM.style.zIndex));
             lastImageDOM.style.zIndex = parseInt(lastImageDOM.style.zIndex) + 6;
           }, 50);
-
-
-          // var lastImageList = allImages[0]
-          // console.log(typeof allImages);
-          // allImages.push(allImages.shift());
-          // console.log(lastImageList);
-          // lastImageList.classList.remove('is-active');
-
-          // var lastImageDOM = document.querySelector(`[src="${lastImageList}"]`);
-          // // var lastImageDOM = document.querySelector(`[src="/services-mouse-animation/monin-vanilla.png"]`);
-          // // console.dir("lastImageDOM : ");
-          // console.log(lastImageDOM);
-          // lastImageDOM.classList.remove('is-active');
-
-          // Faire apparaitre la première image de la liste
-          // var firstImageList = this.images[0]
-          // var firstImageDOM = document.querySelector(`[src="${firstImageList}"]`);
-          // firstImageDOM.classList.add('is-active');
-          // // Lui passer les la position x et y de la souris
-          // firstImageDOM.style.left = `${event.clientX}px`;
-          // firstImageDOM.style.top = `${event.clientY}px`;
         }
         this.callCount++;
 
