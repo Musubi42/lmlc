@@ -8,7 +8,7 @@ export default defineNuxtConfig({
       APIStreamAudioBaseUrl:
         process.env.NODE_ENV === "development"
           ? "http://localhost:3000/api"
-          : "https://hoqkaarkmynimv8r.public.blob.vercel-storage.com",
+          : "https://Ils4fBuzd7oGbyJy.public.blob.vercel-storage.com",
     },
   },
   env: {
