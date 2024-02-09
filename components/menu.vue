@@ -1,7 +1,7 @@
 <template>
   <div class="cursor-none">
     <div
-      class="h-full bg-rose-neon w-10 md:w-80 right-0 fixed z-[200] transform translate-x-full"
+      class="h-full bg-rose-neon w-10 md:w-80 right-0 fixed z-[20] transform translate-x-full"
       :class="{ animate: !isMenuOpen }"
       id="separation"
     ></div>
@@ -46,6 +46,8 @@
             ref="about"
             class="w-fit"
             imageSrc="/menu-services.png"
+            @mouseover="titleAnimation"
+            @mouseleave="defaultBGColor"
             :offsetParent="offsetElement"
             id="about"
             v-cursorAnimation
@@ -62,18 +64,11 @@
               >
             </div>
           </ImageMenuOnHover>
-          <!-- <div
-            ref="contact"
-            class="w-fit"
-            @click="goToContact"
-            @mouseover="titleAnimation"
-            @mouseleave="defaultBGColor"
-            :offsetParent="offsetElement"
-            id="contact"
-          > -->
           <div
             ref="contact"
             class="w-fit"
+            @mouseover="titleAnimation"
+            @mouseleave="defaultBGColor"
             @click="goToContact"
             id="contact"
           >
@@ -190,18 +185,11 @@ export default {
       animateSeparation: false,
       animateTitle: false,
       animateBg: false,
-    };
-  },
-  setup() {
-    const isMenuOpen = stateMenuOpen();
-
-    return {
-      isMenuOpen,
+      // isMenuOpen: false,
     };
   },
   watch: {
     isMenuOpen() {
-      // console.log(this.isMenuOpen, !this.isMenuOpen);
       this.isMenuOpen ? this.openMenu() : this.closeMenu();
     },
   },
@@ -209,20 +197,12 @@ export default {
   },
   methods: {
     titleAnimation(value) {
-      // console.log(value.target.attributes["data-color"].value);
       // Changement de couleur du Background
-      // if (value.target.innerHTML !== "CONTACT") {
-      if (typeof value === "string") {
-        document.getElementById("bg").style.backgroundColor = value;
-      } else {
-        document.getElementById("bg").style.transition = "none";
-        document.getElementById("bg").style.backgroundColor =
-          value.target.attributes["data-color"].value;
-        setTimeout(() => {
-          document.getElementById("bg").style.transition =
-            "all 0.5s cubic-bezier(.89,.06,.45,.97)";
-        }, 0);
-      }
+      // if (typeof value === "string") {
+      //   document.getElementById("bg").style.backgroundColor = value;
+      // } else {
+      //   document.getElementById("bg").style.backgroundColor =
+      //     value.target.attributes["data-color"].value;
       // }
 
       const workTitle = document.getElementById("workTitle");
@@ -234,10 +214,10 @@ export default {
       contactTitle.classList.add("menu-text-overlay");
     },
     titleOffset(event) {
-      this.offsetElement = parseInt(
-        window.getComputedStyle(event.srcElement.offsetParent.offsetParent.offsetParent)
-          .left
-      );
+      // this.offsetElement = parseInt(
+      //   window.getComputedStyle(event.srcElement.offsetParent.offsetParent.offsetParent)
+      //     .left
+      // );
     },
     defaultBGColor() {
       // Retirer le before puis le translate pour éviter la boucle infinie
@@ -249,24 +229,7 @@ export default {
       aboutTitle.classList.remove("menu-text-overlay");
       contactTitle.classList.remove("menu-text-overlay");
 
-      // workTitle.style.transform = "translateX(0px)";
-      // servicesTitle.style.transform = "translateX(0px)";
-      // talentsTitle.style.transform = "translateX(0px)";
-      // const work = this.$refs.work.$el;
-      // const services = this.$refs.services.$el;
-      // const talents = this.$refs.talents.$el;
-
-      // work.style.transform = "translateX(0px)";
-      // services.style.transform = "translateX(0px)";
-      // talents.style.transform = "translateX(0px)";
-
-      document.getElementById("bg").style.transition = "none";
       document.getElementById("bg").style.backgroundColor = this.defaultBG;
-      setTimeout(() => {
-        document.getElementById("bg").style.transition =
-          "all 0.5s cubic-bezier(.89,.06,.45,.97)";
-      }, 0);
-
     },
     goToContact() {
       this.$nextTick(() => {
@@ -274,11 +237,14 @@ export default {
 
         const footerElement = document.querySelector("footer");
         footerElement.scrollIntoView({ behavior: "smooth" });
+
+        this.closeMenu();
+        this.$emit('update:isMenuOpen', !this.isMenuOpen);
       });
     },
     goToPage(page) {
-      // this.closeMenu();
-      // this.$emit('update:isMenuOpen', !this.isMenuOpen);
+      this.closeMenu();
+      this.$emit('update:isMenuOpen', !this.isMenuOpen);
     },
     toggleMenuBurger() {
       const menuBurger = document.getElementById("menu-burger");
@@ -318,30 +284,14 @@ export default {
       }, 0);
 
       // BG
-      // document.getElementById("bg").style.transform = "translateX(0)";
-      // document.getElementById("bg").classList.toggle("bg-close");
-      // document.getElementById("bg").classList.toggle("bg-open");
-
       document.getElementById("bg").classList.remove("bg-close");
       document.getElementById("bg").classList.add("bg-open");
       document.getElementById("bg").style.transition =
-        "all 0.5s cubic-bezier(0, 0.75, 0.83, 0.67)";
+        "transform 0.5s cubic-bezier(0, 0.75, 0.83, 0.67)";
 
       //  A la fin de l'animation faire disparaitre la séparation, pour que le changement de couleur soit fluide
-      // setTimeout(function () {
-      //   document.getElementById("separation").style.display = "none";
-      // }, 500);
     },
     closeMenu() {
-      
-      // document.getElementById("title").style.transform = "translateX(100%)";
-
-      // this.animateSeparation = true;
-      // this.animateTitle = true;
-      // this.animateBg = !this.animateBg;
-      // console.log(this.animateBg);
-      // console.log("oui");
-      // Faire reaparaitre la separation pour faire disparaitre le texte derriere
       document.getElementById("separation").style.display = "block";
 
       // separation
@@ -356,14 +306,9 @@ export default {
 
       // BG
       setTimeout(function () {
-        console.log("iciciciccici");
         document.getElementById("bg").classList.remove("bg-open");
         document.getElementById("bg").classList.add("bg-close");
-        // document.getElementById("bg").style.transition =
-        //   "all 0.5s cubic-bezier(.89,.06,.45,.97)";
-        // document.getElementById("bg").style.transform = "translateX(100%)";
       }, 100);
-
 
       this.defaultBGColor();
     },

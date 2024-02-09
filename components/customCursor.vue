@@ -3,7 +3,7 @@
     ref="cursor"
     class="cursor-container z-50"
     :class="{ hovered: isHovered }"
-    :style="{ top: `${cursorPosition.y}px`, left: `${cursorPosition.x}px` }"
+    :style="{ top: `${cursorPosition.y}px`, left: `${cursorPosition.x}px`, backgroundColor: isMenuOpen ? 'rgba(255, 255, 255, 0.5)' : 'rgba(255, 0, 102, 0.5)'}"
   ></div>
 </template>
 
@@ -13,8 +13,12 @@ import { hoverState } from "../plugins/cursor-state";
 export default {
   setup() {
     // const hoverState = inject('$hoverState');
+    const isMenuOpen = stateMenuOpen();
 
-    return { hoverState };
+    return { 
+      hoverState,
+      isMenuOpen,
+      };
   },
   data() {
     return {
@@ -52,8 +56,8 @@ export default {
   height: 20px;
   border-radius: 50%;
   /* background: rgba(255, 255, 0, 0.5); */
-  /* background: rgba(255, 0, 102, 0.5); */
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 0, 102, 0.5);
+  /* background: rgba(0, 0, 0, 0.5); */
   
   pointer-events: none;
   transform: translate(-50%, -50%);

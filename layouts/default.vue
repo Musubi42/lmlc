@@ -1,5 +1,6 @@
 <template>
   <div @click="closeMenuIfOpen" >
+    <Intro v-if="IntroAnimation" class="fixed z-10" />
     <Header :dynamicStyle="headerStyle" />
     <NuxtPage />
     <Footer />
@@ -14,6 +15,23 @@
 
 <script>
 export default {
+  setup() {
+    // const isIntroAnimation = ref(true);
+    const IntroAnimation = stateIntroAnimation();
+
+    watch(IntroAnimation, (newValue, oldValue) => {
+      console.log('IntroAnimation changed from', oldValue, 'to', newValue);
+      // isIntroAnimation.value = newValue;
+      IntroAnimation.value = newValue;
+      console.log(IntroAnimation);
+    });
+    const isMenuOpen = stateMenuOpen();
+
+    return {
+      isMenuOpen,
+      IntroAnimation
+    };
+  },
   data() {
     return {
       headerStyle: {
@@ -21,13 +39,6 @@ export default {
       },
       pastYPosition: 0,
       moreThanOnce: 0,
-    };
-  },
-  setup() {
-    const isMenuOpen = stateMenuOpen();
-
-    return {
-      isMenuOpen,
     };
   },
   methods: {
@@ -38,12 +49,12 @@ export default {
     },
     // TODO: Il ne faut pas que ça se trigger si je clique sur le menu
     closeMenuIfOpen(event) {
-      console.log("oui");
-      console.log(event.target);
-      if (this.moreThanOnce > 0 && this.isMenuOpen) {
-        this.isMenuOpen = !this.isMenuOpen;
-      }
-      this.moreThanOnce++;
+      // console.log("oui");
+      // console.log(event.target);
+      // if (this.moreThanOnce > 0 && this.isMenuOpen) {
+      //   this.isMenuOpen = !this.isMenuOpen;
+      // }
+      // this.moreThanOnce++;
     },
   },
   mounted() {

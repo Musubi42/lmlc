@@ -74,9 +74,11 @@
 export default {
   setup() {
     const ScrollHorizontal = isScrollHorizontal();
+    const isMenuOpen = stateMenuOpen();
 
     return {
       ScrollHorizontal,
+      isMenuOpen,
     };
   },
   data() {
@@ -128,7 +130,9 @@ export default {
         this.scroll.deltaX = event.deltaX;
       }
 
-      document.body.style.overflow = "";
+      if (!this.isMenuOpen) {
+        document.body.style.overflow = "";
+      }
     },
   },
   mounted() {

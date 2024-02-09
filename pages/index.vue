@@ -7,19 +7,17 @@
     Your browser does not support the video tag.
 </video>
   </div> -->
-
     <div class="h-[92vh]">
       <div
         class=" w-full h-[100%] md:h-[100%]"
       >
-        <!-- <tableauTest class="" v-cursorAnimation /> -->
+        <tableauTest v-if="!IntroAnimation" v-cursorAnimation />
       </div>
     </div>
     <!-- TODO: Padding footer pour l'effet scroll : pb-20 md:pb-80 -->
     <div
       id="container"
-      class=" font-medium mt-16 md:max-w-[75%] text-[1.5rem] md:text-[2rem] xl:text-[3.2rem] leading-[1] mx-[5%] md:mx-[10%] pb-10 "
-    >
+      class=" font-medium mt-16 md:max-w-[75%] text-[1.5rem] md:text-[2rem] xl:text-[3.2rem] leading-[1] mx-[5%] md:mx-[10%] pb-10 ">
       <div
         id="first-paragraph"
         class="flex flex-row flex-wrap whitespace-pre-wrap"
@@ -75,11 +73,24 @@
 </style>
 
 <script>
-import Typewriter from "typewriter-effect/dist/core";
-import { defineAsyncComponent } from "vue";
-import Music from "../components/Music.vue";
-
 export default {
+  // props: ["isIntroAnimation"],
+  setup() {
+    const isIntroAnimation = ref(true);
+    const IntroAnimation = stateIntroAnimation();
+
+    watch(IntroAnimation, (newValue, oldValue) => {
+      console.log('IntroAnimation changed from', oldValue, 'to', newValue);
+      isIntroAnimation.value = newValue;
+      IntroAnimation.value = newValue;
+      console.log(isIntroAnimation);
+    });
+
+    return {
+      IntroAnimation,
+      isIntroAnimation
+    }
+  },
   data() {
     return {
       scrollPos: 0,
@@ -106,14 +117,11 @@ export default {
       return this.thirdPararaphText.split(" ");
     },
   },
-
-  watch: {
-    "$i18n.locale": "setLanguageTexts",
-  },
-
   mounted() {
+    console.log("coucou");
+    console.log(this.isIntroAnimation);
     this.setLanguageTexts();
-    // this.typeWriteText();
+    
     this.$nextTick(() => {
       window.addEventListener("scroll", this.handleScroll);
       this.paragraphSpacing = document.getElementById("paragraphSpacing");
@@ -141,24 +149,6 @@ export default {
   },
 
   methods: {
-    typeWriteText() {
-      const app = document.getElementById("text-intro");
-
-      var customNodeCreator = function (character) {
-        return document.createTextNode(character);
-      };
-
-      var typewriter = new Typewriter(app, {
-        loop: false,
-        delay: 35,
-        cursor: "",
-        onCreateTextNode: customNodeCreator,
-      });
-
-      typewriter.typeString(this.textIntro).pauseFor(300).start();
-
-      // TODO : Supprimer le typewriter quand il a fini d'écrire et replace par le text en dur pour avoir la traduction qui fonctionne
-    },
     calculateScrollSpeed(width) {
       if (width <= 350) {
         return 8;
@@ -263,8 +253,4 @@ export default {
 
 
 };
-</script>
-
-<script setup>
-import contactSVG from "assets/icons/contact.svg";
 </script>

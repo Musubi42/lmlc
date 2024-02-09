@@ -28,12 +28,12 @@
         @click="toggleAudio"
         v-cursorAnimation
       >
-        <iconsLoading class="w-[24px]" v-if="isLoading" src="" alt="Loading..." />
-        <iconsLecture class="ml-[4px] w-[24px]" v-if="!isPlaying && !isLoading" />
-        <iconsPause class="w-[24px]" v-if="isPlaying && !isLoading" />
+        <iconsLoading class="w-[24px] bg-black" v-if="isLoading" src="" alt="Loading..." />
+        <iconsLecture class="ml-[4px] w-[24px] bg-black" v-if="!isPlaying && !isLoading" />
+        <iconsPause class="w-[24px] bg-black" v-if="isPlaying && !isLoading" />
       </button>
       <!-- Play next song -->
-      <button class="center-content" @click="playNextSong" v-cursorAnimation>
+      <button class="center-content cursor-none" @click="playNextSong" v-cursorAnimation>
         <iconsNext class="w-[24px] ml-2 cursor-none" />
       </button>
 

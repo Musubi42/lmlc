@@ -279,6 +279,15 @@ export default {
       required: false
     },
   },
+  setup() {
+    // const isMenuOpen = ref(false);
+    const isMenuOpen = stateMenuOpen();
+    // isMenuOpen.value = MenuOpen;
+
+    return {
+      isMenuOpen,
+    };
+  },
   data() {
     return {
       toggleMenu: false,
@@ -291,18 +300,11 @@ export default {
       y: 0,
     };
   },
-  setup() {
-    const isMenuOpen = stateMenuOpen();
-
-    return {
-      isMenuOpen,
-    };
-  },
   watch: {
     isMenuOpen: {
       handler: function(newVal, oldVal) {
         if (newVal === false) {
-          this.toggleMenuBurger();
+          // this.toggleMenuBurger();
         }
       },
       deep: true, // Ceci est nécessaire si 'isMenuOpen' est un objet
@@ -324,8 +326,6 @@ export default {
   unmounted() {},
   methods: {
     handleMenuUpdate(event) {
-      console.log(event);
-      // this.menuBurgerOpened = event; 
       this.toggleMenuBurger();
     },
     toggleDropdown() {
