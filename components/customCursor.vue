@@ -3,8 +3,9 @@
     ref="cursor"
     class="cursor-container z-50"
     :class="{ hovered: isHovered }"
-    :style="{ top: `${cursorPosition.y}px`, left: `${cursorPosition.x}px`, backgroundColor: isMenuOpen ? 'rgba(255, 255, 255, 0.5)' : 'rgba(255, 0, 102, 0.5)'}"
+    
   ></div>
+  <!-- :style="{ top: `${cursorPosition.y}px`, left: `${cursorPosition.x}px`, backgroundColor: isMenuOpen ? 'rgba(255, 255, 255, 0.5)' : 'rgba(255, 0, 102, 0.5)'}" -->
 </template>
 
 <script>
