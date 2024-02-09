@@ -54,7 +54,7 @@ export default {
       });
 
       typewriter
-        .typeString(this.test)
+        .typeString(this.textIntro)
         .changeDelay(10)
         .start()
         .pauseFor(500)

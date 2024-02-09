@@ -2,6 +2,7 @@
   <div
     ref="cursor"
     class="cursor-container z-50"
+    :style="{ top: `${cursorPosition.y}px`, left: `${cursorPosition.x}px`, backgroundColor: isMenuOpen ? 'rgba(255, 255, 255, 0.5)' : 'rgba(255, 0, 102, 0.5)'}"
     :class="{ hovered: isHovered }"
     
   ></div>
@@ -13,8 +14,12 @@ import { hoverState } from "../plugins/cursor-state";
 
 export default {
   setup() {
-    // const hoverState = inject('$hoverState');
-    const isMenuOpen = stateMenuOpen();
+    const isMenuOpen = ref(false);
+    const MenuOpen = stateMenuOpen();
+
+    watch(MenuOpen, (newValue, oldValue) => {
+      isMenuOpen.value = newValue;
+    });
 
     return { 
       hoverState,

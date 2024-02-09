@@ -80,10 +80,8 @@ export default {
     const IntroAnimation = stateIntroAnimation();
 
     watch(IntroAnimation, (newValue, oldValue) => {
-      console.log('IntroAnimation changed from', oldValue, 'to', newValue);
       isIntroAnimation.value = newValue;
       IntroAnimation.value = newValue;
-      console.log(isIntroAnimation);
     });
 
     return {
