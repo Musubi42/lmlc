@@ -121,19 +121,8 @@ export default {
     },
   },
   methods: {
-    // changeLanguage(language) {
-    //   const currentIndex = this.languages.indexOf(this.currentLanguage);
-    //   const nextIndex = (currentIndex + 1) % this.languages.length;
-    //   this.currentLanguage = this.languages[nextIndex];
-    //   console.log(this.currentLanguage);
-    //   // Call your function to change the language in your app
-    //   this.$i18n.locale = this.currentLanguage;
-    //   Cookies.set("i18n_language", locale);
-    // },
-
     changeLanguage(locale) {
       const languageSelectors = this.$refs.languageSelectors;
-      console.log(languageSelectors);
       const allLanguageSelectors = languageSelectors.querySelectorAll("span");
       allLanguageSelectors.forEach((languageSelector) => {
         languageSelector.classList.remove("font-semibold");

@@ -144,10 +144,6 @@ export default {
           email: this.email,
         },
       });
-
-      console.log(data.value);
-      console.log(pending.value);
-      console.log(error.value);
     }
   },
 }

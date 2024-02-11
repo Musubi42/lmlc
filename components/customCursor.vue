@@ -41,8 +41,8 @@ export default {
     window.addEventListener("scroll", this.updateScrollPosition);
   },
   beforeUnmount() {
-    window.removeEventListener("mousemove", this.updateCursorPosition);
-    window.removeEventListener("scroll", this.updateScrollPosition);
+    // window.removeEventListener("mousemove", this.updateCursorPosition);
+    // window.removeEventListener("scroll", this.updateScrollPosition);
   },
   methods: {
     updateCursorPosition(e) {

@@ -1182,7 +1182,6 @@ export default {
 
             if (functionName === "createBody") {
               const [body, spriteBody, constraint] = args;
-              console.log(spriteBody.parts[0].render.sprite.texture);
               // TODO: La frequence de rafraichissement de la physique est trop lente, ce qui fait que les objets ne sont pas dans le même axe
               Events.on(engine, "beforeUpdate", function (event) {
                 // Set the angle of the spriteBody to the angle of the body

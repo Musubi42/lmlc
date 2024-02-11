@@ -29,6 +29,7 @@
 
 <script>
 export default {
+  props: ["metierHeight", "mousePositionY"],
   data() {
     return {
       lastMousePosition: { x: 0, y: 0 },
@@ -44,7 +45,13 @@ export default {
       activeIndex: -1,
       callCount: 0,
       lastImage: 0,
+      isOnAnimationArea: false,
     };
+  },
+  watch: {
+    mousePositionY() {
+      this.isOnAnimationArea = this.mousePositionY < this.metierHeight;
+    },
   },
   methods: {
     handleMouseMove(event) {
@@ -53,12 +60,11 @@ export default {
           Math.pow(event.clientY - this.lastMousePosition.y, 2)
       );
 
-      if (distance > 50) {
+      if (distance > 50 && this.isOnAnimationArea) {
         const allImages = document.querySelectorAll(".mouse-container img");
 
         // Compte le nombre d'image, tant qu'on en a pas fait le tour on fait apparaitre toutes les images
         if (this.callCount <= this.images.length - 1) {
-          // console.log("Y : " + event.clientY);
           allImages[this.callCount].classList.add("is-active");
           allImages[this.callCount].style.top = `${event.clientY}px`;
           allImages[this.callCount].style.left = `${event.clientX}px`;
@@ -72,12 +78,9 @@ export default {
 
           // Maintenant que la dernière image est cachée, on peut la faire reapparaitre à la position de la souris
           setTimeout(() => {
-            // console.log("distance Y : " + event.scrollTop);
-            // console.log("Y : " + event.clientY);
             lastImageDOM.classList.add("is-active");
             lastImageDOM.style.top = `${event.clientY}px`;
             lastImageDOM.style.left = `${event.clientX}px`;
-            // console.log(typeof parseInt(lastImageDOM.style.zIndex));
             lastImageDOM.style.zIndex = parseInt(lastImageDOM.style.zIndex) + 6;
           }, 50);
         }
@@ -88,6 +91,7 @@ export default {
     },
   },
   mounted() {
+    // console.log(this.$refs.mouseContainer.offsetHeight);
     // TODO : Check le $nextTick
     // this.$nextTick(() => {
     window.addEventListener("mousemove", this.handleMouseMove);

@@ -1,14 +1,16 @@
 <template>
   <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200">
     <!-- Partie métiers -->
-    <ServicesAnimation class="relative z-0 pointer-events-none" />
     <section ref="metier" class="h-screen pt-40 scrollbar-hide border w-full">
+    <ServicesAnimation :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="relative z-0 pointer-events-none" />
+
       <div class="absolute z-10 w-full box-border px-8">
         <div class="relative flex flex-row gap-2 justify-around">
           <div class="flex-1 z-10">
             <h3 class="font-semibold text-xl">stratégie</h3>
             <ul>
-              <li>stratégie marketing &#x26; communication</li>
+              <li>stratégie et plan de communication</li>
+              <li>stratégie marketing</li>
               <li>stratégie de marque</li>
             </ul>
           </div>
@@ -38,11 +40,10 @@
           <div class="min-w-[200px]">
             <h3 class="font-semibold text-xl">brandcontent</h3>
             <ul>
-              <li>production film</li>
+              <li>production audiovisuelle</li>
               <li>shooting photo</li>
-              <li>3D &#x26; motion design</li>
               <li>packshot</li>
-              <li>print &#x26; edition</li>
+              <li>motion design &#x26; 3D</li>
             </ul>
           </div>
         </div>
@@ -60,12 +61,12 @@
 </template>
 
 <style>
-.bg-black {
+.background-black {
   /* background-color: black; */
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.bg-white {
+.background-white {
   background-color: white;
 }
 </style>
@@ -86,6 +87,10 @@ export default {
       scroll: { deltaY: 0, deltaX: 0 },
       isScroll: true,
       body: null,
+      sectionMetierHeight: 0,
+      scrollY: 0,
+      mouseY: 0,
+      mouseAbsolutePositionY: 0,
     };
   },
   methods: {
@@ -98,32 +103,29 @@ export default {
     },
 
     handleAddBgBlack(entries) {
-      console.log("Add black");
       const [entry] = entries;
       if (entry.isIntersecting) {
         const body = this.$refs.body;
-        body.classList.remove("bg-white");
-        body.classList.add("bg-black");
+        body.classList.remove("background-white");
+        body.classList.add("background-black");
       }
     },
 
     handleRemoveBgBlack(entries) {
       // TODO: Il ne rentre pas dans le if
       const body = this.$refs.body;
-      body.classList.remove("bg-black");
-      body.classList.add("bg-white");
+      body.classList.remove("background-black");
+      body.classList.add("background-white");
       const [entry] = entries;
       if (entry.isIntersecting) {
-        console.log("je suis dedans");
         const body = this.$refs.body;
-        body.classList.remove("bg-black");
-        body.classList.add("bg-white");
+        body.classList.remove("background-black");
+        body.classList.add("background-white");
       }
     },
 
     handleWheelEvent(event) {
       const body = this.$refs.body;
-      console.log(window.scrollY);
       if (this.ScrollHorizontal) {
         event.preventDefault();
         this.scroll.deltaY = event.deltaY;
@@ -134,8 +136,21 @@ export default {
         document.body.style.overflow = "";
       }
     },
+
+    handleScroll() {
+      this.scrollY = window.scrollY;
+      this.mouseAbsolutePositionY = this.mouseY + this.scrollY;
+    },
+    handleMouseMove(event) {
+      this.mouseY = event.clientY;
+      this.mouseAbsolutePositionY = this.mouseY + this.scrollY;
+    },
   },
   mounted() {
+    window.addEventListener("mousemove", this.handleScroll);
+    window.addEventListener("mousemove", this.handleMouseMove);
+
+    this.sectionMetierHeight = this.$refs.metier.offsetHeight;
     this.observerScrollHorizontal = new IntersectionObserver(
       this.handleScrollHorizontal,
       {

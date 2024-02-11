@@ -20,6 +20,7 @@
 
 <script>
 import Typewriter from "typewriter-effect/dist/core";
+import Cookies from "js-cookie";
 
 export default {
   setup() {
@@ -54,7 +55,7 @@ export default {
       });
 
       typewriter
-        .typeString(this.textIntro)
+        .typeString(this.test)
         .changeDelay(10)
         .start()
         .pauseFor(500)
@@ -74,6 +75,7 @@ export default {
       // A la fin de l'animation venir démonter le component du DOM
       setTimeout(() => {
         this.IntroAnimation = false;
+        Cookies.set("firstVisit", "false");
       }, 1000);
     },
   },

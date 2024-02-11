@@ -28,12 +28,12 @@
         @click="toggleAudio"
         v-cursorAnimation
       >
-        <iconsLoading class="w-[24px] bg-black" v-if="isLoading" src="" alt="Loading..." />
-        <iconsLecture class="ml-[4px] w-[24px] bg-black" v-if="!isPlaying && !isLoading" />
-        <iconsPause class="w-[24px] bg-black" v-if="isPlaying && !isLoading" />
+        <iconsLoading class="w-[24px]" v-if="isLoading" src="" alt="Loading..." />
+        <iconsLecture class="ml-[4px] w-[24px]" v-if="!isPlaying && !isLoading" />
+        <iconsPause class="w-[24px]" v-if="isPlaying && !isLoading" />
       </button>
       <!-- Play next song -->
-      <button class="center-content cursor-none" @click="playNextSong" v-cursorAnimation>
+      <button class="center-content" @click="playNextSong" v-cursorAnimation>
         <iconsNext class="w-[24px] ml-2 cursor-none" />
       </button>
 
@@ -128,6 +128,8 @@ input[type="range"]::-moz-range-thumb {
 
 <script>
 import axios from "axios";
+import { list } from '@vercel/blob';
+
 
 export default {
   data() {
@@ -172,7 +174,7 @@ export default {
           response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata`);
         } else {
           response = await axios.get(
-            `${this.APIStreamAudioBaseUrl}/playlistMetadata.json`
+            `${this.APIStreamAudioBaseUrl}/music/playlistMetadata.json`
           );
         }
 
@@ -194,7 +196,7 @@ export default {
         if (process.env.NODE_ENV === "development") {
           audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/music/${trackID}`);
         } else {
-          audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/${trackID}.mp3`);
+          audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/music/${trackID}.mp3`);
         }
 
         const blob = await audioResponse.blob();
@@ -307,8 +309,8 @@ export default {
   },
   beforeUnmount() {
     // Remove event listeners
-    this.$refs.audio.removeEventListener("loadedmetadata", this.updateTime);
-    this.$refs.audio.removeEventListener("timeupdate", this.updateTime);
+    // this.$refs.audio.removeEventListener("loadedmetadata", this.updateTime);
+    // this.$refs.audio.removeEventListener("timeupdate", this.updateTime);
   },
 };
 </script>

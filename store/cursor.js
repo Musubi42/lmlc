@@ -5,7 +5,6 @@ export const state = () => ({
 
 export const mutations = {
   setHovered(state, value) {
-  console.log("oui");
     state.isHovered = value;
   },
 };

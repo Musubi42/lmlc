@@ -198,12 +198,12 @@ export default {
   methods: {
     titleAnimation(value) {
       // Changement de couleur du Background
-      // if (typeof value === "string") {
-      //   document.getElementById("bg").style.backgroundColor = value;
-      // } else {
-      //   document.getElementById("bg").style.backgroundColor =
-      //     value.target.attributes["data-color"].value;
-      // }
+      if (typeof value === "string") {
+        document.getElementById("bg").style.backgroundColor = value;
+      } else {
+        document.getElementById("bg").style.backgroundColor =
+          value.target.attributes["data-color"].value;
+      }
 
       const workTitle = document.getElementById("workTitle");
       const aboutTitle = document.getElementById("aboutTitle");

@@ -81,6 +81,18 @@ body {
   /* To create unique component */
 }
 
+.axeptio_mount {
+  cursor: default;
+}
+
+.axeptio_mount > button:hover && label:hover {
+  cursor: pointer;
+}
+
+.axeptio_mount > label:hover {
+  cursor: pointer;
+}
+
 .content {
   overflow: hidden;
   /* Hide scrollbars */

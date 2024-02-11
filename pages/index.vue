@@ -11,7 +11,7 @@
       <div
         class=" w-full h-[100%] md:h-[100%]"
       >
-        <tableauTest v-if="!IntroAnimation" v-cursorAnimation />
+        <tableauTest v-if="!IntroAnimation" v-cursorAnimation :key="componentKey" />
       </div>
     </div>
     <!-- TODO: Padding footer pour l'effet scroll : pb-20 md:pb-80 -->
@@ -76,6 +76,11 @@
 export default {
   // props: ["isIntroAnimation"],
   setup() {
+    definePageMeta({
+      layout: "accueil",
+      middleware: ["first-visit"]
+    });
+    
     const isIntroAnimation = ref(true);
     const IntroAnimation = stateIntroAnimation();
 
@@ -83,6 +88,8 @@ export default {
       isIntroAnimation.value = newValue;
       IntroAnimation.value = newValue;
     });
+
+   
 
     return {
       IntroAnimation,
@@ -102,6 +109,7 @@ export default {
       windowHeight: 0,
       paragraphSpacing: 0,
       oui: null,
+      componentKey: ref(1),
     };
   },
   computed: {
@@ -116,8 +124,12 @@ export default {
     },
   },
   mounted() {
-    console.log("coucou");
-    console.log(this.isIntroAnimation);
+    this.componentKey++;
+    // Get the language change of SwitchLanguage component
+     watch(() => this.$i18n.locale, () => {
+      this.setLanguageTexts();
+    });
+    
     this.setLanguageTexts();
     
     this.$nextTick(() => {
