@@ -233,7 +233,7 @@ export default {
     },
     goToContact() {
       this.$nextTick(() => {
-        document.body.style.overflow = "auto";
+        document.body.style.overflow = "";
 
         const footerElement = document.querySelector("footer");
         footerElement.scrollIntoView({ behavior: "smooth" });

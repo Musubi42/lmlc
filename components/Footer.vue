@@ -71,7 +71,7 @@
                 >TUNED</span
               >
               <div class="flex flex-col gap-8">
-                <div class="flex flex-row items-center w-[300px]">
+                <div @click="getClick" class="flex flex-row items-center w-[300px]">
                   <input
                     type="email"
                     v-model="email"
@@ -161,10 +161,53 @@ export default {
     };
   },
   methods: {
+    getClick() {
+      console.log("click");
+      this.handle();
+    },
     handleSendEmail() {
-      openAxeptioEmailConsent();
+      const axeptionConsentScreen = document.getElementById(
+              "axeptionConsent"
+            );
+            console.log(axeptionConsentScreen);
+            axeptionConsentScreen.style.display = "block";
+      this.openAxeptioEmailConsent();
+    },
+    handle() {
+      let axeptioScreen = document.getElementsByClassName("Widget__WidgetStyle-sc-zhn46e-2 jyqhwN axeptio_widget ax-widget");
+        axeptioScreen[0].addEventListener("click", () => {
+          let axeptionButtons = document.querySelectorAll("#axeptio_btn_undefined");
+          console.log("ici");
+          if (axeptionButtons.length > 1) {
+            // Vue accepter ou rejeter
+            axeptionButtons[0].addEventListener("click", () => {
+              console.log("rejeter");
+              // const axeptionConsentScreen = document.getElementsByClassName(
+              //   "Widget__WidgetStyle-sc-zhn46e-2 jyqhwN axeptio_widget ax-widget"
+              // );
+              // axeptionConsentScreen[0].remove();
+            });
+            axeptionButtons[1].addEventListener("click", () => {
+              console.log("accepter");
+              // const axeptionConsentScreen = document.getElementsByClassName(
+              //   "Widget__WidgetStyle-sc-zhn46e-2 jyqhwN axeptio_widget ax-widget"
+              // );
+              // axeptionConsentScreen[0].remove();
+            });
+          } else {
+            console.log("remove");
+            const axeptionConsentScreen = document.getElementById(
+              "axeptionConsent"
+            );
+            console.log(axeptionConsentScreen);
+            axeptionConsentScreen.style.display = "none";
+            // axeptionConsentScreen.remove();
+          }
+        });
     },
     openAxeptioEmailConsent() {
+      // Widget__WidgetContent-sc-zhn46e-5 beACve
+      // cette class là reste la même quelque soit la vue
       void 0 === window._axcb && (window._axcb = []);
       window._axcb.push(function (axeptio) {
         axeptio.mountWidget({
@@ -174,16 +217,10 @@ export default {
         });
       });
 
-      var axeptionButton = null;
+      var axeptionButtons = null;
       setTimeout(() => {
-        axeptionButton = document.getElementById("axeptio_btn_undefined");
-        axeptionButton?.addEventListener("click", () => {
-          const axeptionConsentScreen = document.getElementsByClassName(
-            "Widget__WidgetStyle-sc-zhn46e-2 jyqhwN axeptio_widget ax-widget"
-          );
-          axeptionConsentScreen[0].remove();
-        });
-      }, 1000);
+        this.handle();
+      }, 100);
     },
     async sendDataToMake() {
       const webhookUrl = "https://hook.eu2.make.com/mbfn5v1e0b73rr4r0buwalq0nhe4ryl7"; // Remplacez avec l'URL de votre webhook Make.com

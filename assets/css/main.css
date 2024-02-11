@@ -93,6 +93,14 @@ body {
   cursor: pointer;
 }
 
+#axeptionConsent {
+  cursor: default;
+}
+
+#axeptionConsent > button:hover {
+  cursor: pointer;
+}
+
 .content {
   overflow: hidden;
   /* Hide scrollbars */
