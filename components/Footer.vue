@@ -81,8 +81,6 @@
                   />
                   <button
                     id="sendEmail"
-                    @click="openAxeptioEmailConsent"
-                    @click="sendDataToMake"
                     @click="handleSendEmail"
                     class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50 cursor-none"
                     v-cursorAnimation
@@ -165,7 +163,7 @@ export default {
   methods: {
     handleSendEmail() {
       openAxeptioEmailConsent();
-    }
+    },
     openAxeptioEmailConsent() {
       void 0 === window._axcb && (window._axcb = []);
       window._axcb.push(function (axeptio) {
