@@ -1,10 +1,10 @@
 <template ref="Intro">
-  <div ref="screnIntro" class="bg-black h-screen w-screen flex justify-center items-center transition-opacity duration-1000">
+  <div ref="screnIntro" class="bg-black h-screen w-screen flex justify-center items-center">
     <p 
       ref="textIntro" 
       id="textIntro"
       @animationend="handleAnimationEnd"
-      class="text-white text-5xl font-bold taille text-left duration-1000 transition-all"></p>
+      class="text-white text-5xl font-bold taille text-left"></p>
   </div>
 </template>
 
@@ -55,7 +55,7 @@ export default {
       });
 
       typewriter
-        .typeString(this.test)
+        .typeString(this.textIntro)
         .changeDelay(10)
         .start()
         .pauseFor(500)
@@ -75,6 +75,7 @@ export default {
       // A la fin de l'animation venir démonter le component du DOM
       setTimeout(() => {
         this.IntroAnimation = false;
+        console.log(Cookies.get("firstVisit"));
         Cookies.set("firstVisit", "false");
       }, 1000);
     },

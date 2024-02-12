@@ -1,6 +1,6 @@
 <template>
   <div @click="closeMenuIfOpen" >
-    <Intro v-if="IntroAnimation && !firstVisit" class="fixed z-10" />
+    <Intro v-if="IntroAnimation && firstVisit" class="fixed z-10" />
     <Header :dynamicStyle="headerStyle" />
     <NuxtPage />
     <Footer />
@@ -59,6 +59,8 @@ export default {
     },
   },
   mounted() {
+    console.log("firstVisit : " + this.firstVisit);
+    console.log("IntroAnimation : " + this.IntroAnimation);
     window.addEventListener('scroll', this.handleScroll);
   },
   unmounted() {
