@@ -77,7 +77,7 @@ export default {
         this.IntroAnimation = false;
         console.log(Cookies.get("firstVisit"));
         Cookies.set("firstVisit", "false");
-      }, 1000);
+      }, 1001);
     },
   },
   mounted() {
