@@ -1,8 +1,8 @@
 <template>
-    <div id="client" class="container mx-auto  h-screen">
+    <div id="client" class="  h-screen">
         <div class="flex items-center mb-8">
-            <div class="mt-56">
-                <h1 class="text-8xl font-bold mr-4">CAPITALE<br> EUROPEENNE<br>
+            <div class="xl:mt-40">
+                <h1 class="lg:text-2xl xl:text-7xl font-bold xl:mr-4">CAPITALE<br> EUROPEENNE<br>
                     DE LA CULTURE</h1>
                 <p class="text-lg mb-4">La ville de Bourges, sacrée capitale européenne de <br> la culture 2028, a été
                     accompagnée par notre <br> agence dans le cadre de sa candidature, afin de la <br> conduire jusqu’à la
@@ -19,8 +19,8 @@
             </div>
         </div>
     </div>
-    <div class="mx-auto  h-screen">
-        <img src="/Bourges2028.png" alt="GIF" class="h-screen" loop>
+    <div class="  h-screen">
+        <img src="/Bourges2028.png" alt="GIF" class="h-screen w-screen" loop>
     </div>
     <div class="flex  h-screen">
         <div class="basis-1/2">

@@ -1,15 +1,21 @@
 <template>
-  <div id="caroussel" class="bg-cover bg-center bg-fixed bg-black">
-    <div class="relative slide w-full h-screen ">
+  <div id="caroussel" class="bg-cover bg-center bg-fixed bg-black relative">
+    <div class="relative slide w-full h-screen">
       <div class="carousel-inner relative overflow-hidden h-screen z-1">
         <div v-for="(img, i) in images" :id="`slide-${i}`" :key="i" :class="`${active === i ? 'active' : 'left-full'}`"
-          class="carousel-item inset-0 relative h-screen transform transition-all duration-1000 ease-in bg-black">
+          class="carousel-item inset-0 relative h-screen duration-1000 ease-in bg-black transition-opacity">
+          <!-- Div noire qui cache l'écriture -->
+          <div class="black-cover absolute inset-0 bg-black opacity-0 transition-opacity duration-1000 delay-1000"></div>
 
           <div id="carousel-text"
-            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center">
-            <h2 class="text-8xl font-bold text-white text-left">{{ img.title }}</h2>
-            <p class="text-2xl text-white ">{{ img.description }}</p>
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center opacity-0 transition-opacity duration-1000 delay-1000">
+            <h2
+              class="xl:text-1xl sm:text-1xl md:text-1xl lg:text-8xl font-bold text-white text-left transform translate-x-[-10px]">
+              {{ img.title }}
+            </h2>
+            <p class="text-2xl text-white">{{ img.description }}</p>
           </div>
+
         </div>
       </div>
     </div>
@@ -49,6 +55,7 @@
 export default {
   data() {
     return {
+      animationClass: 'dissolve-animation',
       scrollPosition: 0,
       currentSlide: 0,
       hideCarousel: false,
@@ -78,7 +85,6 @@ export default {
         window.removeEventListener("scroll", this.handleScroll);
       }
     },
-
     scrollToClientSection() {
       const clientSection = document.getElementById("client");
 
@@ -106,13 +112,38 @@ export default {
       this.active = this.test;
     }
   },
+  handleIntersection(entries) {
+      // Fonction appelée lorsque l'élément observé entre ou sort de la vue
+      const entry = entries[0];
+      
+      if (entry.isIntersecting) {
+        // L'élément est maintenant visible, déclencher votre fonction ici
+        this.yourFunction();
+      }
+    },
+    yourFunction() {
+      // Mettez ici le code à exécuter lorsque l'élément devient visible
+      console.log('Element is visible!');
+    },
   mounted() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
+    this.observer = new IntersectionObserver(this.handleIntersection, {
+      root: null, // Utilise le viewport par défaut
+      rootMargin: '0px',
+      threshold: 0.5, // Définir le seuil de visibilité à 50%
+    });
+
+    // Cibler l'élément avec l'id "carrousel"
+    const target = document.getElementById('carrousel');
+
+    // Ajouter la cible à l'observateur
+    if (target) {
+      this.observer.observe(target);
+    }  },
   beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll);
-  },
+    if (this.observer) {
+      this.observer.disconnect();  }},
 };
+
 </script>
 
 <style>
@@ -162,5 +193,18 @@ export default {
   100% {
     transform: translateY(-10px);
   }
+}
+
+.carousel-item.left-full {
+  transform: translateX(-100%);
+}
+
+.carousel-item.active {
+  transform: translateX(0);
+}
+
+/* Ajoutez ces styles pour l'effet de transition du texte */
+.carousel-item.active #carousel-text {
+  opacity: 1;
 }
 </style>
