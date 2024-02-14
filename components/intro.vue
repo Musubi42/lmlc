@@ -33,9 +33,11 @@ export default {
   data() {
     return {
       textIntro: "AGENCE DE COMMUNICATION 360, DIGITAL NATIVE, ALLIANT CREATIVITE ET TECHNOLOGIE",
+      textIntroPartie1: "AGENCE DE COMMUNICATION 360, DIGITAL NATIVE,",
+      textIntroPartie2: "ALLIANT CREATIVITE ET TECHNOLOGIE",
       textIntro1: "AGENCE DE",
       textIntro2: "COMMUNICATION 360,",
-      inviteToPlay: "Mess arround !",
+      inviteToPlay: "PLAY WITH US !",
       test: "test",
       nodeIntro: ref(null),
       screenInfo: ref(null),
@@ -55,15 +57,19 @@ export default {
       });
 
       typewriter
-        .typeString(this.test)
-        .changeDelay(10)
-        .start()
-        .pauseFor(500)
+        .typeString(this.textIntroPartie1)
+        .changeDelay(50)
+        .pauseFor(700)
         .deleteAll(10)
-        .pauseFor(50)
+        .typeString(this.textIntroPartie2)
+        .changeDelay(50)
+        .start()
+        .pauseFor(700)
+        .deleteAll(10)
+        .pauseFor(1000)
         .changeDelay(25)
         .typeString(this.inviteToPlay)
-        .pauseFor(500)
+        .pauseFor(1000)
         .callFunction(() => {
           this.vanishIntro();
         })
@@ -75,7 +81,6 @@ export default {
       // A la fin de l'animation venir démonter le component du DOM
       setTimeout(() => {
         this.IntroAnimation = false;
-        console.log(Cookies.get("firstVisit"));
         Cookies.set("firstVisit", "false");
       }, 1001);
     },

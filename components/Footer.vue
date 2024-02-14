@@ -165,33 +165,25 @@ export default {
   },
   methods: {
     getClick() {
-      console.log(document.querySelectorAll("#axeptio_btn_undefined"));
       let axeptionButtons = document.querySelectorAll("#axeptio_btn_undefined");
 
       if (axeptionButtons.length > 1) {
-        console.log(axeptionButtons[0]);
         axeptionButtons[0].addEventListener("click", () => {
-          console.log("rejeter");
           null
         });
         axeptionButtons[1].addEventListener("click", () => {
-          console.log("envoyer email");
           this.sendDataToMake();
         });
       } else {
-        console.log("hidde screen");
-        console.log(this.axeptioScreen);
         this.axeptioScreen[0].style.display = "none";
       }
     },
     handleSendEmail() {
       this.axeptioScreen = document.getElementsByClassName("Widget__WidgetStyle-sc-zhn46e-2 jyqhwN axeptio_widget ax-widget");
       if (this.axeptioScreen.length === 0) {
-        console.log("premiere ouverture");
         this.openAxeptioEmailConsent();
         this.getClick();
       } else {
-        console.log("next ouverture");
         this.axeptioScreen[0].style.display = "block";
         this.getClick();
       }
@@ -216,7 +208,6 @@ export default {
           email: this.email,
         },
       });
-      console.log("Email Sent");
     },
   },
   created() {},

@@ -4,11 +4,6 @@
     <Header :dynamicStyle="headerStyle" />
     <NuxtPage />
     <Footer />
-    <div
-      class="fixed w-screen bottom-0 bg-white mix-blend-difference border-t-2 border-gray-200"
-    >
-      <Music />
-    </div>
     <CustomCursor />
   </div>
 </template>
@@ -59,8 +54,6 @@ export default {
     },
   },
   mounted() {
-    console.log("firstVisit : " + this.firstVisit);
-    console.log("IntroAnimation : " + this.IntroAnimation);
     window.addEventListener('scroll', this.handleScroll);
   },
   unmounted() {

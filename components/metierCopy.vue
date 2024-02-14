@@ -1,10 +1,9 @@
 <template>
-  <section ref="metier" class="h-screen flex items-center scrollbar-hide border w-full">
+  <section ref="metier" class="h-screen flex items-center scrollbar-hide border w-full bg-black" :class="{ 'bg-transparent': !showOverlay }">
     <!-- <ServicesAnimation :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="relative z-0 pointer-events-none" /> -->
-
-    <transition name="fade">
-      <div v-if="showContent" class="absolute my-auto z-10 w-full box-border px-8">
-        <div class="relative flex flex-row gap-2 justify-around">
+      <!-- <div v-if="showOverlay" class="absolute inset-0 bg-black transition-colors duration-1000" ></div> -->
+      <div class="absolute my-auto z-10 w-full box-border px-8">
+        <div class="relative flex flex-row gap-2 justify-around section-content">
           <div class="flex-1 z-10">
             <h3 class="font-semibold text-xl">stratégie</h3>
             <ul>
@@ -47,14 +46,51 @@
           </div>
         </div>
       </div>
-    </transition>
   </section>
 </template>
+
+<style scoped>
+@keyframes slideDown {
+  from {
+    transform: translateY(-500px);
+    /* display: none;   */
+    /* opacity: 0; */
+  }
+  to {
+    transform: translateY(0);
+    /* display: block; */
+    /* opacity: 1; */
+  }
+}
+
+.section-content {
+  transition: color 2s ease;
+}
+
+.section-content h3 {
+  color: white;
+  transition: color 2s ease;
+}
+
+.section-content ul {
+  transform: translateY(-500px);
+  color: white;
+  animation: slideDown 2s ease forwards;
+  animation-delay: 0.7s;
+}
+
+.bg-transparent .section-content h3,
+.bg-transparent .section-content ul {
+  color: black;
+}
+</style>
+
 
 <script>
 export default {
   data() {
     return {
+      showOverlay: true,
       showContent: false,
       sectionMetierHeight: 0,
       mouseY: 0,
@@ -70,12 +106,13 @@ export default {
     handleMouseMove(event) {
       this.mouseY = event.clientY;
       this.mouseAbsolutePositionY = this.mouseY + this.scrollY;
+      // console.log(this.mouseAbsolutePositionY);
     },
   },
   mounted() {
     setTimeout(() => {
-      this.showContent = true;
-    }, 1000); // adjust delay as needed
+      this.showOverlay = false;
+    }, 2000); // adjust delay as needed
 
     window.addEventListener("mousemove", this.handleScroll);
     window.addEventListener("mousemove", this.handleMouseMove);
@@ -84,41 +121,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.fade-enter-active {
-  transition: opacity 0.5s;
-}
-.fade-enter {
-  opacity: 0;
-}
 
-h3 {
-  animation: slideDown 1s forwards;
-}
-
-ul li {
-  animation: slideFromLeft 1s forwards;
-}
-
-@keyframes slideDown {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideFromLeft {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-</style>

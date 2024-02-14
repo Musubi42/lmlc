@@ -45,7 +45,7 @@ export default {
       activeIndex: -1,
       callCount: 0,
       lastImage: 0,
-      isOnAnimationArea: false,
+      isOnAnimationArea: true,
     };
   },
   watch: {

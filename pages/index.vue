@@ -17,7 +17,7 @@
     <!-- TODO: Padding footer pour l'effet scroll : pb-20 md:pb-80 -->
     <div
       id="container"
-      class=" font-medium mt-16 md:max-w-[75%] text-[1.5rem] md:text-[2rem] xl:text-[3.2rem] leading-[1] mx-[5%] md:mx-[10%] pb-10 ">
+      class=" font-medium mt-32 md:max-w-[75%] text-[1.5rem] md:text-[2rem] xl:text-[3.2rem] leading-[1] mx-[5%] md:mx-[10%] pb-10 ">
       <div
         id="first-paragraph"
         class="flex flex-row flex-wrap whitespace-pre-wrap"
@@ -81,7 +81,7 @@ export default {
       middleware: ["first-visit"]
     });
     
-    const isIntroAnimation = ref(false);
+    const isIntroAnimation = ref(true);
     const IntroAnimation = stateIntroAnimation();
 
     watch(IntroAnimation, (newValue, oldValue) => {
@@ -89,19 +89,30 @@ export default {
       IntroAnimation.value = newValue;
     });
 
-    const isfirstVisit = ref(true);
+    const isFirstVisit = ref(true);
     const firstVisit = stateFirstVisit();
 
     watch(firstVisit, (newValue, oldValue) => {
-      isfirstVisit.value = newValue;
+      isFirstVisit.value = newValue;
       firstVisit.value = newValue;
+
+      if (!firstVisit.value) {
+      isIntroAnimation.value = false;
+      IntroAnimation.value = false;
+    }
     });
 
-    console.log("introAnimation", IntroAnimation);
+    // Des fois, si je met un clg le if s'exec bien
+    if (!firstVisit.value) {
+      console.log("ici");
+      isIntroAnimation.value = false;
+      IntroAnimation.value = false;
+    }
+
     return {
       IntroAnimation,
       isIntroAnimation,
-      isfirstVisit,
+      isFirstVisit,
       firstVisit,
     }
   },

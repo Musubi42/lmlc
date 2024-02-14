@@ -30,12 +30,12 @@ export default defineNuxtConfig({
   plugins: [
     '/plugins/hover-directive.js',
     '/plugins/cursor-state.js',
-    '/plugins/axeptio.js',
+    // '/plugins/axeptio.js',
     // '/plugins/gsap.js',
   ],
-  // build: {
-  //   transpile: ['gsap'],
-  // },
+  build: {
+    transpile: ['gsap'],
+  },
   components: true,
   css: ["~/assets/css/main.css"],
   postcss: {

@@ -3,12 +3,6 @@
     <Header :dynamicStyle="headerStyle" class="fixed" />
     <NuxtPage />
     <Footer />
-    <div
-      class="fixed w-screen bottom-0 opacity-70 bg-white mix-blend-difference border-t-2 border-gray-200"
-    >
-      <!-- <Spotify /> -->
-      <Music />
-    </div>
     <CustomCursor />
   </div>
 </template>

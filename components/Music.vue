@@ -305,7 +305,11 @@ export default {
     // https://developer.chrome.com/blog/autoplay/
     // arc://media-engagement/
     // Auto start a sound
-    // await this.toggleAudio();
+    if (!this.audioSource?.paused) {
+      await this.toggleAudio();
+    } else {
+      await this.toggleAudio();
+    }
   },
   beforeUnmount() {
     // Remove event listeners
