@@ -71,7 +71,7 @@
                 >TUNED</span
               >
               <div class="flex flex-col gap-8">
-                <div @click="getClick" class="flex flex-row items-center w-[300px]">
+                <div class="flex flex-row items-center w-[300px]">
                   <input
                     type="email"
                     v-model="email"
@@ -103,7 +103,7 @@
                   </button>
                 </div>
 
-                <span id="axeptionConsent"></span>
+                <span id="axeptionConsent" @click="getClick"></span>
               </div>
             </template>
           </ImageFooterOnHover>
@@ -131,7 +131,7 @@
         <div class="flex flex-row">
           <NuxtLink
             data-footer-element
-            to="/"
+            to="/mentions-legales"
             class="font-monteserrat font-extralight text-sm mt-4 mb-6 cursor-none"
             v-cursorAnimation
             >mentions légales</NuxtLink
@@ -158,56 +158,45 @@ export default {
   data() {
     return {
       email: "",
+      axeptioScreen: null,
+      acceptSendEmailButton: null,
+      rejectSendEmailButton: null,
     };
   },
   methods: {
     getClick() {
-      console.log("click");
-      this.handle();
+      console.log(document.querySelectorAll("#axeptio_btn_undefined"));
+      let axeptionButtons = document.querySelectorAll("#axeptio_btn_undefined");
+
+      if (axeptionButtons.length > 1) {
+        console.log(axeptionButtons[0]);
+        axeptionButtons[0].addEventListener("click", () => {
+          console.log("rejeter");
+          null
+        });
+        axeptionButtons[1].addEventListener("click", () => {
+          console.log("envoyer email");
+          this.sendDataToMake();
+        });
+      } else {
+        console.log("hidde screen");
+        console.log(this.axeptioScreen);
+        this.axeptioScreen[0].style.display = "none";
+      }
     },
     handleSendEmail() {
-      const axeptionConsentScreen = document.getElementById(
-              "axeptionConsent"
-            );
-            console.log(axeptionConsentScreen);
-            axeptionConsentScreen.style.display = "block";
-      this.openAxeptioEmailConsent();
-    },
-    handle() {
-      let axeptioScreen = document.getElementsByClassName("Widget__WidgetStyle-sc-zhn46e-2 jyqhwN axeptio_widget ax-widget");
-        axeptioScreen[0].addEventListener("click", () => {
-          let axeptionButtons = document.querySelectorAll("#axeptio_btn_undefined");
-          console.log("ici");
-          if (axeptionButtons.length > 1) {
-            // Vue accepter ou rejeter
-            axeptionButtons[0].addEventListener("click", () => {
-              console.log("rejeter");
-              // const axeptionConsentScreen = document.getElementsByClassName(
-              //   "Widget__WidgetStyle-sc-zhn46e-2 jyqhwN axeptio_widget ax-widget"
-              // );
-              // axeptionConsentScreen[0].remove();
-            });
-            axeptionButtons[1].addEventListener("click", () => {
-              console.log("accepter");
-              // const axeptionConsentScreen = document.getElementsByClassName(
-              //   "Widget__WidgetStyle-sc-zhn46e-2 jyqhwN axeptio_widget ax-widget"
-              // );
-              // axeptionConsentScreen[0].remove();
-            });
-          } else {
-            console.log("remove");
-            const axeptionConsentScreen = document.getElementById(
-              "axeptionConsent"
-            );
-            console.log(axeptionConsentScreen);
-            axeptionConsentScreen.style.display = "none";
-            // axeptionConsentScreen.remove();
-          }
-        });
+      this.axeptioScreen = document.getElementsByClassName("Widget__WidgetStyle-sc-zhn46e-2 jyqhwN axeptio_widget ax-widget");
+      if (this.axeptioScreen.length === 0) {
+        console.log("premiere ouverture");
+        this.openAxeptioEmailConsent();
+        this.getClick();
+      } else {
+        console.log("next ouverture");
+        this.axeptioScreen[0].style.display = "block";
+        this.getClick();
+      }
     },
     openAxeptioEmailConsent() {
-      // Widget__WidgetContent-sc-zhn46e-5 beACve
-      // cette class là reste la même quelque soit la vue
       void 0 === window._axcb && (window._axcb = []);
       window._axcb.push(function (axeptio) {
         axeptio.mountWidget({
@@ -216,11 +205,6 @@ export default {
           node: document.getElementById("axeptionConsent"),
         });
       });
-
-      var axeptionButtons = null;
-      setTimeout(() => {
-        this.handle();
-      }, 100);
     },
     async sendDataToMake() {
       const webhookUrl = "https://hook.eu2.make.com/mbfn5v1e0b73rr4r0buwalq0nhe4ryl7"; // Remplacez avec l'URL de votre webhook Make.com
@@ -232,6 +216,7 @@ export default {
           email: this.email,
         },
       });
+      console.log("Email Sent");
     },
   },
   created() {},

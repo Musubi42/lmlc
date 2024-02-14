@@ -1,7 +1,8 @@
 <template>
   <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200">
     <!-- Partie métiers -->
-    <section ref="metier" class="h-screen pt-40 scrollbar-hide border w-full">
+    <Metier />
+    <!-- <section ref="metier" class="h-screen pt-40 scrollbar-hide border w-full">
     <ServicesAnimation :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="relative z-0 pointer-events-none" />
 
       <div class="absolute z-10 w-full box-border px-8">
@@ -48,7 +49,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- Partie talents -->
     <section ref="servicesTalents" class="h-screen block relative">
       <ServicesTalents
@@ -150,7 +151,7 @@ export default {
     window.addEventListener("mousemove", this.handleScroll);
     window.addEventListener("mousemove", this.handleMouseMove);
 
-    this.sectionMetierHeight = this.$refs.metier.offsetHeight;
+    // this.sectionMetierHeight = this.$refs.metier.offsetHeight;
     this.observerScrollHorizontal = new IntersectionObserver(
       this.handleScrollHorizontal,
       {

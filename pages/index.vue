@@ -81,7 +81,7 @@ export default {
       middleware: ["first-visit"]
     });
     
-    const isIntroAnimation = ref(true);
+    const isIntroAnimation = ref(false);
     const IntroAnimation = stateIntroAnimation();
 
     watch(IntroAnimation, (newValue, oldValue) => {
@@ -89,11 +89,20 @@ export default {
       IntroAnimation.value = newValue;
     });
 
-   
+    const isfirstVisit = ref(true);
+    const firstVisit = stateFirstVisit();
 
+    watch(firstVisit, (newValue, oldValue) => {
+      isfirstVisit.value = newValue;
+      firstVisit.value = newValue;
+    });
+
+    console.log("introAnimation", IntroAnimation);
     return {
       IntroAnimation,
-      isIntroAnimation
+      isIntroAnimation,
+      isfirstVisit,
+      firstVisit,
     }
   },
   data() {
