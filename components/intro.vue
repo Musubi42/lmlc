@@ -57,18 +57,18 @@ export default {
       });
 
       typewriter
-        // .typeString(this.textIntroPartie1)
-        // .changeDelay(50)
-        // .pauseFor(700)
-        // .deleteAll(10)
-        // .typeString(this.textIntroPartie2)
-        // .changeDelay(50)
+        .typeString(this.textIntroPartie1)
+        .changeDelay(50)
+        .pauseFor(700)
+        .deleteAll(10)
+        .typeString(this.textIntroPartie2)
+        .changeDelay(50)
         .start()
-        // .pauseFor(700)
-        // .deleteAll(10)
-        // .pauseFor(1000)
-        // .changeDelay(25)
-        // .typeString(this.inviteToPlay)
+        .pauseFor(700)
+        .deleteAll(10)
+        .pauseFor(1000)
+        .changeDelay(25)
+        .typeString(this.inviteToPlay)
         .pauseFor(1000)
         .callFunction(() => {
           this.vanishIntro();
