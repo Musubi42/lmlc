@@ -22,7 +22,7 @@ export default {
   watch: {
     offsetParent(newVal, oldVal) {
       this.decalageX = newVal;
-      console.log("offsetParent changed from", oldVal, "to", newVal);
+      // console.log("offsetParent changed from", oldVal, "to", newVal);
     },
   },
   data() {
@@ -31,6 +31,7 @@ export default {
       imageX: 0,
       decalageX: 0,
       imageY: 0,
+      scrollOffset: 0,
       right: 0,
       clientY: 0,
       clientX: 0,
@@ -45,13 +46,14 @@ export default {
   unmounted() {
   },
   methods: {
-    showImage(event) {
-      // Premiere position de l'image
-      console.log(event);
-      this.initialX = event.clientX
+    // showImage(event) {
+    //   // Premiere position de l'image
+    //   this.initialX = event.clientX
+ 
+    //   this.scrollOffset = window.pageYOffset; // Pour que le mnu n'est pas ouver en haut de la page, quand on scroll
       
-      this.isVisible = true;
-    },
+    //   this.isVisible = true;
+    // },
     hideImage() {
       // Reset la position de l'image
       this.isVisible = false;
@@ -69,7 +71,7 @@ export default {
       return {
         position: "fixed",
         left: `${this.right - this.decalageX }px`,
-        top: `${this.imageY }px`,
+        top: `${this.imageY - this.scrollOffset }px`,
         transform: "translate(-50%, -120%)",
         pointerEvents: "none",
         zIndex: 9,

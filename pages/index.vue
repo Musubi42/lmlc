@@ -1,16 +1,24 @@
 <template>
   <div id="home" class="bg-white">
-    <div class="h-[86vh]">
+  <!-- <div class="absolute h-screen w-screen bg-black z-50">
+    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/qBFDGnBjxNU?autoplay=1&mute=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+    <video autoplay loop width="100%" height="auto">
+    <source src="/A-Tribute-To-Carrie-Fisher.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+  </div> -->
+
+    <div class="h-[92vh]">
       <div
         class=" w-full h-[100%] md:h-[100%]"
       >
-        <tableauTest class="cursor-pointer" v-cursorAnimation />
+        <tableauTest class="" v-cursorAnimation />
       </div>
     </div>
-    <!-- TODO: Padding footer pour l'effet scroll :  -->
+    <!-- TODO: Padding footer pour l'effet scroll : pb-20 md:pb-80 -->
     <div
       id="container"
-      class=" font-medium mt-8 md:max-w-[75%] text-[1.5rem] md:text-[2rem] xl:text-[3.2rem] leading-[1] mx-[5%] md:mx-[10%]"
+      class=" font-medium mt-16 md:max-w-[75%] text-[1.5rem] md:text-[2rem] xl:text-[3.2rem] leading-[1] mx-[5%] md:mx-[10%] pb-10 "
     >
       <div
         id="first-paragraph"

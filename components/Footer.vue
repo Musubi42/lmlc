@@ -70,7 +70,7 @@
                 data-footer-element
                 >TUNED</span>
                 <div class="flex items-center">
-                  <input type="email" v-model="email" placeholder="mail" class="placeholder:italic placeholder:text-gray-400 block bg-white w-full border border-gray-300 shadow-sm focus:outline-none focus:border-rose-neon focus:ring-rose-neon text-gray-700 py-2 px-4 leading-tight focus:ring-1" v-cursorAnimation />
+                  <input type="email" v-model="email" placeholder="mail" class="placeholder:italic placeholder:text-gray-400 block bg-white w-full border border-gray-300 shadow-sm focus:outline-none  text-gray-700 py-2 px-4 leading-tight focus:ring-1" v-cursorAnimation />
                   <button 
                     class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50" 
                     v-cursorAnimation
@@ -127,7 +127,7 @@ export default {
   },
   methods: {
     async sendDataToMake() {
-      const webhookUrl = 'https://hook.eu1.make.com/nmc2x125sl91njkej8t2wx6c75d4n1ti'; // Remplacez avec l'URL de votre webhook Make.com
+      const webhookUrl = 'https://hook.eu2.make.com/mbfn5v1e0b73rr4r0buwalq0nhe4ryl7'; // Remplacez avec l'URL de votre webhook Make.com
 
       const { data, pending, error } = await useFetch(webhookUrl, {
         method: 'post',
@@ -150,7 +150,6 @@ export default {
 .onHover:hover {
   transition: ease 0.2s all;
   color: black;
-  cursor: default;
 }
 .email-text {
   z-index: 100; /* ou une autre valeur suffisamment élevée */

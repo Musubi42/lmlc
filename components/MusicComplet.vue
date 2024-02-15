@@ -20,7 +20,7 @@
         <div
           v-for="(song, index) in playlistMetadata"
           :key="index"
-          class="video-item flex flex-row items-center mb-4 cursor-pointer text-sm"
+          class="video-item flex flex-row items-center mb-4 text-sm"
           @click="loadAndPlayAudio(index)"
         >
           <img
@@ -62,7 +62,7 @@
     >
       <!-- Music timeline -->
       <div class="flex w-full items-center">
-        <div class="flex flex-row gap-1 cursor-default">
+        <div class="flex flex-row gap-1">
           <p ref="audioRef">{{ formatTime(currentTime) }}</p>
           /
           <p>{{ formatTime(songMetadata ? songMetadata.duration : 0) }}</p>
@@ -78,7 +78,7 @@
       </div>
       <!-- Volume -->
       <div
-        class="flex flex-col relative h-20 justify-center items-center cursor-pointer"
+        class="flex flex-col relative h-20 justify-center items-center"
         @mouseenter="showVolume = true"
         @mouseleave="showVolume = false"
       >
@@ -144,7 +144,6 @@ input[type="range"] {
   outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (it will be visible when mouse hover) */
   transition: opacity 0.2s; /* Transition effect when mouse hover */
-  cursor: pointer; /* Cursor on hover */
 }
 
 input[type="range"]:hover {
@@ -157,7 +156,6 @@ input[type="range"]::-webkit-slider-thumb {
   width: 15px; /* Set a specific slider handle width */
   height: 15px; /* Slider handle height */
   background: #974dff; /* Green background */
-  cursor: pointer; /* Cursor on hover */
   border-radius: 9999px;
 }
 
@@ -165,7 +163,6 @@ input[type="range"]::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
   background: #4caf50; /* Green background */
-  cursor: pointer; /* Cursor on hover */
 }
 </style>
 

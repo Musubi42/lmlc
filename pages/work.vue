@@ -21,7 +21,7 @@
     </div>
 
     <button type="button"
-      class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+      class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none"
       data-carousel-prev @click="goPrev">
       <span class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
@@ -32,7 +32,7 @@
       </span>
     </button>
     <button type="button"
-      class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+      class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none"
       data-carousel-next @click="goNext">
       <span class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">

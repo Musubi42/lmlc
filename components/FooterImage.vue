@@ -158,7 +158,6 @@ export default {
 .onHover:hover {
   transition: ease 0.2s all;
   color: black;
-  cursor: default;
 }
 .email-text {
   z-index: 100; /* ou une autre valeur suffisamment élevée */
