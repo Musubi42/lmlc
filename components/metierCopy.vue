@@ -1,9 +1,9 @@
 <template>
-  <section ref="metier" class="h-screen flex items-center scrollbar-hide border w-full bg-black" :class="{ 'bg-transparent': !showOverlay }">
-    <!-- <ServicesAnimation :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="relative z-0 pointer-events-none" /> -->
+  <section ref="metier" class="h-screen flex items-center scrollbar-hide w-full bg-black" :class="{ 'bg-transparent': !showOverlay }">
+    <ServicesAnimation :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="relative z-0 pointer-events-none" />
       <!-- <div v-if="showOverlay" class="absolute inset-0 bg-black transition-colors duration-1000" ></div> -->
       <div class="absolute my-auto z-10 w-full box-border px-8">
-        <div class="relative flex flex-row gap-2 justify-around section-content">
+        <div class="relative flex flex-col md:flex-row gap-10 md:gap-2 justify-around section-content">
           <div class="flex-1 z-10">
             <h3 class="font-semibold text-xl">stratégie</h3>
             <ul>
@@ -53,13 +53,9 @@
 @keyframes slideDown {
   from {
     transform: translateY(-500px);
-    /* display: none;   */
-    /* opacity: 0; */
   }
   to {
     transform: translateY(0);
-    /* display: block; */
-    /* opacity: 1; */
   }
 }
 

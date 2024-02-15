@@ -1,7 +1,7 @@
 <template>
   <div
     ref="cursor"
-    class="cursor-container z-50"
+    class="hidden md:block cursor-container z-50"
     :style="{ top: `${cursorPosition.y}px`, left: `${cursorPosition.x}px`, backgroundColor: isMenuOpen ? 'rgba(255, 255, 255, 0.5)' : 'rgba(255, 0, 102, 0.5)'}"
     :class="{ hovered: isHovered }"
     

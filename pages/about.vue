@@ -1,25 +1,31 @@
 <template>
   <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200">
     <!-- Partie métiers -->
+    <ServicesAnimation v-if="showServicesAnimation" :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="relative z-0 pointer-events-none" />
 
-    <MetierCopy />
+    <div ref="aboutMetier">
+      <MetierCopy  />
+    </div>
  
     <!-- Partie talents -->
-    <HorizontalScrolling />
-    <!-- <section ref="servicesTalents" class="h-screen block relative">
-      <ServicesTalents
+    <!-- Jouer avec la taille de cet élément pour trigger le changement -->
+    <!-- Je peux aussi détecter la position de la souris, si je suis en haut -->
+    <section ref="servicesTalents" class="h-screen block relative">
+
+    <HorizontalScrolling :talentsBgColor="bgColor" />
+      <!-- <ServicesTalents
         ref="servicesTalents"
         :scroll="scroll"
         class="relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-      />
-    </section> -->
+      /> -->
+    </section> 
   </div>
 </template>
 
 <style>
 .background-black {
   /* background-color: black; */
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 1);
 }
 
 .background-white {
@@ -30,6 +36,9 @@
 <script>
 export default {
   setup() {
+    definePageMeta({
+      layout: "nada",
+    });
     const ScrollHorizontal = isScrollHorizontal();
     const isMenuOpen = stateMenuOpen();
 
@@ -47,6 +56,8 @@ export default {
       scrollY: 0,
       mouseY: 0,
       mouseAbsolutePositionY: 0,
+      bgColor: "white",
+      showServicesAnimation: false,
     };
   },
   methods: {
@@ -58,20 +69,23 @@ export default {
       }
     },
 
+
+    // Envoyer aussi la couleur à l'enfant
     handleAddBgBlack(entries) {
       const [entry] = entries;
       if (entry.isIntersecting) {
         const body = this.$refs.body;
         body.classList.remove("background-white");
         body.classList.add("background-black");
+        this.bgColor = "black";
       }
     },
 
     handleRemoveBgBlack(entries) {
-      // TODO: Il ne rentre pas dans le if
       const body = this.$refs.body;
       body.classList.remove("background-black");
       body.classList.add("background-white");
+      this.bgColor = "white";
       const [entry] = entries;
       if (entry.isIntersecting) {
         const body = this.$refs.body;
@@ -88,9 +102,9 @@ export default {
         this.scroll.deltaX = event.deltaX;
       }
 
-      if (!this.isMenuOpen) {
-        document.body.style.overflow = "";
-      }
+      // if (!this.isMenuOpen) {
+      //   document.body.style.overflow = "";
+      // }
     },
 
     handleScroll() {
@@ -105,6 +119,10 @@ export default {
   mounted() {
     window.addEventListener("mousemove", this.handleScroll);
     window.addEventListener("mousemove", this.handleMouseMove);
+
+    setTimeout(() => {
+      this.showServicesAnimation = true;
+    }, 2000);
 
     // this.sectionMetierHeight = this.$refs.metier.offsetHeight;
     this.observerScrollHorizontal = new IntersectionObserver(
@@ -122,23 +140,24 @@ export default {
 
     this.handleRemoveBgBlack = new IntersectionObserver(this.handleRemoveBgBlack, {
       root: null, // observing for viewport
-      threshold: 0.6, // The element is completely visible when it's fully in the viewport
+      threshold: 0.4, // The element is completely visible when it's fully in the viewport
     });
 
     this.$nextTick(() => {
       const servicesTalentsEl = this.$refs.servicesTalents;
+      const aboutMetierEl = this.$refs.aboutMetier;
       if (servicesTalentsEl) {
-        this.observerScrollHorizontal.observe(servicesTalentsEl);
+        // this.observerScrollHorizontal.observe(servicesTalentsEl);
         this.handleAddBgBlack.observe(servicesTalentsEl);
-        this.handleRemoveBgBlack.observe(servicesTalentsEl);
+        this.handleRemoveBgBlack.observe(aboutMetierEl);
       }
     });
   },
   beforeDestroy() {
-    if (this.observerScrollHorizontal) {
-      this.observerScrollHorizontal.disconnect();
-      this.observerChangeBgColor.disconnect();
-    }
+    // if (this.observerScrollHorizontal) {
+    //   this.observerScrollHorizontal.disconnect();
+    //   this.observerChangeBgColor.disconnect();
+    // }
   },
 };
 </script>

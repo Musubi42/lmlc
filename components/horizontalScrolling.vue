@@ -2,6 +2,15 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // import { gsap } from 'gsap';
+import { watch } from 'vue';
+
+const props = defineProps({
+  talentsBgColor: String,
+});
+
+watch(() => props.talentsBgColor, (newValue, oldValue) => {
+  // console.log(newValue);
+});
 
 const { $gsap: gsap } = useNuxtApp();
 const main = ref();
@@ -103,24 +112,14 @@ onUnmounted(() => {
       <section class="panel orange">Last swipe section... continue scrolling</section>
     </div> -->
 
-<!-- width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
-  font-size: 1.5em;
-  text-align: center;
-  color: white;
-  position: relative;
-  box-sizing: border-box;
-  padding: 10px; -->
     <div class="containerDE horizontal">
-      <section class="panell h-screen flex content-center items-center relative box-border text-center w-screen bg-red-500">ONE</section>
-      <section class="panell h-screen flex content-center items-center relative box-border text-center w-screen bg-orange-500">TWO</section>
-      <section class="panell h-screen flex content-center items-center relative box-border text-center w-screen bg-purple-500">THREE</section>
-      <section class="panell h-screen flex content-center items-center relative box-border text-center w-screen bg-green-500">FOUR</section>
+      <section class="panell h-screen flex content-center items-center relative box-border text-center w-screen text-white" :style="{ backgroundColor: talentsBgColor }">ONE</section>
+      <section class="panell h-screen flex content-center items-center relative box-border text-center w-screen text-white" :style="{ backgroundColor: talentsBgColor }">TWO</section>
+      <section class="panell h-screen flex content-center items-center relative box-border text-center w-screen text-white" :style="{ backgroundColor: talentsBgColor }">THREE</section>
+      <section class="panell h-screen flex content-center items-center relative box-border text-center w-screen text-white" :style="{ backgroundColor: talentsBgColor }">FOUR</section>
     </div>
+
+    <Footer />
   </div>
 </template>
 

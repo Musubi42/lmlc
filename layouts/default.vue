@@ -28,8 +28,8 @@ export default {
   methods: {
     handleScroll() {
       const actualYPosition = window.scrollY || window.pageYOffset;
-      // this.headerStyle.opacity = this.pastYPosition < actualYPosition ? 0 : 1;
-      // this.pastYPosition = actualYPosition;
+      this.headerStyle.opacity = this.pastYPosition < actualYPosition ? 0 : 1;
+      this.pastYPosition = actualYPosition;
     },
     // TODO: Il ne faut pas que ça se trigger si je clique sur le menu
     closeMenuIfOpen(event) {
