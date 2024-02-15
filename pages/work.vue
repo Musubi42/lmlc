@@ -38,7 +38,6 @@
       </span>
     </button>
   </div>
-  </div>
 
   <div v-if="active == 0">
     <Monin />
