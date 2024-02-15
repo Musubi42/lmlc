@@ -8,7 +8,7 @@ export default defineNuxtConfig({
       APIStreamAudioBaseUrl:
         process.env.NODE_ENV === "development"
           ? "http://localhost:3000/api"
-          : "https://hoqkaarkmynimv8r.public.blob.vercel-storage.com",
+          : "https://Ils4fBuzd7oGbyJy.public.blob.vercel-storage.com",
     },
   },
   env: {
@@ -30,8 +30,12 @@ export default defineNuxtConfig({
   plugins: [
     '/plugins/hover-directive.js',
     '/plugins/cursor-state.js',
-    '/plugins/axeptio.js',
+    // '/plugins/axeptio.js',
+    // '/plugins/gsap.js',
   ],
+  build: {
+    transpile: ['gsap'],
+  },
   components: true,
   css: ["~/assets/css/main.css"],
   postcss: {

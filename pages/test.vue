@@ -1,301 +1,208 @@
 <template>
-  <div>
-    <div class="description">
-      <div>
-        <h1>Horizontal "<code>containerAnimation</code>"</h1>
-        <p>
-          Scroll this page vertically and you'll see a horizontal fake-scrolling section
-          where a container is animated on the x-axis using a ScrollTrigger animation.
-          With <code>containerAnimation</code> you can trigger animations when certain
-          elements <i>inside</i> that container enter the viewport horizontally! It's like
-          a ScrollTrigger inside of a ScrollTrigger. 🤯
-        </p>
-      </div>
-      <div class="scroll-down">
-        Scroll down
-        <div class="arrow"></div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="panel blue">Scroll down to animate horizontally &gt;</div>
-
-      <section class="panel red">
-        <div>
-          <pre class="code-block prettyprint lang-js linenums">
-            gsap.to(".box-1", {
-              y: -130,
-              duration: 2,
-              ease: "elastic",
-              scrollTrigger: {
-                trigger: ".box-1",
-                containerAnimation: scrollTween,
-                start: "left center",
-                toggleActions: "play none none reset"
-              }
-            });
-          </pre>
-          Fire an animation at a particular spot...
-        </div>
-        <div class="box-1 box">box-1</div>
-      </section>
-
-      <section class="panel gray">
-        <div>
-          <pre class="code-block prettyprint lang-js linenums">
-gsap.to(".box-2", {
-  y: -120,
-  backgroundColor: "#1e90ff",
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".box-2",
-    containerAnimation: scrollTween,
-    start: "center 80%",
-    end: "center 20%",
-    scrub: true
-  }
-});</pre
-          >
-          ...or scrub it back &amp; forth with the scrollbar
-        </div>
-        <div class="box-2 box">box-2</div>
-      </section>
-      <section class="panel purple">
-        <div>
-          <pre class="code-block prettyprint lang-js linenums">
-ScrollTrigger.create({
-  trigger: ".box-3",
-  containerAnimation: scrollTween,
-  toggleClass: "active",
-  start: "center 60%"
-});</pre
-          >
-          Toggle a CSS class
-        </div>
-        <div class="box-3 box">box-3</div>
-      </section>
-      <section class="panel green">
-        <div>
-          <pre class="code-block prettyprint lang-js linenums">
-ScrollTrigger.create({
-  trigger: ".green",
-  containerAnimation: scrollTween,
-  start: "center 65%",
-  end: "center 51%",
-  onEnter: () => console.log("enter"),
-  onLeave: () => console.log("leave"),
-  onEnterBack: () => console.log("enterBack"),
-  onLeaveBack: () => console.log("leaveBack"),
-  onToggle: self => console.log("active", self.isActive)
-});</pre
-          >
-          Use the rich callback system
-        </div>
-      </section>
-    </div>
-
-    <!-- <div class="final">
-      <div>
-        <h1>Wasn't that fun?</h1>
-        <p>Here are a few caveats to keep in mind:</p>
-        <ul>
-          <li>
-            The fake-scrolling animation (just the part that's moving the container
-            horizontally) must have no easing (<code>ease: "none"</code>).
-          </li>
-          <li>
-            Pinning and snapping won't work on ScrollTriggers with a
-            <code>containerAnimation</code>.
-          </li>
-          <li>
-            The mapping of scroll position trigger points are based on the trigger element
-            itself not being animated horizontally (inside the container). If you need to
-            animate the trigger, you can either wrap it in a &lt;div&gt; and use that as
-            the trigger instead or just factor the trigger's movement into your end
-            position. For example, if you animate it left 100px, make the
-            <code>end</code> 100px further to the left.
-          </li>
-          <li>Requires ScrollTrigger 3.8.0 or later</li>
-        </ul>
-      </div>
-    </div> -->
-
-    <!-- <header>
-      <a href="https://greensock.com/scrolltrigger">
-        <img
-          class="greensock-icon"
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/scroll-trigger-logo-light.svg"
-          width="200"
-          height="64"
-        />
-      </a>
-    </header> -->
-  </div>
-</template>
-
-<style>
-body {
-  background-color: #222;
-  color: #ddd;
-  font-size: 18px;
-  line-height: 1.4;
-  font-weight: 300;
-}
-h1,
-h2 {
-  color: white;
-  font-weight: 400;
-  margin-bottom: 0;
-}
-.panel pre.prettyprint {
-  font-size: 20px;
-  text-align: left;
-  width: auto;
-  font-weight: normal;
-  margin: 10px;
-  border: none;
-}
-.prettyprint .linenums {
-  padding: 0;
-  list-style: none;
-}
-.prettyprint ol li {
-  background-color: black;
-}
-
-.panel.red .prettyprint .linenums > li:nth-child(n + 7):nth-child(-n + 9),
-.panel.gray .prettyprint .linenums > li:nth-child(10),
-.panel.purple .prettyprint .linenums > li:nth-child(4),
-.panel.green .prettyprint .linenums > li:nth-child(n + 6):nth-child(-n + 10) {
-  background-color: #222;
-}
-
-.box {
-  width: 100px;
-  height: 80px;
-  text-align: center;
-  line-height: 80px;
-  background-color: white;
-  border-radius: 8px;
-  color: #222;
-  font-weight: 700;
-  margin-left: 20px;
-  will-change: transform;
-}
-.box.active {
-  background-color: orange;
-  border: 2px solid white;
-}
-.description,
-.final {
+    <section class="carousel h-screen" aria-label="Gallery">
+      <ol class="carousel__viewport">
+        <li
+          v-for="(slide, index) in slides"
+          :key="index"
+          :id="`carousel__slide${index + 1}`"
+          tabindex="0"
+          class="carousel__slide"
+        >
+          <div class="carousel__snapper">
+            <div class="carousel__content">
+              <div class="carousel__image-wrapper">
+                <img :src="slide.image" :alt="slide.alt" class="carousel__image mx-auto h-full" />
+              </div>
+              <div class="carousel__text">
+                <h2>{{ slide.title }}</h2>
+                <p>{{ slide.description }}</p>
+              </div>
+            </div>
+            <a :href="`#carousel__slide${getPrevIndex(index) + 1}`" class="carousel__prev">Go to last slide</a>
+            <a :href="`#carousel__slide${getNextIndex(index) + 1}`" class="carousel__next">Go to next slide</a>
+          </div>
+        </li>
+      </ol>
+    </section>
+  </template>
+  
+  
+  <script>
+  export default {
+    data() {
+      return {
+        currentSlide: 0,
+        hideCarousel: false,
+        imageScale: 1,
+        imageLeft: 0,
+        imageTop: 0,
+        slides: [
+          { image: "/services.png", title: "Titre 1", description: "Description 1", alt: "truc" },
+          { image: "/talents.png", title: "Titre 2", description: "Description 2", alt: "truc" },
+        ],
+      };
+    },
+    methods: {
+      getPrevIndex(index) {
+        return index === 0 ? this.slides.length - 1 : index - 1;
+      },
+      getNextIndex(index) {
+        return index === this.slides.length - 1 ? 0 : index + 1;
+      },
+      gotoSlide(index) {
+        this.hideCarousel = true;
+        setTimeout(() => {
+          this.currentSlide = index;
+          this.hideCarousel = false;
+          this.imageLeft = 100;
+          setTimeout(() => {
+            this.imageLeft = 0;
+          }, 50);
+        }, 500);
+      },
+      handleScroll() {
+        const threshold = 50;
+        const scrollY = window.scrollY;
+  
+        if (scrollY > threshold && !this.hideCarousel) {
+          this.hideCarousel = true;
+          this.imageScale = 0.3;
+          this.imageLeft = -35;
+          this.imageTop = -10;
+        } else if (scrollY <= threshold && this.hideCarousel) {
+          this.hideCarousel = false;
+          this.imageScale = 1;
+          this.imageLeft = 0;
+          this.imageTop = 0;
+        }
+      },
+    },
+    mounted() {
+      window.addEventListener("scroll", this.handleScroll);
+    },
+    beforeDestroy() {
+      window.removeEventListener("scroll", this.handleScroll);
+    },
+  };
+  </script>
+  
+  <style scoped>
+  .carousel__content {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  padding: 10px;
-  min-height: 80vh;
-}
-
-.container {
-  width: 500%;
+  justify-content: center;
   height: 100%;
+}
+
+.carousel__image-wrapper {
+  flex: 1;
+  overflow: hidden;
+}
+
+
+.carousel {
+  position: relative;
+
+}
+
+.carousel__viewport {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
-  flex-wrap: nowrap;
+  overflow-x: scroll;
+  counter-reset: item;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
 }
 
-.panel {
-  font-weight: 300;
+.carousel__slide {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  counter-increment: item;
 }
-</style>
 
-<script>
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 
-export default {
-  mounted() {
-    let sections = gsap.utils.toArray(".panel");
+.carousel__slide:before {
+  content: counter(item);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-40%,70px);
+  color: #fff;
+  font-size: 2em;
+}
 
-    let scrollTween = gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".container",
-        pin: true,
-        scrub: 0.1,
-        end: "+=3000"
-      }
-    });
+.carousel__snapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
+}
 
-    gsap.set(".box-1, .box-2", {y: 100});
-    ScrollTrigger.defaults({markers: {startColor: "white", endColor: "white"}});
 
-    gsap.to(".box-1", {
-      y: -130,
-      duration: 2,
-      ease: "elastic",
-      scrollTrigger: {
-        trigger: ".box-1",
-        containerAnimation: scrollTween,
-        start: "left center",
-        toggleActions: "play none none reset",
-        id: "1",
-      }
-    });
 
-    gsap.to(".box-2", {
-      y: -120,
-      backgroundColor: "#1e90ff",
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".box-2",
-        containerAnimation: scrollTween,
-        start: "center 80%",
-        end: "center 20%",
-        scrub: true,
-        id: "2"
-      }
-    });
+.carousel:hover .carousel__snapper,
+.carousel:focus-within .carousel__snapper {
+  animation-name: none;
+}
 
-    ScrollTrigger.create({
-      trigger: ".box-3",
-      containerAnimation: scrollTween,
-      toggleClass: "active",
-      start: "center 60%",
-      id: "3"
-    });
 
-    ScrollTrigger.create({
-      trigger: ".green",
-      containerAnimation: scrollTween,
-      start: "center 65%",
-      end: "center 51%",
-      onEnter: () => console.log("enter"),
-      onLeave: () => console.log("leave"),
-      onEnterBack: () => console.log("enterBack"),
-      onLeaveBack: () => console.log("leaveBack"),
-      onToggle: self => console.log("active", self.isActive),
-      id: "4"
-    });
+.carousel::before,
+.carousel::after,
+.carousel__prev,
+.carousel__next {
+  position: absolute;
+  top: 0;
+  margin-top: 37.5%;
+  width: 4rem;
+  height: 4rem;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  font-size: 0;
+  outline: 0;
+}
 
-    gsap.set(".gsap-marker-start, .gsap-marker-end, .gsap-marker-scroller-start, .gsap-marker-scroller-end", {autoAlpha: 0});
-    ["red","gray","purple","green"].forEach((triggerClass, i) => {
-      ScrollTrigger.create({
-        trigger: "." + triggerClass,
-        containerAnimation: scrollTween,
-        start: "left 30%",
-        end: i === 3 ? "right right" : "right 30%",
-        markers: false,
-        onToggle: self => gsap.to(".marker-" + (i+1), {duration: 0.25, autoAlpha: self.isActive ? 1 : 0})
-      });
-    });
-  },
-};
-</script>
+.carousel::before,
+.carousel__prev {
+  left: -1rem;
+}
 
-<script setup>
-definePageMeta({
-  layout: "nada",
-});
-</script>
+.carousel::after,
+.carousel__next {
+  right: -1rem;
+}
+
+.carousel::before,
+.carousel::after {
+  content: '';
+  z-index: 1;
+  background-color: #333;
+  background-size: 1.5rem 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: #fff;
+  font-size: 2.5rem;
+  line-height: 4rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.carousel::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,50 80,100 80,0' fill='%23fff'/%3E%3C/svg%3E");
+}
+
+.carousel::after {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='100,50 20,100 20,0' fill='%23fff'/%3E%3C/svg%3E");
+}
+
+
+  </style>
+  

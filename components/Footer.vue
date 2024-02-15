@@ -68,18 +68,43 @@
               <span
                 class="font-bold text-sm md:text-lg z-10 relative leading-3 bg-black mix-blend-difference text-white"
                 data-footer-element
-                >TUNED</span>
-                <div class="flex items-center">
-                  <input type="email" v-model="email" placeholder="mail" class="placeholder:italic placeholder:text-gray-400 block bg-white w-full border border-gray-300 shadow-sm focus:outline-none  text-gray-700 py-2 px-4 leading-tight focus:ring-1" v-cursorAnimation />
-                  <button 
-                    class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50" 
+                >TUNED</span
+              >
+              <div class="flex flex-col gap-8">
+                <div class="flex flex-row items-center w-[300px]">
+                  <input
+                    type="email"
+                    v-model="email"
+                    placeholder="mail"
+                    class="placeholder:italic placeholder:text-gray-400 block bg-white w-full border border-gray-300 shadow-sm focus:outline-none text-gray-700 py-2 px-4 leading-tight focus:ring-1 cursor-none"
                     v-cursorAnimation
-                    @click="sendDataToMake" >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  />
+                  <button
+                    id="sendEmail"
+                    @click="handleSendEmail"
+                    class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50 cursor-none"
+                    v-cursorAnimation
+                  >
+                    <!--   -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      class="w-6 h-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"
+                      />
                     </svg>
                   </button>
                 </div>
+
+                <span id="axeptionConsent" @click="getClick"></span>
+              </div>
             </template>
           </ImageFooterOnHover>
           <!-- opacity: 0; width: 100%; height: auto; max-width: 400px; box-sizing:
@@ -103,13 +128,23 @@
           <!-- <instagram class="text-[30px] w-auto text-white" data-footer-element /> -->
         </a>
         <!-- TODO : Ajouter le lien vers mentions-legales une fois la page crée -->
-        <NuxtLink
-          data-footer-element
-          to="/"
-          class="font-monteserrat font-extralight text-sm mt-4 mb-6"
-          v-cursorAnimation
-          >mentions légales</NuxtLink
-        >
+        <div class="flex flex-row">
+          <NuxtLink
+            data-footer-element
+            to="/mentions-legales"
+            class="font-monteserrat font-extralight text-sm mt-4 mb-6 cursor-none"
+            v-cursorAnimation
+            >mentions légales</NuxtLink
+          >
+          <span class="mt-4 mb-4 mx-4">-</span>
+          <a
+            data-footer-element
+            href="javascript:openAxeptioCookies()"
+            class="font-monteserrat font-extralight text-sm mt-4 mb-6 cursor-none"
+            v-cursorAnimation
+            >Gestion des cookies</a
+          >
+        </div>
       </div>
     </div>
   </footer>
@@ -120,30 +155,63 @@ import instagram from "assets/icons/instagram.svg";
 import Cookies from "js-cookie";
 
 export default {
-  data () {
+  data() {
     return {
-      email: ''
-    }
+      email: "",
+      axeptioScreen: null,
+      acceptSendEmailButton: null,
+      rejectSendEmailButton: null,
+    };
   },
   methods: {
+    getClick() {
+      let axeptionButtons = document.querySelectorAll("#axeptio_btn_undefined");
+
+      if (axeptionButtons.length > 1) {
+        axeptionButtons[0].addEventListener("click", () => {
+          null
+        });
+        axeptionButtons[1].addEventListener("click", () => {
+          this.sendDataToMake();
+        });
+      } else {
+        this.axeptioScreen[0].style.display = "none";
+      }
+    },
+    handleSendEmail() {
+      this.axeptioScreen = document.getElementsByClassName("Widget__WidgetStyle-sc-zhn46e-2 jyqhwN axeptio_widget ax-widget");
+      if (this.axeptioScreen.length === 0) {
+        this.openAxeptioEmailConsent();
+        this.getClick();
+      } else {
+        this.axeptioScreen[0].style.display = "block";
+        this.getClick();
+      }
+    },
+    openAxeptioEmailConsent() {
+      void 0 === window._axcb && (window._axcb = []);
+      window._axcb.push(function (axeptio) {
+        axeptio.mountWidget({
+          service: "processings",
+          name: "LMLC Newsletter",
+          node: document.getElementById("axeptionConsent"),
+        });
+      });
+    },
     async sendDataToMake() {
-      const webhookUrl = 'https://hook.eu2.make.com/mbfn5v1e0b73rr4r0buwalq0nhe4ryl7'; // Remplacez avec l'URL de votre webhook Make.com
+      const webhookUrl = "https://hook.eu2.make.com/mbfn5v1e0b73rr4r0buwalq0nhe4ryl7"; // Remplacez avec l'URL de votre webhook Make.com
 
       const { data, pending, error } = await useFetch(webhookUrl, {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' },
+        method: "post",
+        headers: { "Content-Type": "application/json" },
         body: {
           email: this.email,
         },
       });
-
-      console.log(data.value);
-      console.log(pending.value);
-      console.log(error.value);
-    }
+    },
   },
-}
-
+  created() {},
+};
 </script>
 
 <style scoped>

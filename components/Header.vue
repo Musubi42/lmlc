@@ -18,7 +18,7 @@
         </NuxtLink>
       </div>
       <div class="flex flex-row">
-        <!-- <switchLanguage :languageStyle="dynamicStyle" v-cursorAnimation /> -->
+        <switchLanguage :languageStyle="dynamicStyle" v-cursorAnimation />
         
         <div
           to="/menu"
@@ -279,6 +279,15 @@ export default {
       required: false
     },
   },
+  setup() {
+    // const isMenuOpen = ref(false);
+    const isMenuOpen = stateMenuOpen();
+    // isMenuOpen.value = MenuOpen;
+
+    return {
+      isMenuOpen,
+    };
+  },
   data() {
     return {
       toggleMenu: false,
@@ -290,6 +299,16 @@ export default {
       x: 0,
       y: 0,
     };
+  },
+  watch: {
+    isMenuOpen: {
+      handler: function(newVal, oldVal) {
+        if (newVal === false) {
+          // this.toggleMenuBurger();
+        }
+      },
+      deep: true, // Ceci est nécessaire si 'isMenuOpen' est un objet
+    },
   },
   created() {
     // Lorsque le composant est créé, vérifiez si un cookie de langue existe
@@ -305,13 +324,8 @@ export default {
   },
   mounted() {},
   unmounted() {},
-  components: {
-    menuBurger,
-  },
   methods: {
     handleMenuUpdate(event) {
-      console.log(event);
-      // this.menuBurgerOpened = event; 
       this.toggleMenuBurger();
     },
     toggleDropdown() {
@@ -319,6 +333,7 @@ export default {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
     toggleMenuBurger() {
+      this.isMenuOpen = !this.isMenuOpen;
       this.toggleMenu = !this.toggleMenu;
       this.menuBurgerOpened = !this.menuBurgerOpened;
 

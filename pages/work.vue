@@ -1,21 +1,17 @@
 <template>
-  <div id="caroussel" class="bg-cover bg-center bg-fixed bg-black relative">
-    <div class="relative slide w-full h-screen">
+  <div id="caroussel" class="bg-cover bg-center bg-fixed bg-black">
+    <div class="relative slide w-full h-screen ">
       <div class="carousel-inner relative overflow-hidden h-screen z-1">
         <div v-for="(img, i) in images" :id="`slide-${i}`" :key="i" :class="`${active === i ? 'active' : 'left-full'}`"
-          class="carousel-item inset-0 relative h-screen duration-1000 ease-in bg-black transition-opacity">
-          <!-- Div noire qui cache l'écriture -->
-          <div class="black-cover absolute inset-0 bg-black opacity-0 transition-opacity duration-1000 delay-1000"></div>
+          class="carousel-item inset-0 relative h-screen transform transition-all duration-1000 ease-in">
+          <div :style="{ backgroundColor: img.backgroundColor }">
 
-          <div id="carousel-text"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center opacity-0 transition-opacity duration-1000 delay-1000">
-            <h2
-              class="xl:text-1xl sm:text-1xl md:text-1xl lg:text-8xl font-bold text-white text-left transform translate-x-[-10px]">
-              {{ img.title }}
-            </h2>
-            <p class="text-2xl text-white">{{ img.description }}</p>
+            <div id="carousel-text"
+              class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center">
+              <h2 class="text-9xl font-bold text-white ">{{ img.title }}</h2>
+              <p class="text-2xl text-white ">{{ img.description }}</p>
+            </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -41,6 +37,7 @@
         <span class="sr-only">Next</span>
       </span>
     </button>
+  </div>
   </div>
 
   <div v-if="active == 0">

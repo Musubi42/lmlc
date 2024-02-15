@@ -22,7 +22,6 @@ export default {
   watch: {
     offsetParent(newVal, oldVal) {
       this.decalageX = newVal;
-      // console.log("offsetParent changed from", oldVal, "to", newVal);
     },
   },
   data() {
@@ -39,9 +38,6 @@ export default {
     };
   },
   mounted() {
-    // this.$nextTick(() => {
-    //   console.log(this.$refs.image.offsetHeight);
-    // });
   },
   unmounted() {
   },
@@ -59,7 +55,6 @@ export default {
       this.isVisible = false;
     },
     moveImage(event) {
-      // console.log("hey");
       this.right =
         event.pageX - window.innerWidth / 2 + (window.innerWidth / 2) * 0.2;
 

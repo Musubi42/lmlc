@@ -27,9 +27,8 @@ self.onmessage = async function (event) {
     
     try {
       response = await fetch(`/tableau/vertices/${key}.json`);
-      console.log(response);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       // response = await fetch(`/tableau/vertices/monin.json`);
     }
     
@@ -71,9 +70,6 @@ self.onmessage = async function (event) {
 
     let width = body.bounds.max.x - body.bounds.min.x;
     let height = body.bounds.max.y - body.bounds.min.y;
-
-    // console.log('Width: ', width);
-    // console.log('Height: ', height);
 
     let position = {
       x: Math.random() * (drawHereWidth - width),

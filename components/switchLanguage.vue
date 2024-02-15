@@ -9,7 +9,7 @@
   </button> -->
   <span class="hidden relative mt-[6px] md:flex flex-row text-xs font-medium right-24 bottom-[-1px] duration-300 transition-opacity" ref="languageSelectors" :style="languageStyle">
     <div class="fixed" >
-      <span @click="changeLanguage('fr')" class="mr-4 font-semibold" id="fr" v-cursorAnimation>FR</span>
+      <span @click="changeLanguage('fr')" class="mr-4" id="fr" v-cursorAnimation>FR</span>
       <span @click="changeLanguage('en')" class="mr-4 " id="en" v-cursorAnimation>EN</span>
       <span @click="changeLanguage('it')" class="" id="it" v-cursorAnimation>IT</span>
     </div>
@@ -104,16 +104,19 @@ export default {
     };
   },
   created() {
-    // Lorsque le composant est créé, vérifiez si un cookie de langue existe
     const savedLang = Cookies.get("i18n_language");
 
     if (savedLang) {
-      // Si un cookie existe, utilisez-le pour définir la langue
       this.$i18n.locale = savedLang;
     } else {
-      // Sinon, utilisez la langue par défaut de votre application
-      this.$i18n.locale = "fr"; // Mettez la langue par défaut de votre choix
+      this.$i18n.locale = "fr"; 
     }
+  },
+  mounted() {
+    
+    console.log(this.$i18n.locale.toString());
+    console.log(typeof this.$i18n.locale.toString());
+    this.changeLanguage(this.$i18n.locale.toString());
   },
   computed: {
     flag() {
@@ -121,19 +124,8 @@ export default {
     },
   },
   methods: {
-    // changeLanguage(language) {
-    //   const currentIndex = this.languages.indexOf(this.currentLanguage);
-    //   const nextIndex = (currentIndex + 1) % this.languages.length;
-    //   this.currentLanguage = this.languages[nextIndex];
-    //   console.log(this.currentLanguage);
-    //   // Call your function to change the language in your app
-    //   this.$i18n.locale = this.currentLanguage;
-    //   Cookies.set("i18n_language", locale);
-    // },
-
     changeLanguage(locale) {
       const languageSelectors = this.$refs.languageSelectors;
-      console.log(languageSelectors);
       const allLanguageSelectors = languageSelectors.querySelectorAll("span");
       allLanguageSelectors.forEach((languageSelector) => {
         languageSelector.classList.remove("font-semibold");

@@ -34,7 +34,6 @@ export default {
         this.$refs.container.style.top = newY + "px";
 
         if(this.$refs.container.style.left <= containerRect.left + "px" || this.$refs.container.style.top <= containerRect.top + "px"){
-          console.log("test")
           this.stopDrag()
       }
       }

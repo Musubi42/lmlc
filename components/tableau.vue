@@ -931,8 +931,6 @@ export default {
           worker.onmessage = function (event) {
             const { functionName, args } = event.data;
 
-            console.log(event.data);
-
             if (functionName === "createBody") {
               const [body, spriteBody, constraint] = args;
               // TODO: La frequence de rafraichissement de la physique est trop lente, ce qui fait que les objets ne sont pas dans le même axe

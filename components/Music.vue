@@ -10,7 +10,7 @@
           :src="songMetadata ? songMetadata.thumbnail : ''"
         />
         <div class="justify-center flex flex-col text-ellipsis whitespace-nowrap overflow-hidden">
-          <p class="hidden md:font-medium text-base md:block truncate">{{ songMetadata ? songMetadata.title : "" }}</p>
+          <p class="md:font-medium text-base md:block truncate">{{ songMetadata ? songMetadata.title : "" }}</p>
           <p class="font-light md:font-light text-sm truncate" >{{ songMetadata ? songMetadata.author : "" }}</p>
         </div>
       </div>
@@ -44,6 +44,23 @@
       </div>
     </div>
 
+    <!-- Music timeline -->
+    <!-- <div class="flex w-full items-center">
+      <div class="flex flex-row gap-1">
+        <p ref="audioRef">{{ formatTime(currentTime) }}</p>
+        /
+        <p>{{ formatTime(songMetadata ? songMetadata.duration : 0) }}</p>
+      </div>
+      <input
+        type="range"
+        class="rounded-full ml-2"
+        min="0"
+        :max="songMetadata ? songMetadata.duration : 0"
+        v-model="currentTime"
+        @input="changeTime"
+      />
+    </div> -->
+    
     <!-- Control volume son -->
     <div
       class="hidden md:flex md:flex-1 md:flex-row gap-4 content-end center-content items-center justify-end" >
@@ -128,6 +145,8 @@ input[type="range"]::-moz-range-thumb {
 
 <script>
 import axios from "axios";
+import { list } from '@vercel/blob';
+
 
 export default {
   data() {
@@ -172,7 +191,7 @@ export default {
           response = await axios.get(`${this.APIStreamAudioBaseUrl}/playlistMetadata`);
         } else {
           response = await axios.get(
-            `${this.APIStreamAudioBaseUrl}/playlistMetadata.json`
+            `${this.APIStreamAudioBaseUrl}/music/playlistMetadata.json`
           );
         }
 
@@ -194,7 +213,7 @@ export default {
         if (process.env.NODE_ENV === "development") {
           audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/music/${trackID}`);
         } else {
-          audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/${trackID}.mp3`);
+          audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/music/${trackID}.mp3`);
         }
 
         const blob = await audioResponse.blob();
@@ -204,6 +223,9 @@ export default {
 
         this.audioSource.ontimeupdate = () => {
           this.currentTime = this.audioSource.currentTime;
+          if (this.currentTime >= this.audioSource.duration) {
+            this.playNextSong();
+          }
         };
 
         this.trackID = trackID;
@@ -236,6 +258,8 @@ export default {
     },
 
     async playNextSong() {
+      // Reset the current time to 0
+      this.currentTime = 0;
       const nextTrackPosition =
         (this.playlistMetadataKeys.indexOf(this.trackID) + 1) % this.playlistLenght;
       const nextTrackID = this.playlistMetadataKeys[nextTrackPosition];
@@ -249,6 +273,8 @@ export default {
     },
 
     async playPreviousSong() {
+      // Reset the current time to 0
+      this.currentTime = 0;
       const previousTrackPosition =
         (this.playlistMetadataKeys.indexOf(this.trackID) - 1) % this.playlistLenght;
       const previousTrackID =
@@ -303,12 +329,16 @@ export default {
     // https://developer.chrome.com/blog/autoplay/
     // arc://media-engagement/
     // Auto start a sound
-    // await this.toggleAudio();
+    if (!this.audioSource?.paused) {
+      await this.toggleAudio();
+    } else {
+      await this.toggleAudio();
+    }
   },
   beforeUnmount() {
     // Remove event listeners
-    this.$refs.audio.removeEventListener("loadedmetadata", this.updateTime);
-    this.$refs.audio.removeEventListener("timeupdate", this.updateTime);
+    // this.$refs.audio.removeEventListener("loadedmetadata", this.updateTime);
+    // this.$refs.audio.removeEventListener("timeupdate", this.updateTime);
   },
 };
 </script>

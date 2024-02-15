@@ -3,9 +3,6 @@ export default defineNuxtRouteMiddleware((to) => {
   // https://nuxt.com/docs/api/composables/use-runtime-config
   const runtimeConfig = useRuntimeConfig();
 
-  // General informations
-  // const $config = useRuntimeConfig();
-  // console.log({ $config });
   const isMaintenance = runtimeConfig.public.MAINTENANCE.trim().toLowerCase();
 
   if (isMaintenance === "true" && to.fullPath !== "/countdown") {

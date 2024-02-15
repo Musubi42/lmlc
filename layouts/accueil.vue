@@ -1,5 +1,6 @@
 <template>
   <div @click="closeMenuIfOpen" >
+    <Intro v-if="IntroAnimation && firstVisit" class="fixed z-10" />
     <Header :dynamicStyle="headerStyle" />
     <NuxtPage />
     <Footer />
@@ -10,10 +11,21 @@
 <script>
 export default {
   setup() {
+    // const isIntroAnimation = ref(true);
+    const IntroAnimation = stateIntroAnimation();
+
+    watch(IntroAnimation, (newValue, oldValue) => {
+      IntroAnimation.value = newValue;
+    });
+
+    const firstVisit = stateFirstVisit();
+
     const isMenuOpen = stateMenuOpen();
 
     return {
       isMenuOpen,
+      IntroAnimation,
+      firstVisit
     };
   },
   data() {
