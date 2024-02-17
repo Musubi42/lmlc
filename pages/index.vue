@@ -11,8 +11,8 @@
       <div
         class=" w-full h-[100%] md:h-[100%]"
       >
-        <!-- <tableauTest v-if="!IntroAnimation" v-cursorAnimation :key="componentKey" /> -->
-        <tableauTest v-if="true" v-cursorAnimation :key="componentKey" />
+        <tableauTest v-if="!IntroAnimation" v-cursorAnimation :key="componentKey" />
+        <!-- <tableauTest v-if="true" v-cursorAnimation :key="componentKey" /> -->
       </div>
     </div>
     <!-- TODO: Padding footer pour l'effet scroll : pb-20 md:pb-80 -->

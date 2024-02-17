@@ -82,7 +82,6 @@ export default {
   },
   methods: {
     changeLanguage(locale) {
-      console.log("desktop");
       const languageSelectors = this.$refs.languageSelectors;
       const allLanguageSelectors = languageSelectors.querySelectorAll("span");
       allLanguageSelectors.forEach((languageSelector) => {
@@ -97,7 +96,6 @@ export default {
     },
 
     changeLanguageMobile(locale) {
-      console.log("mobile");
       const languageSelectors = this.$refs.languageSelectorsMobile;
       const allLanguageSelectors = languageSelectors.querySelectorAll("span");
       allLanguageSelectors.forEach((languageSelector) => {
@@ -105,7 +103,6 @@ export default {
       });
       this.language = locale.toUpperCase();
       const languageSelector = document.getElementById(locale);
-      console.log(languageSelector);
       languageSelector.classList.add("font-semibold");
 
       Cookies.set("i18n_language", locale);

@@ -91,11 +91,7 @@ export default {
     },
   },
   mounted() {
-    // console.log(this.$refs.mouseContainer.offsetHeight);
-    // TODO : Check le $nextTick
-    // this.$nextTick(() => {
     window.addEventListener("mousemove", this.handleMouseMove);
-    // });
   },
   unmounted() {
     window.removeEventListener("mousemove", this.handleMouseMove);

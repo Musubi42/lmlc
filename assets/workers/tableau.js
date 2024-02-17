@@ -53,7 +53,7 @@ self.onmessage = async function (event) {
       // },
       render: {
         // visible: meubles[key].sprite.image.match('timur.png') ? true : false,
-        visible: true,
+        visible: false,
       },
     });
 

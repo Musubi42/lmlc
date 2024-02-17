@@ -102,7 +102,6 @@ export default {
     handleMouseMove(event) {
       this.mouseY = event.clientY;
       this.mouseAbsolutePositionY = this.mouseY + this.scrollY;
-      // console.log(this.mouseAbsolutePositionY);
     },
   },
   mounted() {

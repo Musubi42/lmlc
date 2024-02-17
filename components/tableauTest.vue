@@ -1351,7 +1351,7 @@ export default {
                   width: 50,
                   height: 140,
                 },
-                angle: 0.45,
+                angle: 270,
                 scaleFactor: 0.25,
               },
               sprite: {
