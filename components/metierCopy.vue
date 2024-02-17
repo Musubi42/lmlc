@@ -3,18 +3,18 @@
     <ServicesAnimation :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="relative z-0 pointer-events-none" />
       <!-- <div v-if="showOverlay" class="absolute inset-0 bg-black transition-colors duration-1000" ></div> -->
       <div class="absolute my-auto z-10 w-full box-border px-8">
-        <div class="relative flex flex-col md:flex-row gap-10 md:gap-2 justify-around section-content">
+        <div class="relative flex flex-col md:flex-row gap-9 md:gap-2 mt-20 md:mt-0 md:mx-20 justify-around section-content font-extralight">
           <div class="flex-1 z-10">
-            <h3 class="font-semibold text-xl">stratégie</h3>
-            <ul>
-              <li>stratégie et plan de communication</li>
+            <h3 class="font-semibold text-2xl">stratégie</h3>
+            <ul class="">
+              <li>stratégie de communication</li>
               <li>stratégie marketing</li>
               <li>stratégie de marque</li>
             </ul>
           </div>
 
           <div class="flex-1">
-            <h3 class="font-semibold text-xl">branding</h3>
+            <h3 class="font-semibold text-2xl">branding</h3>
             <ul>
               <li>direction artistique</li>
               <li>identité visuelle</li>
@@ -25,7 +25,7 @@
           </div>
 
           <div class="flex-1">
-            <h3 class="font-semibold text-xl">digital</h3>
+            <h3 class="font-semibold text-2xl">digital</h3>
             <ul>
               <li>social media</li>
               <li>community management</li>
@@ -36,7 +36,7 @@
           </div>
 
           <div class="min-w-[200px]">
-            <h3 class="font-semibold text-xl">brandcontent</h3>
+            <h3 class="font-semibold text-2xl">brandcontent</h3>
             <ul>
               <li>production audiovisuelle</li>
               <li>shooting photo</li>

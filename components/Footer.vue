@@ -68,7 +68,7 @@
               <span
                 class="font-bold text-sm md:text-lg z-10 relative leading-3 bg-black mix-blend-difference text-white"
                 data-footer-element
-                >TUNED</span
+                >NEWSLETTER</span
               >
               <div class="flex flex-col gap-8">
                 <div class="flex flex-row items-center w-[300px]">

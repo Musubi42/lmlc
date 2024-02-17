@@ -315,24 +315,26 @@ export default {
 
   mounted() {},
   async created() {
-    // TODO: Faire une petite gestion d'erreur
-    // Function create the audio player
-    this.createAudioPlayer();
+    if (process.client) {
+      // TODO: Faire une petite gestion d'erreur
+      // Function create the audio player
+      this.createAudioPlayer();
 
-    // Get from the server the playlist metadata
-    await this.getPlaylistMetadata();
+      // Get from the server the playlist metadata
+      await this.getPlaylistMetadata();
 
-    // Load metaData of the first song
-    await this.loadMetaData(this.trackID);
+      // Load metaData of the first song
+      await this.loadMetaData(this.trackID);
 
-    // TODO: On ne peut pas lancer un son automatiquement
-    // https://developer.chrome.com/blog/autoplay/
-    // arc://media-engagement/
-    // Auto start a sound
-    if (!this.audioSource?.paused) {
-      await this.toggleAudio();
-    } else {
-      await this.toggleAudio();
+      // TODO: On ne peut pas lancer un son automatiquement
+      // https://developer.chrome.com/blog/autoplay/
+      // arc://media-engagement/
+      // Auto start a sound
+      if (!this.audioSource?.paused) {
+        await this.toggleAudio();
+      } else {
+        await this.toggleAudio();
+      }
     }
   },
   beforeUnmount() {

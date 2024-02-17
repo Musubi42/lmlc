@@ -1,5 +1,5 @@
 <template>
-  <div class="cursor-none">
+  <div class="cursor-none z-50">
     <div
       class="h-full bg-rose-neon w-10 md:w-80 right-0 fixed z-[20] transform translate-x-full"
       :class="{ animate: !isMenuOpen }"
@@ -11,15 +11,14 @@
       id="bg"
     >
       <div
-        class="absolute right-0 z-auto transform translate-x-full"
+        class="relative md:absolute md:right-0 z-auto md:transform md:translate-x-full flex flex-col items-center md:block ml-[30%] md:ml-0"
         id="title"
         :class="{ animate: !isMenuOpen }"
-        @mousemove="titleOffset"
-      >
+        @mousemove="titleOffset" >
         <!-- Titre -->
         <!-- Capturer cet élémént et for each sur chacun de ses enfants -->
         <div
-          class="text-[40px] md:text-[60px] xl:text-[70px] 2xl:text-[80px] my-auto flex flex-col place-content-between h-3/6 ml-16"
+          class="text-[40px] md:text-[60px] xl:text-[70px] 2xl:text-[80px] my-auto flex flex-col place-content-between h-3/6 md:ml-16"
         >
           <ImageMenuOnHover
             ref="work"
@@ -88,7 +87,7 @@
 
     <!-- Reaseaux sociaux -->
     <!-- TODO: les faire disparaitre -->
-    <div 
+    <!-- <div 
       id="social-network" 
       class="fixed right-0 bottom-0 mr-8 mb-3 z-[1000]"
       v-show="isMenuOpen">
@@ -99,7 +98,7 @@
       <a href="https://www.instagram.com/lmlc_communication/" target="_blank">
         <instagram class="text-[30px] w-auto text-blue-500" />
       </a>
-    </div>
+    </div> -->
   </div>
 </template>
 

@@ -3,6 +3,49 @@
     class="bg-cover h-full w-full bg-white relative overflow-hidden"
     ref="drawhere"
   >
+
+    <!-- Monin Petit -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="3.35556in"
+      height="3.35556in"
+      viewBox="0 0 302 302"
+      class="hidden"
+    >
+      <path
+        id="moninPetit"
+        class="gif"
+        fill="none"
+        stroke="black"
+        stroke-width="1"
+        d="M 123.00,148.00
+           C 123.83,137.87 128.20,144.72 133.10,134.00
+             133.10,134.00 138.36,113.00 138.36,113.00
+             141.88,102.70 152.00,94.52 163.00,94.04
+             186.53,93.02 190.39,123.17 196.00,140.00
+             196.00,140.00 198.23,139.08 198.23,139.08
+             198.23,139.08 210.00,144.00 210.00,144.00
+             210.00,144.00 204.00,148.00 204.00,148.00
+             204.00,148.00 225.00,149.00 225.00,149.00
+             228.30,149.08 232.93,149.09 235.44,151.56
+             237.65,153.72 242.53,168.34 243.57,172.00
+             248.32,188.64 252.32,211.85 250.28,229.00
+             249.71,233.84 250.04,241.78 247.15,245.85
+             246.25,247.11 245.38,247.83 243.95,248.40
+             243.95,248.40 229.00,250.91 229.00,250.91
+             229.00,250.91 201.00,245.61 201.00,245.61
+             201.00,245.61 179.00,241.92 179.00,241.92
+             179.00,241.92 166.72,241.92 166.72,241.92
+             166.72,241.92 155.00,241.00 155.00,241.00
+             136.36,240.97 136.63,240.79 118.00,243.42
+             112.22,244.24 99.04,247.03 94.00,246.00
+             79.23,242.97 79.02,235.17 79.00,222.00
+             78.97,200.47 80.74,188.55 87.12,168.00
+             88.53,163.43 92.17,151.78 96.27,149.43
+             98.58,148.11 102.39,148.03 105.00,148.00
+             105.00,148.00 123.00,148.00 123.00,148.00 Z"
+      />
+    </svg>
     <!-- sac bleu svg -->
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -859,6 +902,30 @@ export default {
                 y: 30,
               },
             },
+            moninPetit: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 270,
+                scaleFactor: 0.3,
+              },
+              sprite: {
+                xScale: 0.05,
+                yScale: 0.05,
+                image: "./tableau/images/moninPetit.png",
+              },
+              constraint: {
+                x: -5,
+                y: 30,
+              },
+            },
             moninGrand: {
               body: {
                 speed: 0,
@@ -1154,7 +1221,8 @@ export default {
           );
 
           // Changer l'ordre de rendu des objets permet de faire passer les uns au-dessus des autres
-          const uniqueBody = { moninGrand, bouillon, timurQualiPNG, un, deux, sacBleu, fauteuilRouge };
+          // const uniqueBody = { moninGrand, bouillon, timurQualiPNG, un, deux, sacBleu, fauteuilRouge };
+          const uniqueBody = { moninPetit, bouillon, moninGrand };
           // const uniqueBody = { sacBleu, monin, timur, bourges2024 };
           // const uniqueBody = { timur, moninGrand };
 

@@ -1,16 +1,22 @@
 <template ref="Intro">
-  <div ref="screnIntro" class="bg-black h-screen w-screen flex justify-center items-center">
+  <div ref="screnIntro" class="bg-black h-screen w-screen flex justify-center items-center z-[100000]">
     <p 
       ref="textIntro" 
       id="textIntro"
       @animationend="handleAnimationEnd"
-      class="text-white text-5xl font-bold taille text-left"></p>
+      class="text-white text-2xl md:text-5xl font-bold taille text-left"></p>
   </div>
 </template>
 
 <style>
 .taille {
-  max-width: 50vw;
+  max-width: 75vw; /* mobile */
+}
+
+@media (min-width: 768px) { /* adjust breakpoint as needed */
+  .taille {
+    max-width: 50vw; /* desktop */
+  }
 }
 
 .blur-opening {
@@ -67,9 +73,9 @@ export default {
         .pauseFor(700)
         .deleteAll(10)
         .pauseFor(1000)
-        .changeDelay(25)
-        .typeString(this.inviteToPlay)
-        .pauseFor(1000)
+        // .changeDelay(25)
+        // .typeString(this.inviteToPlay)
+        // .pauseFor(1000)
         .callFunction(() => {
           this.vanishIntro();
         })

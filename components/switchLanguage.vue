@@ -7,83 +7,29 @@
       {{ currentLanguage }}
     </div>
   </button> -->
-  <span class="hidden relative mt-[6px] md:flex flex-row text-xs font-medium right-24 bottom-[-1px] duration-300 transition-opacity" ref="languageSelectors" :style="languageStyle">
-    <div class="fixed" >
+  <span
+    class="hidden relative mt-[6px] md:flex flex-row text-xs font-medium right-24 bottom-[-1px] duration-300 transition-opacity"
+    ref="languageSelectors"
+    :style="languageStyle"
+  >
+    <div class="fixed">
       <span @click="changeLanguage('fr')" class="mr-4" id="fr" v-cursorAnimation>FR</span>
-      <span @click="changeLanguage('en')" class="mr-4 " id="en" v-cursorAnimation>EN</span>
+      <span @click="changeLanguage('en')" class="mr-4" id="en" v-cursorAnimation>EN</span>
       <span @click="changeLanguage('it')" class="" id="it" v-cursorAnimation>IT</span>
     </div>
   </span>
 
-  <div
-
-          class="flex flex-row font-montserrat font-medium text-sm mt-[-4px] mr-10 content-end"
-        >
-          <div>
-            <button
-              id="dropdownDefaultButton"
-              @click="toggleDropdown"
-              class="text-black md:hidden inline-block relative bg-white hover:bg-white focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
-              type="button"
-            >
-              {{ language }}
-            </button>
-
-            <!-- Dropdown menu -->
-            <!-- <div
-              v-show="isDropdownOpen"
-              id="dropdown"
-              class="z-20 absolute bg-white divide-y divide-gray-100 rounded-lg" >
-              <ul
-                class="py-2 text-sm text-gray-700 dark:text-white"
-                aria-labelledby="dropdownDefaultButton"
-              >
-                <li>
-                  <a
-                    href="#"
-                    @click="changeLanguage('fr')"
-                    class="block px-4 py-2 hover:bg-gray-100 text-black text-center"
-                    >FR</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    @click="changeLanguage('en')"
-                    class="block px-4 py-2 hover:bg-gray-100 text-black hover:text-black text-center"
-                    >EN</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    @click="changeLanguage('it')"
-                    class="block px-4 py-2 hover:bg-gray-100 text-black hover:text-black text-center"
-                    >IT</a
-                  >
-                </li>
-              </ul>
-            </div> -->
-          </div>
-          <!-- Options de langue visibles sur les écrans moyens et plus grands -->
-          <!-- <span class="hidden md:flex flex-row">
-            <span
-              @click="changeLanguage('fr')"
-              class="mr-4 hover:italic"
-              id="fr"
-              >FR</span
-            >
-            <span
-              @click="changeLanguage('en')"
-              class="mr-4 hover:italic"
-              id="en"
-              >EN</span
-            >
-            <span @click="changeLanguage('it')" class="hover:italic" id="it"
-              >IT</span
-            >
-          </span> -->
-        </div>
+  <span
+    class="absolute left-0 top-0 ml-6 z-[1000] mt-[6px] md:hidden block flex-row text-xs font-medium right-24 bottom-[-1px] duration-300 transition-opacity"
+    ref="languageSelectorsMobile"
+    v-if="isMenuOpen"
+  >
+    <div class="fixed">
+      <span @click="changeLanguageMobile('frMobile')" class="mr-4 " id="frMobile" v-cursorAnimation>FR</span>
+      <span @click="changeLanguageMobile('enMobile')" class="mr-4" id="enMobile" v-cursorAnimation>EN</span>
+      <span @click="changeLanguageMobile('itMobile')" class="" id="itMobile" v-cursorAnimation>IT</span>
+    </div>
+  </span>
 </template>
 
 <script>
@@ -93,8 +39,22 @@ export default {
   props: {
     languageStyle: {
       type: Object,
-      required: false
+      required: false,
     },
+  },
+  setup() {
+    const isMenuOpen = ref(false);
+    const MenuOpen = stateMenuOpen();
+
+    watch(MenuOpen, (newValue, oldValue) => {
+      setTimeout(() => {
+        isMenuOpen.value = newValue;
+      }, 200);
+    });
+
+    return { 
+      isMenuOpen,
+      };
   },
   data() {
     return {
@@ -109,13 +69,10 @@ export default {
     if (savedLang) {
       this.$i18n.locale = savedLang;
     } else {
-      this.$i18n.locale = "fr"; 
+      this.$i18n.locale = "fr";
     }
   },
   mounted() {
-    
-    console.log(this.$i18n.locale.toString());
-    console.log(typeof this.$i18n.locale.toString());
     this.changeLanguage(this.$i18n.locale.toString());
   },
   computed: {
@@ -125,6 +82,7 @@ export default {
   },
   methods: {
     changeLanguage(locale) {
+      console.log("desktop");
       const languageSelectors = this.$refs.languageSelectors;
       const allLanguageSelectors = languageSelectors.querySelectorAll("span");
       allLanguageSelectors.forEach((languageSelector) => {
@@ -132,6 +90,22 @@ export default {
       });
       this.language = locale.toUpperCase();
       const languageSelector = document.getElementById(locale);
+      languageSelector.classList.add("font-semibold");
+
+      Cookies.set("i18n_language", locale);
+      this.$i18n.locale = locale;
+    },
+
+    changeLanguageMobile(locale) {
+      console.log("mobile");
+      const languageSelectors = this.$refs.languageSelectorsMobile;
+      const allLanguageSelectors = languageSelectors.querySelectorAll("span");
+      allLanguageSelectors.forEach((languageSelector) => {
+        languageSelector.classList.remove("font-semibold");
+      });
+      this.language = locale.toUpperCase();
+      const languageSelector = document.getElementById(locale);
+      console.log(languageSelector);
       languageSelector.classList.add("font-semibold");
 
       Cookies.set("i18n_language", locale);

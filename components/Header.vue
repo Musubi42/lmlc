@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full z-50 absolute">
-    <Menu :isMenuOpen="toggleMenu" @update:isMenuOpen="handleMenuUpdate" />
-    <div class="relative z-50 place-content-between py-6 pl-6 md:px-10 flex flex-row">
+  <div class="w-full z-50 absolute py-6">
+    <div class="relative z-50 place-content-between pl-6 md:px-10 flex flex-row">
+    <Menu :isMenuOpen="toggleMenu" @update:isMenuOpen="handleMenuUpdate" class="z-[100] absolute -mt-6" />
       <div
         class="duration-300 transition-opacity"
         :style="dynamicStyle">
