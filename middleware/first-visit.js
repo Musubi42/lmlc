@@ -17,4 +17,5 @@ export default defineNuxtRouteMiddleware(() => {
   const isfirstVisit = stateFirstVisit();
 
   isfirstVisit.value = firstVisit;
+  console.log(isfirstVisit.value);
 });
