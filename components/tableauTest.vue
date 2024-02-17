@@ -3,8 +3,71 @@
     class="bg-cover h-full w-full bg-white relative overflow-hidden"
     ref="drawhere"
   >
+  <!-- , , , ,  -->
 
-    <!-- Monin Petit -->
+    <!-- bouillon Mobile -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 302 302"
+      class="hidden" >
+      <path
+        id="bouillonMobile"
+      />
+    </svg>
+
+    <!-- timurQualiPNG Mobile -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 302 302"
+      class="hidden" >
+      <path
+        id="timurQualiPNGMobile"
+      />
+    </svg>
+
+    <!-- sacBleu Mobile -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 302 302"
+      class="hidden" >
+      <path
+        id="sacBleuMobile"
+      />
+    </svg>
+
+    <!-- fauteuilRouge Mobile -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 302 302"
+      class="hidden" >
+      <path
+        id="fauteuilRougeMobile"
+      />
+    </svg>
+
+    <!-- Un Mobile -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 302 302"
+      class="hidden"
+    >
+      <path
+        id="unMobile"
+      />
+    </svg>
+
+    <!-- Deux Mobile -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 302 302"
+      class="hidden"
+    >
+      <path
+        id="deuxMobile"
+      />
+    </svg>
+
+    <!-- Monin Mobile -->
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="3.35556in"
@@ -13,7 +76,7 @@
       class="hidden"
     >
       <path
-        id="moninPetit"
+        id="moninMobile"
         class="gif"
         fill="none"
         stroke="black"
@@ -902,30 +965,6 @@ export default {
                 y: 30,
               },
             },
-            moninPetit: {
-              body: {
-                speed: 0,
-                position: {
-                  x: 0,
-                  y: 0,
-                },
-                velocity: {
-                  x: 0,
-                  y: 0,
-                },
-                angle: 270,
-                scaleFactor: 0.3,
-              },
-              sprite: {
-                xScale: 0.05,
-                yScale: 0.05,
-                image: "./tableau/images/moninPetit.png",
-              },
-              constraint: {
-                x: -5,
-                y: 30,
-              },
-            },
             moninGrand: {
               body: {
                 speed: 0,
@@ -1213,6 +1252,202 @@ export default {
                 y: -4,
               },
             },
+            moninMobile: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  width: 0,
+                  height: 0,
+                },
+                size: {
+                  width: 63,
+                  height: 255,
+                },
+                angle: 270,
+                scaleFactor: 0.3,
+              },
+              sprite: {
+                xScale: 0.075,
+                yScale: 0.075,
+                image: "./tableau/images/moninGrand.png",
+              },
+              constraint: {
+                x: 0,
+                y: 0,
+              },
+            },
+            unMobile: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                size:  {
+                  width: 150,
+                  height: 210,
+                },
+                angle: -0.04,
+                scaleFactor: 1.1,
+              },
+              sprite: {
+                xScale: 0.06,
+                yScale: 0.06,
+                image: "./tableau/images/un.png",
+              },
+              constraint: {
+                x: 0,
+                y: 0,
+              },
+            },
+            deuxMobile: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                size:  {
+                  width: 150,
+                  height: 210,
+                },
+                angle: -0.04,
+                scaleFactor: 1.1,
+              },
+              sprite: {
+                xScale: 0.06,
+                yScale: 0.06,
+                image: "./tableau/images/deux.png",
+              },
+              constraint: {
+                x: -1,
+                y: -4,
+              },
+            },
+            timurQualiPNGMobile: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                size:  {
+                  width: 50,
+                  height: 140,
+                },
+                angle: 0.45,
+                scaleFactor: 0.25,
+              },
+              sprite: {
+                xScale: 0.49,
+                yScale: 0.49,
+                image: "./tableau/images/timurQuali.png",
+              },
+              constraint: {
+                x: 0,
+                y: 0,
+              },
+            },
+            sacBleuMobile: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                size:  {
+                  width: 120,
+                  height: 70,
+                },
+                angle: -0.04,
+                scaleFactor: 1.1,
+              },
+              sprite: {
+                xScale: 0.30,
+                yScale: 0.30,
+                image: "./tableau/images/sac-bleu.png",
+              },
+              constraint: {
+                x: 0,
+                y: 0,
+              },
+            },
+            fauteuilRougeMobile: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                size:  {
+                  width: 150,
+                  height: 90,
+                },
+                angle: -0.04,
+                scaleFactor: 1.1,
+              },
+              sprite: {
+                xScale: 0.12,
+                yScale: 0.12,
+                image: "./tableau/images/fauteuilRouge.png",
+              },
+              constraint: {
+                x: 0,
+                y: 30,
+              },
+            },
+            bouillonMobile: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                size: {
+                  width: 63,
+                  height: 205,
+                },
+                angle: 0.45,
+                scaleFactor: 0.25,
+              },
+              sprite: {
+                xScale: 0.16,
+                yScale: 0.16,
+                image: "./tableau/images/bouillon.png",
+              },
+              constraint: {
+                x: 0,
+                y: 0,
+              },
+            },
           };
 
           const worker = new Worker(
@@ -1222,7 +1457,8 @@ export default {
 
           // Changer l'ordre de rendu des objets permet de faire passer les uns au-dessus des autres
           // const uniqueBody = { moninGrand, bouillon, timurQualiPNG, un, deux, sacBleu, fauteuilRouge };
-          const uniqueBody = { moninPetit, bouillon, moninGrand };
+          // const uniqueBody = { moninMobile, bouillonMobile, timurQualiPNGMobile, unMobile, deuxMobile, sacBleuMobile, fauteuilRougeMobile };
+          const uniqueBody = { moninMobile, bouillonMobile, timurQualiPNGMobile, unMobile, deuxMobile, sacBleuMobile, fauteuilRougeMobile };
           // const uniqueBody = { sacBleu, monin, timur, bourges2024 };
           // const uniqueBody = { timur, moninGrand };
 

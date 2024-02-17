@@ -45,8 +45,8 @@ self.onmessage = async function (event) {
 
     const isMoninShadow = meubles[key].sprite.image.match('moninShadow.png');
 
-    let body = Bodies.fromVertices(300, 300, [fileContent], {
-    // let body = Bodies.rectangle(300, 300, 30, 30, {
+    // let body = Bodies.fromVertices(300, 300, [fileContent], {
+    let body = Bodies.rectangle(300, 300, meubles[key].body.size.width, meubles[key].body.size.height, {
       // collisionFilter: {
       //   // category: 2, // You can set your own category here
       //   mask: 0, // Enable or disable collision based on collisionEnabled
