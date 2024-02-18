@@ -11,8 +11,8 @@
       <div
         class=" w-full h-[100%] md:h-[100%]"
       >
-        <!-- <tableauTest v-if="!IntroAnimation" v-cursorAnimation :key="componentKey" /> -->
-        <tableauTest v-if="true" v-cursorAnimation :key="componentKey" />
+        <tableauTest v-if="!IntroAnimation" v-cursorAnimation :key="componentKey" />
+        <!-- <tableauTest v-if="true" v-cursorAnimation :key="componentKey" class="h-full" /> -->
       </div>
     </div>
     <!-- TODO: Padding footer pour l'effet scroll : pb-20 md:pb-80 -->
@@ -105,11 +105,8 @@ export default {
 
     // Des fois, si je met un clg le if s'exec bien
     if (!firstVisit.value) {
-      console.log("ici");
       isIntroAnimation.value = false;
       IntroAnimation.value = false;
-      console.log("IntroAnimation");
-      console.log(isIntroAnimation.value);
     }
 
     return {

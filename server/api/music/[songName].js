@@ -6,13 +6,10 @@ export default defineEventHandler(async (event) => {
   const track = getRouterParam(event, 'songName')
 
   const { req, res } = event;
-  // const track = event.context.params.trackID;
-  console.log("trackID : " + track);
 
   const filePath = path.join(process.cwd(), '/assets/vercelBlob/music');
   // const data = await readFile(filePath, 'utf8');
   const trackPath = path.resolve(`${filePath}`, 'optimized-mp3-files', `${track}.mp3`);
-  console.log(trackPath);
   const stat = await fs.promises.stat(trackPath);
   const fileSize = stat.size;
   const range = req.headers.range;

@@ -997,10 +997,6 @@ export default {
 
             Body.setAngle(body, meubles[key].body.angle);
 
-            console.log(body.bounds.min.x,
-              body.bounds.min.y,
-              body.bounds.max.x,
-              body.bounds.max.y,);
             let spriteBody = Bodies.rectangle(
               body.bounds.min.x,
               body.bounds.min.y,

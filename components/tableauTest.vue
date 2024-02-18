@@ -1,9 +1,8 @@
 <template>
   <div
     class="bg-cover h-full w-full bg-white relative overflow-hidden"
-    ref="drawhere"
-  >
-  <!-- , , , ,  -->
+    id="drawhere"
+    ref="drawhere" >
 
     <!-- bouillon Mobile -->
     <svg
@@ -802,6 +801,11 @@ function dragElement(element, dragHandle) {
 }
 
 export default {
+  setup() {
+    const drawhere = ref(null);
+
+    return { drawhere };
+  },
   data: function () {
     return {
       canvasProp: {
@@ -821,6 +825,10 @@ export default {
   },
   mounted() {
     if (process.client) {
+    // console.log(window.getComputedStyle(drawhere, null));
+    console.log(document.getElementById("drawhere").offsetHeight);
+    // console.log(window.getComputedStyle(drawhere, null).getPropertyValue('width'));
+    // console.log(window.getComputedStyle(drawhere, null).getPropertyValue('height'));
       this.loadScript(
         "https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.js",
         () => {
@@ -836,8 +844,14 @@ export default {
           const Body = Matter.Body;
           const Constraint = Matter.Constraint;
 
-          let drawhereWidth = this.$refs.drawhere.offsetWidth;
-          let drawhereHeight = this.$refs.drawhere.offsetHeight;
+
+          // let drawhereWidth = window.getComputedStyle(drawhere, null).getPropertyValue('width');
+          // let drawhereHeight = window.getComputedStyle(drawhere, null).getPropertyValue('height');
+          // let drawhereWidth = 400;
+          // let drawhereHeight = 400;
+
+          let drawhereHeight = document.getElementById("drawhere").offsetHeight;
+          let drawhereWidth = document.getElementById("drawhere").offsetWidth;
 
           window.decomp = decomp;
           const width = drawhereWidth;

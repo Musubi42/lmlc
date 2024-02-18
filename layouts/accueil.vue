@@ -23,6 +23,8 @@ export default {
 
     const isMenuOpen = stateMenuOpen();
 
+    // console.log("IntroAnimation", IntroAnimation.value);
+    // console.log("firstVisit", firstVisit.value);
     return {
       isMenuOpen,
       IntroAnimation,
