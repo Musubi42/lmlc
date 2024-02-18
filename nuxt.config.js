@@ -25,9 +25,9 @@ export default defineNuxtConfig({
   alias: {
     "@": resolve(__dirname, "/"),
   },
-  modules: ["nuxt-svgo", "@nuxt/image", "@nuxtjs/i18n", '@nuxtjs/sitemap'],
+  modules: ["nuxt-svgo", "@nuxt/image", "@nuxtjs/i18n"],
   site: {
-    url: 'https://lmlccommunication.fr',
+    url: 'https://www.lmlccommunication.fr',
     trailingSlash: true,
   },
   sitemap: {
