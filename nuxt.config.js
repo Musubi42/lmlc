@@ -30,42 +30,42 @@ export default defineNuxtConfig({
     url: 'https://www.lmlccommunication.fr',
     trailingSlash: true,
   },
-  sitemap: {
-    hostname: 'https://lmlccommunication.fr',
-    gzip: true,
-    exclude: [
-      '/scrolling',
-      ''
-      // any other paths you want to exclude
-    ],
-    urls: [
-      {
-        url: '/index',
-        changefreq: 'daily',
-        priority: 1,
-        lastmodISO: '2021-10-28T09:00:00.000Z'
-      },
-      {
-        url: '/about',
-        changefreq: 'daily',
-        priority: 0.8,
-        lastmodISO: '2021-10-28T09:00:00.000Z'
-      },
-      {
-        url: '/work',
-        changefreq: 'daily',
-        priority: 0.8,
-        lastmodISO: '2021-10-28T09:00:00.000Z'
-      },
-      {
-        url: '/mentions-legales',
-        changefreq: 'daily',
-        priority: 0.8,
-        lastmodISO: '2021-10-28T09:00:00.000Z'
-      },
-    ],
-    // other options
-  },
+  // sitemap: {
+  //   hostname: 'https://lmlccommunication.fr',
+  //   gzip: true,
+  //   exclude: [
+  //     '/scrolling',
+  //     ''
+  //     // any other paths you want to exclude
+  //   ],
+  //   urls: [
+  //     {
+  //       url: '/index',
+  //       changefreq: 'daily',
+  //       priority: 1,
+  //       lastmodISO: '2021-10-28T09:00:00.000Z'
+  //     },
+  //     {
+  //       url: '/about',
+  //       changefreq: 'daily',
+  //       priority: 0.8,
+  //       lastmodISO: '2021-10-28T09:00:00.000Z'
+  //     },
+  //     {
+  //       url: '/work',
+  //       changefreq: 'daily',
+  //       priority: 0.8,
+  //       lastmodISO: '2021-10-28T09:00:00.000Z'
+  //     },
+  //     {
+  //       url: '/mentions-legales',
+  //       changefreq: 'daily',
+  //       priority: 0.8,
+  //       lastmodISO: '2021-10-28T09:00:00.000Z'
+  //     },
+  //   ],
+  //   // other options
+  // },
   // sitemap: false,
   // sitemap: {
   //   hostname: 'https://localhost:3000',
