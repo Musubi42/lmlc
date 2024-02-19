@@ -1,5 +1,6 @@
 <template>
-  <div id="caroussel" class="bg-cover bg-center bg-fixed bg-black">
+  <div class="" dir="ltr">
+  <div id="slide0"  class="  bg-cover bg-center bg-fixed bg-black">
     <div class="relative slide w-full h-screen ">
       <div class="carousel-inner relative overflow-hidden h-screen z-1">
         <div 
@@ -43,23 +44,28 @@
   <div v-if="active == 1">
     <Bourges2028 />
   </div>
+</div>
 </template>
 
 <script>
 import Typewriter from 'typewriter-effect/dist/core';
-
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+gsap.registerPlugin(ScrollToPlugin);
 export default {
   data() {
     return {
       active: 0,
       data: [
-        { title: "MONIN", description: "mixologie" },
-        { title: "CAPITALE EUROPEENNE DE LA CULTURE", description: "culture" },
-        { title: "RESSOURCE CORPS-MENTAL", description: "beauté" },
-        { title: "MAISON BOUILLON", description: "food" }
+        { title: "MONIN", description: "mixologie", slide: 1 },
+        { title: "CAPITALE EUROPEENNE DE LA CULTURE", description: "culture", slide: 1  },
+        { title: "RESSOURCE CORPS-MENTAL", description: "beauté", slide: 4 },
+        { title: "MAISON BOUILLON", description: "food", slide: 0  }
       ],
       titleTypewriter: null,
       descriptionTypewriter: null,
+      slide: 0
     };
   },
   methods: {
@@ -96,6 +102,7 @@ export default {
       this.initTypewriter();
     }
   },
+
   watch: {
     active() {
       this.$nextTick(() => {
@@ -105,7 +112,15 @@ export default {
   },
   mounted() {
     this.initTypewriter();
+    // let intentObserver = ScrollTrigger.observe({
+    //   type: "wheel,touch",
+    //   onUp: () => gsap.to(window, { duration: 2, scrollTo: "#slide" + (this.slide - 1) }),
+    //   onDown: () => gsap.to(window, { duration: 2, scrollTo: "#slide" + (this.slide + 1) }),
+    //   tolerance: 10,
+    //   preventDefault: true,
+    // });
   },
+
   beforeDestroy() {
     if (this.titleTypewriter) {
       this.titleTypewriter.stop();
@@ -118,51 +133,9 @@ export default {
 </script>
 
 <style>
-.left-full {
-  left: -100%;
+
+.y.mandatory-scroll-snapping {
+  scroll-snap-type: y mandatory;
 }
 
-.carousel-item {
-  float: left;
-  position: relative;
-  display: block;
-  width: 100%;
-  margin-right: -100%;
-  backface-visibility: hidden;
-}
-
-.carousel-item.active {
-  left: 0;
-}
-
-.text-container {
-  z-index: 100;
-  position: relative;
-}
-
-.flotter-container {
-  position: absolute;
-  animation: flotterAnimation 2s ease-in-out infinite alternate;
-  z-index: 0;
-  /* Ajustez cette valeur si nécessaire */
-}
-
-.flotter-image {
-  width: 50%;
-  height: 50%;
-}
-
-.texts {
-  position: absolute;
-}
-
-@keyframes flotterAnimation {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(-10px);
-  }
-}
 </style>
