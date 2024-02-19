@@ -17,4 +17,6 @@ export default defineNuxtRouteMiddleware(() => {
   const isfirstVisit = stateFirstVisit();
 
   isfirstVisit.value = firstVisit;
+
+  // Faire une gestion de détection mobile et desktop
 });
