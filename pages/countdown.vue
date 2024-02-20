@@ -120,15 +120,19 @@ definePageMeta({
   layout: "menu",
 });
 
-import gsap from "gsap";
+// import gsap from "gsap";
 import { Quart } from "gsap/gsap-core";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+const { $gsap: gsap } = useNuxtApp();
+
+
 
 onMounted(() => {
   time();
 });
 const time = () => {
   // window.addEventListener("load", () => {
-  let birthday = "2024/02/15";
+  let birthday = "2024/02/25";
 
   (function () {
     const second = 1000;
