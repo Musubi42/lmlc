@@ -18,7 +18,54 @@ const ctx = ref();
 let currentIndex = ref(0);
 let animating = ref(false);
 
+// Use i18n
+const { t } = useI18n();
+
+// Get i18n instance
+const { locale } = useI18n();
+
+// Profiles data
+var ceoAndFounder =  ref(t("ceoAndFounder"));
+var headNewBusiness =  ref(t("headNewBusiness"));
+var expertMarketing =  ref(t("expertMarketing"));
+var projectManager =  ref(t("projectManager"));
+var filmDirector =  ref(t("filmDirector"));
+var webDeveloper =  ref(t("webDeveloper"));
+var artisticDirector =  ref(t("artisticDirector"));
+var brandPerformanceExpert =  ref(t("brandPerformanceExpert"));
+
+
+const setLanguageTexts = () => {
+  ceoAndFounder.value = t("ceoAndFounder");
+  headNewBusiness.value = t("headNewBusiness");
+  expertMarketing.value = t("expertMarketing");
+  projectManager.value = t("projectManager");
+  filmDirector.value = t("filmDirector");
+  webDeveloper.value = t("webDeveloper");
+  artisticDirector.value = t("artisticDirector");
+  brandPerformanceExpert.value = t("brandPerformanceExpert");
+
+  console.log(ceoAndFounder.value);
+};
+
+const profiles = ref([
+  { name: 'Léo MATTHIAU', title: ceoAndFounder, imageUrl: './leo.png' },
+  { name: 'Constant GAMBIEZ', title: headNewBusiness, imageUrl: './leo.png' },
+  { name: 'Cécile CARLOU', title: expertMarketing, imageUrl: './leo.png' },
+  { name: 'Aline  MAGNIER', title: projectManager, imageUrl: './leo.png' },
+  { name: 'Léo BOUDET', title: filmDirector, imageUrl: './leo.png' },
+  { name: 'Benjamin ISSNER', title: webDeveloper, imageUrl: './leo.png' },
+  { name: 'Océane LUNVEN', title: artisticDirector, imageUrl: './leo.png' },
+  { name: 'Pascal CHARNEAU ', title: brandPerformanceExpert, imageUrl: './leo.png' },
+]);
+
+
 onMounted(() => {
+  // Get the language change of SwitchLanguage component
+  watch(locale, () => {
+    setLanguageTexts();
+  });
+
   ctx.value = gsap.context((self) => {
     // Swipe section animations
     let swipePanels = gsap.utils.toArray('.swipe-section .panel');
@@ -58,23 +105,8 @@ onMounted(() => {
       currentIndex.value = index;
     }
 
-    // Pin swipe section and initiate observer
-    // ScrollTrigger.create({
-    //   trigger: ".swipe-section",
-    //   pin: true,
-    //   start: "top top",
-    //   onEnter: () => {
-    //     intentObserver.enable();
-    //     gotoPanel(currentIndex.value + 1, true);
-    //   },
-    //   onEnterBack: () => {
-    //     intentObserver.enable();
-    //     gotoPanel(currentIndex.value - 1, false);
-    //   },
-    // });
-
     // Horizontal scrolling section 
-    let horizontalSections = document.querySelectorAll('.horizontal .panell');
+    let horizontalSections = document.querySelectorAll('.horizontal .profile');
     gsap.to(horizontalSections, {
       xPercent: -100 * (horizontalSections.length - 1),
       ease: "none",
@@ -82,7 +114,7 @@ onMounted(() => {
         trigger: ".horizontal",
         pin: true,
         scrub: 1,
-        end: "+=3500",
+        end: "+8500",
       },
     });
   }, main.value);
@@ -95,29 +127,23 @@ onUnmounted(() => {
 
 <template>
   <div>
-    <!-- <div class="description panel blue">
-      <div>
-        <h1>Mixed observer and scrolling...</h1>
-        <div class="scroll-down">
-          Scroll down
-          <div class="arrow"></div>
+    <div class="overscroll-none w-[200vw] h-screen flex flex-nowrap items-center horizontal" :style="{ backgroundColor: talentsBgColor }">
+      <!-- Loop through the profiles data to create elements for each one -->
+      <section v-for="profile in profiles" class="profile text-left ml-20 h-1/2 w-[300px] flex flex-col content-center items-center relative box-border text-white" :key="profile.name">
+        <NuxtImg  class="object-cover w-full" :src="profile.imageUrl" alt="" />
+        <div class="flex flex-col justify-start w-full">
+          <h3 class="font-extrabold text-xl">{{ profile.name }}</h3>
+          <p>{{ profile.title }}</p>
         </div>
-      </div>
+      </section>
     </div>
 
-    <div class="swipe-section">
-      <section class="panel red">ScrollTrigger.observe() section</section>
-      <section class="panel purple">SWIPE SECTION 2</section>
-      <section class="panel blue">SWIPE SECTION 3</section>
-      <section class="panel orange">Last swipe section... continue scrolling</section>
-    </div> -->
-
-    <div class="containerDE horizontal">
+    <!-- <div class="containerDE horizontal">
       <section class="panell h-screen flex content-center items-center relative box-border text-center w-screen text-white" :style="{ backgroundColor: talentsBgColor }">ONE</section>
       <section class="panell h-screen flex content-center items-center relative box-border text-center w-screen text-white" :style="{ backgroundColor: talentsBgColor }">TWO</section>
       <section class="panell h-screen flex content-center items-center relative box-border text-center w-screen text-white" :style="{ backgroundColor: talentsBgColor }">THREE</section>
       <section class="panell h-screen flex content-center items-center relative box-border text-center w-screen text-white" :style="{ backgroundColor: talentsBgColor }">FOUR</section>
-    </div>
+    </div> -->
 
     <Footer />
   </div>
@@ -127,23 +153,5 @@ onUnmounted(() => {
 body {
   overscroll-behavior: none;
   height: 100vh;
-}
-.containerDE {
-  overscroll-behavior: none;
-  width: 400%;
-  height: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.swipe-section {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-}
-
-.swipe-section .panel {
-  position: absolute;
 }
 </style>

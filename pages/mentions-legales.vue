@@ -7,7 +7,7 @@
         {{ introduction }}
       </p>
 
-      <section>
+      <section class="mt-10">
         <h2 class="text-2xl font-bold mb-2">{{ owner }}</h2>
 
         <h3 class="text-xl font-semibold mb-1">{{ ownerName }}</h3>
@@ -23,7 +23,7 @@
         </ul>  
       </section>
 
-      <section>
+      <section class="mt-10">
         <h2 class="text-2xl font-bold mb-2">{{ dev }}</h2>
 
         <p class="mb-4">
@@ -39,7 +39,7 @@
         </p>
       </section>
 
-      <section>
+      <section class="mt-10">
         <h2 class="text-2xl font-bold mb-2">{{ hosting }}</h2>
 
         <h3 class="text-xl font-semibold mb-1">{{ hostingName }}</h3>
@@ -49,7 +49,7 @@
         </p>
       </section>  
 
-      <section>
+      <section class="mt-10">
         <h2 class="text-2xl font-bold mb-2">{{ cookies }}</h2>
 
         <p class="mb-4">
@@ -67,7 +67,7 @@
         </ul>
       </section>
 
-      <section>
+      <section class="mt-10">
         <h2 class="text-2xl font-bold mb-2">{{ consent }}</h2>
 
         <p class="mb-4">
@@ -118,7 +118,7 @@ export default {
 
   mounted() {
     // Get the language change of SwitchLanguage component
-     watch(() => this.$i18n.locale, () => {
+    watch(() => this.$i18n.locale, () => {
       this.setLanguageTexts();
     });
   },

@@ -1,7 +1,7 @@
 <template>
   <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200">
     <!-- Partie métiers -->
-    <ServicesAnimation v-if="showServicesAnimation" :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="hidden md:relative z-0 pointer-events-none" />
+    <ServicesAnimation v-if="showServicesAnimation" :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="hidden md:block relative z-0 pointer-events-none" />
 
     <div ref="aboutMetier">
       <MetierCopy  />
@@ -124,7 +124,7 @@ export default {
       this.showServicesAnimation = true;
     }, 2000);
 
-    // this.sectionMetierHeight = this.$refs.metier.offsetHeight;
+    this.sectionMetierHeight = this.$refs.aboutMetier.offsetHeight;
     this.observerScrollHorizontal = new IntersectionObserver(
       this.handleScrollHorizontal,
       {
