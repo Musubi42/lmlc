@@ -18,7 +18,7 @@
 </div> 
     </div>
   </div>
-  <div>
+  <div >
     <div class="containerDE horizontal h-screen w-screen">
       <video class="panell h-screen flex content-center items-center relative mx-5"
         autoplay loop muted>
