@@ -1,21 +1,21 @@
 <template>
   <div id="slide1" class="flex container mx-auto p-8 h-screen">
-    <div class="flex-grow flex flex-col justify-end mb-20">
-      <h1 class="text-9xl font-bold mr-4"> {{ t("TitleMonin") }}</h1>
+    <div class="flex-grow flex flex-col justify-end lg:mb-20">
+      <h1 class="lg:text-9xl font-bold lg:mr-4"> {{ t("TitleMonin") }}</h1>
       <p class="text-lg mb-4">
         {{ t("DescriptionMonin[0]") }} <br>
-        {{ t("DescriptionMonin[1]") }} <br>
-        {{ t("DescriptionMonin[2]") }}<br>
+        {{ t("DescriptionMonin[1]") }} <br> 
+        {{ t("DescriptionMonin[2]") }}<br> 
         {{ t("DescriptionMonin[3]") }}
       </p>
       <p class="text-base mb-4 font-extralight">
         {{ t("WorkMonin[0]") }} <br>
-        {{ t("WorkMonin[1]") }} <br>
-        {{ t("WorkMonin[2]") }}<br>
+        {{ t("WorkMonin[1]") }} <br> 
+        {{ t("WorkMonin[2]") }}<br> 
         {{ t("WorkMonin[3]") }}
       </p>
     </div>
-    <div class="flex-none w-2/5 relative mt-8">
+    <div class="flex-none lg:w-2/5 relative lg:mt-8">
       <img src="/monin.gif" alt="GIF" class=" object-cover">
 
     </div>
@@ -23,41 +23,31 @@
   <div>
     <div class="containerDE horizontal h-screen w-screen">
       <div class="panell h-screen ">
-        <video
-          class=" h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          autoplay loop muted>
+        <video class=" h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
           <source :src="`/video/1.mov`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       <div class="panell h-screen">
-        <video
-          class=" h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          autoplay loop muted>
+        <video class=" h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
           <source :src="`/video/2.mov`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       <div class="panell h-screen">
-        <video
-          class=" h-[75%]  flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          autoplay loop muted>
+        <video class=" h-[75%]  flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
           <source :src="`/video/3.mov`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       <div class="panell h-screen">
-        <video
-          class=" h-[75%]  flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          autoplay loop muted>
+        <video class=" h-[75%]  flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
           <source :src="`/video/4.mov`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       <div class="panell h-screen">
-        <video
-          class=" h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          autoplay loop muted>
+        <video class=" h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
           <source :src="`/video/5.png`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -157,4 +147,5 @@ onUnmounted(() => {
 
 .swipe-section .panel {
   position: absolute;
-}</style>
+}
+</style>
