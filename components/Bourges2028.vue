@@ -1,15 +1,15 @@
 <template>
     <div id="slide1" class="flex container mx-auto  h-screen">
         <div class="flex-grow flex flex-col justify-end mb-16">
-            <h1 class="text-8xl font-bold mr-4">{{ t("TitleBourges[0]") }}<br> {{ t("TitleBourges[1]") }}<br>
+            <h1 class="lg:text-8xl font-bold mr-4">{{ t("TitleBourges[0]") }}<br> {{ t("TitleBourges[1]") }}<br>
                 {{ t("TitleBourges[2]") }}</h1>
-            <p class="text-lg mb-4">
+            <p class="lg:text-lg mb-4">
                 {{ t("DescriptionBourges[0]") }} <br>
                 {{ t("DescriptionBourges[1]") }} <br>
                 {{ t("DescriptionBourges[2]") }} <br>
                 {{ t("DescriptionBourges[3]") }}
             </p>
-            <p class="text-base mb-4 font-extralight">
+            <p class="lg:text-base mb-4 font-extralight">
                 {{ t("WorkBourges[0]") }}<br>
                 {{ t("WorkBourges[1]") }}<br>
                 {{ t("WorkBourges[2]") }}<br>
