@@ -1,8 +1,113 @@
 <template>
   <div
-    class="bg-cover h-full w-full bg-interactive-whiteboard relative overflow-hidden"
-    ref="drawhere"
-  >
+    class="bg-cover h-full w-full bg-white relative overflow-hidden"
+    id="drawhere"
+    ref="drawhere" >
+
+    <!-- bouillon Mobile -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 302 302"
+      class="hidden" >
+      <path
+        id="bouillonMobile"
+      />
+    </svg>
+
+    <!-- timurQualiPNG Mobile -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 302 302"
+      class="hidden" >
+      <path
+        id="timurQualiPNGMobile"
+      />
+    </svg>
+
+    <!-- sacBleu Mobile -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 302 302"
+      class="hidden" >
+      <path
+        id="sacBleuMobile"
+      />
+    </svg>
+
+    <!-- fauteuilRouge Mobile -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 302 302"
+      class="hidden" >
+      <path
+        id="fauteuilRougeMobile"
+      />
+    </svg>
+
+    <!-- Un Mobile -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 302 302"
+      class="hidden"
+    >
+      <path
+        id="unMobile"
+      />
+    </svg>
+
+    <!-- Deux Mobile -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 302 302"
+      class="hidden"
+    >
+      <path
+        id="deuxMobile"
+      />
+    </svg>
+
+    <!-- Monin Mobile -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="3.35556in"
+      height="3.35556in"
+      viewBox="0 0 302 302"
+      class="hidden"
+    >
+      <path
+        id="moninMobile"
+        class="gif"
+        fill="none"
+        stroke="black"
+        stroke-width="1"
+        d="M 123.00,148.00
+           C 123.83,137.87 128.20,144.72 133.10,134.00
+             133.10,134.00 138.36,113.00 138.36,113.00
+             141.88,102.70 152.00,94.52 163.00,94.04
+             186.53,93.02 190.39,123.17 196.00,140.00
+             196.00,140.00 198.23,139.08 198.23,139.08
+             198.23,139.08 210.00,144.00 210.00,144.00
+             210.00,144.00 204.00,148.00 204.00,148.00
+             204.00,148.00 225.00,149.00 225.00,149.00
+             228.30,149.08 232.93,149.09 235.44,151.56
+             237.65,153.72 242.53,168.34 243.57,172.00
+             248.32,188.64 252.32,211.85 250.28,229.00
+             249.71,233.84 250.04,241.78 247.15,245.85
+             246.25,247.11 245.38,247.83 243.95,248.40
+             243.95,248.40 229.00,250.91 229.00,250.91
+             229.00,250.91 201.00,245.61 201.00,245.61
+             201.00,245.61 179.00,241.92 179.00,241.92
+             179.00,241.92 166.72,241.92 166.72,241.92
+             166.72,241.92 155.00,241.00 155.00,241.00
+             136.36,240.97 136.63,240.79 118.00,243.42
+             112.22,244.24 99.04,247.03 94.00,246.00
+             79.23,242.97 79.02,235.17 79.00,222.00
+             78.97,200.47 80.74,188.55 87.12,168.00
+             88.53,163.43 92.17,151.78 96.27,149.43
+             98.58,148.11 102.39,148.03 105.00,148.00
+             105.00,148.00 123.00,148.00 123.00,148.00 Z"
+      />
+    </svg>
     <!-- sac bleu svg -->
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -46,6 +151,33 @@
       />
     </svg>
 
+    <path
+      id="timurBig"
+    />
+    <path
+      id="bouillon"
+    />
+    <path
+      id="un"
+    />
+    <path
+      id="deux"
+    />
+    <path
+      id="timurQualiSVG"
+    />
+
+    <path
+      id="moninGrand"
+    />
+
+    <path
+      id="timurQualiPNG"
+    />
+
+    <path
+      id="moninShadow"
+    />
     <!-- Monin -->
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -669,6 +801,11 @@ function dragElement(element, dragHandle) {
 }
 
 export default {
+  setup() {
+    const drawhere = ref(null);
+
+    return { drawhere };
+  },
   data: function () {
     return {
       canvasProp: {
@@ -688,6 +825,10 @@ export default {
   },
   mounted() {
     if (process.client) {
+    // console.log(window.getComputedStyle(drawhere, null));
+    console.log(document.getElementById("drawhere").offsetHeight);
+    // console.log(window.getComputedStyle(drawhere, null).getPropertyValue('width'));
+    // console.log(window.getComputedStyle(drawhere, null).getPropertyValue('height'));
       this.loadScript(
         "https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.js",
         () => {
@@ -703,8 +844,14 @@ export default {
           const Body = Matter.Body;
           const Constraint = Matter.Constraint;
 
-          let drawhereWidth = this.$refs.drawhere.offsetWidth;
-          let drawhereHeight = this.$refs.drawhere.offsetHeight;
+
+          // let drawhereWidth = window.getComputedStyle(drawhere, null).getPropertyValue('width');
+          // let drawhereHeight = window.getComputedStyle(drawhere, null).getPropertyValue('height');
+          // let drawhereWidth = 400;
+          // let drawhereHeight = 400;
+
+          let drawhereHeight = document.getElementById("drawhere").offsetHeight;
+          let drawhereWidth = document.getElementById("drawhere").offsetWidth;
 
           window.decomp = decomp;
           const width = drawhereWidth;
@@ -753,7 +900,7 @@ export default {
               sprite: {
                 xScale: 0.5,
                 yScale: 0.5,
-                image: "./images/sac-bleu.png",
+                image: "./tableau/images/sac-bleu.png",
               },
               constraint: {
                 x: 3,
@@ -775,9 +922,81 @@ export default {
                 scaleFactor: 0.3,
               },
               sprite: {
-                xScale: 0.3,
-                yScale: 0.3,
-                image: "./images/monin.png",
+                xScale: 0.5,
+                yScale: 0.5,
+                image: "./tableau/images/monin.png",
+              },
+              constraint: {
+                x: -5,
+                y: 30,
+              },
+            },
+            moninShadow: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 270,
+                scaleFactor: 0.3,
+              },
+              sprite: {
+                xScale: 0.5,
+                yScale: 0.5,
+                image: "./tableau/images/moninShadow.png",
+              },
+              constraint: {
+                x: -5,
+                y: 30,
+              },
+            },
+            moninSmall: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 270,
+                scaleFactor: 0.3,
+              },
+              sprite: {
+                xScale: 1,
+                yScale: 1,
+                image: "./tableau/images/moninSmallQuali.png",
+              },
+              constraint: {
+                x: -5,
+                y: 30,
+              },
+            },
+            moninGrand: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 270,
+                scaleFactor: 0.3,
+              },
+              sprite: {
+                xScale: 0.15,
+                yScale: 0.15,
+                image: "./tableau/images/moninGrand.png",
               },
               constraint: {
                 x: -5,
@@ -801,7 +1020,103 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "./images/Timur.png",
+                image: "./tableau/images/timur.png",
+              },
+              constraint: {
+                x: 10,
+                y: 20,
+              },
+            },
+            bouillon: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 0.45,
+                scaleFactor: 0.25,
+              },
+              sprite: {
+                xScale: 0.25,
+                yScale: 0.25,
+                image: "./tableau/images/bouillon.png",
+              },
+              constraint: {
+                x: 10,
+                y: 20,
+              },
+            },
+            timurBig: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 0.45,
+                scaleFactor: 0.25,
+              },
+              sprite: {
+                xScale: 0.5,
+                yScale: 0.5,
+                image: "./tableau/images/timur.png",
+              },
+              constraint: {
+                x: 10,
+                y: 20,
+              },
+            },
+            timurQualiSVG: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 0.45,
+                scaleFactor: 0.25,
+              },
+              sprite: {
+                xScale: 1,
+                yScale: 1,
+                image: "./tableau/images/timurQuali.svg",
+              },
+              constraint: {
+                x: 10,
+                y: 20,
+              },
+            },
+            timurQualiPNG: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: 0.45,
+                scaleFactor: 0.25,
+              },
+              sprite: {
+                xScale: 1,
+                yScale: 1,
+                image: "./tableau/images/timurQuali.png",
               },
               constraint: {
                 x: 10,
@@ -824,7 +1139,7 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "./images/bourges2024.png",
+                image: "./tableau/images/bourges2024.png",
               },
               constraint: {
                 x: 0,
@@ -848,7 +1163,7 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "./images/fauteuilRouge.png",
+                image: "./tableau/images/fauteuilRouge.png",
               },
               constraint: {
                 x: 0,
@@ -872,7 +1187,7 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "./images/lampeRouge.png",
+                image: "./tableau/images/lampeRouge.png",
               },
               constraint: {
                 x: 0,
@@ -896,37 +1211,289 @@ export default {
               sprite: {
                 xScale: 0.25,
                 yScale: 0.25,
-                image: "./images/tableRouge.png",
+                image: "./tableau/images/tableRouge.png",
               },
               constraint: {
                 x: -1,
                 y: -4,
               },
             },
+            un: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: -0.04,
+                scaleFactor: 1.1,
+              },
+              sprite: {
+                xScale: 0.12,
+                yScale: 0.12,
+                image: "./tableau/images/un.png",
+              },
+              constraint: {
+                x: -1,
+                y: -4,
+              },
+            },
+            deux: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                angle: -0.04,
+                scaleFactor: 1.1,
+              },
+              sprite: {
+                xScale: 0.11,
+                yScale: 0.11,
+                image: "./tableau/images/deux.png",
+              },
+              constraint: {
+                x: -1,
+                y: -4,
+              },
+            },
+            moninMobile: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  width: 0,
+                  height: 0,
+                },
+                size: {
+                  width: 63,
+                  height: 255,
+                },
+                angle: 270,
+                scaleFactor: 0.3,
+              },
+              sprite: {
+                xScale: 0.075,
+                yScale: 0.075,
+                image: "./tableau/images/moninGrand.png",
+              },
+              constraint: {
+                x: 0,
+                y: 0,
+              },
+            },
+            unMobile: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                size:  {
+                  width: 150,
+                  height: 210,
+                },
+                angle: -0.04,
+                scaleFactor: 1.1,
+              },
+              sprite: {
+                xScale: 0.06,
+                yScale: 0.06,
+                image: "./tableau/images/un.png",
+              },
+              constraint: {
+                x: 0,
+                y: 0,
+              },
+            },
+            deuxMobile: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                size:  {
+                  width: 150,
+                  height: 210,
+                },
+                angle: -0.04,
+                scaleFactor: 1.1,
+              },
+              sprite: {
+                xScale: 0.06,
+                yScale: 0.06,
+                image: "./tableau/images/deux.png",
+              },
+              constraint: {
+                x: -1,
+                y: -4,
+              },
+            },
+            timurQualiPNGMobile: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                size:  {
+                  width: 50,
+                  height: 140,
+                },
+                angle: 270,
+                scaleFactor: 0.25,
+              },
+              sprite: {
+                xScale: 0.49,
+                yScale: 0.49,
+                image: "./tableau/images/timurQuali.png",
+              },
+              constraint: {
+                x: 0,
+                y: 0,
+              },
+            },
+            sacBleuMobile: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                size:  {
+                  width: 120,
+                  height: 70,
+                },
+                angle: -0.04,
+                scaleFactor: 1.1,
+              },
+              sprite: {
+                xScale: 0.30,
+                yScale: 0.30,
+                image: "./tableau/images/sac-bleu.png",
+              },
+              constraint: {
+                x: 0,
+                y: 0,
+              },
+            },
+            fauteuilRougeMobile: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                size:  {
+                  width: 150,
+                  height: 90,
+                },
+                angle: -0.04,
+                scaleFactor: 1.1,
+              },
+              sprite: {
+                xScale: 0.12,
+                yScale: 0.12,
+                image: "./tableau/images/fauteuilRouge.png",
+              },
+              constraint: {
+                x: 0,
+                y: 30,
+              },
+            },
+            bouillonMobile: {
+              body: {
+                speed: 0,
+                position: {
+                  x: 0,
+                  y: 0,
+                },
+                velocity: {
+                  x: 0,
+                  y: 0,
+                },
+                size: {
+                  width: 63,
+                  height: 205,
+                },
+                angle: 0.45,
+                scaleFactor: 0.25,
+              },
+              sprite: {
+                xScale: 0.16,
+                yScale: 0.16,
+                image: "./tableau/images/bouillon.png",
+              },
+              constraint: {
+                x: 0,
+                y: 0,
+              },
+            },
           };
 
-          // const worker = new Worker(
-          //   new URL("/workers/tableau.js", import.meta.url),
-          //   { type: "module" }
-          // );
           const worker = new Worker(
             new URL("/assets/workers/tableau.js", import.meta.url),
             { type: "module" }
           );
 
-          const uniqueBody = { sacBleu, monin, timur, bourges2024 };
+          // Changer l'ordre de rendu des objets permet de faire passer les uns au-dessus des autres
+          // const uniqueBody = { moninGrand, bouillon, timurQualiPNG, un, deux, sacBleu, fauteuilRouge };
+          // const uniqueBody = { moninMobile, bouillonMobile, timurQualiPNGMobile, unMobile, deuxMobile, sacBleuMobile, fauteuilRougeMobile };
+          const uniqueBody = { moninMobile, bouillonMobile, timurQualiPNGMobile, unMobile, deuxMobile, sacBleuMobile, fauteuilRougeMobile };
+          // const uniqueBody = { sacBleu, monin, timur, bourges2024 };
+          // const uniqueBody = { timur, moninGrand };
+
           function createsUniqueBody() {
             const forMainThread = true;
             for (let key in uniqueBody) {
               worker.postMessage({
                 functionName: "createBody",
-                args: [key, meubles, forMainThread],
+                args: [key, meubles, forMainThread, drawhereWidth, drawhereHeight],
               });
             }
           }
 
           createsUniqueBody();
 
+          // scaleVertices = function (vertices, scaleFactor) {
+          //   for (let i = 0; i < vertices.length; i++) {
+          //     vertices[i].x *= scaleFactor;
+          //     vertices[i].y *= scaleFactor;
+          //   }
+          // };
 
           worker.onmessage = function (event) {
             const { functionName, args } = event.data;
@@ -939,12 +1506,41 @@ export default {
                 Body.setAngle(spriteBody, body.angle);
               });
 
-              Composite.add(world, [body, spriteBody, constraint]);
-            } 
+              if (spriteBody.parts[0].render.sprite.texture.match("moninShadow")) {
+                Composite.add(world, body);
+              } else {
+                Composite.add(world, [body, spriteBody, constraint]);
+              }
+            }
 
             // Render the world
             Render.run(render);
           };
+
+
+          // On peut jouer avec, mais il n'y a pas de collision
+          // Composite.add(world, Bodies.rectangle(
+          //   200,
+          //   200,
+          //   200,
+          //   200,
+          //   {
+          //     collisionFilter: {
+          //       category: 0x0002, // You can set your own category here
+          //       mask: 0x0002, // Enable or disable collision based on collisionEnabled
+          //     },
+          //     render: {
+          //       opacity: 1,
+          //       sprite: {
+          //         texture: meubles["moninShadow"].sprite.image,
+          //         xScale: meubles["moninShadow"].sprite.xScale,
+          //         yScale: meubles["moninShadow"].sprite.yScale,
+          //         xOffset: 0,
+          //         yOffset: 0,
+          //       }
+          //     }
+          //   }
+          // ))
 
           var mouse = Mouse.create(render.canvas),
             mouseConstraint = MouseConstraint.create(engine, {
@@ -953,6 +1549,9 @@ export default {
                 render: {
                   visible: false,
                 },
+              },
+              collisionFilter: {
+                category: 0x0002 // Adjust this value as needed
               },
             });
 
@@ -975,7 +1574,8 @@ export default {
 
           async function CreateBodyFromJSON(key) {
             // Fetch the file from the public folder
-            const response = await fetch(`/images/${key}.json`);
+            const response = await fetch(`/tableau/vertices/${key}.json`);
+            // assets/tableau/vertices/tableRouge.json
             if (!response.ok) {
               console.error(`Error fetching file: ${response.statusText}`);
               return;
@@ -984,16 +1584,11 @@ export default {
 
             const positionX = meubles[key].body.position.x;
             const positionY = meubles[key].body.position.y;
-            let body = Bodies.fromVertices(
-              positionX,
-              positionY,
-              [fileContent],
-              {
-                render: {
-                  visible: false,
-                },
-              }
-            );
+            let body = Bodies.fromVertices(positionX, positionY, [fileContent], {
+              render: {
+                visible: false,
+              },
+            });
 
             Body.setAngle(body, meubles[key].body.angle);
 
@@ -1012,8 +1607,8 @@ export default {
                     texture: meubles[key].sprite.image,
                     // xScale: meubles[key].sprite.xScale,
                     // yScale: meubles[key].sprite.yScale,
-                    xScale: 1,
-                    yScale: 1,
+                    xScale: 0.2,
+                    yScale: 0.2,
                     xOffset: 0,
                     yOffset: 0,
                   },
@@ -1034,7 +1629,6 @@ export default {
                 visible: false,
               },
             });
-
 
             Events.on(engine, "beforeUpdate", function (event) {
               // Set the angle of the spriteBody to the angle of the body
@@ -1096,24 +1690,25 @@ export default {
             }, 3000);
           }
 
-          animateGif();
+          // animateGif();
 
           const offset = this.canvasProp.wallWidth;
           const options = {
             isStatic: true,
-            removeCollinear: 0,
+            // removeCollinear: 0,
             restitution: 0,
+            collisionFilter: {
+              category: 0xFFFFFFFF, // You can set your own category here
+              // mask: 0x0002, // Enable or disable collision based on collisionEnabled
+            },
+            render: {
+              fillStyle: 'transparent', // This will make the rectangle red
+            },
           };
 
           // Ce sont les murs du tableau
           Composite.add(world, [
-            Bodies.rectangle(
-              width / 2,
-              offset / -2,
-              width + offset * 2,
-              offset,
-              options
-            ), // Plafond
+            Bodies.rectangle(width / 2, (offset / -2) + 64, width + offset * 2, offset, options), // Plafond
             Bodies.rectangle(
               offset / -2,
               height / 2,
@@ -1149,8 +1744,8 @@ export default {
     }
   },
   unmounted() {
-    Events.off(engine, "beforeUpdate");
-    worker.terminate();
+    // Events.off(engine, "beforeUpdate");
+    // worker.terminate();
   },
   methods: {
     loadScript(src, callback) {

@@ -151,11 +151,11 @@ export default {
     setTimeout(() => {
       this.showOverlay = false;
 
-      const sectiondescriptionMetier = document.querySelectorAll("#sectionDescriptionMetier");
-      for (let i = 0; i < sectiondescriptionMetier.length; i++) {
-        sectiondescriptionMetier[i].classList.add("section-content-list");
-      }
-    }, 500);
+      // const sectiondescriptionMetier = document.querySelectorAll("#sectionDescriptionMetier");
+      // for (let i = 0; i < sectiondescriptionMetier.length; i++) {
+      //   sectiondescriptionMetier[i].classList.add("section-content-list");
+      // }
+    }, 700);
 
     window.addEventListener("mousemove", this.handleScroll);
     window.addEventListener("mousemove", this.handleMouseMove);

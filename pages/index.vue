@@ -8,11 +8,26 @@
 </video>
   </div> -->
     <div class="h-[92vh]">
+    <!-- TODO: Au format mobile ajouter un indicateur de scroll, chevron vers le bas -->
+    <!-- Une fois le premier scroll faire disparaitre le chevron -->
       <div
-        class=" w-full h-[100%] md:h-[100%]"
+        class=" w-full h-full"
       >
-        <tableauTest v-if="!IntroAnimation" v-cursorAnimation :key="componentKey" />
-        <!-- <tableauTest v-if="true" v-cursorAnimation :key="componentKey" class="h-full" /> -->
+        <div class="w-screen h-[90%] md:h-full">
+          <!-- <tableauTest v-if="!IntroAnimation" v-cursorAnimation :key="componentKey" /> -->
+          <tableauTest v-if="true" v-cursorAnimation :key="componentKey" />
+        </div>
+        <div 
+          class="flex md:hidden w-screen h-[10%] items-center justify-center appear-after-a-moment touched"
+          @touchstart="isScrolling"
+          :style="{ display: hasScrolled ? 'none' : 'flex' }"
+        >
+          <button type="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
+              <path fill="currentColor" fill-rule="evenodd" d="M2.22 5.22a.75.75 0 0 0 0 1.06l5.252 5.252a.75.75 0 0 0 1.06 0l5.252-5.252a.75.75 0 1 0-1.06-1.06L8.001 9.94L3.28 5.22a.75.75 0 0 0-1.06 0" clip-rule="evenodd"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
     <!-- TODO: Padding footer pour l'effet scroll : pb-20 md:pb-80 -->
@@ -67,9 +82,34 @@
 </template>
 
 <style scoped>
-.tableau-shadow {
-  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.1),
-    0px -5px 10px 1px rgba(0, 0, 0, 0.1);
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+.appear-after-a-moment {
+  /* opacity: 0; */
+  animation: appear 6s;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>
 
@@ -130,6 +170,7 @@ export default {
       paragraphSpacing: 0,
       oui: null,
       componentKey: ref(1),
+      hasScrolled: false,
     };
   },
   computed: {
@@ -179,6 +220,10 @@ export default {
   },
 
   methods: {
+    isScrolling() {
+      console.log("hji");
+      this.hasScrolled = true;
+    },
     calculateScrollSpeed(width) {
       if (width <= 350) {
         return 8;
