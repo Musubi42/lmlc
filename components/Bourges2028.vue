@@ -1,47 +1,51 @@
 <template>
-    <div id="slide1" class="h-screen">
-        <div class="flex items-center mb-8 xl:ml-14 xl:mr-14 xl:mt-14">
-            <div class="xl:mt-20">
-                <h1 class="lg:text-1xl xl:text-6xl font-bold xl:mr-4">CAPITALE<br> EUROPEENNE<br>
-                    DE LA CULTURE</h1>
-                <p class="text-lg mb-4">La ville de Bourges, sacrée capitale européenne de <br> la culture 2028, a été
-                    accompagnée par notre <br> agence dans le cadre de sa candidature, afin de la <br> conduire jusqu'à la
-                    victoire.
-                </p>
-                <p class="text-base mb-4 ">
-                    consulting<br>
-                    DA & graphisme<br>
-                    charte graphique<br>
-                    édition & mise en page<br>
-                    production audiovisuelle<br>
-                    développement web<br>
-                </p>
+    <div id="slide1" class="flex container mx-auto  h-screen">
+        <div class="flex-grow flex flex-col justify-end mb-16">
+            <h1 class="text-8xl font-bold mr-4">{{ t("TitleBourges[0]") }}<br> {{ t("TitleBourges[1]") }}<br>
+                {{ t("TitleBourges[2]") }}</h1>
+            <p class="text-lg mb-4">
+                {{ t("DescriptionBourges[0]") }} <br>
+                {{ t("DescriptionBourges[1]") }} <br>
+                {{ t("DescriptionBourges[2]") }} <br>
+                {{ t("DescriptionBourges[3]") }}
+            </p>
+            <p class="text-base mb-4 font-extralight">
+                {{ t("WorkBourges[0]") }}<br>
+                {{ t("WorkBourges[1]") }}<br>
+                {{ t("WorkBourges[2]") }}<br>
+                {{ t("WorkBourges[3]") }}<br>
+                {{ t("WorkBourges[4]") }}<br>
+                {{ t("WorkBourges[5]") }}<br>
+            </p>
+        </div>
+        <div class="">
+            <div class="floating_book_container">
+                <img src="/BidBook.png" alt="GIF" class="floating_book xl:ml-auto">
             </div>
-            <div class="">
-                <div class="floating_book_container">
-                    <img src="/BidBook.png" alt="GIF" class="floating_book xl:ml-auto">
-                </div>
-                <div class="floating_book_container">
-                    <img src="/couverture_bidbook_.png" alt="GIF" class="floating_book xl:ml-auto">
-                </div>
+            <div class="floating_book_container">
+                <img src="/couverture_bidbook_.png" alt="GIF" class="floating_book xl:ml-auto">
             </div>
         </div>
+
     </div>
     <div id="slide2" class="h-screen">
         <img src="/Bourges2028.png" alt="GIF" class="h-screen w-screen">
     </div>
-    <div id="slide3" class="flex  h-screen w-screen">
-        <div class="basis-1/2">
-            <div>
-                <img src="/BidBook.png" alt="">
-            </div>
-        </div>
-        <div class="basis-1/2">
-            <img src="/BidBook.png" alt="">
-        </div>
-    </div>
-    <div id="slide4" class="flex  h-screen">
+    <div id="slide3" class="flex h-screen w-screen items-center justify-center">
+        <div class="relative basis-1/2">
+            <img src="/BidBook.png" alt="Bid Book Image" class="w-full h-auto">
 
+            <p class="absolute bottom-10 w-full text-center p-4">
+                réalisation du dossier de candidature pour la demi-finale
+            </p>
+        </div>
+        <div class="relative basis-1/2">
+            <img src="/BidBook.png" alt="Bid Book Image" class="w-full h-auto">
+
+            <p class="absolute bottom-10 w-full text-center p-4 ">
+                réalisation du dossier de candidature pour la finale
+            </p>
+        </div>
     </div>
 </template>
 
@@ -66,3 +70,7 @@
     }
 }
 </style>
+
+<script setup>
+const { t } = useI18n();
+</script>
