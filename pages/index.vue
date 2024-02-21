@@ -13,14 +13,14 @@
       <div
         class=" w-full h-full"
       >
-        <div class="w-screen h-[90%] md:h-full">
+        <div class="w-screen font-extralight h-[90%] md:h-full">
           <!-- <tableauTest v-if="!IntroAnimation" v-cursorAnimation :key="componentKey" /> -->
           <tableauTest v-if="true" v-cursorAnimation :key="componentKey" />
         </div>
         <div 
-          class="flex md:hidden w-screen h-[10%] items-center justify-center appear-after-a-moment touched"
+          class="flex md:hidden w-screen h-[10%] items-center justify-center appear-after-a-moment"
           @touchstart="isScrolling"
-          :style="{ display: hasScrolled ? 'none' : 'flex' }"
+          :style="{ display: isMobile && !hasScrolled ? 'flex' : 'none' }"
         >
           <button type="">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
@@ -149,11 +149,14 @@ export default {
       IntroAnimation.value = false;
     }
 
+    const isMobile = stateIsMobile();
+
     return {
       IntroAnimation,
       isIntroAnimation,
       isFirstVisit,
       firstVisit,
+      isMobile,
     }
   },
   data() {
