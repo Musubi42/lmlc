@@ -1,15 +1,15 @@
 <template>
     <div id="slide1" class="flex container mx-auto  h-screen">
-        <div class="flex-grow flex flex-col justify-end mb-16">
-            <h1 class="lg:text-8xl font-bold mr-4">{{ t("TitleBourges[0]") }}<br> {{ t("TitleBourges[1]") }}<br>
+        <div class="flex-grow flex flex-col justify-end mb-16 basis-1/2">
+            <h1 class="2xl:text-8xl lg:text-5xl font-bold mr-4">{{ t("TitleBourges[0]") }}<br> {{ t("TitleBourges[1]") }}<br>
                 {{ t("TitleBourges[2]") }}</h1>
-            <p class="lg:text-lg mb-4">
+            <p class="2xl:text-2xl lg:text-sm mb-4">    
                 {{ t("DescriptionBourges[0]") }} <br>
                 {{ t("DescriptionBourges[1]") }} <br>
                 {{ t("DescriptionBourges[2]") }} <br>
                 {{ t("DescriptionBourges[3]") }}
             </p>
-            <p class="lg:text-base mb-4 font-extralight">
+            <p class="2xl:text-base lg:text-sm 2xl:mb-4 lg:mb-10 font-extralight">
                 {{ t("WorkBourges[0]") }}<br>
                 {{ t("WorkBourges[1]") }}<br>
                 {{ t("WorkBourges[2]") }}<br>
@@ -18,12 +18,12 @@
                 {{ t("WorkBourges[5]") }}<br>
             </p>
         </div>
-        <div class="">
+        <div class="basis-1/2 ">
             <div class="floating_book_container">
-                <img src="/BidBook.png" alt="GIF" class="floating_book xl:ml-auto">
+                <img src="/BidBook.png" alt="GIF" class="floating_book w-1/6 xl:ml-auto">
             </div>
             <div class="floating_book_container">
-                <img src="/couverture_bidbook_.png" alt="GIF" class="floating_book xl:ml-auto">
+                <img src="/couverture_bidbook_.png" alt="GIF" class="floating_book w-1/6 xl:ml-auto">
             </div>
         </div>
 
@@ -56,8 +56,6 @@
 }
 
 .floating_book {
-    width: 50%;
-    height: 50%;
 }
 
 @keyframes flotterAnimation {
