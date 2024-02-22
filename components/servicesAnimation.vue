@@ -54,7 +54,6 @@ export default {
       if (this.metierHeight && !this.serviceMetierHeight) {
         this.serviceMetierHeight = this.metierHeight;
       }
-      console.log(this.mousePositionY, this.metierHeight, this.serviceMetierHeight);
       this.isOnAnimationArea = this.mousePositionY < this.serviceMetierHeight;
     },
   },
@@ -66,7 +65,6 @@ export default {
       );
 
       if (distance > 50 && this.isOnAnimationArea) {
-        console.log("ici");
         const allImages = document.querySelectorAll(".mouse-container img");
 
         // Compte le nombre d'image, tant qu'on en a pas fait le tour on fait apparaitre toutes les images
