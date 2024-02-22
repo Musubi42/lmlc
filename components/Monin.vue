@@ -1,22 +1,25 @@
 <template>
   <a id="slide1"></a>
-  <div  class="flex container mx-auto p-8 h-screen">
-    <div class="flex-grow flex flex-col justify-end 2xl:mb-20">
-      <h1 class="2xl:text-9xl lg:text-8xl text-7xl font-bold 2xl:mr-4 lg:mr-4 "> {{ t("TitleMonin") }}</h1>
-      <p class="lg:text-2xl  text-base mb-4">
-        {{ t("DescriptionMonin[0]") }} <br>
-        {{ t("DescriptionMonin[1]") }} <br> 
-        {{ t("DescriptionMonin[2]") }}<br> 
-        {{ t("DescriptionMonin[3]") }}
-      </p>
-      <p class="text-base mb-4 font-extralight">
-        {{ t("WorkMonin[0]") }} <br>
-        {{ t("WorkMonin[1]") }} <br> 
-        {{ t("WorkMonin[2]") }}<br> 
-        {{ t("WorkMonin[3]") }}
-      </p>
-    </div>
+  <div class="flex flex-col lg:flex-row container mx-auto p-8 h-screen">
+  <div class="flex-grow flex flex-col justify-end 2xl:mb-20 lg:order-2 order-1">
+    <h1 class="2xl:text-9xl lg:text-8xl text-7xl font-bold 2xl:mr-4 lg:mr-4"> {{ t("TitleMonin") }}</h1>
+    <p class="lg:text-2xl text-base mb-4">
+      {{ t("DescriptionMonin[0]") }} <br>
+      {{ t("DescriptionMonin[1]") }} <br> 
+      {{ t("DescriptionMonin[2]") }}<br> 
+      {{ t("DescriptionMonin[3]") }}
+    </p>
+    <p class="text-base mb-4 font-extralight">
+      {{ t("WorkMonin[0]") }} <br>
+      {{ t("WorkMonin[1]") }} <br> 
+      {{ t("WorkMonin[2]") }}<br> 
+      {{ t("WorkMonin[3]") }}
+    </p>
   </div>
+  <div class="flex 2xl:w-2/5 lg:w-1/4 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-1 order-2">
+    <img src="/monin.gif" alt="GIF" class="object-cover">
+  </div>
+</div>
   <div>
     <a id="slide2"></a>
     <div class="containerDE horizontal h-screen">
