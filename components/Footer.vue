@@ -1,7 +1,7 @@
 <template>
   <!-- TODO: Pour faire l'effet d'image qui follow sur le hover -->
   <!-- https://codepen.io/coreDeiv/pen/YzqzRKK -->
-  <footer class="bottom-0 bg-black text-white w-full h-auto pb-14" data-footer-element>
+  <footer id="footer" class="bottom-0 bg-black text-white w-full h-auto pb-14" data-footer-element>
     <div class="flex flex-row px-[10%] py-[5%]" data-footer-element>
       <div class="flex-1 mb-24 md:mb-0" data-footer-element>
         <div class="mb-3 md:mb-8 w-fit" data-footer-element>

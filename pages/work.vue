@@ -5,8 +5,8 @@
         <div class="carousel-inner relative overflow-hidden h-screen z-1">
           <div class="carousel-item inset-0 relative h-screen ">
             <div id="carousel-text" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 ">
-              <h2 id="typewriter-title" class="text-7xl font-bold text-white text-left"></h2>
-              <p id="typewriter-description" class="text-2xl text-white"></p>
+              <h2 id="typewriter-title" class="lg:text-7xl text-4xl font-bold text-white text-left"></h2>
+              <p id="typewriter-description" class="lg:text-2xl text-white"></p>
             </div>
           </div>
         </div>
@@ -34,7 +34,7 @@
         </span>
       </button>
       <div
-        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30 flex items-center justify-center px-4 group focus:outline-none 2xl:mb-20"
+        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30 flex items-center justify-center px-4 group focus:outline-none 2xl:mb-20 mb-20"
         >
         <span class="border-0 text-white rounded-full p-2 active:bg-rose-neon/50">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 rotate-90">
@@ -68,8 +68,8 @@ export default {
     return {
       active: 0,
       data: [
-        { title: "MONIN", description: "mixologie", slide: 1 },
-        { title: "CAPITALE EUROPEENNE DE LA CULTURE", description: "culture", slide: 1 },
+        { title: "MONIN", description: "mixologie", slide: 3 },
+        { title: "CAPITALE EUROPEENNE DE LA CULTURE", description: "culture", slide: 4 },
         { title: "RESSOURCE CORPS-MENTAL", description: "beauté", slide: 4 },
         { title: "MAISON BOUILLON", description: "food", slide: 0 }
       ],
@@ -108,23 +108,42 @@ export default {
     },
     goPrev() {
       this.active = this.active > 0 ? this.active - 1 : this.data.length - 1;
+      this.slide = 0
       this.initTypewriter();
     },
     goNext() {
       this.active = this.active < this.data.length - 1 ? this.active + 1 : 0;
+      this.slide = 0
       this.initTypewriter();
     }
   },
 
   mounted() {
     this.initTypewriter();
-    // let intentObserver = ScrollTrigger.observe({
-    //   type: "wheel,touch",
-    //   onUp: () => gsap.to(window, { duration: 2, scrollTo: "#slide" + (this.slide - 1) }),
-    //   onDown: () => gsap.to(window, { duration: 2, scrollTo: "#slide" + (this.slide + 1) }),
-    //   tolerance: 10,
-    //   preventDefault: true,
-    // });
+    // this.autoScrollInterval = setInterval(this.goNext, 10000);
+    let intentObserver = ScrollTrigger.observe({
+    type: "wheel,touch",
+    onUp: () => {
+      // Vérifiez si le slide n'est pas le premier
+      if (this.slide > 0) {
+        this.slide--; // Décrémentez le slide
+        gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+      }
+    },
+    onDown: () => {
+      // Vérifiez si le slide n'est pas le dernier
+
+      if (this.slide < this.data[this.active].slide - 1) {
+        this.slide++; // Incrémentez le slide
+        gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+      }else {
+        this.slide++;
+        gsap.to(window, { duration: 2, scrollTo: "#footer" });
+      }
+    },
+    tolerance: 100,
+    preventDefault: true,
+  });
   },
 
   beforeDestroy() {

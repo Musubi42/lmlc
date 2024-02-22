@@ -25,9 +25,9 @@
     v-if="isMenuOpen"
   >
     <div class="fixed">
-      <span @click="changeLanguageMobile('frMobile')" class="mr-4 " id="frMobile" v-cursorAnimation>FR</span>
-      <span @click="changeLanguageMobile('enMobile')" class="mr-4" id="enMobile" v-cursorAnimation>EN</span>
-      <span @click="changeLanguageMobile('itMobile')" class="" id="itMobile" v-cursorAnimation>IT</span>
+      <span @click="changeLanguage('fr')" class="mr-4 " id="frMobile" v-cursorAnimation>FR</span>
+      <span @click="changeLanguage('en')" class="mr-4" id="enMobile" v-cursorAnimation>EN</span>
+      <span @click="changeLanguage('it')" class="" id="itMobile" v-cursorAnimation>IT</span>
     </div>
   </span>
 </template>

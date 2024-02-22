@@ -1,8 +1,9 @@
 <template>
-  <div id="slide1" class="flex container mx-auto p-8 h-screen">
+  <a id="slide1"></a>
+  <div  class="flex container mx-auto p-8 h-screen">
     <div class="flex-grow flex flex-col justify-end 2xl:mb-20">
-      <h1 class="2xl:text-9xl lg:text-8xl font-bold 2xl:mr-4 lg:mr-4"> {{ t("TitleMonin") }}</h1>
-      <p class="text-2xl mb-4">
+      <h1 class="2xl:text-9xl lg:text-8xl text-7xl font-bold 2xl:mr-4 lg:mr-4 "> {{ t("TitleMonin") }}</h1>
+      <p class="lg:text-2xl  text-base mb-4">
         {{ t("DescriptionMonin[0]") }} <br>
         {{ t("DescriptionMonin[1]") }} <br> 
         {{ t("DescriptionMonin[2]") }}<br> 
@@ -17,38 +18,40 @@
     </div>
   </div>
   <div>
-    <div class="containerDE horizontal h-screen w-screen">
+    <a id="slide2"></a>
+    <div class="containerDE horizontal h-screen">
       <div class="panell h-screen ">
-        <video class=" h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
+        <video class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
           <source :src="`/video/1.mov`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       <div class="panell h-screen">
-        <video class=" h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
+        <video class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
           <source :src="`/video/2.mov`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       <div class="panell h-screen">
-        <video class=" h-[75%]  flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
+        <video class=" lg:h-[75%] h-screen flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
           <source :src="`/video/3.mov`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       <div class="panell h-screen">
-        <video class=" h-[75%]  flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
+        <video class=" lg:h-[75%]  flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
           <source :src="`/video/4.mov`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       <div class="panell h-screen">
-        <video class=" h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
+        <video class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
           <source :src="`/video/5.mp4`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
     </div>
+    
   </div>
 </template>
 
@@ -105,18 +108,22 @@ onMounted(() => {
 
       currentIndex.value = index;
     }
+    const isDesktop = window.innerWidth > 768;
+
     // Horizontal scrolling section 
-    let horizontalSections = document.querySelectorAll('.horizontal .panell');
-    gsap.to(horizontalSections, {
-      xPercent: -100 * (horizontalSections.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".horizontal",
-        pin: true,
-        scrub: 1,
-        end: "+=3500",
-      },
-    });
+    if (isDesktop) {
+      let horizontalSections = document.querySelectorAll('.horizontal .panell');
+      gsap.to(horizontalSections, {
+        xPercent: -100 * (horizontalSections.length - 1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".horizontal",
+          pin: true,
+          scrub: 1,
+          end: "+=3500",
+        },
+      });
+    }
   }, main.value);
 });
 
@@ -143,5 +150,18 @@ onUnmounted(() => {
 
 .swipe-section .panel {
   position: absolute;
+}
+/* Utilisez des classes Tailwind pour responsivité */
+@media (max-width: 768px) {
+  .containerDE {
+    /* Défilement horizontal manuel sur les petits écrans */
+    overflow-x: auto;
+    width: 100%; /* Ajustez la largeur pour les mobiles */
+  }
+
+  .h-screen { 
+    height: auto; /* Hauteur auto pour éviter les problèmes sur mobile */
+  }
+
 }
 </style>
