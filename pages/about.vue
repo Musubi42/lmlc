@@ -12,6 +12,7 @@
     <!-- Je peux aussi détecter la position de la souris, si je suis en haut -->
     <section ref="servicesTalents" class="h-screen block relative">
 
+    <!-- TODO: hidden le scroll, et mettre une div spéciale pour mobile avec le chevron pour scroller -->
     <HorizontalScrolling :talentsBgColor="bgColor" />
       <!-- <ServicesTalents
         ref="servicesTalents"
@@ -42,9 +43,12 @@ export default {
     const ScrollHorizontal = isScrollHorizontal();
     const isMenuOpen = stateMenuOpen();
 
+    const isMobile = stateIsMobile();
+
     return {
       ScrollHorizontal,
       isMenuOpen,
+      isMobile,
     };
   },
   data() {
@@ -125,33 +129,38 @@ export default {
     }, 2000);
 
     this.sectionMetierHeight = this.$refs.aboutMetier.offsetHeight;
-    this.observerScrollHorizontal = new IntersectionObserver(
-      this.handleScrollHorizontal,
-      {
+
+    if (!this.isMobile) {
+      console.log("desktop");
+      this.observerScrollHorizontal = new IntersectionObserver(
+        this.handleScrollHorizontal,
+        {
+          root: null, // observing for viewport
+          threshold: 0.9, // The element is completely visible when it's fully in the viewport
+        }
+      );
+
+      this.handleAddBgBlack = new IntersectionObserver(this.handleAddBgBlack, {
         root: null, // observing for viewport
-        threshold: 0.9, // The element is completely visible when it's fully in the viewport
-      }
-    );
+        threshold: 0.7, // The element is completely visible when it's fully in the viewport
+      });
 
-    this.handleAddBgBlack = new IntersectionObserver(this.handleAddBgBlack, {
-      root: null, // observing for viewport
-      threshold: 0.7, // The element is completely visible when it's fully in the viewport
-    });
+      this.handleRemoveBgBlack = new IntersectionObserver(this.handleRemoveBgBlack, {
+        root: null, // observing for viewport
+        threshold: 0.4, // The element is completely visible when it's fully in the viewport
+      });
 
-    this.handleRemoveBgBlack = new IntersectionObserver(this.handleRemoveBgBlack, {
-      root: null, // observing for viewport
-      threshold: 0.4, // The element is completely visible when it's fully in the viewport
-    });
+      this.$nextTick(() => {
+        const servicesTalentsEl = this.$refs.servicesTalents;
+        const aboutMetierEl = this.$refs.aboutMetier;
+        if (servicesTalentsEl) {
+          // this.observerScrollHorizontal.observe(servicesTalentsEl);
+          this.handleAddBgBlack.observe(servicesTalentsEl);
+          this.handleRemoveBgBlack.observe(aboutMetierEl);
+        }
+      });
 
-    this.$nextTick(() => {
-      const servicesTalentsEl = this.$refs.servicesTalents;
-      const aboutMetierEl = this.$refs.aboutMetier;
-      if (servicesTalentsEl) {
-        // this.observerScrollHorizontal.observe(servicesTalentsEl);
-        this.handleAddBgBlack.observe(servicesTalentsEl);
-        this.handleRemoveBgBlack.observe(aboutMetierEl);
-      }
-    });
+    }
   },
   beforeDestroy() {
     // if (this.observerScrollHorizontal) {
