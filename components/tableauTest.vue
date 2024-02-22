@@ -7,21 +7,8 @@
 
     <!-- Just containing all SVG path -->
     <div>
-      <path id="bouillonMobile" />
+      
 
-      <path id="timurQualiPNGMobile" />
-
-      <path id="sacBleuMobile" />
-
-      <path id="fauteuilRougeMobile" />
-
-      <path id="unMobile" />
-
-      <path id="deuxMobile" />
-
-      <path id="moninMobile" />
-
-      <path id="sacBleu" />
 
       <path id="timurBig" />
 
@@ -39,7 +26,6 @@
 
       <path id="moninShadow" />
 
-      <path id="monin" />
 
       <path id="timur" />
 
@@ -50,6 +36,32 @@
       <path id="fauteuilRouge" />
 
       <path id="lampeRouge" />
+      <!-- Desktop -->
+      <path id="sacBleu" />
+
+      <!-- Mobile -->
+      <path id="bouillonMobile" />
+
+      <path id="monin" />
+
+      <path id="un" />
+
+      <path id="deux" />
+
+      <path id="timurQualiPNG" />
+
+
+      <path id="timurQualiPNGMobile" />
+
+      <path id="sacBleuMobile" />
+
+      <path id="fauteuilRougeMobile" />
+
+      <path id="unMobile" />
+
+      <path id="deuxMobile" />
+
+      <path id="moninMobile" />
     </div>
 
     <div id="drawhere" class="h-auto -z-10"></div>
@@ -159,10 +171,11 @@ export default {
           if (isMobile) {
             uniqueBody = { moninMobile, bouillonMobile, timurQualiPNGMobile, unMobile, deuxMobile, sacBleuMobile };
           } else {
-            uniqueBody = { sacBleu, monin, timur, bouillon, un, deux, timurQualiPNG, moninGrand };
+            uniqueBody = { sacBleu, monin, bouillon, un, deux, timurQualiPNG };
           }
 
           function createsUniqueBody() {
+            console.log(uniqueBody);
             const forMainThread = true;
             for (let key in uniqueBody) {
               worker.postMessage({

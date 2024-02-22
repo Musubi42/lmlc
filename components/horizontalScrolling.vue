@@ -137,6 +137,7 @@ onUnmounted(() => {
 
 <template>
   <div>
+  <!-- Desktop -->
     <div
       class="hidden md:flex overscroll-none w-[200vw] h-screen flex-nowrap items-center horizontal"
       :style="{ backgroundColor: talentsBgColor }"
@@ -155,6 +156,7 @@ onUnmounted(() => {
       </section>
     </div>
 
+    <!-- Mobile -->
     <div
       class="flex md:hidden h-screen items-center overflow-x-auto gap-10 relative"
       :style="{ backgroundColor: talentsBgColor }"
