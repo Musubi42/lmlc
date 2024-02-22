@@ -33,6 +33,16 @@
           <span class="sr-only">Next</span>
         </span>
       </button>
+      <div
+        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30 flex items-center justify-center px-4 group focus:outline-none 2xl:mb-20"
+        >
+        <span class="border-0 text-white rounded-full p-2 active:bg-rose-neon/50">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 rotate-90">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+          <span class="sr-only">Next Section</span>
+        </span>
+      </div>
     </div>
 
 
