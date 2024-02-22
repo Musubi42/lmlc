@@ -46,11 +46,15 @@ export default {
       callCount: 0,
       lastImage: 0,
       isOnAnimationArea: true,
+      serviceMetierHeight: 0,
     };
   },
   watch: {
     mousePositionY() {
-      this.isOnAnimationArea = this.mousePositionY < this.metierHeight;
+      if (this.metierHeight && !this.serviceMetierHeight) {
+        this.serviceMetierHeight = this.metierHeight;
+      }
+      this.isOnAnimationArea = this.mousePositionY < this.serviceMetierHeight;
     },
   },
   methods: {

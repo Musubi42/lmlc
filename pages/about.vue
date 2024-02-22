@@ -1,7 +1,7 @@
 <template>
   <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200">
     <!-- Partie métiers -->
-    <ServicesAnimation v-if="showServicesAnimation" :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="hidden md:relative z-0 pointer-events-none" />
+    <ServicesAnimation v-if="showServicesAnimation" :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="hidden md:block relative z-0 pointer-events-none" />
 
     <div ref="aboutMetier">
       <MetierCopy  />
@@ -10,19 +10,20 @@
     <!-- Partie talents -->
     <!-- Jouer avec la taille de cet élément pour trigger le changement -->
     <!-- Je peux aussi détecter la position de la souris, si je suis en haut -->
-    <section ref="servicesTalents" class="h-screen block relative">
+    <!-- overflow-unset md:overflow-hidden -->
+    <section ref="servicesTalents" class="h-screen block relative ">
 
+    <!-- TODO: hidden le scroll, et mettre une div spéciale pour mobile avec le chevron pour scroller -->
     <HorizontalScrolling :talentsBgColor="bgColor" />
-      <!-- <ServicesTalents
-        ref="servicesTalents"
-        :scroll="scroll"
-        class="relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-      /> -->
     </section> 
   </div>
 </template>
 
 <style>
+.unset-overflow {
+  overflow: unset;
+}
+
 .background-black {
   /* background-color: black; */
   background-color: rgba(0, 0, 0, 1);
@@ -42,9 +43,12 @@ export default {
     const ScrollHorizontal = isScrollHorizontal();
     const isMenuOpen = stateMenuOpen();
 
+    const isMobile = stateIsMobile();
+
     return {
       ScrollHorizontal,
       isMenuOpen,
+      isMobile,
     };
   },
   data() {
@@ -68,7 +72,6 @@ export default {
         this.ScrollHorizontal = true;
       }
     },
-
 
     // Envoyer aussi la couleur à l'enfant
     handleAddBgBlack(entries) {
@@ -124,34 +127,36 @@ export default {
       this.showServicesAnimation = true;
     }, 2000);
 
-    // this.sectionMetierHeight = this.$refs.metier.offsetHeight;
-    this.observerScrollHorizontal = new IntersectionObserver(
-      this.handleScrollHorizontal,
-      {
+    this.sectionMetierHeight = this.$refs.aboutMetier.offsetHeight;
+
+      console.log("desktop");
+      this.observerScrollHorizontal = new IntersectionObserver(
+        this.handleScrollHorizontal,
+        {
+          root: null, // observing for viewport
+          threshold: 0.9, // The element is completely visible when it's fully in the viewport
+        }
+      );
+
+      this.handleAddBgBlack = new IntersectionObserver(this.handleAddBgBlack, {
         root: null, // observing for viewport
-        threshold: 0.9, // The element is completely visible when it's fully in the viewport
-      }
-    );
+        threshold: 0.7, // The element is completely visible when it's fully in the viewport
+      });
 
-    this.handleAddBgBlack = new IntersectionObserver(this.handleAddBgBlack, {
-      root: null, // observing for viewport
-      threshold: 0.7, // The element is completely visible when it's fully in the viewport
-    });
+      this.handleRemoveBgBlack = new IntersectionObserver(this.handleRemoveBgBlack, {
+        root: null, // observing for viewport
+        threshold: 0.4, // The element is completely visible when it's fully in the viewport
+      });
 
-    this.handleRemoveBgBlack = new IntersectionObserver(this.handleRemoveBgBlack, {
-      root: null, // observing for viewport
-      threshold: 0.4, // The element is completely visible when it's fully in the viewport
-    });
-
-    this.$nextTick(() => {
-      const servicesTalentsEl = this.$refs.servicesTalents;
-      const aboutMetierEl = this.$refs.aboutMetier;
-      if (servicesTalentsEl) {
-        // this.observerScrollHorizontal.observe(servicesTalentsEl);
-        this.handleAddBgBlack.observe(servicesTalentsEl);
-        this.handleRemoveBgBlack.observe(aboutMetierEl);
-      }
-    });
+      this.$nextTick(() => {
+        const servicesTalentsEl = this.$refs.servicesTalents;
+        const aboutMetierEl = this.$refs.aboutMetier;
+        if (servicesTalentsEl) {
+          // this.observerScrollHorizontal.observe(servicesTalentsEl);
+          this.handleAddBgBlack.observe(servicesTalentsEl);
+          this.handleRemoveBgBlack.observe(aboutMetierEl);
+        }
+      });
   },
   beforeDestroy() {
     // if (this.observerScrollHorizontal) {

@@ -16,8 +16,11 @@ export default {
   setup() {
     const isMenuOpen = stateMenuOpen();
 
+    const isMobile = stateIsMobile();
+
     return {
       isMenuOpen,
+      isMobile,
     };
   },
   data() {
@@ -44,6 +47,11 @@ export default {
       // }
       // this.moreThanOnce++;
     },
+  },
+  beforeMount() {
+    const width = window.innerWidth;
+    this.isMobile = width <= 768; // Si la width est inférieur à 768px, c'est un mobile
+    // prefetchImages(isMobile.value);
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);

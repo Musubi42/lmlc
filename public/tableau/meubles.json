@@ -1,0 +1,703 @@
+{
+  "sacBleu": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": -0.04,
+      "scaleFactor": 1.1
+    },
+    "sprite": {
+      "xScale": 0.5,
+      "yScale": 0.5,
+      "image": "./tableau/images/sac-bleu.png"
+    },
+    "constraint": {
+      "x": 3,
+      "y": -9
+    }
+  },
+  "monin": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": 270,
+      "scaleFactor": 0.3
+    },
+    "sprite": {
+      "xScale": 0.5,
+      "yScale": 0.5,
+      "image": "./tableau/images/monin.png"
+    },
+    "constraint": {
+      "x": -5,
+      "y": 30
+    }
+  },
+  "moninShadow": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": 270,
+      "scaleFactor": 0.3
+    },
+    "sprite": {
+      "xScale": 0.5,
+      "yScale": 0.5,
+      "image": "./tableau/images/moninShadow.png"
+    },
+    "constraint": {
+      "x": -5,
+      "y": 30
+    }
+  },
+  "moninSmall": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": 270,
+      "scaleFactor": 0.3
+    },
+    "sprite": {
+      "xScale": 1,
+      "yScale": 1,
+      "image": "./tableau/images/moninSmallQuali.png"
+    },
+    "constraint": {
+      "x": -5,
+      "y": 30
+    }
+  },
+  "moninGrand": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": 270,
+      "scaleFactor": 0.3
+    },
+    "sprite": {
+      "xScale": 0.15,
+      "yScale": 0.15,
+      "image": "./tableau/images/moninGrand.png"
+    },
+    "constraint": {
+      "x": -5,
+      "y": 30
+    }
+  },
+  "timur": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": 0.45,
+      "scaleFactor": 0.25
+    },
+    "sprite": {
+      "xScale": 0.25,
+      "yScale": 0.25,
+      "image": "./tableau/images/timur.png"
+    },
+    "constraint": {
+      "x": 10,
+      "y": 20
+    }
+  },
+  "bouillon": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": 0.45,
+      "scaleFactor": 0.25
+    },
+    "sprite": {
+      "xScale": 0.25,
+      "yScale": 0.25,
+      "image": "./tableau/images/bouillon.png"
+    },
+    "constraint": {
+      "x": 10,
+      "y": 20
+    }
+  },
+  "timurBig": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": 0.45,
+      "scaleFactor": 0.25
+    },
+    "sprite": {
+      "xScale": 0.5,
+      "yScale": 0.5,
+      "image": "./tableau/images/timur.png"
+    },
+    "constraint": {
+      "x": 10,
+      "y": 20
+    }
+  },
+  "timurQualiSVG": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": 0.45,
+      "scaleFactor": 0.25
+    },
+    "sprite": {
+      "xScale": 1,
+      "yScale": 1,
+      "image": "./tableau/images/timurQuali.svg"
+    },
+    "constraint": {
+      "x": 10,
+      "y": 20
+    }
+  },
+  "timurQualiPNG": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": 0.45,
+      "scaleFactor": 0.25
+    },
+    "sprite": {
+      "xScale": 1,
+      "yScale": 1,
+      "image": "./tableau/images/timurQuali.png"
+    },
+    "constraint": {
+      "x": 10,
+      "y": 20
+    }
+  },
+  "bourges2024": {
+    "body": {
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": 0,
+      "scaleFactor": 0.25
+    },
+    "sprite": {
+      "xScale": 0.25,
+      "yScale": 0.25,
+      "image": "./tableau/images/bourges2024.png"
+    },
+    "constraint": {
+      "x": 0,
+      "y": 1
+    }
+  },
+  "fauteuilRouge": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": -0.04,
+      "scaleFactor": 1.1
+    },
+    "vertices": {
+      "fileName": "fauteuil",
+      "xScale": 0.7,
+      "yScale": 0.7
+    },
+    "sprite": {
+      "xScale": 0.8,
+      "yScale": 0.8,
+      "image": "./tableau/gif/fauteuilRouge.png"
+    },
+    "constraint": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "fauteuilBlanc": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": -0.04,
+      "scaleFactor": 1.1
+    },
+    "vertices": {
+      "fileName": "fauteuil",
+      "xScale": 0.7,
+      "yScale": 0.7
+    },
+    "sprite": {
+      "xScale": 0.8,
+      "yScale": 0.8,
+      "image": "./tableau/gif/fauteuilBlanc.png"
+    },
+    "constraint": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "fauteuilVert": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": -0.04,
+      "scaleFactor": 1.1
+    },
+    "vertices": {
+      "fileName": "fauteuil",
+      "xScale": 0.7,
+      "yScale": 0.7
+    },
+    "sprite": {
+      "xScale": 0.8,
+      "yScale": 0.8,
+      "image": "./tableau/gif/fauteuilVert.png"
+    },
+    "constraint": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "fauteuilRougeMobile": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": -0.04,
+      "scaleFactor": 1.1
+    },
+    "vertices": {
+      "fileName": "fauteuil",
+      "xScale": 0.4,
+      "yScale": 0.4
+    },
+    "sprite": {
+      "xScale": 0.45,
+      "yScale": 0.45,
+      "image": "./tableau/gif/fauteuilRouge.png"
+    },
+    "constraint": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "fauteuilBlancMobile": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": -0.04,
+      "scaleFactor": 1.1
+    },
+    "vertices": {
+      "fileName": "fauteuil",
+      "xScale": 0.4,
+      "yScale": 0.4
+    },
+    "sprite": {
+      "xScale": 0.45,
+      "yScale": 0.45,
+      "image": "./tableau/gif/fauteuilBlanc.png"
+    },
+    "constraint": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "fauteuilVertMobile": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": -0.04,
+      "scaleFactor": 1.1
+    },
+    "vertices": {
+      "fileName": "fauteuil",
+      "xScale": 0.4,
+      "yScale": 0.4
+    },
+    "sprite": {
+      "xScale": 0.45,
+      "yScale": 0.45,
+      "image": "./tableau/gif/fauteuilVert.png"
+    },
+    "constraint": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "lampeRouge": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": -0.04,
+      "scaleFactor": 1.1
+    },
+    "sprite": {
+      "xScale": 0.25,
+      "yScale": 0.25,
+      "image": "./tableau/images/lampeRouge.png"
+    },
+    "constraint": {
+      "x": 0,
+      "y": 15
+    }
+  },
+  "tableRouge": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": -0.04,
+      "scaleFactor": 1.1
+    },
+    "sprite": {
+      "xScale": 0.25,
+      "yScale": 0.25,
+      "image": "./tableau/images/tableRouge.png"
+    },
+    "constraint": {
+      "x": -1,
+      "y": -4
+    }
+  },
+  "un": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": -0.04,
+      "scaleFactor": 1.1
+    },
+    "sprite": {
+      "xScale": 0.12,
+      "yScale": 0.12,
+      "image": "./tableau/images/un.png"
+    },
+    "constraint": {
+      "x": -1,
+      "y": -4
+    }
+  },
+  "deux": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angle": -0.04,
+      "scaleFactor": 1.1
+    },
+    "sprite": {
+      "xScale": 0.11,
+      "yScale": 0.11,
+      "image": "./tableau/images/deux.png"
+    },
+    "constraint": {
+      "x": -1,
+      "y": -4
+    }
+  },
+  "moninMobile": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "width": 0,
+        "height": 0
+      },
+      "size": {
+        "width": 63,
+        "height": 255
+      },
+      "angle": 270,
+      "scaleFactor": 0.3
+    },
+    "sprite": {
+      "xScale": 0.075,
+      "yScale": 0.075,
+      "image": "./tableau/images/moninGrand.png"
+    },
+    "constraint": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "unMobile": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "width": 150,
+        "height": 210
+      },
+      "angle": -0.04,
+      "scaleFactor": 1.1
+    },
+    "sprite": {
+      "xScale": 0.06,
+      "yScale": 0.06,
+      "image": "./tableau/images/un.png"
+    },
+    "constraint": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "deuxMobile": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "width": 150,
+        "height": 210
+      },
+      "angle": -0.04,
+      "scaleFactor": 1.1
+    },
+    "sprite": {
+      "xScale": 0.06,
+      "yScale": 0.06,
+      "image": "./tableau/images/deux.png"
+    },
+    "constraint": {
+      "x": -1,
+      "y": -4
+    }
+  },
+  "timurQualiPNGMobile": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "width": 50,
+        "height": 140
+      },
+      "angle": 270,
+      "scaleFactor": 0.25
+    },
+    "sprite": {
+      "xScale": 0.49,
+      "yScale": 0.49,
+      "image": "./tableau/images/timurQuali.png"
+    },
+    "constraint": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "sacBleuMobile": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "width": 120,
+        "height": 70
+      },
+      "angle": -0.04,
+      "scaleFactor": 1.1
+    },
+    "sprite": {
+      "xScale": 0.30,
+      "yScale": 0.30,
+      "image": "./tableau/images/sac-bleu.png"
+    },
+    "constraint": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "bouillonMobile": {
+    "body": {
+      "speed": 0,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "width": 63,
+        "height": 205
+      },
+      "angle": 0.45,
+      "scaleFactor": 0.25
+    },
+    "sprite": {
+      "xScale": 0.16,
+      "yScale": 0.16,
+      "image": "./tableau/images/bouillon.png"
+    },
+    "constraint": {
+      "x": 0,
+      "y": 0
+    }
+  }
+}

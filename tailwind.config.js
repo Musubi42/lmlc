@@ -37,6 +37,9 @@ export default {
       animation: {
         "spin-slow": "spin 8s linear infinite",
       },
+      overflow: {
+        unset: "unset",
+      },
     },
   },
   safelist: ["lilas-pop", "rose-neon", "bleu-ciel", "jaune-citron", "w-20", "font-semibold"],

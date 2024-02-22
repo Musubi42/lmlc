@@ -66,7 +66,7 @@ export default {
         .typeString(this.textIntroPartie1)
         .changeDelay(50)
         .pauseFor(700)
-        .deleteAll(10)
+        .deleteAll(15)
         .typeString(this.textIntroPartie2)
         .changeDelay(50)
         .start()

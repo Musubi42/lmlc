@@ -25,7 +25,12 @@ export default defineNuxtConfig({
   alias: {
     "@": resolve(__dirname, "/"),
   },
-  modules: ["nuxt-svgo", "@nuxt/image", "@nuxtjs/i18n"],
+  modules: ["nuxt-svgo", "@nuxt/image", "@nuxtjs/i18n", '@nuxt/image'],
+  image: {
+    inject: true,
+    quality: 80,
+    format: ['webp', 'png', 'jpg', 'gif'],  
+  },
   site: {
     url: 'https://lmlccommunication.fr',
     trailingSlash: true,
