@@ -33,16 +33,17 @@
           <span class="sr-only">Next</span>
         </span>
       </button>
-      <div
+      <button
         class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30 flex items-center justify-center px-4 group focus:outline-none 2xl:mb-20 mb-20"
-        >
+        @click="goSlide" v-if="showButton">
         <span class="border-0 text-white rounded-full p-2 active:bg-rose-neon/50">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 rotate-90">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
+            <path fill="currentColor" fill-rule="evenodd"
+              d="M2.22 5.22a.75.75 0 0 0 0 1.06l5.252 5.252a.75.75 0 0 0 1.06 0l5.252-5.252a.75.75 0 1 0-1.06-1.06L8.001 9.94L3.28 5.22a.75.75 0 0 0-1.06 0"
+              clip-rule="evenodd" />
           </svg>
-          <span class="sr-only">Next Section</span>
         </span>
-      </div>
+      </button>
     </div>
 
 
@@ -70,12 +71,14 @@ export default {
       data: [
         { title: "MONIN", description: "mixologie", slide: 3 },
         { title: "CAPITALE EUROPEENNE DE LA CULTURE", description: "culture", slide: 4 },
-        { title: "RESSOURCE CORPS-MENTAL", description: "beauté", slide: 4 },
+        { title: "RESSOURCE CORPS-MENTAL", description: "beauté", slide: 0 },
         { title: "MAISON BOUILLON", description: "food", slide: 0 }
       ],
       titleTypewriter: null,
       descriptionTypewriter: null,
-      slide: 0
+      slide: 0,
+      showButton: false
+
     };
   },
   methods: {
@@ -107,43 +110,65 @@ export default {
       }, 1000);
     },
     goPrev() {
+      this.showButton = false;
       this.active = this.active > 0 ? this.active - 1 : this.data.length - 1;
       this.slide = 0
       this.initTypewriter();
+      if(this.data[this.active].slide > 0){
+      setTimeout(() => {
+      this.showButton = true;
+    }, 2500);
+    }
     },
     goNext() {
+      this.showButton = false;
       this.active = this.active < this.data.length - 1 ? this.active + 1 : 0;
       this.slide = 0
       this.initTypewriter();
+      if(this.data[this.active].slide > 0){
+      setTimeout(() => {
+      this.showButton = true;
+    }, 2500);
+    }
+    },
+    goSlide() {
+      this.slide = 1
+      gsap.to(window, { duration: 2, scrollTo: "#slide1" });
     }
   },
 
   mounted() {
     this.initTypewriter();
     // this.autoScrollInterval = setInterval(this.goNext, 10000);
-    let intentObserver = ScrollTrigger.observe({
-    type: "wheel,touch",
-    onUp: () => {
-      // Vérifiez si le slide n'est pas le premier
-      if (this.slide > 0) {
-        this.slide--; // Décrémentez le slide
-        gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
-      }
-    },
-    onDown: () => {
-      // Vérifiez si le slide n'est pas le dernier
+    if(this.data[this.active].slide > 0){
+      setTimeout(() => {
+      this.showButton = true;
+    }, 2500);
+    }
 
-      if (this.slide < this.data[this.active].slide - 1) {
-        this.slide++; // Incrémentez le slide
-        gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
-      }else {
-        this.slide++;
-        gsap.to(window, { duration: 2, scrollTo: "#footer" });
-      }
-    },
-    tolerance: 100,
-    preventDefault: true,
-  });
+    let intentObserver = ScrollTrigger.observe({
+      type: "wheel,touch",
+      onUp: () => {
+        // Vérifiez si le slide n'est pas le premier
+        if (this.slide > 0) {
+          this.slide--; // Décrémentez le slide
+          gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+        }
+      },
+      onDown: () => {
+        // Vérifiez si le slide n'est pas le dernier
+
+        if (this.slide < this.data[this.active].slide - 1) {
+          this.slide++; // Incrémentez le slide
+          gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+        } else {
+          this.slide++;
+          gsap.to(window, { duration: 2, scrollTo: "#footer" });
+        }
+      },
+      tolerance: 100,
+      preventDefault: true,
+    });
   },
 
   beforeDestroy() {
@@ -153,7 +178,7 @@ export default {
     if (this.descriptionTypewriter) {
       this.descriptionTypewriter.stop();
     }
-  },  created() {
+  }, created() {
     // Lorsque le composant est créé, vérifiez si un cookie de langue existe
     const savedLang = Cookies.get("i18n_language");
 
@@ -171,5 +196,21 @@ export default {
 <style>
 .y.mandatory-scroll-snapping {
   scroll-snap-type: y mandatory;
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.bounce {
+  animation: bounce 2s infinite;
 }
 </style>
