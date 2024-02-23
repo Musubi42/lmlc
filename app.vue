@@ -17,9 +17,12 @@ export default {
 
     const isMusicPlaying = musicPlaying();
 
+    const isMobile = stateIsMobile();
+
     return {
       isFirstInterraction,
       isMusicPlaying,
+      isMobile,
     };
   },
   methods: {
@@ -37,8 +40,11 @@ export default {
     },
   },
   mounted() {
-    // window.addEventListener('click', this.detectFirstInterraction);
-    window.addEventListener('touchstart', this.detectFirstInterraction);
+    if (this.isMobile) {
+      window.addEventListener('touchstart', this.detectFirstInterraction);
+    } else {
+      window.addEventListener('click', this.detectFirstInterraction);
+    }
   },
 }
 </script>

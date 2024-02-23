@@ -3,7 +3,7 @@
     <div class="flex flex-1 justify-between">
       <!-- Infos sur le son -->
       <div
-        class="flex flex-row gap-4 content-start center-content items-center"
+        class="max-w-[50vw] md:max-w-none flex flex-row gap-4 content-start center-content items-center"
       >
         <img
           class="h-4/5 aspect-square object-cover"
@@ -17,7 +17,7 @@
     </div>
 
     <!-- Pause/start previous/next -->
-    <div class="flex mr-3 ml-4 md:mr-9 md:ml-10 items-center justify-center">
+    <div class=" flex mr-3 ml-4 md:mr-9 md:ml-10 items-center justify-center">
       <!-- Play previous song -->
       <button class="center-content mr-2" @click="playPreviousSong">
         <iconsPrevious class="w-[24px] cursor-none" v-cursorAnimation />
