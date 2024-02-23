@@ -38,8 +38,8 @@
       "scaleFactor": 0.3
     },
     "sprite": {
-      "xScale": 0.5,
-      "yScale": 0.5,
+      "xScale": 0.35,
+      "yScale": 0.35,
       "image": "./tableau/images/monin.png"
     },
     "constraint": {

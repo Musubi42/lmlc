@@ -175,7 +175,7 @@ onUnmounted(() => {
       </section>
       <svg
         v-show="!hasScrolled"
-        class="animate-bounce absolute right-0 mr-4 h-1w-16 w-16 text-white mix-blend-difference"
+        class="animate-bounce absolute -ml-16 left-1/2 bottom-1/4 mr-4 h-16 w-16 text-white mix-blend-difference"
         fill="none"
         stroke="white"
         viewBox="0 0 24 24"

@@ -149,6 +149,17 @@ import { list } from '@vercel/blob';
 
 
 export default {
+  setup(props) {
+    const isFirstInterraction = firstInterraction();
+    
+    const isMusicPlaying = musicPlaying();
+
+    
+    return {
+      isFirstInterraction,
+      isMusicPlaying,
+    };
+  },
   data() {
     return {
       APIStreamAudioBaseUrl: "",
@@ -177,6 +188,9 @@ export default {
       // Update the isSound property based on the new volume
       this.isSound = newVolume > 0;
       this.audioSource.volume = newVolume / 100;
+    },
+    isFirstInterraction() {
+      this.toggleAudio();
     },
   },
   methods: {
@@ -230,7 +244,10 @@ export default {
 
         this.trackID = trackID;
         this.isLoading = false;
-        this.isPlaying = true;
+
+        if (!this.audioSource?.paused) {
+          this.isPlaying = true;
+        }
       } catch (error) {
         this.isLoading = false;
         console.error("An error occurred:", error);
@@ -245,6 +262,7 @@ export default {
     async toggleAudio() {
       if (!this.audioSource) {
         await this.loadAndPlayAudio(this.trackID);
+        this.isMusicPlaying = !this.audioSource?.paused;
         return;
       }
 
@@ -254,6 +272,9 @@ export default {
       } else {
         this.audioSource.play();
         this.isPlaying = true;
+
+        this.isMusicPlaying = !this.audioSource?.paused;
+        console.log("isMusicPlaying :  ",this.isMusicPlaying);
       }
     },
 
@@ -330,11 +351,6 @@ export default {
       // https://developer.chrome.com/blog/autoplay/
       // arc://media-engagement/
       // Auto start a sound
-      if (!this.audioSource?.paused) {
-        await this.toggleAudio();
-      } else {
-        await this.toggleAudio();
-      }
     }
   },
   beforeUnmount() {

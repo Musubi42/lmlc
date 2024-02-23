@@ -7,3 +7,8 @@ export const stateIntroAnimation = () => useState('introAnimation', () => true);
 export const stateFirstVisit = () => useState('firstVisit', () => true);
 
 export const stateIsMobile = () => useState('isMobile', () => false);
+
+export const firstInterraction = () => useState('isFirstInterraction', () => 1);
+
+export const musicPlaying = () => useState('isMusicPlaying', () => false);
+

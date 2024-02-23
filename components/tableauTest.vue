@@ -171,7 +171,8 @@ export default {
           if (isMobile) {
             uniqueBody = { moninMobile, bouillonMobile, timurQualiPNGMobile, unMobile, deuxMobile, sacBleuMobile };
           } else {
-            uniqueBody = { sacBleu, monin, bouillon, un, deux, timurQualiPNG };
+            // TODO: Il faut rajouter le bouillon
+            uniqueBody = { sacBleu, monin, un, deux, timurQualiPNG };
           }
 
           function createsUniqueBody() {
