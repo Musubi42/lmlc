@@ -8,7 +8,7 @@
     </div>
   </button> -->
   <span
-    class="hidden relative mt-[6px] md:flex flex-row text-xs font-medium right-24 bottom-[-1px] duration-300 transition-opacity"
+    class="hidden relative mt-[6px] md:flex flex-row text-xs font-medium right-44 bottom-[-1px] duration-300 transition-opacity"
     ref="languageSelectors"
     :style="languageStyle"
   >
@@ -20,14 +20,14 @@
   </span>
 
   <span
-    class="absolute left-0 top-0 ml-6 z-[1000] mt-[6px] md:hidden block flex-row text-xs font-medium right-24 bottom-[-1px] duration-300 transition-opacity"
+    class="absolute left-0 top-0 ml-6 z-[1000] mt-[6px] md:hidden block flex-row text-base font-medium right-24 bottom-[-1px] duration-300 transition-opacity"
     ref="languageSelectorsMobile"
     v-if="isMenuOpen"
   >
     <div class="fixed">
-      <span @click="changeLanguage('fr')" class="mr-4 " id="frMobile" v-cursorAnimation>FR</span>
-      <span @click="changeLanguage('en')" class="mr-4" id="enMobile" v-cursorAnimation>EN</span>
-      <span @click="changeLanguage('it')" class="" id="itMobile" v-cursorAnimation>IT</span>
+      <span @click="changeLanguageMobile('fr')" class="mr-4 " id="frMobile" v-cursorAnimation>FR</span>
+      <span @click="changeLanguageMobile('en')" class="mr-4" id="enMobile" v-cursorAnimation>EN</span>
+      <span @click="changeLanguageMobile('it')" class="" id="itMobile" v-cursorAnimation>IT</span>
     </div>
   </span>
 </template>
@@ -104,6 +104,9 @@ export default {
       this.language = locale.toUpperCase();
       const languageSelector = document.getElementById(locale);
       languageSelector.classList.add("font-semibold");
+
+      const languageSelectorsMobile = document.getElementById(`${locale}Mobile`);
+      languageSelectorsMobile.classList.add("font-semibold");
 
       Cookies.set("i18n_language", locale);
       this.$i18n.locale = locale;

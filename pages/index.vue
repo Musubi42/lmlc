@@ -14,6 +14,7 @@
         class=" w-full h-full"
       >
         <div class="w-screen font-extralight h-[90%] md:h-full">
+        <!-- TODO: Cette façon de faire fait pété le tout -->
           <tableauTest v-if="!IntroAnimation" v-cursorAnimation :key="componentKey" />
           <!-- <tableauTest v-if="true" v-cursorAnimation :key="componentKey" /> -->
         </div>

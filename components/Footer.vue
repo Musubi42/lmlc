@@ -142,7 +142,7 @@
             href="javascript:openAxeptioCookies()"
             class="font-monteserrat font-extralight text-sm mt-4 mb-6 cursor-none"
             v-cursorAnimation
-            >Gestion des cookies</a
+            >gestion des cookies</a
           >
         </div>
       </div>

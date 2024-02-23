@@ -1,14 +1,29 @@
 <template ref="Intro">
-  <div ref="screnIntro" class="bg-black h-screen w-screen flex justify-center items-center z-[100000]">
-    <p 
-      ref="textIntro" 
-      id="textIntro"
-      @animationend="handleAnimationEnd"
-      class="text-white text-2xl md:text-5xl font-bold taille text-left"></p>
-  </div>
+  <!-- <div class="flex animate-pulse bg-black h-screen justify-start w-screen"> -->
+    <div ref="screnIntro" class="h-screen w-screen flex justify-center mx-auto items-center z-[100000] animate-pulse bg-black">
+      <div
+        ref="textIntro" 
+        id="textIntro"
+        @animationend="handleAnimationEnd"
+        class="text-white text-2xl md:text-5xl font-bold taille"></div>
+    </div>
+  <!-- </div> -->
 </template>
 
-<style>
+<style scoped>
+@keyframes pulse {
+  0%, 100% {
+    background-color: black;
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.99);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 0.1s infinite;
+}
+
 .taille {
   max-width: 75vw; /* mobile */
 }
@@ -59,7 +74,7 @@ export default {
         loop: false,
         delay: 35,
         cursor: "|",
-        onCreateTextNode: customNodeCreator,
+        // onCreateTextNode: customNodeCreator,
       });
 
       typewriter
@@ -84,7 +99,7 @@ export default {
       // A la fin de l'animation venir démonter le component du DOM
       setTimeout(() => {
         this.IntroAnimation = false;
-        Cookies.set("firstVisit", "false");
+        // Cookies.set("firstVisit", "false");
       }, 1001);
     },
   },
