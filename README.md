@@ -1,5 +1,5 @@
 # Nuxt 3 Minimal Starter
-d
+dd
 Faire un middleware global pour savoir si on est sur mobile ou desktop
 
 Ne faire apparraitre AXEPTIO que quand l'intro est passée, donc dans le plugin mettre un setTimeout
