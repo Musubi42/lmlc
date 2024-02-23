@@ -14,8 +14,8 @@
         class=" w-full h-full"
       >
         <div class="w-screen font-extralight h-[90%] md:h-full">
-          <!-- <tableauTest v-if="!IntroAnimation" v-cursorAnimation :key="componentKey" /> -->
-          <tableauTest v-if="true" v-cursorAnimation :key="componentKey" />
+          <tableauTest v-if="!IntroAnimation" v-cursorAnimation :key="componentKey" />
+          <!-- <tableauTest v-if="true" v-cursorAnimation :key="componentKey" /> -->
         </div>
         <div 
           class="flex md:hidden w-screen h-[10%] items-center justify-center appear-after-a-moment"
