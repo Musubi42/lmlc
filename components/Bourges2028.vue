@@ -29,7 +29,7 @@
      <img src="/couverture_bidbook_.png" alt="Couverture Bidbook" class="w-1/3 lg:w-1/6">
    </div>
  </div> -->
-
+ 
 </div>
 <div id="slide2" class="h-screen">
  <img src="/Bourges2028.png" alt="Bourges 2028" class="h-screen w-screen object-cover">
