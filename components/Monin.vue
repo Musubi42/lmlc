@@ -1,7 +1,7 @@
 <template>
   <a id="slide1"></a>
   <div class="flex flex-col lg:flex-row container mx-auto p-8 h-screen">
-  <div class="flex-grow flex flex-col justify-end 2xl:mb-20 lg:order-1 order-2">
+    <div class="flex-grow flex flex-col justify-end 2xl:mb-20 lg:order-1 order-2">
     <h1 class="2xl:text-9xl lg:text-8xl text-7xl font-bold 2xl:mr-4 lg:mr-4"> {{ t("TitleMonin") }}</h1>
     <p class="lg:text-2xl text-base mb-4">
       {{ t("DescriptionMonin[0]") }} <br>
@@ -16,8 +16,8 @@
       {{ t("WorkMonin[3]") }}
     </p>
   </div>
-  <div class="flex-none 2xl:w-2/5 lg:w-1/4 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-2 order-1">
-    <img src="/monin.gif" alt="GIF" class="object-cover">
+  <div class="flex justify-center lg:justify-end 2xl:w-2/5 lg:w-1/4 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-2 order-1">
+    <img src="/monin.gif" alt="GIF" class="object-cover mx-auto">
   </div>
 </div>
   <div>
