@@ -1,5 +1,5 @@
 <template>
-  <div class="" dir="ltr">
+  <div class="bg-white" dir="ltr">
     <div id="slide0" class="  bg-cover bg-center bg-fixed bg-black">
       <div class="relative slide w-full h-screen ">
         <div class="carousel-inner relative overflow-hidden h-screen z-1">
@@ -77,7 +77,8 @@ export default {
       titleTypewriter: null,
       descriptionTypewriter: null,
       slide: 0,
-      showButton: false
+      showButton: false,
+      intentObserver : null
 
     };
   },
@@ -145,8 +146,10 @@ export default {
       this.showButton = true;
     }, 2500);
     }
+    const isMobile = window.innerWidth <= 768;
 
-    let intentObserver = ScrollTrigger.observe({
+    if (!isMobile) {
+    this.intentObserver = ScrollTrigger.observe({
       type: "wheel,touch",
       onUp: () => {
         // Vérifiez si le slide n'est pas le premier
@@ -156,8 +159,7 @@ export default {
         }
       },
       onDown: () => {
-        // Vérifiez si le slide n'est pas le dernier
-
+        console.log("test")
         if (this.slide < this.data[this.active].slide - 1) {
           this.slide++; // Incrémentez le slide
           gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
@@ -169,14 +171,19 @@ export default {
       tolerance: 100,
       preventDefault: true,
     });
-  },
 
-  beforeDestroy() {
+  }
+},
+  unmounted() {
     if (this.titleTypewriter) {
       this.titleTypewriter.stop();
     }
     if (this.descriptionTypewriter) {
       this.descriptionTypewriter.stop();
+    }
+    if (this.intentObserver) {
+      this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
+      this.intentObserver = null;
     }
   }, created() {
     // Lorsque le composant est créé, vérifiez si un cookie de langue existe
