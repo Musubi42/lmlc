@@ -1,5 +1,5 @@
 <template>
-  <div id="home" class="bg-white">
+  <div id="home" class="bg-white" @touchstart="isScrolling" ref="home">
   <!-- <div class="absolute h-screen w-screen bg-black z-50">
     <iframe width="100%" height="100%" src="https://www.youtube.com/embed/qBFDGnBjxNU?autoplay=1&mute=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
     <video autoplay loop width="100%" height="auto">
@@ -13,16 +13,18 @@
       <div
         class=" w-full h-full"
       >
-        <div class="w-screen font-extralight h-[90%] md:h-full">
+        <div id="tableau" class="w-screen font-extralight h-[90%] md:h-full">
         <!-- TODO: Cette façon de faire fait pété le tout -->
           <tableauTest v-if="!IntroAnimation" v-cursorAnimation :key="componentKey" />
           <!-- <tableauTest v-if="true" v-cursorAnimation :key="componentKey" /> -->
         </div>
+        <!-- TODO : Changer où je trigger la fnc isScrolling -->
         <div 
           class="flex md:hidden w-screen h-[10%] items-center justify-center appear-after-a-moment"
-          @touchstart="isScrolling"
-          :style="{ display: isMobile && !hasScrolled ? 'flex' : 'none' }"
+          v-if="isMobile && !hasScrolled"
+         
         >
+         <!--  :style="{ display: isMobile && !hasScrolled ? 'flex' : 'none' }" -->
           <button type="">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
               <path fill="currentColor" fill-rule="evenodd" d="M2.22 5.22a.75.75 0 0 0 0 1.06l5.252 5.252a.75.75 0 0 0 1.06 0l5.252-5.252a.75.75 0 1 0-1.06-1.06L8.001 9.94L3.28 5.22a.75.75 0 0 0-1.06 0" clip-rule="evenodd"/>
@@ -174,7 +176,9 @@ export default {
       paragraphSpacing: 0,
       oui: null,
       componentKey: ref(1),
-      hasScrolled: false,
+      hasScrolled: ref(false),
+      totalScrolledDistance : 0,
+      startY : 0,
     };
   },
   computed: {
@@ -217,17 +221,33 @@ export default {
     });
 
     window.addEventListener("scroll", this.handleScroll);
+
+    window.addEventListener('touchstart', this.handleTouchStart);
+    window.addEventListener('touchmove', this.handleTouchMove, { passive: true });
   },
   
   unmounted() {
     window.removeEventListener("scroll", this.handleScroll);
+
+    window.removeEventListener('touchstart', this.handleTouchStart);
+    window.removeEventListener('touchmove', this.handleTouchMove);
   },
 
   methods: {
-    isScrolling() {
-      console.log("hji");
-      this.hasScrolled = true;
+    handleTouchStart(event){
+      this.startY = event.touches[0].clientY;
     },
+
+    handleTouchMove(event){
+      const currentY = event.touches[0].clientY;
+      this.totalScrolledDistance += Math.abs(currentY - this.startY);
+      this.startY = currentY;
+
+      if (this.totalScrolledDistance >= 50 && !this.hasScrolled.value) {
+        this.hasScrolled = true;
+      }
+    },
+
     calculateScrollSpeed(width) {
       if (width <= 350) {
         return 8;

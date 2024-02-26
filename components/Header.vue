@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full z-50 absolute py-6">
+  <header class="w-full z-50 absolute pt-6 pb-10 bg-white">
     <div class="relative z-50 place-content-between pl-6 md:px-10 flex flex-row">
     <Menu :isMenuOpen="toggleMenu" @update:isMenuOpen="handleMenuUpdate" class="z-[100] absolute -mt-6" />
       <div
@@ -19,16 +19,16 @@
       </div>
       <div class="flex flex-row">
         <switchLanguage :languageStyle="dynamicStyle" v-cursorAnimation />
-        
+
         <div
           to="/menu"
           id="menu-burger"
-          class=" h-auto close z-[1000] fixed mr-4 right-0 text-black"
+          class="h-auto close z-[1000] fixed mr-4 right-0 text-black"
         >
           <IconsMenuBurger
             :style="{ height: burgerHeight + 'px', y: y + 'px' }"
             :y="y"
-            class="text-[50px]"
+            class="text-[50px] fill-black"
             ref="menuBurger"
             @click="toggleMenuBurger"
             v-cursorAnimation
@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <style>
@@ -270,13 +270,13 @@
 <script>
 import Cookies from "js-cookie";
 import menuBurger from "assets/icons/menu_burger.svg";
-// import 
+// import
 
 export default {
   props: {
     dynamicStyle: {
       type: Object,
-      required: false
+      required: false,
     },
   },
   setup() {
@@ -302,7 +302,7 @@ export default {
   },
   watch: {
     isMenuOpen: {
-      handler: function(newVal, oldVal) {
+      handler: function (newVal, oldVal) {
         if (newVal === false) {
           // this.toggleMenuBurger();
         }

@@ -47,7 +47,8 @@ self.onmessage = async function (event) {
 
     let body;
     if (isMobile) {
-      body = Bodies.rectangle(300, 300, meubles[key].body.size.width, meubles[key].body.size.height, {
+      body = Bodies.rectangle(Math.random() * render.canvas.width, // x position
+    -200, meubles[key].body.size.width, meubles[key].body.size.height, {
       // collisionFilter: {
       //   // category: 2, // You can set your own category here
       //   mask: 0, // Enable or disable collision based on collisionEnabled
@@ -58,13 +59,9 @@ self.onmessage = async function (event) {
       },
     });
     } else {
-      body = Bodies.fromVertices(300, 300, [fileContent], {
-        // collisionFilter: {
-        //   // category: 2, // You can set your own category here
-        //   mask: 0, // Enable or disable collision based on collisionEnabled
-        // },
+      body = Bodies.fromVertices(300, // x position
+    -200, [fileContent], {
         render: {
-          // visible: meubles[key].sprite.image.match('timur.png') ? true : false,
           visible: false,
         },
       });

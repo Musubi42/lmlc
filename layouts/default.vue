@@ -1,12 +1,9 @@
 <template>
-  <div @click="closeMenuIfOpen" >
-    <Header :dynamicStyle="headerStyle" />
+  <div @click="closeMenuIfOpen">
+    <!-- <div class="bg-white h-15 w-full fixed"> -->
+      <Header :dynamicStyle="headerStyle" />
+    <!-- </div> -->
     <NuxtPage />
-    <!-- <div
-      class="fixed w-screen bottom-0 bg-white mix-blend-difference border-t-2 border-gray-200"
-    >
-      <Music />
-    </div> -->
     <Footer />
     <CustomCursor />
   </div>
@@ -47,10 +44,10 @@ export default {
     },
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener("scroll", this.handleScroll);
   },
   unmounted() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener("scroll", this.handleScroll);
   },
-}
+};
 </script>
