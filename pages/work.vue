@@ -65,6 +65,11 @@ import Cookies from "js-cookie";
 
 gsap.registerPlugin(ScrollToPlugin);
 export default {
+  setup() {
+    definePageMeta({
+      layout: "work",
+    });
+  },
   data() {
     return {
       active: 0,

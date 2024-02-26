@@ -45,10 +45,13 @@ export default {
 
     const isMobile = stateIsMobile();
 
+    const isTalents = talents();
+
     return {
       ScrollHorizontal,
       isMenuOpen,
       isMobile,
+      isTalents,
     };
   },
   data() {
@@ -82,6 +85,9 @@ export default {
         body.classList.add("background-black");
         this.bgColor = "black";
       }
+
+      // TODO: Faire transitionner le logo LMLC et le menuBurger
+      this.isTalents = true;
     },
 
     handleRemoveBgBlack(entries) {
@@ -95,6 +101,8 @@ export default {
         body.classList.remove("background-black");
         body.classList.add("background-white");
       }
+
+      this.isTalents = false;
     },
 
     handleWheelEvent(event) {

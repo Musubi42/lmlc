@@ -3,6 +3,7 @@
     <NuxtLayout class="bg-black" />
     <div
       class="fixed w-screen bottom-0 bg-white mix-blend-difference border-t-2 border-gray-200"
+      :style="{ 'mix-blend-mode': isPageMentionsLegales ? 'normal' : '' }"
     >
       <Music />
     </div>
@@ -19,10 +20,13 @@ export default {
 
     const isMobile = stateIsMobile();
 
+    const isPageMentionsLegales = pageMentionsLegales();
+
     return {
       isFirstInterraction,
       isMusicPlaying,
       isMobile,
+      isPageMentionsLegales,
     };
   },
   methods: {

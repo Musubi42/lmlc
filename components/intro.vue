@@ -99,7 +99,7 @@ export default {
       // A la fin de l'animation venir démonter le component du DOM
       setTimeout(() => {
         this.IntroAnimation = false;
-        // Cookies.set("firstVisit", "false");
+        Cookies.set("firstVisit", "false");
       }, 1001);
     },
   },

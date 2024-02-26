@@ -12,3 +12,9 @@ export const firstInterraction = () => useState('isFirstInterraction', () => 1);
 
 export const musicPlaying = () => useState('isMusicPlaying', () => false);
 
+export const pageMentionsLegales = () => useState('isPageMentionsLegales', () => false);
+
+export const talents = () => useState('isTalents', () => false);
+
+
+

@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full z-50 absolute pt-6 pb-10">
+  <header class="w-full z-50 fixed pt-6 pb-10 bg-white">
     <div class="relative z-50 place-content-between pl-6 md:px-10 flex flex-row">
     <Menu :isMenuOpen="toggleMenu" @update:isMenuOpen="handleMenuUpdate" class="z-[100] absolute -mt-6" />
       <div
@@ -12,7 +12,6 @@
         >
           <img
             class="h-[11px] w-auto fixed cursor-none"
-            :class="isTalents ? 'invert' : ''"
             src="~/assets/images/logo-lmlc-black.png"
             alt="Logo LMLC couleur noir"
           />
@@ -29,7 +28,6 @@
           <IconsMenuBurger
             :style="{ height: burgerHeight + 'px', y: y + 'px' }"
             :y="y"
-            :class="isTalents ? 'invert' : ''"
             class="text-[50px] fill-black"
             ref="menuBurger"
             @click="toggleMenuBurger"
@@ -286,11 +284,8 @@ export default {
     const isMenuOpen = stateMenuOpen();
     // isMenuOpen.value = MenuOpen;
 
-    const isTalents = talents();
-
     return {
       isMenuOpen,
-      isTalents,
     };
   },
   data() {

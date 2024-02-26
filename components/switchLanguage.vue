@@ -1,21 +1,13 @@
 <template>
-  <!-- <button
-    class="fixed z-50 w-12 h-12 text-center rounded-full select-none text-a_bg right-24 top-3 border-black border-[1px]"
-    @click="changeLanguage"
-  >
-    <div class="absolute text-xs top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 dark:text-[#000]" >   
-      {{ currentLanguage }}
-    </div>
-  </button> -->
   <span
     class="hidden relative mt-[6px] md:flex flex-row text-xs font-medium right-44 bottom-[-1px] duration-300 transition-opacity"
     ref="languageSelectors"
     :style="languageStyle"
   >
-    <div class="fixed">
-      <span @click="changeLanguage('fr')" class="mr-4" id="fr" v-cursorAnimation>FR</span>
-      <span @click="changeLanguage('en')" class="mr-4" id="en" v-cursorAnimation>EN</span>
-      <span @click="changeLanguage('it')" class="" id="it" v-cursorAnimation>IT</span>
+    <div class="fixed text-black">
+      <span @click="changeLanguage('fr')" :class="isTalents ? 'invert' : ''" class="mr-4" id="fr" v-cursorAnimation>FR</span>
+      <span @click="changeLanguage('en')" :class="isTalents ? 'invert' : ''" class="mr-4" id="en" v-cursorAnimation>EN</span>
+      <span @click="changeLanguage('it')" :class="isTalents ? 'invert' : ''" class="" id="it" v-cursorAnimation>IT</span>
     </div>
   </span>
 
@@ -52,9 +44,19 @@ export default {
       }, 200);
     });
 
+    const isTalents = talents();
+
+    // watch(isTalents, (newValue, oldValue) => {
+    //   console.log(newValue, oldValue);
+    //   setTimeout(() => {
+    //     isMenuOpen.value = newValue;
+    //   }, 200);
+    // });
+
     return { 
       isMenuOpen,
-      };
+      isTalents
+    };
   },
   data() {
     return {

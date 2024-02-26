@@ -1,27 +1,19 @@
 <template>
-  <div @click="closeMenuIfOpen" >
-    <Header v-if="showHeader" :dynamicStyle="headerStyle" />
+  <div @click="closeMenuIfOpen">
+    <HeaderWork :dynamicStyle="headerStyle" />
     <NuxtPage />
-    <!-- <div
-      class="fixed w-screen bottom-0 bg-white mix-blend-difference border-t-2 border-gray-200"
-    >
-      <Music />
-    </div> -->
+    <Footer />
     <CustomCursor />
   </div>
 </template>
-
 
 <script>
 export default {
   setup() {
     const isMenuOpen = stateMenuOpen();
 
-    const isMobile = stateIsMobile();
-
     return {
       isMenuOpen,
-      isMobile,
     };
   },
   data() {
@@ -31,7 +23,6 @@ export default {
       },
       pastYPosition: 0,
       moreThanOnce: 0,
-      showHeader: ref(false),
     };
   },
   methods: {
@@ -50,19 +41,11 @@ export default {
       // this.moreThanOnce++;
     },
   },
-  beforeMount() {
-    const width = window.innerWidth;
-    this.isMobile = width <= 768; // Si la width est inférieur à 768px, c'est un mobile
-    // prefetchImages(isMobile.value);
-  },
   mounted() {
-    setTimeout(() => {
-      this.showHeader = true;
-    }, 700);
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener("scroll", this.handleScroll);
   },
   unmounted() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener("scroll", this.handleScroll);
   },
-}
+};
 </script>
