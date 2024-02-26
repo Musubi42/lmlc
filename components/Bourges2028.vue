@@ -1,18 +1,18 @@
 <template>
   <div id="slide1" class="container mx-auto flex flex-col lg:flex-row h-screen">
  <div class="flex-grow flex flex-col lg:justify-end mt-6 mb-16">
-   <h1 class="text-5xl lg:text-5xl 2xl:text-8xl font-bold mr-4">
+   <h1 class="2xl:text-9xl lg:text-8xl text-7xl font-bold mr-4">
      {{ t("TitleBourges[0]") }}<br> 
      {{ t("TitleBourges[1]") }}<br>
      {{ t("TitleBourges[2]") }}
    </h1>
-   <p class="text-base lg:text-sm 2xl:text-2xl mb-4">
+   <p class="lg:text-2xl text-base mb-4">
      {{ t("DescriptionBourges[0]") }} <br>
      {{ t("DescriptionBourges[1]") }} <br>
      {{ t("DescriptionBourges[2]") }} <br>
      {{ t("DescriptionBourges[3]") }}
    </p>
-   <p class="text-base lg:text-sm 2xl:text-base 2xl:mb-4 lg:mb-10 font-extralight">
+   <p class="text-base 2xl:mb-4 lg:mb-10 font-extralight">
      {{ t("WorkBourges[0]") }}<br>
      {{ t("WorkBourges[1]") }}<br>
      {{ t("WorkBourges[2]") }}<br>
@@ -31,6 +31,7 @@
  </div> -->
  
 </div>
+
 <div id="slide2" class="h-screen">
  <img src="/Bourges2028.png" alt="Bourges 2028" class="h-screen w-screen object-cover">
 </div>
@@ -38,14 +39,14 @@
 <!-- Deux dernières images sur mobile -->
 <div id="slide3" class="flex flex-col lg:flex-row h-screen w-screen items-center justify-center">
  <div class="relative basis-1/2">
-   <img src="/BidBook.png" alt="Bid Book Image" class="w-full h-auto">
-   <p class="absolute lg:bottom-10 bottom-2 w-full text-center p-4">
+   <img src="/BidBook_fond_beige.png" alt="Bid Book Image" class="w-full h-auto">
+   <p class="absolute lg:bottom-10 bottom-2 w-full text-center  2xl:mb-14 font-extralight">
      réalisation du dossier de candidature pour la demi-finale
    </p>
  </div>
  <div class="relative basis-1/2">
-   <img src="/BidBook.png" alt="Bid Book Image" class="w-full h-auto">
-   <p class="absolute lg:bottom-10 bottom-2 w-full text-center p-4">
+   <img src="/couverture_Bidbook_.png" alt="Bid Book Image" class="w-full h-auto">
+   <p class="absolute lg:bottom-10 bottom-2 w-full text-center  2xl:mb-14 font-extralight">
      réalisation du dossier de candidature pour la finale
    </p>
  </div>

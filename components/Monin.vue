@@ -9,14 +9,14 @@
       {{ t("DescriptionMonin[2]") }}<br> 
       {{ t("DescriptionMonin[3]") }}
     </p>
-    <p class="text-base mb-4 font-extralight">
+    <p class="text-base mb-10 font-extralight">
       {{ t("WorkMonin[0]") }} <br>
       {{ t("WorkMonin[1]") }} <br> 
       {{ t("WorkMonin[2]") }}<br> 
       {{ t("WorkMonin[3]") }}
     </p>
   </div>
-  <div class="flex justify-center lg:justify-end 2xl:w-2/5 lg:w-1/4 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-2 order-1">
+  <div class="flex justify-center lg:justify-end 2xl:w-2/5 lg:h-4/5 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-2 order-1">
     <img src="/monin.gif" alt="GIF" class="object-cover mx-auto">
   </div>
 </div>
@@ -50,6 +50,12 @@
       <div class="panell h-screen">
         <video class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
           <source :src="`/video/5.mp4`" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="panell h-screen">
+        <video class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
+          <source :src="`/video/6.mov`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>

@@ -83,7 +83,8 @@ export default {
       descriptionTypewriter: null,
       slide: 0,
       showButton: false,
-      intentObserver : null
+      intentObserver : null,
+      scrollCount : 0
 
     };
   },
@@ -154,28 +155,42 @@ export default {
     const isMobile = window.innerWidth <= 768;
 
     if (!isMobile) {
-    this.intentObserver = ScrollTrigger.observe({
-      type: "wheel,touch",
-      onUp: () => {
-        // Vérifiez si le slide n'est pas le premier
-        if (this.slide > 0) {
-          this.slide--; // Décrémentez le slide
-          gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
-        }
-      },
-      onDown: () => {
-        console.log("test")
-        if (this.slide < this.data[this.active].slide - 1) {
-          this.slide++; // Incrémentez le slide
-          gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
-        } else {
-          this.slide++;
-          gsap.to(window, { duration: 2, scrollTo: "#footer" });
-        }
-      },
-      tolerance: 100,
-      preventDefault: true,
-    });
+      this.intentObserver = ScrollTrigger.observe({
+  type: "wheel,touch",
+  onUp: () => {
+    this.scrollCount++;
+    if (this.scrollCount >= 2) {
+      // Réinitialisez le compteur
+      this.scrollCount = 0;
+
+      // Vérifiez si le slide n'est pas le premier
+      if (this.slide > 0) {
+        this.slide--; // Décrémentez le slide
+        gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+      }
+    }
+  },
+  onDown: () => {
+    this.scrollCount++;
+    if (this.scrollCount >= 2) {
+      // Réinitialisez le compteur
+      this.scrollCount = 0;
+
+      if (this.slide < this.data[this.active].slide - 1) {
+        this.slide++; // Incrémentez le slide
+        gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+      } else {
+        this.slide++;
+        gsap.to(window, { duration: 2, scrollTo: "#footer" });
+      }
+    }
+  },
+  tolerance: 100,
+  preventDefault: true,
+});
+
+// Initialisez le compteur de défilement
+this.scrollCount = 0;
 
   }
 },
