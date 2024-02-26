@@ -12,7 +12,7 @@
         >
           <img
             class="h-[11px] w-auto fixed cursor-none"
-            :class="isTalents ? 'invert' : ''"
+            :class="isTalents ? 'invert' : 'invert-0'"
             src="~/assets/images/logo-lmlc-black.png"
             alt="Logo LMLC couleur noir"
           />
@@ -29,7 +29,7 @@
           <IconsMenuBurger
             :style="{ height: burgerHeight + 'px', y: y + 'px' }"
             :y="y"
-            :class="isTalents ? 'invert' : ''"
+            :class="isTalents ? 'invert' : 'invert-0'"
             class="text-[50px] fill-black"
             ref="menuBurger"
             @click="toggleMenuBurger"
