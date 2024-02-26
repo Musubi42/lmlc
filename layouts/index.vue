@@ -11,17 +11,14 @@
 export default {
   data() {
     return {
-      headerStyle: {
-        opacity: 1,
-      },
+      headerStyle: 1,
       pastYPosition: 0,
     };
   },
   methods: {
     handleScroll() {
-      const actualYPosition = window.scrollY || window.pageYOffset;
-      this.headerStyle.opacity = this.pastYPosition < actualYPosition ? 0 : 1;
-      this.pastYPosition = actualYPosition;
+      this.headerStyle = this.pastYPosition < (window.scrollY || window.pageYOffset) ? 0 : 1;
+      this.pastYPosition = (window.scrollY || window.pageYOffset);
     },
   },
   mounted() {
