@@ -1,8 +1,11 @@
 <template>
   <a id="slide1"></a>
+<div class="flex justify-center items-center h-screen md:hidden">
+    <img src="/monin.gif" alt="GIF">
+</div>
   <div class="flex flex-col lg:flex-row container mx-auto p-8 h-screen">
     <div class="flex-grow flex flex-col justify-end 2xl:mb-20 lg:order-1 order-2">
-      <h1 class="2xl:text-9xl lg:text-8xl text-7xl font-bold 2xl:mr-4 lg:mr-4"> {{ t("TitleMonin") }}</h1>
+      <h1 class="2xl:text-9xl lg:text-8xl text-5xl font-bold 2xl:mr-4 lg:mr-4"> {{ t("TitleMonin") }}</h1>
       <p class="lg:text-2xl text-base mb-4">
         {{ t("DescriptionMonin[0]") }} <br>
         {{ t("DescriptionMonin[1]") }} <br>
@@ -16,7 +19,7 @@
         {{ t("WorkMonin[3]") }}
       </p>
     </div>
-    <div class="flex justify-center lg:justify-end 2xl:w-2/5 lg:h-4/5 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-2 order-1">
+    <div class="md:flex hidden justify-center lg:justify-end 2xl:w-2/5 lg:h-4/5 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-2 order-1">
       <img src="/monin.gif" alt="GIF" class="object-cover mx-auto">
     </div>
   </div>
@@ -73,39 +76,39 @@
       </div>
     </div>
 
-    <div class=" md:hidden flex overflow-x-auto h-screen items-center gap-10 relative" >
+    <div class=" md:hidden flex overflow-x-auto  items-center gap-10 relative" >
       <div class="flex flex-nowrap">
-        <div class="w-screen flex-shrink-0 h-full ">
+        <div class="w-[75%] flex-shrink-0 h-full mx-4">
           <video class="flex " autoplay loop muted playsinline>
             <source :src="`/video/1.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class=" w-screen flex-shrink-0 h-full">
+        <div class="w-[75%] flex-shrink-0 h-full mx-4">
           <video class="flex " autoplay loop muted playsinline>
             <source :src="`/video/2.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class=" w-screen flex-shrink-0 h-full">
+        <div class="w-[75%] flex-shrink-0 h-full mx-4">
           <video class="   flex" autoplay loop muted playsinline>
             <source :src="`/video/3.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="w-screen flex-shrink-0 h-full">
+        <div class="w-[75%] flex-shrink-0 h-full mx-4">
           <video class="  flex" autoplay loop muted playsinline>
             <source :src="`/video/4.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="w-screen flex-shrink-0 h-full">
+        <div class="w-[75%] flex-shrink-0 h-full mx-4">
           <video class="  flex" autoplay loop muted playsinline>
             <source :src="`/video/5.mp4`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class=" w-screen flex-shrink-0 h-full">
+        <div class="w-[75%] flex-shrink-0 h-full mx-4">
           <video class=" flex" autoplay loop muted playsinline>
             <source :src="`/video/6.mov`" type="video/mp4" />
             Your browser does not support the video tag.

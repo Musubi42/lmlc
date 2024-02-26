@@ -1,7 +1,7 @@
 <template>
   <div id="slide1" class="container mx-auto flex flex-col lg:flex-row h-screen">
  <div class="flex-grow flex flex-col lg:justify-end mt-6 mb-16">
-   <h1 class="2xl:text-9xl lg:text-8xl text-7xl font-bold mr-4">
+   <h1 class="2xl:text-9xl lg:text-8xl text-5xl font-bold mr-4">
      {{ t("TitleBourges[0]") }}<br> 
      {{ t("TitleBourges[1]") }}<br>
      {{ t("TitleBourges[2]") }}
@@ -60,6 +60,7 @@
 }
 
 .floating_book {
+  display: flex;
 }
 
 @keyframes flotterAnimation {
