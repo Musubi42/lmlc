@@ -2,7 +2,7 @@
   <span
     class="hidden relative mt-[6px] md:flex flex-row text-xs font-medium right-44 bottom-[-1px] duration-300 transition-opacity"
     ref="languageSelectors"
-    :style="languageStyle"
+    :style="{ 'opacity': languageStyle}"
   >
     <div class="fixed text-black">
       <span @click="changeLanguage('fr')" :class="isTalents ? 'invert' : ''" class="mr-4" id="fr" v-cursorAnimation>FR</span>

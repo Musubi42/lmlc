@@ -4,14 +4,15 @@
     <Menu :isMenuOpen="toggleMenu" @update:isMenuOpen="handleMenuUpdate" class="z-[100] absolute -mt-6" />
       <div
         class="duration-300 transition-opacity"
-        :style="dynamicStyle">
+        :style="{ 'opacity': dynamicStyle}"
+        >
         <NuxtLink
           to="/"
           class="" 
           v-cursorAnimation
         >
           <img
-            class="h-[11px] w-auto fixed cursor-none"
+            class="h-[11px] w-auto fixed cursor-none invert-0"
             :class="isTalents ? 'invert' : 'invert-0'"
             src="~/assets/images/logo-lmlc-black.png"
             alt="Logo LMLC couleur noir"
@@ -29,8 +30,8 @@
           <IconsMenuBurger
             :style="{ height: burgerHeight + 'px', y: y + 'px' }"
             :y="y"
+            class="text-[50px] fill-black invert-0"
             :class="isTalents ? 'invert' : 'invert-0'"
-            class="text-[50px] fill-black"
             ref="menuBurger"
             @click="toggleMenuBurger"
             v-cursorAnimation
@@ -314,8 +315,18 @@ export default {
       },
       deep: true, // Ceci est nécessaire si 'isMenuOpen' est un objet
     },
+    dynamicStyle: {
+      handler: function (newVal, oldVal) {
+        console.log(newVal, oldVal);
+        if (newVal === false) {
+          // this.toggleMenuBurger();
+        }
+      },
+      deep: true, // Ceci est nécessaire si 'isMenuOpen' est un objet
+    },
   },
   created() {
+    console.log("dynamic Style : ", this.dynamicStyle);
     // Lorsque le composant est créé, vérifiez si un cookie de langue existe
     const savedLang = Cookies.get("i18n_language");
 
