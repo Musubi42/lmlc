@@ -47,8 +47,7 @@ self.onmessage = async function (event) {
 
     let body;
     if (isMobile) {
-      body = Bodies.rectangle(Math.random() * render.canvas.width, // x position
-    -200, meubles[key].body.size.width, meubles[key].body.size.height, {
+      body = Bodies.rectangle(300, 300, meubles[key].body.size.width, meubles[key].body.size.height, {
       // collisionFilter: {
       //   // category: 2, // You can set your own category here
       //   mask: 0, // Enable or disable collision based on collisionEnabled
