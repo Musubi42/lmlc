@@ -2,65 +2,117 @@
   <a id="slide1"></a>
   <div class="flex flex-col lg:flex-row container mx-auto p-8 h-screen">
     <div class="flex-grow flex flex-col justify-end 2xl:mb-20 lg:order-1 order-2">
-    <h1 class="2xl:text-9xl lg:text-8xl text-7xl font-bold 2xl:mr-4 lg:mr-4"> {{ t("TitleMonin") }}</h1>
-    <p class="lg:text-2xl text-base mb-4">
-      {{ t("DescriptionMonin[0]") }} <br>
-      {{ t("DescriptionMonin[1]") }} <br> 
-      {{ t("DescriptionMonin[2]") }}<br> 
-      {{ t("DescriptionMonin[3]") }}
-    </p>
-    <p class="text-base mb-10 font-extralight">
-      {{ t("WorkMonin[0]") }} <br>
-      {{ t("WorkMonin[1]") }} <br> 
-      {{ t("WorkMonin[2]") }}<br> 
-      {{ t("WorkMonin[3]") }}
-    </p>
+      <h1 class="2xl:text-9xl lg:text-8xl text-7xl font-bold 2xl:mr-4 lg:mr-4"> {{ t("TitleMonin") }}</h1>
+      <p class="lg:text-2xl text-base mb-4">
+        {{ t("DescriptionMonin[0]") }} <br>
+        {{ t("DescriptionMonin[1]") }} <br>
+        {{ t("DescriptionMonin[2]") }}<br>
+        {{ t("DescriptionMonin[3]") }}
+      </p>
+      <p class="text-base mb-10 font-extralight">
+        {{ t("WorkMonin[0]") }} <br>
+        {{ t("WorkMonin[1]") }} <br>
+        {{ t("WorkMonin[2]") }}<br>
+        {{ t("WorkMonin[3]") }}
+      </p>
+    </div>
+    <div class="flex justify-center lg:justify-end 2xl:w-2/5 lg:h-4/5 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-2 order-1">
+      <img src="/monin.gif" alt="GIF" class="object-cover mx-auto">
+    </div>
   </div>
-  <div class="flex justify-center lg:justify-end 2xl:w-2/5 lg:h-4/5 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-2 order-1">
-    <img src="/monin.gif" alt="GIF" class="object-cover mx-auto">
-  </div>
-</div>
   <div>
     <a id="slide2"></a>
-    <div class="containerDE horizontal h-screen">
+    <div class="hidden md:flex containerDE horizontal h-screen ">
       <div class="panell h-screen ">
-        <video class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
+        <video
+          class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          autoplay loop muted playsinline>
           <source :src="`/video/1.mov`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       <div class="panell h-screen">
-        <video class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
+        <video
+          class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          autoplay loop muted playsinline>
           <source :src="`/video/2.mov`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       <div class="panell h-screen">
-        <video class=" lg:h-[75%] h-screen flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
+        <video
+          class=" lg:h-[75%] h-screen flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          autoplay loop muted playsinline>
           <source :src="`/video/3.mov`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       <div class="panell h-screen">
-        <video class=" lg:h-[75%]  flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
+        <video
+          class=" lg:h-[75%]  flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          autoplay loop muted playsinline>
           <source :src="`/video/4.mov`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       <div class="panell h-screen">
-        <video class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
+        <video
+          class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          autoplay loop muted playsinline>
           <source :src="`/video/5.mp4`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       <div class="panell h-screen">
-        <video class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" autoplay loop muted>
+        <video
+          class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          autoplay loop muted playsinline>
           <source :src="`/video/6.mov`" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
     </div>
-    
+
+    <div class=" md:hidden flex overflow-x-auto h-screen items-center gap-10 relative" >
+      <div class="flex flex-nowrap">
+        <div class="w-screen flex-shrink-0 h-full ">
+          <video class="flex " autoplay loop muted playsinline>
+            <source :src="`/video/1.mov`" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class=" w-screen flex-shrink-0 h-full">
+          <video class="flex " autoplay loop muted playsinline>
+            <source :src="`/video/2.mov`" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class=" w-screen flex-shrink-0 h-full">
+          <video class="   flex" autoplay loop muted playsinline>
+            <source :src="`/video/3.mov`" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="w-screen flex-shrink-0 h-full">
+          <video class="  flex" autoplay loop muted playsinline>
+            <source :src="`/video/4.mov`" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="w-screen flex-shrink-0 h-full">
+          <video class="  flex" autoplay loop muted playsinline>
+            <source :src="`/video/5.mp4`" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class=" w-screen flex-shrink-0 h-full">
+          <video class=" flex" autoplay loop muted playsinline>
+            <source :src="`/video/6.mov`" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -118,7 +170,7 @@ onMounted(() => {
       currentIndex.value = index;
     }
     const isDesktop = window.innerWidth > 768;
-
+    console.log(isDesktop)
     // Horizontal scrolling section 
     if (isDesktop) {
       let horizontalSections = document.querySelectorAll('.horizontal .panell');
@@ -156,21 +208,29 @@ onUnmounted(() => {
   width: 100%;
   overflow: hidden;
 }
+@media (max-width: 768px) {
+  .containerDE,
+  .swipe-section {
+    display: none;
+  }
+}
 
 .swipe-section .panel {
   position: absolute;
 }
+
 /* Utilisez des classes Tailwind pour responsivité */
 @media (max-width: 768px) {
   .containerDE {
     /* Défilement horizontal manuel sur les petits écrans */
     overflow-x: auto;
-    width: 100%; /* Ajustez la largeur pour les mobiles */
+    width: 100%;
+    /* Ajustez la largeur pour les mobiles */
   }
 
-  .h-screen { 
-    height: auto; /* Hauteur auto pour éviter les problèmes sur mobile */
+  .h-screen {
+    height: auto;
+    /* Hauteur auto pour éviter les problèmes sur mobile */
   }
 
-}
-</style>
+}</style>
