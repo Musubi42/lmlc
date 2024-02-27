@@ -118,7 +118,6 @@
 
 <script>
 export default {
-  // props: ["isIntroAnimation"],
   setup() {
     definePageMeta({
       layout: "accueil",
@@ -197,7 +196,7 @@ export default {
   mounted() {
     this.componentKey++;
     // Get the language change of SwitchLanguage component
-     watch(() => this.$i18n.locale, () => {
+    watch(() => this.$i18n.locale, () => {
       this.setLanguageTexts();
     });
     

@@ -46,8 +46,6 @@ const setLanguageTexts = () => {
   webDeveloper.value = t("webDeveloper");
   artisticDirector.value = t("artisticDirector");
   brandPerformanceExpert.value = t("brandPerformanceExpert");
-
-  console.log(ceoAndFounder.value);
 };
 
 const profiles = ref([
@@ -64,7 +62,6 @@ const profiles = ref([
 var hasScrolled = ref(false);
 
 const handleScroll = (event) => {
-  console.log(event);
   if (event.target.scrollLeft > 0) {
     hasScrolled.value = true;
   }

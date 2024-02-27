@@ -1,7 +1,7 @@
 export default defineNuxtRouteMiddleware((to) => {
-  const isTalents = talents();
-
-  if (to.path !== "/about") {
-    isTalents.value = false;
-  }
+  var isTalents = talents();
+    
+  // Il faut forcer tout le temps le isTalents à false, ou si non le header est blanc
+  isTalents = false;
+  console.log(isTalents);
 });

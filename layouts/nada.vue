@@ -19,9 +19,12 @@ export default {
 
     const isMobile = stateIsMobile();
 
+    const isTalents = talents();
+
     return {
       isMenuOpen,
       isMobile,
+      isTalents,
     };
   },
   data() {
@@ -46,6 +49,18 @@ export default {
       // }
       // this.moreThanOnce++;
     },
+
+    headerToBlack() {
+      if (window.scrollY === 0) {
+        this.isTalents = false;
+      } 
+    },
+
+    headerToBlackMobile() {
+      if (window.scrollY === 0) {
+        this.isTalents = false;
+      } 
+    },
   },
   beforeMount() {
     const width = window.innerWidth;
@@ -53,6 +68,10 @@ export default {
     // prefetchImages(isMobile.value);
   },
   mounted() {
+    window.addEventListener('scroll', this.headerToBlack);
+    window.addEventListener('touchmove', this.headerToBlackMobile, { passive: true });
+
+
     setTimeout(() => {
       this.showHeader = true;
     }, 700);

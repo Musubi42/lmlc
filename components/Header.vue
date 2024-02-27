@@ -12,7 +12,7 @@
           v-cursorAnimation
         >
           <img
-            class="h-[11px] w-auto fixed cursor-none invert-0"
+            class="h-[11px] w-auto fixed cursor-none"
             :class="isTalents ? 'invert' : 'invert-0'"
             src="~/assets/images/logo-lmlc-black.png"
             alt="Logo LMLC couleur noir"
@@ -30,7 +30,7 @@
           <IconsMenuBurger
             :style="{ height: burgerHeight + 'px', y: y + 'px' }"
             :y="y"
-            class="text-[50px] fill-black invert-0"
+            class="text-[50px] fill-black"
             :class="isTalents ? 'invert' : 'invert-0'"
             ref="menuBurger"
             @click="toggleMenuBurger"
@@ -289,6 +289,8 @@ export default {
 
     const isTalents = talents();
 
+    console.log(isTalents.value, "isTalents");
+
     return {
       isMenuOpen,
       isTalents,
@@ -324,6 +326,14 @@ export default {
       },
       deep: true, // Ceci est nécessaire si 'isMenuOpen' est un objet
     },
+    // isTalents: {
+    //   handler: function (newVal, oldVal) {
+    //     console.log(newVal, oldVal);
+    //     if (newVal === false) {
+    //       // this.toggleMenuBurger();
+    //     }
+    //   },
+    // },
   },
   created() {
     console.log("dynamic Style : ", this.dynamicStyle);
