@@ -14,6 +14,7 @@
   <span
     class="absolute left-0 top-0 ml-6 z-[1000] mt-[6px] md:hidden block flex-row text-base font-medium right-24 bottom-[-1px] duration-300 transition-opacity"
     ref="languageSelectorsMobile"
+    id="languageSelectorsMobile"
     v-if="isMenuOpen"
   >
     <div class="fixed">
@@ -26,6 +27,7 @@
 
 <script>
 import Cookies from "js-cookie";
+import { ref, onMounted } from 'vue';
 
 export default {
   props: {
@@ -46,6 +48,8 @@ export default {
 
     const isTalents = talents();
 
+    const isMobile = stateIsMobile();
+
     // watch(isTalents, (newValue, oldValue) => {
     //   console.log(newValue, oldValue);
     //   setTimeout(() => {
@@ -53,9 +57,41 @@ export default {
     //   }, 200);
     // });
 
+    const { locale } = useI18n();
+
+    const changeLanguageMobile = (locale) => {
+      // const languageSelectors = this.$refs.languageSelectorsMobile;
+      // const languageSelectorsMobile = ref(null);
+      const languageSelectorsMobile = document.getElementById("languageSelectorsMobile");
+      console.log(languageSelectorsMobile);
+      const allLanguageSelectors = languageSelectorsMobile.querySelectorAll("span");
+      allLanguageSelectors.forEach((languageSelector) => {
+        languageSelector.classList.remove("font-semibold");
+      });
+      this.language = locale.toUpperCase();
+      const languageSelector = document.getElementById(locale);
+      languageSelector.classList.add("font-semibold");
+
+      const languageSelectorsMobiles = document.getElementById(`${locale}Mobile`);
+      languageSelectorsMobiles.classList.add("font-semibold");
+
+      Cookies.set("i18n_language", locale);
+      locale = locale;
+    };
+
+    const isMobileUpdateLanguage = mobileUpdateLanguage();
+
+    // watch(isMobileUpdateLanguage, (newValue, oldValue) => {
+    //   console.log(newValue, oldValue);
+    //   changeLanguageMobile(locale.toString());
+    // });
+
     return { 
       isMenuOpen,
-      isTalents
+      isTalents,
+      isMobile,
+      isMobileUpdateLanguage,
+      changeLanguageMobile,
     };
   },
   data() {
@@ -75,6 +111,12 @@ export default {
     }
   },
   mounted() {
+    // if (this.isMobile) {
+    //   console.log("mobile");
+    //   this.changeLanguageMobile(this.$i18n.locale.toString());
+    // } else {
+    //   this.changeLanguage(this.$i18n.locale.toString());
+    // }
     this.changeLanguage(this.$i18n.locale.toString());
   },
   computed: {

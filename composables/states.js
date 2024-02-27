@@ -16,5 +16,8 @@ export const pageMentionsLegales = () => useState('isPageMentionsLegales', () =>
 
 export const talents = () => useState('isTalents', () => false);
 
+export const mobileUpdateLanguage = () => useState('isMobileUpdateLanguage', () => 1);
+
+
 
 

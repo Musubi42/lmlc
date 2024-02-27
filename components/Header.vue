@@ -289,11 +289,14 @@ export default {
 
     const isTalents = talents();
 
-    console.log(isTalents.value, "isTalents");
+    const isMobileUpdateLanguage = mobileUpdateLanguage();
+
+    isTalents.value = false;
 
     return {
       isMenuOpen,
       isTalents,
+      isMobileUpdateLanguage,
     };
   },
   data() {
@@ -353,12 +356,20 @@ export default {
   methods: {
     handleMenuUpdate(event) {
       this.toggleMenuBurger();
+
+      // // Update current language in use
+      // console.log("ici");
+      // this.isMobileUpdateLanguage++;
     },
     toggleDropdown() {
       // Toggle the dropdown state
       this.isDropdownOpen = !this.isDropdownOpen;
     },
     toggleMenuBurger() {
+      // Update current language in use
+      console.log("ici");
+      this.isMobileUpdateLanguage++;
+      
       this.isMenuOpen = !this.isMenuOpen;
       this.toggleMenu = !this.toggleMenu;
       this.menuBurgerOpened = !this.menuBurgerOpened;

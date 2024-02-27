@@ -87,7 +87,7 @@ export default {
       }
 
       // TODO: Faire transitionner le logo LMLC et le menuBurger
-      this.isTalents.value = true;
+      this.isTalents = true;
     },
 
     handleRemoveBgBlack(entries) {
@@ -102,7 +102,7 @@ export default {
         body.classList.add("background-white");
       }
 
-      this.isTalents.value = false;
+      this.isTalents = false;
     },
 
     handleWheelEvent(event) {
