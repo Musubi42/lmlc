@@ -499,8 +499,8 @@
       "scaleFactor": 1.1
     },
     "sprite": {
-      "xScale": 0.12,
-      "yScale": 0.12,
+      "xScale": 0.34,
+      "yScale": 0.34,
       "image": "./tableau/images/bourgesUn.png"
     },
     "constraint": {
@@ -523,8 +523,8 @@
       "scaleFactor": 1.1
     },
     "sprite": {
-      "xScale": 0.11,
-      "yScale": 0.11,
+      "xScale": 0.34,
+      "yScale": 0.34,
       "image": "./tableau/images/bourgesDeux.png"
     },
     "constraint": {

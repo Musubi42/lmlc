@@ -14,9 +14,9 @@
 
       <path id="bouillon" />
 
-      <path id="un" />
+      <path id="bourgesUn" />
 
-      <path id="deux" />
+      <path id="bourgesDeux" />
 
       <path id="timurQualiSVG" />
 
@@ -43,10 +43,6 @@
       <path id="bouillonMobile" />
 
       <path id="monin" />
-
-      <path id="un" />
-
-      <path id="deux" />
 
       <path id="timurQualiPNG" />
 
