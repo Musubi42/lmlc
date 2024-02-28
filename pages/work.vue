@@ -146,7 +146,6 @@ export default {
 
   mounted() {
     this.initTypewriter();
-    // this.autoScrollInterval = setInterval(this.goNext, 10000);
     if(this.data[this.active].slide > 0){
       setTimeout(() => {
       this.showButton = true;
@@ -156,7 +155,7 @@ export default {
 
     if (!isMobile) {
       this.intentObserver = ScrollTrigger.observe({
-  type: "wheel,touch",
+  type: "wheel",
   onUp: () => {
     this.scrollCount++;
     if (this.scrollCount >= 2) {

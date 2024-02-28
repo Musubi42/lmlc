@@ -76,14 +76,27 @@
       </div>
     </div>
 
+    <!-- mobile -->
     <div class=" md:hidden flex overflow-x-auto  items-center gap-10 relative" >
       <div class="flex flex-nowrap">
-        <div class="w-[75%] flex-shrink-0 h-full mx-4">
+        <div class="w-[75%] flex-shrink-0 h-full mx-4 mb-4">
           <video class="flex " autoplay loop muted playsinline>
             <source :src="`/video/1.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
+        <button
+  class="absolute bottom-1/2 right-0 transform translate-x-1/2 z-30 flex items-center justify-center mr-4 group focus:outline-none "
+>
+  <span class="border-0 rounded-full p-2 active:bg-rose-neon/50 -rotate-90">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
+      <path fill="currentColor" fill-rule="evenodd"
+        d="M2.22 5.22a.75.75 0 0 0 0 1.06l5.252 5.252a.75.75 0 0 0 1.06 0l5.252-5.252a.75.75 0 1 0-1.06-1.06L8.001 9.94L3.28 5.22a.75.75 0 0 0-1.06 0"
+        clip-rule="evenodd" />
+    </svg>
+  </span>
+</button>
+
         <div class="w-[75%] flex-shrink-0 h-full mx-4">
           <video class="flex " autoplay loop muted playsinline>
             <source :src="`/video/2.mov`" type="video/mp4" />
