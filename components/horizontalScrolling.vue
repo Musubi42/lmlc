@@ -133,12 +133,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="scroll-snap-container">
+  <div class="">
   <!-- Desktop -->
     <div
       class="hidden md:flex overscroll-none w-[200vw] h-screen flex-nowrap items-center horizontal "
-      :style="{ backgroundColor: talentsBgColor }"
-    >
+      :style="{ backgroundColor: talentsBgColor }">
       <!-- Loop through the profiles data to create elements for each one -->
       <section
         v-for="profile in profiles"
@@ -155,7 +154,7 @@ onUnmounted(() => {
 
     <!-- Mobile -->
     <div
-      class="snap-start flex md:hidden h-screen items-center overflow-x-auto gap-10 relative bg-black md:bg-white"
+      class="flex md:hidden h-screen items-center overflow-x-auto gap-10 relative bg-black md:bg-white"
       @scroll="handleScroll"
     >
       <section
@@ -185,8 +184,6 @@ onUnmounted(() => {
         ></path>
       </svg>
     </div>
-
-    <Footer />
   </div>
 </template>
 

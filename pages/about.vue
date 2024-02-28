@@ -1,11 +1,11 @@
 <template>
-  <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200 scroll-snap-container overflow-y-scroll">
+  <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200 scroll-snap-container overflow-y-scroll h-full">
     <!-- Partie métiers -->
     <ServicesAnimation v-if="showServicesAnimation" :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="hidden md:block relative z-0 pointer-events-none" />
 
-    <div ref="aboutMetier" class="snap-start">
+    <div ref="aboutMetier" class="snap-start h-full">
       <!-- <MetierCopy  /> -->
-      <Metier  />
+      <Metier class="snap-start"  />
     </div>
  
     <!-- Partie talents -->
@@ -15,8 +15,12 @@
     <section ref="servicesTalents" class="h-screen block relative snap-start">
 
     <!-- TODO: hidden le scroll, et mettre une div spéciale pour mobile avec le chevron pour scroller -->
-    <HorizontalScrolling :talentsBgColor="bgColor" />
+    <HorizontalScrolling :talentsBgColor="bgColor"  />
     </section> 
+
+
+
+    <Footer class="snap-start" />
   </div>
 </template>
 
@@ -29,7 +33,7 @@ body {
   scroll-snap-type: y mandatory;
 }
 
-.snap-start {
+.snap-startt {
   scroll-snap-align: start;
 }
 

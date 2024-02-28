@@ -3,7 +3,7 @@
   <!-- <section ref="metier" class="h-screen flex items-center scrollbar-hide w-full bg-black"> -->
     <!-- <ServicesAnimation :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="relative z-0 pointer-events-none" /> -->
       <!-- <div v-if="showOverlay" class="absolute inset-0 bg-black transition-colors duration-1000" ></div> -->
-      <div class="absolute my-auto z-10 w-full box-border px-8">
+      <div class="relative my-auto z-10 w-full box-border px-8">
         <div class="relative flex flex-col md:flex-row gap-9 md:gap-2 mt-28 md:mt-0 md:mx-20 justify-around section-content font-extralight">
           <div class="flex-1 z-10">
             <h3 class="font-semibold text-2xl section-content-title">{{ strategies }}</h3>
