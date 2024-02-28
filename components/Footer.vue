@@ -112,6 +112,10 @@
           translate(-50%, -50%); z-index: -1; object-fit: cover; -->
           <!-- TODO: Faire un input pour récupérer email en contact -->
         </div>
+        <div class="flex flex-row">
+          <IconsInstagrame class="w-10 h-auto text-white" />
+          <IconsLinkedin class="w-12 h-auto text-white" />
+        </div>
         <div class="z-10 relative" data-footer-element>PARIS, FR</div>
       </div>
     </div>

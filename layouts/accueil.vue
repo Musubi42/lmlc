@@ -4,11 +4,6 @@
     <!-- <Intro v-if="true" class="fixed z-10" /> -->
     <Header :dynamicStyle="headerStyle" />
     <NuxtPage />
-    <!-- <div
-      class="fixed w-screen bottom-0 bg-white mix-blend-difference border-t-2 border-gray-200"
-    >
-      <Music />
-    </div> -->
     <Footer />
     <CustomCursor />
   </div>
@@ -30,18 +25,21 @@ export default {
 
     const isMobile = stateIsMobile();
 
+    const useTableauPreFetchImages = tableauPreFetchImages();
+
+    const isTableauPreFetchImagesLoading = tableauPreFetchImagesLoading();
+
     return {
       isMenuOpen,
       IntroAnimation,
       firstVisit,
       isMobile,
+      useTableauPreFetchImages,
+      isTableauPreFetchImagesLoading,
     };
   },
   data() {
     return {
-      // headerStyle: {
-      //   opacity: 1,
-      // },
       headerStyle: 1,
       pastYPosition: 0,
       moreThanOnce: 0,
@@ -61,11 +59,63 @@ export default {
       // }
       // this.moreThanOnce++;
     },
+
+    async preloadImagesAndConvertToDataUrls(isMobile) {
+      const response = await fetch('/tableau/meubles.json');
+      const meubles = await response.json();
+
+      let uniqueBodyKeys = [];
+
+      if (isMobile) {
+        uniqueBodyKeys = ["moninMobile", "bouillonMobile", "timurQualiPNGMobile", "unMobile", "deuxMobile", "sacBleuMobile"];
+      } else {
+        uniqueBodyKeys = ["sacBleu", "monin", "un", "deux", "timurQualiPNG"];
+      }
+
+      const promises = uniqueBodyKeys.map((key) => {
+        const baseUrl = document.location.origin;
+        const imageUrls = `${baseUrl}${meubles[key].sprite.image.replace("./", "/")}`;
+
+        console.log(imageUrls, "imageUrls");
+
+        return fetch(imageUrls)
+          .then(response => response.blob())
+          .then(blob => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve({ key, dataUrl: reader.result }); // Convert to Data URL
+            reader.onerror = () => reject(new Error('Failed to read blob as data URL'));
+            reader.readAsDataURL(blob);
+          }));
+      });
+
+      const results = await Promise.all(promises);
+
+      // Convert the array of results to an object
+      const imagesDataUrls = {};
+      results.forEach(result => {
+        imagesDataUrls[result.key] = result.dataUrl;
+      });
+
+      return imagesDataUrls;
+    },
+
   },
-  beforeMount() {
+  async beforeMount() {
     const width = window.innerWidth;
     this.isMobile = width <= 768; // Si la width est inférieur à 768px, c'est un mobile
-    // prefetchImages(isMobile.value);
+
+    // this.preloadImagesAndConvertToDataUrls(this.isMobile.value).then(imagesDataUrls => {
+    //   console.log("imagesDataUrls", imagesDataUrls);
+    //   this.useTableauPreFetchImages.value = imagesDataUrls;
+    // });
+
+    // TODO: Checker si la data est loaded avant d'afficher le composant Tableau
+    const imagesDataUrls = await this.preloadImagesAndConvertToDataUrls(this.isMobile);
+    // console.log("imagesDataUrls", imagesDataUrls);
+    imagesDataUrls ? this.isTableauPreFetchImagesLoading = false : this.isTableauPreFetchImagesLoading = true;
+    // console.log(this.isTableauPreFetchImagesLoading, "isTableauPreFetchImagesLoading");
+
+    this.useTableauPreFetchImages.value = imagesDataUrls;
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);

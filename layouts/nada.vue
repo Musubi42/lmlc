@@ -1,6 +1,6 @@
 <template>
   <div @click="closeMenuIfOpen" >
-    <Header v-if="showHeader" :dynamicStyle="headerStyle" />
+    <HeaderAbout v-if="showHeader" :dynamicStyle="headerStyle" />
     <NuxtPage />
     <!-- <div
       class="fixed w-screen bottom-0 bg-white mix-blend-difference border-t-2 border-gray-200"
@@ -69,7 +69,7 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.headerToBlack);
-    window.addEventListener('touchmove', this.headerToBlackMobile, { passive: true });
+    // window.addEventListener('touchmove', this.headerToBlackMobile, { passive: true });
 
 
     setTimeout(() => {

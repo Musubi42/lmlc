@@ -7,13 +7,20 @@ import {
 } from "matter-js";
 Common.setDecomp(decomp);
 self.onmessage = async function (event) {
+  // var imagesDataUrls = null;
+  // if (event.data.type === 'preloadImages') {
+  //   imagesDataUrls = event.data.imagesDataUrls;
+  //   // console.log(imagesDataUrls);
+  //   // Now, you have your preloaded images as data URLs in the worker.
+  //   // You can use these URLs as textures for your Matter.js bodies.
+  // }
   const { functionName, args } = event.data;
 
   if (functionName === "createBody") {
     createBody(...args);
   } 
 
-  async function createBody(key, meubles, isMobile, forMainThread, drawHereWidth, drawHereHeight) {
+  async function createBody(key, meubles, isMobile, forMainThread, drawHereWidth, drawHereHeight, useTableauPreFetchImages) {
     // Fetch the file from the public folder
     // const response = await fetch(`@/../../tableau/vertices/${key}.json`);
     // Repasser sur public pour éviter les fetch qui fails
@@ -23,6 +30,10 @@ self.onmessage = async function (event) {
 
     // Vertices pour test les tailles
     var response = "";
+
+    // console.log(key);
+    // console.log(useTableauPreFetchImages[key]);
+
 
     
     try {
@@ -100,7 +111,8 @@ self.onmessage = async function (event) {
         render: {
           opacity: 1,
           sprite: {
-            texture: meubles[key].sprite.image,
+            texture: useTableauPreFetchImages[key],
+            // texture: meubles[key].sprite.image,
             xScale: meubles[key].sprite.xScale,
             yScale: meubles[key].sprite.yScale,
             xOffset: 0,

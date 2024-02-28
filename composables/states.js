@@ -18,6 +18,12 @@ export const talents = () => useState('isTalents', () => false);
 
 export const mobileUpdateLanguage = () => useState('isMobileUpdateLanguage', () => 1);
 
+export const tableauPreFetchImages = () => useState('useTableauPreFetchImages', () => []);
+
+export const tableauPreFetchImagesLoading = () => useState('isTableauPreFetchImagesLoading', () => true);
+
+
+
 
 
 

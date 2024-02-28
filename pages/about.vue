@@ -4,7 +4,8 @@
     <ServicesAnimation v-if="showServicesAnimation" :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="hidden md:block relative z-0 pointer-events-none" />
 
     <div ref="aboutMetier">
-      <MetierCopy  />
+      <!-- <MetierCopy  /> -->
+      <Metier  />
     </div>
  
     <!-- Partie talents -->
@@ -20,6 +21,9 @@
 </template>
 
 <style>
+body {
+  background-color: black;
+}
 .unset-overflow {
   overflow: unset;
 }

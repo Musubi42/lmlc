@@ -133,10 +133,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="">
   <!-- Desktop -->
     <div
-      class="hidden md:flex overscroll-none w-[200vw] h-screen flex-nowrap items-center horizontal"
+      class="hidden md:flex overscroll-none w-[200vw] h-screen flex-nowrap items-center horizontal "
       :style="{ backgroundColor: talentsBgColor }"
     >
       <!-- Loop through the profiles data to create elements for each one -->
@@ -155,8 +155,7 @@ onUnmounted(() => {
 
     <!-- Mobile -->
     <div
-      class="flex md:hidden h-screen items-center overflow-x-auto gap-10 relative"
-      :style="{ backgroundColor: talentsBgColor }"
+      class="flex md:hidden h-screen items-center overflow-x-auto gap-10 relative bg-black md:bg-white"
       @scroll="handleScroll"
     >
       <section

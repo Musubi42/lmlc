@@ -84,9 +84,13 @@ export default {
 
     const isMobile = stateIsMobile();
 
+    const useTableauPreFetchImages = tableauPreFetchImages();
+
+    // console.log(useTableauPreFetchImages.value);
     return { 
       drawhere,
       isMobile,
+      useTableauPreFetchImages,
     };
   },
   data: function () {
@@ -175,13 +179,28 @@ export default {
             uniqueBody = { sacBleu, monin, un, deux, timurQualiPNG };
           }
 
+          // console.log(this.useTableauPreFetchImages.value);
+
+          let images = Object.entries(this.useTableauPreFetchImages.value).reduce((acc, [key, value]) => {
+            // Process the key and value if necessary
+            // For example, to convert the value to a string:
+            let newValue = String(value);
+
+            // Add the processed key-value pair to the accumulator object
+            acc[key] = newValue;
+
+            return acc;
+          }, {});
+
+          // console.log(images);
+
           function createsUniqueBody() {
             console.log(uniqueBody);
             const forMainThread = true;
             for (let key in uniqueBody) {
               worker.postMessage({
                 functionName: "createBody",
-                args: [key, meubles, isMobile, forMainThread, drawhereWidth, drawhereHeight],
+                args: [key, meubles, isMobile, forMainThread, drawhereWidth, drawhereHeight, images],
               });
             }
           }

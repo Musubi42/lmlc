@@ -15,7 +15,7 @@
       >
         <div id="tableau" class="w-screen font-extralight h-[90%] md:h-full">
         <!-- TODO: Cette façon de faire fait pété le tout -->
-          <tableauTest v-if="!IntroAnimation" v-cursorAnimation  />
+          <tableauTest v-if="!IntroAnimation && !isTableauPreFetchImagesLoading" v-cursorAnimation  />
           <!-- <tableauTest v-if="true" v-cursorAnimation :key="componentKey" /> -->
         </div>
         <!-- TODO : Changer où je trigger la fnc isScrolling -->
@@ -155,12 +155,17 @@ export default {
 
     const isMobile = stateIsMobile();
 
+    const isTableauPreFetchImagesLoading = tableauPreFetchImagesLoading();
+
+    // console.log(isTableauPreFetchImagesLoading.value);
+
     return {
       IntroAnimation,
       isIntroAnimation,
       isFirstVisit,
       firstVisit,
       isMobile,
+      isTableauPreFetchImagesLoading,
     }
   },
   data() {
