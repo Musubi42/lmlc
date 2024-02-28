@@ -65,14 +65,14 @@ self.onmessage = async function (event) {
       // },
       render: {
         // visible: meubles[key].sprite.image.match('timur.png') ? true : false,
-        visible: true,
+        visible: false,
       },
     });
     } else {
       body = Bodies.fromVertices(300, // x position
     -200, [fileContent], {
         render: {
-          visible: true,
+          visible: false,
         },
       });
     }
@@ -109,7 +109,7 @@ self.onmessage = async function (event) {
           mask: 0,
         },
         render: {
-          opacity: 0.1,
+          opacity: 1,
           sprite: {
             texture: useTableauPreFetchImages[key],
             // texture: meubles[key].sprite.image,
