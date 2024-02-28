@@ -69,14 +69,12 @@ export default {
       if (isMobile) {
         uniqueBodyKeys = ["moninMobile", "bouillonMobile", "timurQualiPNGMobile", "unMobile", "deuxMobile", "sacBleuMobile"];
       } else {
-        uniqueBodyKeys = ["sacBleu", "monin", "un", "deux", "timurQualiPNG"];
+        uniqueBodyKeys = ["sacBleu", "monin", "un", "deux", "timurQualiPNG", "bouillon"];
       }
 
       const promises = uniqueBodyKeys.map((key) => {
         const baseUrl = document.location.origin;
         const imageUrls = `${baseUrl}${meubles[key].sprite.image.replace("./", "/")}`;
-
-        console.log(imageUrls, "imageUrls");
 
         return fetch(imageUrls)
           .then(response => response.blob())

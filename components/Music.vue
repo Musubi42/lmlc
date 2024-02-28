@@ -209,6 +209,10 @@ export default {
           );
         }
 
+        // response = await axios.get(
+        //     `https://stream.lmlc.musubi.dev/music/metadata/playlistMetadata`
+        //   );
+
         this.playlistMetadataKeys = Object.keys(response.data);
         this.playlistMetadata = response.data;
 
@@ -230,6 +234,8 @@ export default {
           audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/music/${trackID}.mp3`);
         }
 
+        // audioResponse = await fetch(`https://stream.lmlc.musubi.dev/music/${trackID}.mp3`);
+
         const blob = await audioResponse.blob();
         this.audioSource = new Audio(URL.createObjectURL(blob));
         this.audioSource.volume = this.volume / 100;
@@ -243,6 +249,7 @@ export default {
         };
 
         this.trackID = trackID;
+
         this.isLoading = false;
 
         if (!this.audioSource?.paused) {
@@ -339,13 +346,15 @@ export default {
     if (process.client) {
       // TODO: Faire une petite gestion d'erreur
       // Function create the audio player
-      // this.createAudioPlayer();
+      this.createAudioPlayer();
 
       // // Get from the server the playlist metadata
-      // await this.getPlaylistMetadata();
+      await this.getPlaylistMetadata();
 
       // // Load metaData of the first song
-      // await this.loadMetaData(this.trackID);
+      await this.loadMetaData(this.trackID);
+
+      console.log(this.trackID);
 
       // TODO: On ne peut pas lancer un son automatiquement
       // https://developer.chrome.com/blog/autoplay/

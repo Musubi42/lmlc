@@ -131,9 +131,6 @@ export default {
           let drawhereHeight = document.getElementById("drawhere").offsetHeight;
           let drawhereWidth = document.getElementById("drawhere").offsetWidth;
 
-          console.log("drawhereHeight", drawhereHeight);
-          console.log("drawhereWidth", drawhereWidth);
-
           window.decomp = decomp;
           const width = drawhereWidth;
           const height = drawhereHeight;
@@ -195,7 +192,6 @@ export default {
           // console.log(images);
 
           function createsUniqueBody() {
-            console.log(uniqueBody);
             const forMainThread = true;
             for (let key in uniqueBody) {
               worker.postMessage({
@@ -394,8 +390,55 @@ export default {
 
             let currentFrame = 0;
             let initialGifBody = preloadedBodies[currentFrame];
+            let gifRefreshInterval = 0;
 
-            setInterval(() => {
+            // setInterval((gifRefreshInterval) => {
+            //   // If there's a body from the last frame, remove it
+            //   if (initialGifBody) {
+            //     // Increment the frame
+            //     let nextFrame = (currentFrame + 1) % gifObjects.length;
+
+            //     var speed = Body.getVelocity(initialGifBody.body);
+
+            //     meubles[gifObjects[nextFrame]].body.position.x =
+            //       initialGifBody.body.position.x;
+            //     meubles[gifObjects[nextFrame]].body.position.y =
+            //       initialGifBody.body.position.y;
+
+            //     Body.setVelocity(initialGifBody.body, 0);
+            //     Body.setVelocity(initialGifBody.spriteBody, 0);
+
+            //     Composite.remove(world, initialGifBody.body, true);
+            //     Composite.remove(world, initialGifBody.spriteBody, true);
+            //     Composite.remove(world, initialGifBody.constraint, true);
+            //   }
+
+            //   currentFrame = (currentFrame + 1) % gifObjects.length;
+
+            //   // Get the preloaded body for the next frame
+            //   initialGifBody = preloadedBodies[currentFrame];
+
+            //   Body.setPosition(initialGifBody.body, {
+            //     x: meubles[gifObjects[currentFrame]].body.position.x,
+            //     y: meubles[gifObjects[currentFrame]].body.position.y,
+            //   });
+
+            //   Body.setVelocity(initialGifBody.body, speed);
+            //   Body.setVelocity(initialGifBody.spriteBody, speed);
+
+            //   // Add the body to the world
+            //   Composite.add(world, [
+            //     initialGifBody.body,
+            //     initialGifBody.spriteBody,
+            //     initialGifBody.constraint,
+            //   ]);
+
+            //   setTimeout(() => {
+            //     gifRefreshInterval = 3000;
+            //   }, 3000);
+            // }, 3000);
+
+            (function gifRefresh() {
               // If there's a body from the last frame, remove it
               if (initialGifBody) {
                 // Increment the frame
@@ -435,7 +478,9 @@ export default {
                 initialGifBody.spriteBody,
                 initialGifBody.constraint,
               ]);
-            }, 3000);
+
+              setTimeout(gifRefresh, 3000);
+            })();
           }
 
           animateGif();
