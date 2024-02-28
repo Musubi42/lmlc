@@ -3,7 +3,7 @@
     <!-- Partie métiers -->
     <ServicesAnimation v-if="showServicesAnimation" :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="hidden md:block relative z-0 pointer-events-none" />
 
-    <div ref="aboutMetier">
+    <div ref="aboutMetier" class="snap-start">
       <!-- <MetierCopy  /> -->
       <Metier  />
     </div>
