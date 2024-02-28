@@ -1,5 +1,5 @@
 <template>
-  <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200">
+  <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200 scroll-snap-container">
     <!-- Partie métiers -->
     <ServicesAnimation v-if="showServicesAnimation" :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="hidden md:block relative z-0 pointer-events-none" />
 
@@ -12,7 +12,7 @@
     <!-- Jouer avec la taille de cet élément pour trigger le changement -->
     <!-- Je peux aussi détecter la position de la souris, si je suis en haut -->
     <!-- overflow-unset md:overflow-hidden -->
-    <section ref="servicesTalents" class="h-screen block relative ">
+    <section ref="servicesTalents" class="h-screen block relative snap-start">
 
     <!-- TODO: hidden le scroll, et mettre une div spéciale pour mobile avec le chevron pour scroller -->
     <HorizontalScrolling :talentsBgColor="bgColor" />
@@ -24,6 +24,15 @@
 body {
   background-color: black;
 }
+
+.scroll-snap-container {
+  scroll-snap-type: y mandatory;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
 .unset-overflow {
   overflow: unset;
 }

@@ -4,7 +4,7 @@
     ref="languageSelectors"
     :style="{ 'opacity': languageStyle}"
   >
-    <div class="fixed text-black">
+    <div class="fixed text-white">
       <span @click="changeLanguage('fr')" :class="isTalents ? 'invert' : ''" class="mr-4" id="fr" v-cursorAnimation>FR</span>
       <span @click="changeLanguage('en')" :class="isTalents ? 'invert' : ''" class="mr-4" id="en" v-cursorAnimation>EN</span>
       <span @click="changeLanguage('it')" :class="isTalents ? 'invert' : ''" class="" id="it" v-cursorAnimation>IT</span>

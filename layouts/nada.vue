@@ -74,7 +74,7 @@ export default {
 
     setTimeout(() => {
       this.showHeader = true;
-    }, 700);
+    }, 2000);
     window.addEventListener('scroll', this.handleScroll);
   },
   unmounted() {

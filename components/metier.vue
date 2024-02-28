@@ -1,6 +1,6 @@
 <template>
-  <!-- <section ref="metier" class="h-screen flex items-center scrollbar-hide w-full bg-black" :class="{ 'bg-transparent': !showOverlay }"> -->
-  <section ref="metier" class="h-screen flex items-center scrollbar-hide w-full bg-black">
+  <section ref="metier" class="h-screen flex items-center scrollbar-hide w-full animation-open">
+  <!-- <section ref="metier" class="h-screen flex items-center scrollbar-hide w-full bg-black"> -->
     <!-- <ServicesAnimation :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="relative z-0 pointer-events-none" /> -->
       <!-- <div v-if="showOverlay" class="absolute inset-0 bg-black transition-colors duration-1000" ></div> -->
       <div class="absolute my-auto z-10 w-full box-border px-8">
@@ -60,13 +60,30 @@
   }
 }
 
+.animation-open {
+  background-color: white;
+  animation: changeColorBackground 2s ease forwards;
+}
+
+@keyframes changeColorBackground {
+  0% { background-color: white; }
+  99% { background-color: white; }
+  100% { background-color: black; }
+}
+
 .section-content {
   transition: color 2s ease;
 }
 
 .section-content-title {
-  color: white;
-  transition: color 2s ease;
+  color: black;
+  animation: changeColorTitle 2s forwards;
+}
+
+@keyframes changeColorTitle {
+  0% { color: black; }
+  99% { color: black; }
+  100% { color: white; }
 }
 
 .section-content-list {
@@ -90,7 +107,7 @@
 export default {
   data() {
     return {
-      // showOverlay: true,
+      showOverlay: true,
       showContent: false,
       sectionMetierHeight: 0,
       mouseY: 0,
@@ -153,14 +170,14 @@ export default {
       this.setLanguageTexts();
     });
 
-    // setTimeout(() => {
-    //   this.showOverlay = false;
+    setTimeout(() => {
+      this.showOverlay = false;
 
-    //   // const sectiondescriptionMetier = document.querySelectorAll("#sectionDescriptionMetier");
-    //   // for (let i = 0; i < sectiondescriptionMetier.length; i++) {
-    //   //   sectiondescriptionMetier[i].classList.add("section-content-list");
-    //   // }
-    // }, 700);
+      // const sectiondescriptionMetier = document.querySelectorAll("#sectionDescriptionMetier");
+      // for (let i = 0; i < sectiondescriptionMetier.length; i++) {
+      //   sectiondescriptionMetier[i].classList.add("section-content-list");
+      // }
+    }, 700);
 
     window.addEventListener("mousemove", this.handleScroll);
     window.addEventListener("mousemove", this.handleMouseMove);

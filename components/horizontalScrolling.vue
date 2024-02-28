@@ -133,7 +133,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="">
+  <div class="scroll-snap-container">
   <!-- Desktop -->
     <div
       class="hidden md:flex overscroll-none w-[200vw] h-screen flex-nowrap items-center horizontal "
@@ -155,7 +155,7 @@ onUnmounted(() => {
 
     <!-- Mobile -->
     <div
-      class="flex md:hidden h-screen items-center overflow-x-auto gap-10 relative bg-black md:bg-white"
+      class="snap-start flex md:hidden h-screen items-center overflow-x-auto gap-10 relative bg-black md:bg-white"
       @scroll="handleScroll"
     >
       <section
@@ -191,6 +191,14 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.scroll-snap-container {
+  scroll-snap-type: x mandatory;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
 @keyframes bounce {
   0%,
   100% {
