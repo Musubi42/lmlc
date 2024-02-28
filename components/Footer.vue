@@ -112,9 +112,14 @@
           translate(-50%, -50%); z-index: -1; object-fit: cover; -->
           <!-- TODO: Faire un input pour récupérer email en contact -->
         </div>
-        <div class="flex flex-row">
-          <IconsInstagrame class="w-10 h-auto text-white" />
-          <IconsLinkedin class="w-12 h-auto text-white" />
+        <div class="flex flex-row mb-2">
+        <!-- TODO mettre le noref no... -->
+          <a href="https://www.instagram.com/lmlccommunication/" class="ml-[-2px] mr-1 hover:cursor-none" target="_blank" referrerpolicy="no-referrer|no-referrer-when-downgrade">
+            <IconsInstagram class="w-6 h-auto text-white" />
+          </a>
+          <a href="https://www.linkedin.com/company/lmlccommunication/?originalSubdomain=fr" class="ml-[-2px] mr-1 hover:cursor-none" target="_blank" referrerpolicy="no-referrer|no-referrer-when-downgrade">
+            <IconsLinkedin class="w-6 h-auto text-white" />
+          </a>
         </div>
         <div class="z-10 relative" data-footer-element>PARIS, FR</div>
       </div>

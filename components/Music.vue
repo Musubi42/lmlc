@@ -210,7 +210,7 @@ export default {
         }
 
         // response = await axios.get(
-        //     `https://stream.lmlc.musubi.dev/music/metadata/playlistMetadata`
+        //     `https://stream.lmlc.musubi.dev/icon`
         //   );
 
         this.playlistMetadataKeys = Object.keys(response.data);
