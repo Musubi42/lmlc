@@ -484,7 +484,7 @@
       "y": -4
     }
   },
-  "un": {
+  "bourgesUn": {
     "body": {
       "speed": 0,
       "position": {
@@ -501,14 +501,14 @@
     "sprite": {
       "xScale": 0.12,
       "yScale": 0.12,
-      "image": "./tableau/images/un.png"
+      "image": "./tableau/images/bourgesUn.png"
     },
     "constraint": {
       "x": -1,
       "y": -4
     }
   },
-  "deux": {
+  "bourgesDeux": {
     "body": {
       "speed": 0,
       "position": {
@@ -525,7 +525,7 @@
     "sprite": {
       "xScale": 0.11,
       "yScale": 0.11,
-      "image": "./tableau/images/deux.png"
+      "image": "./tableau/images/bourgesDeux.png"
     },
     "constraint": {
       "x": -1,
@@ -551,16 +551,16 @@
       "scaleFactor": 0.3
     },
     "sprite": {
-      "xScale": 0.075,
-      "yScale": 0.075,
-      "image": "./tableau/images/moninGrand.png"
+      "xScale": 0.3,
+      "yScale": 0.3,
+      "image": "./tableau/images/moninPetit.png"
     },
     "constraint": {
       "x": 0,
       "y": 0
     }
   },
-  "unMobile": {
+  "bourgesUnMobile": {
     "body": {
       "speed": 0,
       "position": {
@@ -579,16 +579,16 @@
       "scaleFactor": 1.1
     },
     "sprite": {
-      "xScale": 0.06,
-      "yScale": 0.06,
-      "image": "./tableau/images/un.png"
+      "xScale": 0.25,
+      "yScale": 0.25,
+      "image": "./tableau/images/bourgesUnMobile.png"
     },
     "constraint": {
       "x": 0,
       "y": 0
     }
   },
-  "deuxMobile": {
+  "bourgesDeuxMobile": {
     "body": {
       "speed": 0,
       "position": {
@@ -607,9 +607,9 @@
       "scaleFactor": 1.1
     },
     "sprite": {
-      "xScale": 0.06,
-      "yScale": 0.06,
-      "image": "./tableau/images/deux.png"
+      "xScale": 0.25,
+      "yScale": 0.25,
+      "image": "./tableau/images/bourgesDeuxMobile.png"
     },
     "constraint": {
       "x": -1,

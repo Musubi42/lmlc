@@ -57,9 +57,9 @@
 
       <path id="fauteuilRougeMobile" />
 
-      <path id="unMobile" />
+      <path id="bourgesUnMobile" />
 
-      <path id="deuxMobile" />
+      <path id="bourgesDeuxMobile" />
 
       <path id="moninMobile" />
     </div>
@@ -170,10 +170,10 @@ export default {
           
           var uniqueBody = {}
           if (isMobile) {
-            uniqueBody = { moninMobile, bouillonMobile, timurQualiPNGMobile, unMobile, deuxMobile, sacBleuMobile };
+            uniqueBody = { moninMobile, bouillonMobile, timurQualiPNGMobile, bourgesUnMobile, bourgesDeuxMobile, sacBleuMobile };
           } else {
             // TODO: Il faut rajouter le bouillon
-            uniqueBody = { sacBleu, monin, un, deux, timurQualiPNG };
+            uniqueBody = { sacBleu, monin, bourgesUn, bourgesDeux, timurQualiPNG };
           }
 
           // console.log(this.useTableauPreFetchImages.value);

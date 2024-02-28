@@ -67,9 +67,9 @@ export default {
       let uniqueBodyKeys = [];
 
       if (isMobile) {
-        uniqueBodyKeys = ["moninMobile", "bouillonMobile", "timurQualiPNGMobile", "unMobile", "deuxMobile", "sacBleuMobile"];
+        uniqueBodyKeys = ["moninMobile", "bouillonMobile", "timurQualiPNGMobile", "bourgesUnMobile", "bourgesDeuxMobile", "sacBleuMobile"];
       } else {
-        uniqueBodyKeys = ["sacBleu", "monin", "un", "deux", "timurQualiPNG", "bouillon"];
+        uniqueBodyKeys = ["sacBleu", "monin", "bourgesUn", "bourgesDeux", "timurQualiPNG", "bouillon"];
       }
 
       const promises = uniqueBodyKeys.map((key) => {
@@ -109,7 +109,7 @@ export default {
 
     // TODO: Checker si la data est loaded avant d'afficher le composant Tableau
     const imagesDataUrls = await this.preloadImagesAndConvertToDataUrls(this.isMobile);
-    // console.log("imagesDataUrls", imagesDataUrls);
+    console.log("imagesDataUrls", imagesDataUrls);
     imagesDataUrls ? this.isTableauPreFetchImagesLoading = false : this.isTableauPreFetchImagesLoading = true;
     // console.log(this.isTableauPreFetchImagesLoading, "isTableauPreFetchImagesLoading");
 
