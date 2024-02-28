@@ -86,7 +86,7 @@
           </video>
         </div>
         <button
-  class="absolute bottom-1/2 right-0 transform translate-x-1/2 z-30 flex items-center justify-center mr-4 group focus:outline-none "
+  class="absolute bottom-1/2 right-0 transform translate-x-1/2 z-30 flex items-center justify-center mr-16 group focus:outline-none "
 >
   <span class="border-0 rounded-full p-2 active:bg-rose-neon/50 -rotate-90">
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
