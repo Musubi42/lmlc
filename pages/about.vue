@@ -1,5 +1,5 @@
 <template>
-  <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200 scroll-snap-container">
+  <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200 scroll-snap-container overflow-y-scroll">
     <!-- Partie métiers -->
     <ServicesAnimation v-if="showServicesAnimation" :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="hidden md:block relative z-0 pointer-events-none" />
 

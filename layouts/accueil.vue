@@ -47,8 +47,14 @@ export default {
   },
   methods: {
     handleScroll() {
-      this.headerStyle = this.pastYPosition < (window.scrollY || window.pageYOffset) ? 0 : 1;
-      this.pastYPosition = (window.scrollY || window.pageYOffset);
+      console.log(scrollY, "scrollY");
+      console.log(pageYOffset, "pageYOffset");
+      if (window.scrollY || window.pageYOffset === 0) {
+        this.headerStyle = 1;
+      } else {
+        this.headerStyle = this.pastYPosition < (window.scrollY || window.pageYOffset) ? 0 : 1;
+        this.pastYPosition = (window.scrollY || window.pageYOffset);
+      }
     },
     // TODO: Il ne faut pas que ça se trigger si je clique sur le menu
     closeMenuIfOpen(event) {
