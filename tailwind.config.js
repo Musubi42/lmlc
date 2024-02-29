@@ -42,6 +42,6 @@ export default {
       },
     },
   },
-  safelist: ["lilas-pop", "rose-neon", "bleu-ciel", "jaune-citron", "w-20", "font-semibold"],
+  safelist: ["lilas-pop", "rose-neon", "bleu-ciel", "jaune-citron", "w-20", "font-semibold", "overflow-y-scroll"],
   plugins: [],
 };

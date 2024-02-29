@@ -1,9 +1,9 @@
 <template>
-  <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200 snap-y md:snap-none h-full" :class="isMobile ? 'overflow-y-scroll' : ''">
+  <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200 snap-y snap-mandatory  h-screen" :class="isMobile ? 'overflow-y-scroll' : ''">
     <!-- Partie métiers -->
     <ServicesAnimation v-if="showServicesAnimation" :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="hidden md:block relative z-0 pointer-events-none" />
 
-    <div ref="aboutMetier" class="snap-center h-full">
+    <div ref="aboutMetier" class="snap-start h-full">
       <!-- <MetierCopy  /> -->
       <Metier />
     </div>
@@ -17,6 +17,8 @@
     <!-- TODO: hidden le scroll, et mettre une div spéciale pour mobile avec le chevron pour scroller -->
     <HorizontalScrolling :talentsBgColor="bgColor"  />
     </section> 
+
+    <Footer class="snap-center h-1/2" />
   </div>
 </template>
 
@@ -58,7 +60,7 @@ export default {
 
     const isMobile = stateIsMobile();
 
-    console.log("isMobile", isMobile);
+    console.log("isMobile", isMobile.value);
 
     const isTalents = talents();
 
