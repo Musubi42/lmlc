@@ -62,7 +62,7 @@
 
 .animation-open {
   background-color: white;
-  animation: changeColorBackground 2s ease forwards;
+  animation: changeColorBackground 1s ease forwards;
 }
 
 @keyframes changeColorBackground {
@@ -72,12 +72,12 @@
 }
 
 .section-content {
-  transition: color 2s ease;
+  transition: color 1s ease;
 }
 
 .section-content-title {
   color: black;
-  animation: changeColorTitle 2s forwards;
+  animation: changeColorTitle 1s forwards;
 }
 
 @keyframes changeColorTitle {
@@ -89,7 +89,7 @@
 .section-content-list {
   transform: translateY(-500px);
   color: white;
-  animation: slideDown 2s ease forwards;
+  animation: slideDown 1s ease forwards;
 }
 
 .bg-transparent .section-content h3,

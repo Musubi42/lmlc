@@ -150,7 +150,7 @@ export default {
 
     setTimeout(() => {
       this.showServicesAnimation = true;
-    }, 2000);
+    }, 1000);
 
     this.sectionMetierHeight = this.$refs.aboutMetier.offsetHeight;
 
