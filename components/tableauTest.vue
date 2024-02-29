@@ -169,7 +169,7 @@ export default {
             uniqueBody = { moninMobile, bouillonMobile, timurQualiPNGMobile, bourgesUnMobile, bourgesDeuxMobile, sacBleuMobile };
           } else {
             // TODO: Il faut rajouter le bouillon
-            uniqueBody = { sacBleu, monin, bourgesUn, bourgesDeux, timurQualiPNG };
+            uniqueBody = { sacBleu, monin, bourgesUn, bourgesDeux, timurQualiPNG, bouillon };
           }
 
           // console.log(this.useTableauPreFetchImages.value);

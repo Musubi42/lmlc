@@ -47,8 +47,6 @@ export default {
   },
   methods: {
     handleScroll() {
-      console.log(scrollY, "scrollY");
-      console.log(pageYOffset, "pageYOffset");
       if (window.scrollY || window.pageYOffset === 0) {
         this.headerStyle = 1;
       } else {

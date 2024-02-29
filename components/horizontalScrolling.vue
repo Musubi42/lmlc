@@ -184,7 +184,7 @@ onUnmounted(() => {
         ></path>
       </svg>
     </div>
-    <!-- <Footer /> -->
+    <Footer class="hidden md:block" />
   </div>
 </template>
 

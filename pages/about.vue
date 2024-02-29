@@ -1,5 +1,5 @@
 <template>
-  <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200 snap-y snap-mandatory  h-screen" :class="isMobile ? 'overflow-y-scroll' : ''">
+  <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200 snap-y snap-mandatory overflow-y-scroll md:overflow-visible h-screen" :class="!isMobile ? 'overflow-y-scroll' : ''">
     <!-- Partie métiers -->
     <ServicesAnimation v-if="showServicesAnimation" :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="hidden md:block relative z-0 pointer-events-none" />
 
@@ -18,7 +18,7 @@
     <HorizontalScrolling :talentsBgColor="bgColor"  />
     </section> 
 
-    <Footer class="snap-center h-1/2" />
+    <Footer class="md:hidden snap-center h-1/2" />
   </div>
 </template>
 
