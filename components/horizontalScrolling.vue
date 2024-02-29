@@ -184,6 +184,7 @@ onUnmounted(() => {
         ></path>
       </svg>
     </div>
+    <Footer />
   </div>
 </template>
 

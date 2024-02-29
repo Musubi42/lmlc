@@ -113,6 +113,12 @@ export default {
     definePageMeta({
       layout: "work",
     });
+
+    const isWorkCarousel = workCarousel();
+    
+    return {
+      isWorkCarousel,
+    };
   },
   data() {
     return {
@@ -204,8 +210,12 @@ export default {
         type: "wheel",
         onUp: () => {
           console.log("up");
+          // TODO : Checker si on va bien scroll sur le carousel, et non en plein milieu de la page
+          // Si on va sur le carousel on change la couleur instant, ou si non rien
+          
           this.scrollCount++;
           if (this.scrollCount >= 2) {
+            console.log("hey");
             // Réinitialisez le compteur
             this.scrollCount = 0;
 
@@ -213,11 +223,18 @@ export default {
             if (this.slide > 0) {
               this.slide--; // Décrémentez le slide
               gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+              console.log("ici");
+            } else {
+              console.log("carousel");
+              this.isWorkCarousel = true;
             }
           }
         },
         onDown: () => {
           console.log("down");
+          setTimeout(() => {
+            this.isWorkCarousel = false;
+          }, 2000);
           this.scrollCount++;
           if (this.scrollCount >= 2) {
             // Réinitialisez le compteur
