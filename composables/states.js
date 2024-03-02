@@ -16,6 +16,8 @@ export const pageMentionsLegales = () => useState('isPageMentionsLegales', () =>
 
 export const talents = () => useState('isTalents', () => false);
 
+export const workCarousel = () => useState('isWorkCarousel', () => true);
+
 export const mobileUpdateLanguage = () => useState('isMobileUpdateLanguage', () => 1);
 
 export const tableauPreFetchImages = () => useState('useTableauPreFetchImages', () => []);

@@ -1,22 +1,24 @@
 <template>
-  <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200">
+  <div @wheel="handleWheelEvent" ref="body" class="transition-all duration-200 snap-y snap-mandatory overflow-y-scroll md:overflow-visible h-screen" :class="!isMobile ? 'overflow-y-scroll' : ''">
     <!-- Partie métiers -->
     <ServicesAnimation v-if="showServicesAnimation" :metierHeight="sectionMetierHeight" :mousePositionY="mouseAbsolutePositionY" class="hidden md:block relative z-0 pointer-events-none" />
 
-    <div ref="aboutMetier">
+    <div ref="aboutMetier" class="snap-start h-full">
       <!-- <MetierCopy  /> -->
-      <Metier  />
+      <Metier />
     </div>
  
     <!-- Partie talents -->
     <!-- Jouer avec la taille de cet élément pour trigger le changement -->
     <!-- Je peux aussi détecter la position de la souris, si je suis en haut -->
     <!-- overflow-unset md:overflow-hidden -->
-    <section ref="servicesTalents" class="h-screen block relative ">
+    <section ref="servicesTalents" class="h-screen block relative snap-start md:snap-none">
 
     <!-- TODO: hidden le scroll, et mettre une div spéciale pour mobile avec le chevron pour scroller -->
-    <HorizontalScrolling :talentsBgColor="bgColor" />
+    <HorizontalScrolling :talentsBgColor="bgColor"  />
     </section> 
+
+    <Footer class="md:hidden snap-center h-1/2" />
   </div>
 </template>
 
@@ -24,6 +26,15 @@
 body {
   background-color: black;
 }
+
+.scroll-snap-container {
+  scroll-snap-type: y mandatory;
+}
+
+.snap-startt {
+  scroll-snap-align: start;
+}
+
 .unset-overflow {
   overflow: unset;
 }
@@ -48,6 +59,8 @@ export default {
     const isMenuOpen = stateMenuOpen();
 
     const isMobile = stateIsMobile();
+
+    console.log("isMobile", isMobile.value);
 
     const isTalents = talents();
 
@@ -137,7 +150,7 @@ export default {
 
     setTimeout(() => {
       this.showServicesAnimation = true;
-    }, 2000);
+    }, 1000);
 
     this.sectionMetierHeight = this.$refs.aboutMetier.offsetHeight;
 
