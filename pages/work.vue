@@ -1,6 +1,7 @@
 <template>
   <div class="bg-white" dir="ltr">
-    <div id="slide0" class="  bg-cover bg-center bg-fixed bg-black">
+    <a id="slide0"></a>
+    <div class="  bg-cover bg-center bg-fixed bg-black">
       <div class="relative slide w-full h-screen ">
         <div class="carousel-inner relative overflow-hidden h-screen z-1">
           <div class="carousel-item inset-0 relative h-screen ">
@@ -48,7 +49,7 @@
 
 
     <div v-if="active == 0">
-      <Monin />
+      <Monin @bottom-reached="handleBottomReached" @top-reached="handleTopReached" />
     </div>
     <div v-if="active == 1">
       <Bourges2028 />
@@ -83,8 +84,8 @@ export default {
       descriptionTypewriter: null,
       slide: 0,
       showButton: false,
-      intentObserver : null,
-      scrollCount : 0
+      intentObserver: null,
+      scrollCount: 0
 
     };
   },
@@ -116,83 +117,101 @@ export default {
         this.descriptionTypewriter.typeString(this.data[this.active].description).start();
       }, 1000);
     },
+    handleBottomReached() {
+
+      console.log("test")
+
+    },
+    handleTopReached() {
+      console.log("Le haut du Footer est atteint dans le parent");
+    },
     goPrev() {
       this.showButton = false;
       this.active = this.active > 0 ? this.active - 1 : this.data.length - 1;
       this.slide = 0
       this.initTypewriter();
-      if(this.data[this.active].slide > 0){
-      setTimeout(() => {
-      this.showButton = true;
-    }, 2500);
-    }
+      if (this.data[this.active].slide > 0) {
+        setTimeout(() => {
+          this.showButton = true;
+        }, 2500);
+      }
     },
     goNext() {
       this.showButton = false;
       this.active = this.active < this.data.length - 1 ? this.active + 1 : 0;
       this.slide = 0
       this.initTypewriter();
-      if(this.data[this.active].slide > 0){
-      setTimeout(() => {
-      this.showButton = true;
-    }, 2500);
-    }
+      if (this.data[this.active].slide > 0) {
+        setTimeout(() => {
+          this.showButton = true;
+        }, 2500);
+      }
     },
     goSlide() {
       this.slide = 1
       gsap.to(window, { duration: 2, scrollTo: "#slide1" });
     }
   },
-
-  mounted() {
-    this.initTypewriter();
-    if(this.data[this.active].slide > 0){
-      setTimeout(() => {
-      this.showButton = true;
-    }, 2500);
-    }
+  initializeScrollTrigger() {
     const isMobile = window.innerWidth <= 768;
 
     if (!isMobile) {
       this.intentObserver = ScrollTrigger.observe({
-  type: "wheel",
-  onUp: () => {
-    this.scrollCount++;
-    if (this.scrollCount >= 2) {
-      // Réinitialisez le compteur
-      this.scrollCount = 0;
+        type: "wheel",
+        onUp: () => {
+          // Si le slide actuel est le slide 2, ne faites rien
+          if (this.slide === 2) {
+            this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
+            this.intentObserver = null;
+          };
 
-      // Vérifiez si le slide n'est pas le premier
-      if (this.slide > 0) {
-        this.slide--; // Décrémentez le slide
-        gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
-      }
+          this.scrollCount++;
+          if (this.scrollCount >= 2) {
+            this.scrollCount = 0;
+            if (this.slide > 0) {
+              this.slide--;
+              gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+            }
+          }
+        },
+        onDown: () => {
+          // Si le slide actuel est le slide 2, ne faites rien
+          if (this.slide === 2) {
+            this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
+            this.intentObserver = null;
+          };
+
+          this.scrollCount++;
+          if (this.scrollCount >= 2) {
+            this.scrollCount = 0;
+            if (this.slide < this.data[this.active].slide - 1) {
+              this.slide++;
+              gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+            } else {
+              // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
+              if (this.slide < this.data[this.active].slide) {
+                this.slide++;
+                gsap.to(window, { duration: 2, scrollTo: "#footer" });
+              }
+            }
+          }
+        },
+        tolerance: 100,
+        preventDefault: true,
+      });
+
+      this.scrollCount = 0;
     }
   },
-  onDown: () => {
-    this.scrollCount++;
-    if (this.scrollCount >= 2) {
-      // Réinitialisez le compteur
-      this.scrollCount = 0;
-
-      if (this.slide < this.data[this.active].slide - 1) {
-        this.slide++; // Incrémentez le slide
-        gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
-      } else {
-        this.slide++;
-        gsap.to(window, { duration: 2, scrollTo: "#footer" });
-      }
+  mounted() {
+    this.initTypewriter();
+    if (this.data[this.active].slide > 0) {
+      setTimeout(() => {
+        this.showButton = true;
+      }, 2500);
     }
+
   },
-  tolerance: 100,
-  preventDefault: true,
-});
-
-// Initialisez le compteur de défilement
-this.scrollCount = 0;
-
-  }
-},
   unmounted() {
     if (this.titleTypewriter) {
       this.titleTypewriter.stop();
@@ -238,5 +257,4 @@ this.scrollCount = 0;
 
 .bounce {
   animation: bounce 2s infinite;
-}
-</style>
+}</style>

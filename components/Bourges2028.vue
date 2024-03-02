@@ -40,13 +40,13 @@
 <div id="slide3" class="flex flex-col lg:flex-row h-screen w-screen items-center justify-center">
  <div class="relative basis-1/2">
    <img src="/BidBook_fond_beige.png" alt="Bid Book Image" class="w-full h-auto">
-   <p class="absolute lg:bottom-10 bottom-2 w-full text-center  2xl:mb-14 font-extralight">
+   <p class="absolute lg:bottom-10 bottom-2 w-full text-left  2xl:mb-14 font-extralight">
      réalisation du dossier de candidature pour la demi-finale
    </p>
  </div>
  <div class="relative basis-1/2">
    <img src="/couverture_Bidbook_.png" alt="Bid Book Image" class="w-full h-auto">
-   <p class="absolute lg:bottom-10 bottom-2 w-full text-center  2xl:mb-14 font-extralight">
+   <p class="absolute lg:bottom-10 bottom-2 w-full text-left  2xl:mb-14 font-extralight">
      réalisation du dossier de candidature pour la finale
    </p>
  </div>

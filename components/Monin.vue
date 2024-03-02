@@ -22,6 +22,7 @@
     <div class="md:flex hidden justify-center lg:justify-end 2xl:w-2/5 lg:h-4/5 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-2 order-1">
       <img src="/monin.gif" alt="GIF" class="object-cover mx-auto">
     </div>
+    <a id="Bottom"></a>
   </div>
   <div>
     <a id="slide2"></a>
@@ -145,6 +146,9 @@ const { t } = useI18n();
 
 let currentIndex = ref(0);
 let animating = ref(false);
+const slide1Element = ref(null);
+const footerElement = ref(null);
+const emit = defineEmits(['bottom-reached', 'top-reached']);
 
 onMounted(() => {
   ctx.value = gsap.context((self) => {
@@ -202,10 +206,48 @@ onMounted(() => {
       });
     }
   }, main.value);
+  slide1Element.value = document.getElementById('Bottom');
+  footerElement.value = document.getElementById('footer');
+
+  const observerOptions = {
+    root: null, // Utilise le viewport comme zone de défilement
+    rootMargin: '0px',
+    threshold: 0.1 // Ajustez selon vos besoins pour déterminer quel pourcentage de l'élément doit être visible
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (entry.target.id === 'Bottom') {
+          emit('bottom-reached');
+
+          // Logique spécifique à Slide 1
+        } else if (entry.target.id === 'footer') {
+          emit('top-reached');
+          // Logique spécifique au Footer
+        }
+      }
+    });
+  }, observerOptions);
+
+  // Commence à observer les éléments
+  if (slide1Element.value) {
+    observer.observe(slide1Element.value);
+  }
+  if (footerElement.value) {
+    observer.observe(footerElement.value);
+  }
 });
+
 
 onUnmounted(() => {
   ctx.value.revert();
+  if (slide1Element.value) {
+      observer.unobserve(slide1Element.value);
+    }
+    if (footerElement.value) {
+      observer.unobserve(footerElement.value);
+    }
 });
 </script>
 
