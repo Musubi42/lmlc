@@ -273,7 +273,55 @@ export default {
         this.showButton = true;
       }, 2500);
     }
+    const isMobile = window.innerWidth <= 768;
 
+    if (!isMobile) {
+      this.intentObserver = ScrollTrigger.observe({
+        type: "wheel",
+        onUp: () => {
+          // Si le slide actuel est le slide 2, ne faites rien
+          if (this.slide === 2) {
+            this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
+            this.intentObserver = null;
+          };
+
+          this.scrollCount++;
+          if (this.scrollCount >= 2) {
+            this.scrollCount = 0;
+            if (this.slide > 0) {
+              this.slide--;
+              gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+            }
+          }
+        },
+        onDown: () => {
+          // Si le slide actuel est le slide 2, ne faites rien
+          if (this.slide === 2) {
+            this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
+            this.intentObserver = null;
+          };
+
+          this.scrollCount++;
+          if (this.scrollCount >= 2) {
+            this.scrollCount = 0;
+            if (this.slide < this.data[this.active].slide - 1) {
+              this.slide++;
+              gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+            } else {
+              // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
+              if (this.slide < this.data[this.active].slide) {
+                this.slide++;
+                gsap.to(window, { duration: 2, scrollTo: "#footer" });
+              }
+            }
+          }
+        },
+        tolerance: 100,
+        preventDefault: true,
+      });
+
+      this.scrollCount = 0;
+    }
   },
   unmounted() {
     if (this.titleTypewriter) {
