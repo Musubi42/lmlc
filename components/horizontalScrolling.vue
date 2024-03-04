@@ -50,9 +50,9 @@ const setLanguageTexts = () => {
 
 const profiles = ref([
   { name: "Léo MATTHIAU", title: ceoAndFounder, imageUrl: "./leo.png" },
-  { name: "Constant GAMBIEZ", title: headNewBusiness, imageUrl: "./leo.png" },
+  { name: "Constant GAMBIEZ", title: headNewBusiness, imageUrl: "./talents/constant.jpg" },
   { name: "Cécile CARLOU", title: expertMarketing, imageUrl: "./leo.png" },
-  { name: "Aline  MAGNIER", title: projectManager, imageUrl: "./leo.png" },
+  { name: "Aline  MAGNIER", title: projectManager, imageUrl: "./talents/aline.jpg" },
   { name: "Léo BOUDET", title: filmDirector, imageUrl: "./leo.png" },
   { name: "Benjamin ISSNER", title: webDeveloper, imageUrl: "./leo.png" },
   { name: "Océane LUNVEN", title: artisticDirector, imageUrl: "./leo.png" },

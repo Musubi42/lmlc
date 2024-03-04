@@ -14,7 +14,8 @@
       </div>
 
       <button type="button"
-        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none"
+        v-cursorAnimation
+        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none hover:cursor-none"
         data-carousel-prev @click="goPrev">
         <span class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
@@ -25,7 +26,8 @@
         </span>
       </button>
       <button type="button"
-        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none"
+        v-cursorAnimation
+        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none hover:cursor-none"
         data-carousel-next @click="goNext">
         <span class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
@@ -35,7 +37,8 @@
         </span>
       </button>
       <button
-        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30 flex items-center justify-center px-4 group focus:outline-none 2xl:mb-20 mb-20"
+        v-cursorAnimation
+        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30 flex items-center justify-center px-4 group focus:outline-none 2xl:mb-20 mb-20 hover:cursor-none"
         @click="goSlide" v-if="showButton">
         <span class="border-0 text-white rounded-full p-2 active:bg-rose-neon/50">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
@@ -181,6 +184,7 @@ export default {
       const isMobile = window.innerWidth <= 768;
 
       if (!isMobile) {
+        console.log("mobile");
         this.intentObserver = ScrollTrigger.observe({
           type: "wheel",
           onUp: () => {
@@ -196,25 +200,38 @@ export default {
               if (this.slide > 0) {
                 this.slide--;
                 gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+                this.isWorkCarousel = true;
+              } else {
+                // this.isWorkCarousel = true;
               }
             }
           },
           onDown: () => {
+            // this.workCarousel
             // Si le slide actuel est le slide 2, ne faites rien
             if (this.slide === 2 && this.active === 0) {
+              console.log("1");
               this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
               this.intentObserver = null;
             };
+            this.isWorkCarousel = false;
 
             this.scrollCount++;
             if (this.scrollCount >= 2) {
+              console.log("2");
+              // this.isWorkCarousel = false;
+              // console.log(this.isWorkCarousel);
+              
               this.scrollCount = 0;
               if (this.slide < this.data[this.active].slide - 1) {
+                console.log("3");
                 this.slide++;
                 gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
               } else {
+                console.log("4");
                 // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
                 if (this.slide < this.data[this.active].slide) {
+                  console.log("5");
                   this.slide++;
                   gsap.to(window, { duration: 2, scrollTo: "#footer" });
                 }
@@ -254,30 +271,43 @@ export default {
             if (this.slide > 0) {
               this.slide--;
               gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+              this.isWorkCarousel = true;
+            } else {
+              // this.isWorkCarousel = true;
             }
           }
         },
         onDown: () => {
-          if (this.slide === 2 && this.active === 0) {
-            this.intentObserver.kill();
-            this.intentObserver = null;
-          };
+            // this.workCarousel
+            // Si le slide actuel est le slide 2, ne faites rien
+            if (this.slide === 2 && this.active === 0) {
+              console.log("1");
+              this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
+              this.intentObserver = null;
+            };
 
-          this.scrollCount++;
-          if (this.scrollCount >= 2) {
-            this.scrollCount = 0;
-            if (this.slide < this.data[this.active].slide - 1) {
-              this.slide++;
-              gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
-            } else {
+            this.isWorkCarousel = false;
 
-              if (this.slide < this.data[this.active].slide) {
+            this.scrollCount++;
+            if (this.scrollCount >= 2) {
+              // this.isWorkCarousel = false;
+              // console.log(this.isWorkCarousel);
+              this.scrollCount = 0;
+              if (this.slide < this.data[this.active].slide - 1) {
+                console.log("3");
                 this.slide++;
-                gsap.to(window, { duration: 2, scrollTo: "#footer" });
+                gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+              } else {
+                console.log("4");
+                // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
+                if (this.slide < this.data[this.active].slide) {
+                  console.log("5");
+                  this.slide++;
+                  gsap.to(window, { duration: 2, scrollTo: "#footer" });
+                }
               }
             }
-          }
-        },
+          },
         tolerance: 100,
         preventDefault: true,
       });

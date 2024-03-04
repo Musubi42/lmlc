@@ -4,10 +4,10 @@
     ref="languageSelectors"
     :style="{ 'opacity': languageStyle}"
   >
-    <div class="fixed text-white">
-      <span @click="changeLanguage('fr')" class="mr-4" id="fr" v-cursorAnimation>FR</span>
-      <span @click="changeLanguage('en')" class="mr-4" id="en" v-cursorAnimation>EN</span>
-      <span @click="changeLanguage('it')" class="" id="it" v-cursorAnimation>IT</span>
+    <div class="fixed text-black">
+      <span @click="changeLanguage('fr')" :class="{ 'invert': isWorkCarousel, 'invert-0': !isWorkCarousel }" class="mr-4" id="fr" v-cursorAnimation>FR</span>
+      <span @click="changeLanguage('en')" :class="{ 'invert': isWorkCarousel, 'invert-0': !isWorkCarousel }" class="mr-4" id="en" v-cursorAnimation>EN</span>
+      <span @click="changeLanguage('it')" :class="{ 'invert': isWorkCarousel, 'invert-0': !isWorkCarousel }" class="" id="it" v-cursorAnimation>IT</span>
     </div>
   </span>
 
@@ -49,6 +49,8 @@ export default {
     const isTalents = talents();
 
     const isMobile = stateIsMobile();
+
+    const isWorkCarousel = workCarousel();
 
     // watch(isTalents, (newValue, oldValue) => {
     //   console.log(newValue, oldValue);
@@ -92,6 +94,7 @@ export default {
       isMobile,
       isMobileUpdateLanguage,
       changeLanguageMobile,
+      isWorkCarousel,
     };
   },
   data() {

@@ -1,142 +1,184 @@
 <template>
-  <a id="slide1"></a>
-<div class="flex justify-center items-center h-screen md:hidden">
-    <img src="/monin.gif" alt="GIF">
-</div>
-  <div class="flex flex-col lg:flex-row container mx-auto p-8 h-screen">
-    <div class="flex-grow flex flex-col justify-end 2xl:mb-20 lg:order-1 order-2">
-      <h1 class="2xl:text-9xl lg:text-8xl text-5xl font-bold 2xl:mr-4 lg:mr-4"> {{ t("TitleMonin") }}</h1>
-      <p class="lg:text-2xl text-base mb-4">
-        {{ t("DescriptionMonin[0]") }} <br>
-        {{ t("DescriptionMonin[1]") }} <br>
-        {{ t("DescriptionMonin[2]") }}<br>
-        {{ t("DescriptionMonin[3]") }}
-      </p>
-      <p class="text-base mb-10 font-extralight">
-        {{ t("WorkMonin[0]") }} <br>
-        {{ t("WorkMonin[1]") }} <br>
-        {{ t("WorkMonin[2]") }}<br>
-        {{ t("WorkMonin[3]") }}
-      </p>
-    </div>
-    <div class="md:flex hidden justify-center lg:justify-end 2xl:w-2/5 lg:h-4/5 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-2 order-1">
-      <img src="/monin.gif" alt="GIF" class="object-cover mx-auto">
-    </div>
-    <a id="Bottom"></a>
-  </div>
   <div>
-    <a id="slide2"></a>
-    <div class="hidden md:flex containerDE horizontal h-screen ">
-      <div class="panell h-screen ">
-        <video
-          class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          autoplay loop muted playsinline>
-          <source :src="`/video/1.mov`" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="panell h-screen">
-        <video
-          class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          autoplay loop muted playsinline>
-          <source :src="`/video/2.mov`" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="panell h-screen">
-        <video
-          class=" lg:h-[75%] h-screen flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          autoplay loop muted playsinline>
-          <source :src="`/video/3.mov`" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="panell h-screen">
-        <video
-          class=" lg:h-[75%]  flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          autoplay loop muted playsinline>
-          <source :src="`/video/4.mov`" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="panell h-screen">
-        <video
-          class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          autoplay loop muted playsinline>
-          <source :src="`/video/5.mp4`" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="panell h-screen">
-        <video
-          class=" lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          autoplay loop muted playsinline>
-          <source :src="`/video/6.mov`" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+    <a id="slide1"></a>
+    <div class="flex justify-center items-center h-screen md:hidden">
+      <img src="/monin.gif" alt="GIF" />
     </div>
 
-    <!-- mobile -->
-    <div class=" md:hidden flex overflow-x-auto  items-center gap-10 relative" >
-      <div class="flex flex-nowrap">
-        <div class="w-[75%] flex-shrink-0 h-full mx-4 mb-4">
-          <video class="flex " autoplay loop muted playsinline>
+    <!-- <div> -->
+      <div class="flex flex-col lg:flex-row container mx-auto p-8 h-full">
+        <div class="flex-grow flex flex-col justify-end 2xl:mb-20 lg:order-1 order-2">
+          <h1 class="2xl:text-9xl lg:text-8xl text-5xl font-bold 2xl:mr-4 lg:mr-4">
+            {{ t("TitleMonin") }}
+          </h1>
+          <p class="lg:text-2xl text-base mb-4">
+            {{ t("DescriptionMonin[0]") }} <br />
+            {{ t("DescriptionMonin[1]") }} <br />
+            {{ t("DescriptionMonin[2]") }}<br />
+            {{ t("DescriptionMonin[3]") }}
+          </p>
+          <p class="text-base font-extralight">
+            {{ t("WorkMonin[0]") }} <br />
+            {{ t("WorkMonin[1]") }} <br />
+            {{ t("WorkMonin[2]") }}<br />
+            {{ t("WorkMonin[3]") }}
+          </p>
+        </div>
+        <div
+          class="md:flex hidden justify-center lg:justify-end 2xl:w-2/5 lg:h-4/5 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-2 order-1"
+        >
+          <img src="/monin.gif" alt="GIF" class="object-cover mx-auto" />
+        </div>
+      <!-- </div> -->
+      <a id="Bottom"></a>
+    </div>
+
+    <div>
+      <a id="slide2"></a>
+      <div class="hidden md:flex containerDE horizontal h-screen">
+        <div class="panell h-screen">
+          <video
+            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            autoplay
+            loop
+            muted
+            playsinline
+          >
             <source :src="`/video/1.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <button
-  class="absolute bottom-1/2 right-0 transform translate-x-1/2 z-30 flex items-center justify-center mr-16 group focus:outline-none "
->
-  <span class="border-0 rounded-full p-2 active:bg-rose-neon/50 -rotate-90">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
-      <path fill="currentColor" fill-rule="evenodd"
-        d="M2.22 5.22a.75.75 0 0 0 0 1.06l5.252 5.252a.75.75 0 0 0 1.06 0l5.252-5.252a.75.75 0 1 0-1.06-1.06L8.001 9.94L3.28 5.22a.75.75 0 0 0-1.06 0"
-        clip-rule="evenodd" />
-    </svg>
-  </span>
-</button>
-
-        <div class="w-[75%] flex-shrink-0 h-full mx-4">
-          <video class="flex " autoplay loop muted playsinline>
+        <div class="panell h-screen">
+          <video
+            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            autoplay
+            loop
+            muted
+            playsinline
+          >
             <source :src="`/video/2.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="w-[75%] flex-shrink-0 h-full mx-4">
-          <video class="   flex" autoplay loop muted playsinline>
+        <div class="panell h-screen">
+          <video
+            class="lg:h-[75%] h-screen flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            autoplay
+            loop
+            muted
+            playsinline
+          >
             <source :src="`/video/3.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="w-[75%] flex-shrink-0 h-full mx-4">
-          <video class="  flex" autoplay loop muted playsinline>
+        <div class="panell h-screen">
+          <video
+            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            autoplay
+            loop
+            muted
+            playsinline
+          >
             <source :src="`/video/4.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="w-[75%] flex-shrink-0 h-full mx-4">
-          <video class="  flex" autoplay loop muted playsinline>
+        <div class="panell h-screen">
+          <video
+            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            autoplay
+            loop
+            muted
+            playsinline
+          >
             <source :src="`/video/5.mp4`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="w-[75%] flex-shrink-0 h-full mx-4">
-          <video class=" flex" autoplay loop muted playsinline>
+        <div class="panell h-screen">
+          <video
+            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            autoplay
+            loop
+            muted
+            playsinline
+          >
             <source :src="`/video/6.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+        </div>
+      </div>
+
+      <!-- mobile -->
+      <div class="md:hidden flex overflow-x-auto items-center gap-10 relative">
+        <div class="flex flex-nowrap">
+          <div class="w-[75%] flex-shrink-0 h-full mx-4 mb-4">
+            <video class="flex" autoplay loop muted playsinline>
+              <source :src="`/video/1.mov`" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <button
+            class="absolute bottom-1/2 right-0 transform translate-x-1/2 z-30 flex items-center justify-center mr-16 group focus:outline-none"
+          >
+            <span class="border-0 rounded-full p-2 active:bg-rose-neon/50 -rotate-90">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 16 16"
+                class="bounce"
+              >
+                <path
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  d="M2.22 5.22a.75.75 0 0 0 0 1.06l5.252 5.252a.75.75 0 0 0 1.06 0l5.252-5.252a.75.75 0 1 0-1.06-1.06L8.001 9.94L3.28 5.22a.75.75 0 0 0-1.06 0"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </span>
+          </button>
+
+          <div class="w-[75%] flex-shrink-0 h-full mx-4">
+            <video class="flex" autoplay loop muted playsinline>
+              <source :src="`/video/2.mov`" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="w-[75%] flex-shrink-0 h-full mx-4">
+            <video class="flex" autoplay loop muted playsinline>
+              <source :src="`/video/3.mov`" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="w-[75%] flex-shrink-0 h-full mx-4">
+            <video class="flex" autoplay loop muted playsinline>
+              <source :src="`/video/4.mov`" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="w-[75%] flex-shrink-0 h-full mx-4">
+            <video class="flex" autoplay loop muted playsinline>
+              <source :src="`/video/5.mp4`" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="w-[75%] flex-shrink-0 h-full mx-4">
+            <video class="flex" autoplay loop muted playsinline>
+              <source :src="`/video/6.mov`" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { onMounted, onUnmounted, ref } from "vue";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import { gsap } from 'gsap';
 
 const { $gsap: gsap } = useNuxtApp();
@@ -149,12 +191,12 @@ let animating = ref(false);
 const slide1Element = ref(null);
 const footerElement = ref(null);
 let observer = ref(null);
-const emit = defineEmits(['bottom-reached', 'top-reached']);
+const emit = defineEmits(["bottom-reached", "top-reached"]);
 
 onMounted(() => {
   ctx.value = gsap.context((self) => {
     // Swipe section animations
-    let swipePanels = gsap.utils.toArray('.swipe-section .panel');
+    let swipePanels = gsap.utils.toArray(".swipe-section .panel");
     let reversedPanels = [...swipePanels].reverse();
     reversedPanels.forEach((panel, index) => {
       gsap.set(panel, { zIndex: index });
@@ -191,9 +233,9 @@ onMounted(() => {
       currentIndex.value = index;
     }
     const isDesktop = window.innerWidth > 768;
-    // Horizontal scrolling section 
+    // Horizontal scrolling section
     if (isDesktop) {
-      let horizontalSections = document.querySelectorAll('.horizontal .panell');
+      let horizontalSections = document.querySelectorAll(".horizontal .panell");
       gsap.to(horizontalSections, {
         xPercent: -100 * (horizontalSections.length - 1),
         ease: "none",
@@ -206,24 +248,24 @@ onMounted(() => {
       });
     }
   }, main.value);
-  slide1Element.value = document.getElementById('Bottom');
-  footerElement.value = document.getElementById('footer');
+  slide1Element.value = document.getElementById("Bottom");
+  footerElement.value = document.getElementById("footer");
 
   const observerOptions = {
     root: null, // Utilise le viewport comme zone de défilement
-    rootMargin: '0px',
-    threshold: 0.1 // Ajustez selon vos besoins pour déterminer quel pourcentage de l'élément doit être visible
+    rootMargin: "0px",
+    threshold: 0.1, // Ajustez selon vos besoins pour déterminer quel pourcentage de l'élément doit être visible
   };
 
-   observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
+  observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        if (entry.target.id === 'Bottom') {
-          emit('bottom-reached');
+        if (entry.target.id === "Bottom") {
+          emit("bottom-reached");
 
           // Logique spécifique à Slide 1
-        } else if (entry.target.id === 'footer') {
-          emit('top-reached');
+        } else if (entry.target.id === "footer") {
+          emit("top-reached");
           // Logique spécifique au Footer
         }
       }
@@ -239,15 +281,14 @@ onMounted(() => {
   }
 });
 
-
 onUnmounted(() => {
   ctx.value.revert();
   if (slide1Element.value) {
-      observer.unobserve(slide1Element.value);
-    }
-    if (footerElement.value) {
-      observer.unobserve(footerElement.value);
-    }
+    observer.unobserve(slide1Element.value);
+  }
+  if (footerElement.value) {
+    observer.unobserve(footerElement.value);
+  }
 });
 </script>
 
@@ -290,5 +331,5 @@ onUnmounted(() => {
     height: auto;
     /* Hauteur auto pour éviter les problèmes sur mobile */
   }
-
-}</style>
+}
+</style>

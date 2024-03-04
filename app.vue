@@ -49,6 +49,15 @@ export default {
     } else {
       window.addEventListener('click', this.detectFirstInterraction);
     }
+
+    window.addEventListener("resize", function() {
+      if(window.innerWidth > window.innerHeight) {
+          console.log("Mode paysage");
+      } else {
+          console.log("Mode portrait");
+      }
+    });
+
   },
 }
 </script>

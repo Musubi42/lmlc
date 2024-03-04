@@ -19,7 +19,7 @@
         </NuxtLink>
       </div>
       <div class="flex flex-row">
-        <switchLanguage :languageStyle="dynamicStyle" v-cursorAnimation />
+        <switchLanguageWork :languageStyle="dynamicStyle" v-cursorAnimation />
 
         <div
           to="/menu"
@@ -30,6 +30,7 @@
             :style="{ height: burgerHeight + 'px', y: y + 'px' }"
             :y="y"
             class="text-[50px] fill-black"
+            :class="{ 'invert': isWorkCarousel, 'invert-0': !isWorkCarousel }"
             ref="menuBurger"
             @click="toggleMenuBurger"
             v-cursorAnimation
