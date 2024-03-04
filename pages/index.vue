@@ -147,7 +147,6 @@ export default {
 
     // Des fois, si je met un clg le if s'exec bien
     if (!firstVisit.value) {
-      console.log("oui");
       // this.componentKey++;
       isIntroAnimation.value = false;
       IntroAnimation.value = false;

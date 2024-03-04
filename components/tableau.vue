@@ -826,7 +826,6 @@ export default {
   mounted() {
     if (process.client) {
     // console.log(window.getComputedStyle(drawhere, null));
-    console.log(document.getElementById("drawhere").offsetHeight);
     // console.log(window.getComputedStyle(drawhere, null).getPropertyValue('width'));
     // console.log(window.getComputedStyle(drawhere, null).getPropertyValue('height'));
       this.loadScript(

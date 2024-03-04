@@ -2,6 +2,7 @@
   <div @click="closeMenuIfOpen">
     <HeaderWork :dynamicStyle="headerStyle" />
     <NuxtPage />
+    <OrientationWarning />
     <Footer />
     <CustomCursor />
   </div>

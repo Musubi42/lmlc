@@ -113,7 +113,6 @@ export default {
 
     // TODO: Checker si la data est loaded avant d'afficher le composant Tableau
     const imagesDataUrls = await this.preloadImagesAndConvertToDataUrls(this.isMobile);
-    console.log("imagesDataUrls", imagesDataUrls);
     imagesDataUrls ? this.isTableauPreFetchImagesLoading = false : this.isTableauPreFetchImagesLoading = true;
     // console.log(this.isTableauPreFetchImagesLoading, "isTableauPreFetchImagesLoading");
 

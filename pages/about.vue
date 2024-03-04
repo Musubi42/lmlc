@@ -53,14 +53,12 @@ body {
 export default {
   setup() {
     definePageMeta({
-      layout: "nada",
+      layout: "about",
     });
     const ScrollHorizontal = isScrollHorizontal();
     const isMenuOpen = stateMenuOpen();
 
     const isMobile = stateIsMobile();
-
-    console.log("isMobile", isMobile.value);
 
     const isTalents = talents();
 
@@ -154,7 +152,6 @@ export default {
 
     this.sectionMetierHeight = this.$refs.aboutMetier.offsetHeight;
 
-      console.log("desktop");
       this.observerScrollHorizontal = new IntersectionObserver(
         this.handleScrollHorizontal,
         {

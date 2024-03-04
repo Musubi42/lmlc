@@ -63,7 +63,6 @@ export default {
       // const languageSelectors = this.$refs.languageSelectorsMobile;
       // const languageSelectorsMobile = ref(null);
       const languageSelectorsMobile = document.getElementById("languageSelectorsMobile");
-      console.log(languageSelectorsMobile);
       const allLanguageSelectors = languageSelectorsMobile.querySelectorAll("span");
       allLanguageSelectors.forEach((languageSelector) => {
         languageSelector.classList.remove("font-semibold");

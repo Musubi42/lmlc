@@ -320,7 +320,6 @@ export default {
     },
     dynamicStyle: {
       handler: function (newVal, oldVal) {
-        console.log(newVal, oldVal);
         if (newVal === false) {
           // this.toggleMenuBurger();
         }
@@ -337,7 +336,6 @@ export default {
     // },
   },
   created() {
-    console.log("dynamic Style : ", this.dynamicStyle);
     // Lorsque le composant est créé, vérifiez si un cookie de langue existe
     const savedLang = Cookies.get("i18n_language");
 

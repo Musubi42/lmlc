@@ -2,11 +2,7 @@
   <div @click="closeMenuIfOpen" >
     <HeaderAbout v-if="showHeader" :dynamicStyle="headerStyle" />
     <NuxtPage />
-    <!-- <div
-      class="fixed w-screen bottom-0 bg-white mix-blend-difference border-t-2 border-gray-200"
-    >
-      <Music />
-    </div> -->
+    <OrientationWarning />
     <CustomCursor />
   </div>
 </template>

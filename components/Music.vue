@@ -281,7 +281,6 @@ export default {
         this.isPlaying = true;
 
         this.isMusicPlaying = !this.audioSource?.paused;
-        console.log("isMusicPlaying :  ",this.isMusicPlaying);
       }
     },
 
@@ -353,8 +352,6 @@ export default {
 
       // // Load metaData of the first song
       await this.loadMetaData(this.trackID);
-
-      console.log(this.trackID);
 
       // TODO: On ne peut pas lancer un son automatiquement
       // https://developer.chrome.com/blog/autoplay/
