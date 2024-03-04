@@ -13,8 +13,7 @@
         </div>
       </div>
 
-      <button type="button"
-        v-cursorAnimation
+      <button type="button" v-cursorAnimation
         class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none hover:cursor-none"
         data-carousel-prev @click="goPrev">
         <span class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50">
@@ -25,8 +24,7 @@
           <span class="sr-only">Previous</span>
         </span>
       </button>
-      <button type="button"
-        v-cursorAnimation
+      <button type="button" v-cursorAnimation
         class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none hover:cursor-none"
         data-carousel-next @click="goNext">
         <span class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50">
@@ -36,8 +34,7 @@
           <span class="sr-only">Next</span>
         </span>
       </button>
-      <button
-        v-cursorAnimation
+      <button v-cursorAnimation
         class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30 flex items-center justify-center px-4 group focus:outline-none 2xl:mb-20 mb-20 hover:cursor-none"
         @click="goSlide" v-if="showButton">
         <span class="border-0 text-white rounded-full p-2 active:bg-rose-neon/50">
@@ -93,7 +90,7 @@ export default {
       slide: 0,
       showButton: false,
       intentObserver: null,
-      scrollCount: 0
+      scrollEnabled: true,
 
     };
   },
@@ -144,6 +141,9 @@ export default {
         //TODO reactiver le scroll ou pas ??
       }
     },
+    toggleScroll(enable) {
+      this.scrollEnabled = enable;
+    },
     goPrev() {
       this.showButton = false;
       this.active = this.active > 0 ? this.active - 1 : this.data.length - 1;
@@ -178,13 +178,12 @@ export default {
     },
     goSlide() {
       this.slide = 1;
-      gsap.to(window, { duration: 2, scrollTo: "#slide1" });
+      gsap.to(window, { duration: 2, scrollTo: "#slide1", onComplete: () => this.toggleScroll(true) });
     },
     initializeScrollTrigger() {
       const isMobile = window.innerWidth <= 768;
 
       if (!isMobile) {
-        console.log("mobile");
         this.intentObserver = ScrollTrigger.observe({
           type: "wheel",
           onUp: () => {
@@ -194,12 +193,11 @@ export default {
               this.intentObserver = null;
             };
 
-            this.scrollCount++;
-            if (this.scrollCount >= 2) {
-              this.scrollCount = 0;
+            if (this.scrollEnabled) {
+              this.scrollEnabled = false
               if (this.slide > 0) {
                 this.slide--;
-                gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+                gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true) });
                 this.isWorkCarousel = true;
               } else {
                 // this.isWorkCarousel = true;
@@ -210,30 +208,21 @@ export default {
             // this.workCarousel
             // Si le slide actuel est le slide 2, ne faites rien
             if (this.slide === 2 && this.active === 0) {
-              console.log("1");
               this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
               this.intentObserver = null;
             };
-            this.isWorkCarousel = false;
 
-            this.scrollCount++;
-            if (this.scrollCount >= 2) {
-              console.log("2");
-              // this.isWorkCarousel = false;
-              // console.log(this.isWorkCarousel);
-              
-              this.scrollCount = 0;
+            this.isWorkCarousel = false;
+            if (this.scrollEnabled) {
+              this.scrollEnabled = false
+
               if (this.slide < this.data[this.active].slide - 1) {
-                console.log("3");
                 this.slide++;
-                gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+                gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true), });
               } else {
-                console.log("4");
-                // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
                 if (this.slide < this.data[this.active].slide) {
-                  console.log("5");
                   this.slide++;
-                  gsap.to(window, { duration: 2, scrollTo: "#footer" });
+                  gsap.to(window, { duration: 2, scrollTo: "#footer", onComplete: () => this.toggleScroll(true) });
                 }
               }
             }
@@ -242,7 +231,6 @@ export default {
           preventDefault: true,
         });
 
-        this.scrollCount = 0;
       }
     },
   },
@@ -265,12 +253,11 @@ export default {
             this.intentObserver = null;
           };
 
-          this.scrollCount++;
-          if (this.scrollCount >= 2) {
-            this.scrollCount = 0;
+          if (this.scrollEnabled) {
+            this.scrollEnabled = false
             if (this.slide > 0) {
               this.slide--;
-              gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+              gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true) });
               this.isWorkCarousel = true;
             } else {
               // this.isWorkCarousel = true;
@@ -278,41 +265,35 @@ export default {
           }
         },
         onDown: () => {
-            // this.workCarousel
-            // Si le slide actuel est le slide 2, ne faites rien
-            if (this.slide === 2 && this.active === 0) {
-              console.log("1");
-              this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
-              this.intentObserver = null;
-            };
+          // this.workCarousel
+          // Si le slide actuel est le slide 2, ne faites rien
+          if (this.slide === 2 && this.active === 0) {
+            this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
+            this.intentObserver = null;
+          };
 
-            this.isWorkCarousel = false;
+          this.isWorkCarousel = false;
+          if (this.scrollEnabled) {
+            this.scrollEnabled = false
 
-            this.scrollCount++;
-            if (this.scrollCount >= 2) {
-              // this.isWorkCarousel = false;
-              // console.log(this.isWorkCarousel);
-              this.scrollCount = 0;
-              if (this.slide < this.data[this.active].slide - 1) {
-                console.log("3");
+            if (this.slide < this.data[this.active].slide - 1) {
+              console.log("3");
+              this.slide++;
+              gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true), });
+            } else {
+              console.log("4");
+              // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
+              if (this.slide < this.data[this.active].slide) {
+                console.log("5");
                 this.slide++;
-                gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
-              } else {
-                console.log("4");
-                // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
-                if (this.slide < this.data[this.active].slide) {
-                  console.log("5");
-                  this.slide++;
-                  gsap.to(window, { duration: 2, scrollTo: "#footer" });
-                }
+                gsap.to(window, { duration: 2, scrollTo: "#footer", onComplete: () => this.toggleScroll(true) });
               }
             }
-          },
+          }
+        },
         tolerance: 100,
         preventDefault: true,
       });
-
-      this.scrollCount = 0;
     }
   },
   unmounted() {
