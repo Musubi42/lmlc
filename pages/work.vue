@@ -127,7 +127,8 @@ export default {
     },
     handleBottomReached() {
       if (this.intentObserver == null) {
-        gsap.to(window, { duration: 2, scrollTo: "#slide1" });
+        this.scrollEnabled = false
+        gsap.to(window, { duration: 2, scrollTo: "#slide1", onComplete: () => this.toggleScroll(true) });
         this.slide = 1
         this.initializeScrollTrigger()
       }
@@ -178,6 +179,7 @@ export default {
     },
     goSlide() {
       this.slide = 1;
+      this.scrollEnabled = false
       gsap.to(window, { duration: 2, scrollTo: "#slide1", onComplete: () => this.toggleScroll(true) });
     },
     initializeScrollTrigger() {
@@ -217,14 +219,11 @@ export default {
             this.scrollEnabled = false
 
             if (this.slide < this.data[this.active].slide - 1) {
-              console.log("3");
               this.slide++;
               gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true), });
             } else {
-              console.log("4");
               // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
               if (this.slide < this.data[this.active].slide) {
-                console.log("5");
                 this.slide++;
                 gsap.to(window, { duration: 2, scrollTo: "#footer", onComplete: () => this.toggleScroll(true) });
               }
@@ -279,14 +278,11 @@ export default {
             this.scrollEnabled = false
 
             if (this.slide < this.data[this.active].slide - 1) {
-              console.log("3");
               this.slide++;
               gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true), });
             } else {
-              console.log("4");
               // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
               if (this.slide < this.data[this.active].slide) {
-                console.log("5");
                 this.slide++;
                 gsap.to(window, { duration: 2, scrollTo: "#footer", onComplete: () => this.toggleScroll(true) });
               }
