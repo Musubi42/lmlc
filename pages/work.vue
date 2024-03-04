@@ -5,88 +5,43 @@
       <div class="relative slide w-full h-screen ">
         <div class="carousel-inner relative overflow-hidden h-screen z-1">
           <div class="carousel-item inset-0 relative h-screen">
-            <div
-              id="carousel-text"
-              class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
-            >
-              <h2
-                id="typewriter-title"
-                class="lg:text-7xl text-4xl font-bold text-white text-left"
-              ></h2>
+            <div id="carousel-text" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+              <h2 id="typewriter-title" class="lg:text-7xl text-4xl font-bold text-white text-left"></h2>
               <p id="typewriter-description" class="lg:text-2xl text-white"></p>
             </div>
           </div>
         </div>
       </div>
 
-      <button
-        type="button"
+      <button type="button"
         class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none"
-        data-carousel-prev
-        @click="goPrev"
-      >
+        data-carousel-prev @click="goPrev">
         <span class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            class="w-6 h-6"
-          >
-            <path
-              transform="scale(-1, 1) translate(-24, 0)"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 5l7 7-7 7"
-            />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+            <path transform="scale(-1, 1) translate(-24, 0)" stroke-linecap="round" stroke-linejoin="round"
+              stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
           <span class="sr-only">Previous</span>
         </span>
       </button>
-      <button
-        type="button"
+      <button type="button"
         class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none"
-        data-carousel-next
-        @click="goNext"
-      >
+        data-carousel-next @click="goNext">
         <span class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            class="w-6 h-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 5l7 7-7 7"
-            />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
           <span class="sr-only">Next</span>
         </span>
       </button>
       <button
         class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30 flex items-center justify-center px-4 group focus:outline-none 2xl:mb-20 mb-20"
-        @click="goSlide"
-        v-if="showButton"
-      >
+        @click="goSlide" v-if="showButton">
         <span class="border-0 text-white rounded-full p-2 active:bg-rose-neon/50">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 16 16"
-            class="bounce"
-          >
-            <path
-              fill="currentColor"
-              fill-rule="evenodd"
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
+            <path fill="currentColor" fill-rule="evenodd"
               d="M2.22 5.22a.75.75 0 0 0 0 1.06l5.252 5.252a.75.75 0 0 0 1.06 0l5.252-5.252a.75.75 0 1 0-1.06-1.06L8.001 9.94L3.28 5.22a.75.75 0 0 0-1.06 0"
-              clip-rule="evenodd"
-            />
+              clip-rule="evenodd" />
           </svg>
         </span>
       </button>
@@ -116,7 +71,7 @@ export default {
     });
 
     const isWorkCarousel = workCarousel();
-    
+
     return {
       isWorkCarousel,
     };
@@ -171,12 +126,20 @@ export default {
       }, 1000);
     },
     handleBottomReached() {
-
-      console.log("test")
-
+      if (this.intentObserver == null) {
+        gsap.to(window, { duration: 2, scrollTo: "#slide1" });
+        this.slide = 1
+        this.initializeScrollTrigger()
+      }
     },
     handleTopReached() {
-      console.log("Le haut du Footer est atteint dans le parent");
+      if (this.intentObserver == null) {
+        // gsap.to(window, { duration: 2, scrollTo: "#footer" });
+        // this.slide++;
+        // this.initializeScrollTrigger()
+
+        //TODO reactiver le scroll ou pas ??
+      }
     },
     goPrev() {
       this.showButton = false;
@@ -214,57 +177,57 @@ export default {
       this.slide = 1;
       gsap.to(window, { duration: 2, scrollTo: "#slide1" });
     },
-  },
-  initializeScrollTrigger() {
-    const isMobile = window.innerWidth <= 768;
+    initializeScrollTrigger() {
+      const isMobile = window.innerWidth <= 768;
 
-    if (!isMobile) {
-      this.intentObserver = ScrollTrigger.observe({
-        type: "wheel",
-        onUp: () => {
-          // Si le slide actuel est le slide 2, ne faites rien
-          if (this.slide === 2) {
-            this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
-            this.intentObserver = null;
-          };
+      if (!isMobile) {
+        this.intentObserver = ScrollTrigger.observe({
+          type: "wheel",
+          onUp: () => {
+            // Si le slide actuel est le slide 2, ne faites rien
+            if (this.slide === 2 && this.active === 0) {
+              this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
+              this.intentObserver = null;
+            };
 
-          this.scrollCount++;
-          if (this.scrollCount >= 2) {
-            this.scrollCount = 0;
-            if (this.slide > 0) {
-              this.slide--;
-              gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
-            }
-          }
-        },
-        onDown: () => {
-          // Si le slide actuel est le slide 2, ne faites rien
-          if (this.slide === 2) {
-            this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
-            this.intentObserver = null;
-          };
-
-          this.scrollCount++;
-          if (this.scrollCount >= 2) {
-            this.scrollCount = 0;
-            if (this.slide < this.data[this.active].slide - 1) {
-              this.slide++;
-              gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
-            } else {
-              // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
-              if (this.slide < this.data[this.active].slide) {
-                this.slide++;
-                gsap.to(window, { duration: 2, scrollTo: "#footer" });
+            this.scrollCount++;
+            if (this.scrollCount >= 2) {
+              this.scrollCount = 0;
+              if (this.slide > 0) {
+                this.slide--;
+                gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
               }
             }
-          }
-        },
-        tolerance: 100,
-        preventDefault: true,
-      });
+          },
+          onDown: () => {
+            // Si le slide actuel est le slide 2, ne faites rien
+            if (this.slide === 2 && this.active === 0) {
+              this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
+              this.intentObserver = null;
+            };
 
-      this.scrollCount = 0;
-    }
+            this.scrollCount++;
+            if (this.scrollCount >= 2) {
+              this.scrollCount = 0;
+              if (this.slide < this.data[this.active].slide - 1) {
+                this.slide++;
+                gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
+              } else {
+                // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
+                if (this.slide < this.data[this.active].slide) {
+                  this.slide++;
+                  gsap.to(window, { duration: 2, scrollTo: "#footer" });
+                }
+              }
+            }
+          },
+          tolerance: 100,
+          preventDefault: true,
+        });
+
+        this.scrollCount = 0;
+      }
+    },
   },
   mounted() {
     this.initTypewriter();
@@ -280,7 +243,7 @@ export default {
         type: "wheel",
         onUp: () => {
           // Si le slide actuel est le slide 2, ne faites rien
-          if (this.slide === 2) {
+          if (this.slide === 2 && this.active === 0) {
             this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
             this.intentObserver = null;
           };
@@ -295,9 +258,8 @@ export default {
           }
         },
         onDown: () => {
-          // Si le slide actuel est le slide 2, ne faites rien
-          if (this.slide === 2) {
-            this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
+          if (this.slide === 2 && this.active === 0) {
+            this.intentObserver.kill();
             this.intentObserver = null;
           };
 
@@ -308,7 +270,7 @@ export default {
               this.slide++;
               gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide });
             } else {
-              // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
+
               if (this.slide < this.data[this.active].slide) {
                 this.slide++;
                 gsap.to(window, { duration: 2, scrollTo: "#footer" });
@@ -331,7 +293,7 @@ export default {
       this.descriptionTypewriter.stop();
     }
     if (this.intentObserver) {
-      this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
+      this.intentObserver.kill();
       this.intentObserver = null;
     }
   },
@@ -356,6 +318,7 @@ export default {
 }
 
 @keyframes bounce {
+
   0%,
   100% {
     transform: translateY(0);
@@ -368,4 +331,5 @@ export default {
 
 .bounce {
   animation: bounce 2s infinite;
-}</style>
+}
+</style>

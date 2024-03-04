@@ -148,6 +148,7 @@ let currentIndex = ref(0);
 let animating = ref(false);
 const slide1Element = ref(null);
 const footerElement = ref(null);
+let observer = ref(null);
 const emit = defineEmits(['bottom-reached', 'top-reached']);
 
 onMounted(() => {
@@ -190,7 +191,6 @@ onMounted(() => {
       currentIndex.value = index;
     }
     const isDesktop = window.innerWidth > 768;
-    console.log(isDesktop)
     // Horizontal scrolling section 
     if (isDesktop) {
       let horizontalSections = document.querySelectorAll('.horizontal .panell');
@@ -215,7 +215,7 @@ onMounted(() => {
     threshold: 0.1 // Ajustez selon vos besoins pour déterminer quel pourcentage de l'élément doit être visible
   };
 
-  const observer = new IntersectionObserver((entries, observer) => {
+   observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         if (entry.target.id === 'Bottom') {
