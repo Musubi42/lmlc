@@ -10,7 +10,8 @@ import { ref, onMounted, onUnmounted } from 'vue';
 const showWarning = ref(false);
 
 const checkOrientation = () => {
-  showWarning.value = window.innerWidth > window.innerHeight;
+  // Voir à ajuster le 768
+  showWarning.value = window.innerWidth > window.innerHeight && window.innerWidth < 768;
 };
 
 onMounted(() => {
