@@ -80,6 +80,7 @@
                     v-cursorAnimation
                   />
                   <button
+                    name="Button send email to newsletter"
                     id="sendEmail"
                     @click="handleSendEmail"
                     class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50 cursor-none"
@@ -115,10 +116,10 @@
         <div class="flex flex-row mb-2">
         <!-- TODO mettre le noref no... -->
           <a href="https://www.instagram.com/lmlccommunication/" class="ml-[-2px] mr-1 hover:cursor-none" target="_blank" referrerpolicy="no-referrer|no-referrer-when-downgrade">
-            <IconsInstagram class="w-6 h-auto text-white" />
+            <IconsInstagram alt="(Ouvre le l'instagram de LMLC COMMUNICATION dans un nouvel onglet)" class="w-6 h-auto text-white" />
           </a>
           <a href="https://www.linkedin.com/company/lmlccommunication/?originalSubdomain=fr" class="ml-[-2px] mr-1 hover:cursor-none" target="_blank" referrerpolicy="no-referrer|no-referrer-when-downgrade">
-            <IconsLinkedin class="w-6 h-auto text-white" />
+            <IconsLinkedin alt="(Ouvre le linkedin de LMLC COMMUNICATION dans un nouvel onglet)" class="w-6 h-auto text-white" />
           </a>
         </div>
         <div class="z-10 relative" data-footer-element>PARIS, FR</div>
@@ -129,14 +130,6 @@
         data-footer-element
         class="absolute flex flex-col justify-content items-center bottom-0 w-full"
       >
-        <a
-          href="https://www.instagram.com/lmlc_communication/"
-          target="_blank"
-          data-footer-element
-        >
-          <!-- <instagram class="text-[30px] w-auto text-white" data-footer-element /> -->
-        </a>
-        <!-- TODO : Ajouter le lien vers mentions-legales une fois la page crée -->
         <div class="flex flex-row">
           <NuxtLink
             data-footer-element

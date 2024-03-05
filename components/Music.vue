@@ -6,6 +6,7 @@
         class="max-w-[50vw] md:max-w-none flex flex-row gap-4 content-start center-content items-center"
       >
         <img
+          alt="Thumbnail of the song"
           class="h-4/5 aspect-square object-cover"
           :src="songMetadata ? songMetadata.thumbnail : ''"
         />
@@ -19,11 +20,12 @@
     <!-- Pause/start previous/next -->
     <div class=" flex mr-3 ml-4 md:mr-9 md:ml-10 items-center justify-center">
       <!-- Play previous song -->
-      <button class="center-content mr-2" @click="playPreviousSong">
+      <button name="Button play previous song" class="center-content mr-2" @click="playPreviousSong">
         <iconsPrevious class="w-[24px] cursor-none" v-cursorAnimation />
       </button>
       <!-- Toggle song -->
       <button
+        name="Button play and pause song"
         class="flex w-12 h-12 bg-black text-white rounded-full center-content justify-center items-center cursor-none"
         @click="toggleAudio"
         v-cursorAnimation
@@ -33,7 +35,7 @@
         <iconsPause class="w-[24px]" v-if="isPlaying && !isLoading" />
       </button>
       <!-- Play next song -->
-      <button class="center-content" @click="playNextSong" v-cursorAnimation>
+      <button name="Button play next song" class="center-content" @click="playNextSong" v-cursorAnimation>
         <iconsNext class="w-[24px] ml-2 cursor-none" />
       </button>
 
