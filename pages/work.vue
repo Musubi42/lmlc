@@ -193,6 +193,7 @@ export default {
             if (this.slide === 2 && this.active === 0) {
               this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
               this.intentObserver = null;
+              return
             };
 
             if (this.scrollEnabled) {
@@ -212,6 +213,7 @@ export default {
           if (this.slide === 2 && this.active === 0) {
             this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
             this.intentObserver = null;
+            return
           };
 
           this.isWorkCarousel = false;
@@ -252,6 +254,7 @@ export default {
           if (this.slide === 2 && this.active === 0) {
             this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
             this.intentObserver = null;
+            return
           };
 
           if (this.scrollEnabled) {
@@ -266,11 +269,11 @@ export default {
           }
         },
         onDown: () => {
-          // this.workCarousel
           // Si le slide actuel est le slide 2, ne faites rien
           if (this.slide === 2 && this.active === 0) {
             this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
             this.intentObserver = null;
+            return
           };
 
           this.isWorkCarousel = false;
