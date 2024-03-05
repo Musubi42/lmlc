@@ -19,7 +19,7 @@
         </NuxtLink>
       </div>
       <div class="flex flex-row">
-        <switchLanguage :languageStyle="dynamicStyle" v-cursorAnimation />
+        <SwitchLanguageAbout :languageStyle="dynamicStyle" v-cursorAnimation />
 
         <div
           to="/menu"
