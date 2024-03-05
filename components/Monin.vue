@@ -1,10 +1,10 @@
 <template>
-  <div class="h-full">
-    <a id="slide1"></a>
+  <!-- <div class="h-full"> -->
+  <!-- <a id="slide1"></a>
     <div class="flex justify-center items-center h-screen md:hidden">
       <img src="/monin.gif" alt="GIF" />
-    </div>
-    <!-- 
+    </div> -->
+  <!-- 
     <div class="h-4/5 bg-green-300"> 
       <div class="flex flex-col lg:flex-row mx-auto p-8 h-full items-end " >
         <div class="flex align-bottom ">
@@ -34,11 +34,20 @@
       <a id="Bottom"></a>
     </div> -->
 
-    <section class="h-screen flex items-end pb-20">
-      <div class="md:flex hidden flex-1 justify-center h-[calc(100%-100px)] relative order-2">
-        <img src="/monin.gif" alt="GIF" class="object-cover " />
+  <section class="h-full flex flex-col md:flex-row items-end pb-20">
+    <a id="slide1"></a>
+    <div class="flex justify-center items-center h-screen md:hidden">
+      <img src="/monin.gif" alt="GIF" />
+    </div>
+    <!-- <div class="flex flex-col md:flex-row"> -->
+      <div
+        class="md:flex hidden flex-1 justify-center h-[calc(100%-100px)] relative order-2"
+      >
+        <img src="/monin.gif" alt="GIF" class="object-cover" />
       </div>
-      <div class="flex-grow flex flex-1 flex-col justify-end 2xl:mb-20 lg:order-1 order-1">
+      <div
+        class="flex-grow flex flex-1 flex-col justify-end 2xl:mb-20 lg:order-1 order-1"
+      >
         <h1 class="2xl:text-9xl lg:text-8xl text-5xl font-bold 2xl:mr-4 lg:mr-4">
           {{ t("TitleMonin") }}
         </h1>
@@ -55,150 +64,151 @@
           {{ t("WorkMonin[3]") }}
         </p>
       </div>
-      <a id="Bottom"></a>
-    </section>
+    <!-- </div> -->
+    <a id="Bottom"></a>
+  </section>
 
-    <div>
-      <a id="slide2"></a>
-      <div class="hidden md:flex containerDE horizontal h-screen">
-        <div class="panell h-screen">
-          <video
-            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            autoplay
-            loop
-            muted
-            playsinline
-          >
+  <div>
+    <a id="slide2"></a>
+    <div class="hidden md:flex containerDE horizontal h-screen">
+      <div class="panell h-screen">
+        <video
+          class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source :src="`/video/1.mov`" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="panell h-screen">
+        <video
+          class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source :src="`/video/2.mov`" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="panell h-screen">
+        <video
+          class="lg:h-[75%] h-screen flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source :src="`/video/3.mov`" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="panell h-screen">
+        <video
+          class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source :src="`/video/4.mov`" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="panell h-screen">
+        <video
+          class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source :src="`/video/5.mp4`" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="panell h-screen">
+        <video
+          class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source :src="`/video/6.mov`" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- mobile -->
+    <div class="md:hidden flex overflow-x-auto items-center gap-10 relative">
+      <div class="flex flex-nowrap">
+        <div class="w-[75%] flex-shrink-0 h-full mx-4 mb-4">
+          <video class="flex" autoplay loop muted playsinline>
             <source :src="`/video/1.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="panell h-screen">
-          <video
-            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            autoplay
-            loop
-            muted
-            playsinline
-          >
+        <button
+          class="absolute bottom-1/2 right-0 transform translate-x-1/2 z-30 flex items-center justify-center mr-16 group focus:outline-none"
+        >
+          <span class="border-0 rounded-full p-2 active:bg-rose-neon/50 -rotate-90">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 16 16"
+              class="bounce"
+            >
+              <path
+                fill="currentColor"
+                fill-rule="evenodd"
+                d="M2.22 5.22a.75.75 0 0 0 0 1.06l5.252 5.252a.75.75 0 0 0 1.06 0l5.252-5.252a.75.75 0 1 0-1.06-1.06L8.001 9.94L3.28 5.22a.75.75 0 0 0-1.06 0"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </span>
+        </button>
+
+        <div class="w-[75%] flex-shrink-0 h-full mx-4">
+          <video class="flex" autoplay loop muted playsinline>
             <source :src="`/video/2.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="panell h-screen">
-          <video
-            class="lg:h-[75%] h-screen flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            autoplay
-            loop
-            muted
-            playsinline
-          >
+        <div class="w-[75%] flex-shrink-0 h-full mx-4">
+          <video class="flex" autoplay loop muted playsinline>
             <source :src="`/video/3.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="panell h-screen">
-          <video
-            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            autoplay
-            loop
-            muted
-            playsinline
-          >
+        <div class="w-[75%] flex-shrink-0 h-full mx-4">
+          <video class="flex" autoplay loop muted playsinline>
             <source :src="`/video/4.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="panell h-screen">
-          <video
-            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            autoplay
-            loop
-            muted
-            playsinline
-          >
+        <div class="w-[75%] flex-shrink-0 h-full mx-4">
+          <video class="flex" autoplay loop muted playsinline>
             <source :src="`/video/5.mp4`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="panell h-screen">
-          <video
-            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            autoplay
-            loop
-            muted
-            playsinline
-          >
+        <div class="w-[75%] flex-shrink-0 h-full mx-4">
+          <video class="flex" autoplay loop muted playsinline>
             <source :src="`/video/6.mov`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
       </div>
-
-      <!-- mobile -->
-      <div class="md:hidden flex overflow-x-auto items-center gap-10 relative">
-        <div class="flex flex-nowrap">
-          <div class="w-[75%] flex-shrink-0 h-full mx-4 mb-4">
-            <video class="flex" autoplay loop muted playsinline>
-              <source :src="`/video/1.mov`" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <button
-            class="absolute bottom-1/2 right-0 transform translate-x-1/2 z-30 flex items-center justify-center mr-16 group focus:outline-none"
-          >
-            <span class="border-0 rounded-full p-2 active:bg-rose-neon/50 -rotate-90">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 16 16"
-                class="bounce"
-              >
-                <path
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  d="M2.22 5.22a.75.75 0 0 0 0 1.06l5.252 5.252a.75.75 0 0 0 1.06 0l5.252-5.252a.75.75 0 1 0-1.06-1.06L8.001 9.94L3.28 5.22a.75.75 0 0 0-1.06 0"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </span>
-          </button>
-
-          <div class="w-[75%] flex-shrink-0 h-full mx-4">
-            <video class="flex" autoplay loop muted playsinline>
-              <source :src="`/video/2.mov`" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="w-[75%] flex-shrink-0 h-full mx-4">
-            <video class="flex" autoplay loop muted playsinline>
-              <source :src="`/video/3.mov`" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="w-[75%] flex-shrink-0 h-full mx-4">
-            <video class="flex" autoplay loop muted playsinline>
-              <source :src="`/video/4.mov`" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="w-[75%] flex-shrink-0 h-full mx-4">
-            <video class="flex" autoplay loop muted playsinline>
-              <source :src="`/video/5.mp4`" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="w-[75%] flex-shrink-0 h-full mx-4">
-            <video class="flex" autoplay loop muted playsinline>
-              <source :src="`/video/6.mov`" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
+  <!-- </div> -->
 </template>
 
 <script setup>
