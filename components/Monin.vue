@@ -7,8 +7,8 @@
 
     <!-- <div> -->
       <div class="flex flex-col lg:flex-row container mx-auto p-8 h-full">
-        <div class="flex-grow flex flex-col justify-end 2xl:mb-20 lg:order-1 order-2">
-          <h1 class="2xl:text-9xl lg:text-8xl text-5xl font-bold 2xl:mr-4 lg:mr-4">
+        <div class="flex-grow flex flex-col justify-end lg:mb-28 2xl:mb-20 lg:order-1 order-2">
+          <h1 class="2xl:text-9xl lg:text-7xl text-5xl font-bold 2xl:mr-4 lg:mr-1">
             {{ t("TitleMonin") }}
           </h1>
           <p class="lg:text-2xl text-base mb-4">
@@ -25,7 +25,7 @@
           </p>
         </div>
         <div
-          class="md:flex hidden justify-center lg:justify-end 2xl:w-2/5 lg:h-4/5 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-2 order-1"
+          class="md:flex hidden justify-center lg:justify-end 2xl:w-2/5 lg:h-3/5 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-2 order-1"
         >
           <img src="/monin.gif" alt="GIF" class="object-cover mx-auto" />
         </div>
