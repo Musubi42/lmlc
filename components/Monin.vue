@@ -1,37 +1,62 @@
 <template>
-  <div>
+  <div class="h-full">
     <a id="slide1"></a>
     <div class="flex justify-center items-center h-screen md:hidden">
       <img src="/monin.gif" alt="GIF" />
     </div>
-
-    <!-- <div> -->
-      <div class="flex flex-col lg:flex-row container mx-auto p-8 h-full">
-        <div class="flex-grow flex flex-col justify-end 2xl:mb-20 lg:order-1 order-2">
-          <h1 class="2xl:text-9xl lg:text-8xl text-5xl font-bold 2xl:mr-4 lg:mr-4">
-            {{ t("TitleMonin") }}
-          </h1>
-          <p class="lg:text-2xl text-base mb-4">
-            {{ t("DescriptionMonin[0]") }} <br />
-            {{ t("DescriptionMonin[1]") }} <br />
-            {{ t("DescriptionMonin[2]") }}<br />
-            {{ t("DescriptionMonin[3]") }}
-          </p>
-          <p class="text-base font-extralight">
-            {{ t("WorkMonin[0]") }} <br />
-            {{ t("WorkMonin[1]") }} <br />
-            {{ t("WorkMonin[2]") }}<br />
-            {{ t("WorkMonin[3]") }}
-          </p>
+    <!-- 
+    <div class="h-4/5 bg-green-300"> 
+      <div class="flex flex-col lg:flex-row mx-auto p-8 h-full items-end " >
+        <div class="flex align-bottom ">
+          <div class="flex-grow flex flex-col justify-end 2xl:mb-20 lg:order-1 order-2">
+            <h1 class="2xl:text-9xl lg:text-8xl text-5xl font-bold 2xl:mr-4 lg:mr-4">
+              {{ t("TitleMonin") }}
+            </h1>
+            <p class="lg:text-2xl text-base mb-4">
+              {{ t("DescriptionMonin[0]") }} <br />
+              {{ t("DescriptionMonin[1]") }} <br />
+              {{ t("DescriptionMonin[2]") }}<br />
+              {{ t("DescriptionMonin[3]") }}
+            </p>
+            <p class="text-base font-extralight">
+              {{ t("WorkMonin[0]") }} <br />
+              {{ t("WorkMonin[1]") }} <br />
+              {{ t("WorkMonin[2]") }}<br />
+              {{ t("WorkMonin[3]") }}
+            </p>
+          </div>
         </div>
         <div
-          class="md:flex hidden justify-center lg:justify-end 2xl:w-2/5 lg:h-4/5 relative 2xl:mt-8 lg:mt-8 mr-10 lg:order-2 order-1"
-        >
-          <img src="/monin.gif" alt="GIF" class="object-cover mx-auto" />
+          class=" md:flex hidden justify-center lg:h-4/5 relative h-screen" >
+          <img src="/monin.gif" alt="GIF" class="object-cover h-2/4" />
         </div>
-      <!-- </div> -->
+      </div>
       <a id="Bottom"></a>
-    </div>
+    </div> -->
+
+    <section class="h-screen flex items-end pb-20">
+      <div class="md:flex hidden flex-1 justify-center h-[calc(100%-100px)] relative order-2">
+        <img src="/monin.gif" alt="GIF" class="object-cover " />
+      </div>
+      <div class="flex-grow flex flex-1 flex-col justify-end 2xl:mb-20 lg:order-1 order-1">
+        <h1 class="2xl:text-9xl lg:text-8xl text-5xl font-bold 2xl:mr-4 lg:mr-4">
+          {{ t("TitleMonin") }}
+        </h1>
+        <p class="lg:text-2xl text-base mb-4">
+          {{ t("DescriptionMonin[0]") }} <br />
+          {{ t("DescriptionMonin[1]") }} <br />
+          {{ t("DescriptionMonin[2]") }}<br />
+          {{ t("DescriptionMonin[3]") }}
+        </p>
+        <p class="text-base font-extralight">
+          {{ t("WorkMonin[0]") }} <br />
+          {{ t("WorkMonin[1]") }} <br />
+          {{ t("WorkMonin[2]") }}<br />
+          {{ t("WorkMonin[3]") }}
+        </p>
+      </div>
+      <a id="Bottom"></a>
+    </section>
 
     <div>
       <a id="slide2"></a>
