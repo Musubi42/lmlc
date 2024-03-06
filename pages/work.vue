@@ -134,12 +134,16 @@ export default {
       }, 1000);
     },
     handleBottomReached() {
+      const isMobile = window.innerWidth <= 768;
+
+      if (!isMobile) {
       if (this.intentObserver == null) {
         this.scrollEnabled = false
         gsap.to(window, { duration: 2, scrollTo: "#slide1", onComplete: () => this.toggleScroll(true) });
         this.slide = 1
         this.initializeScrollTrigger()
       }
+    }
     },
     handleTopReached() {
       if (this.intentObserver == null) {
