@@ -44,7 +44,7 @@
           muted
           playsinline
         >
-          <source :src="`/video/1.mov`" type="video/mp4" />
+          <source :src="`/video/1.webm`" type="video/webm" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -56,7 +56,7 @@
           muted
           playsinline
         >
-          <source :src="`/video/2.mov`" type="video/mp4" />
+          <source :src="`/video/2.webm`" type="video/webm" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -68,7 +68,7 @@
           muted
           playsinline
         >
-          <source :src="`/video/3.mov`" type="video/mp4" />
+          <source :src="`/video/3.webm`" type="video/webm" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -80,7 +80,7 @@
           muted
           playsinline
         >
-          <source :src="`/video/4.mov`" type="video/mp4" />
+          <source :src="`/video/4.webm`" type="video/webm" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -92,7 +92,7 @@
           muted
           playsinline
         >
-          <source :src="`/video/5.mp4`" type="video/mp4" />
+          <source :src="`/video/5.webm`" type="video/webm" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -104,7 +104,7 @@
           muted
           playsinline
         >
-          <source :src="`/video/6.mov`" type="video/mp4" />
+          <source :src="`/video/6.webm`" type="video/webm" />
           Your browser does not support the video tag.
         </video>
       </div>
