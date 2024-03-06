@@ -190,6 +190,7 @@ export default {
       this.audioSource.volume = newVolume / 100;
     },
     isFirstInterraction() {
+      console.log("firstInterraction");
       this.toggleAudio();
     },
   },
