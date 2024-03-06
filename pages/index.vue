@@ -22,10 +22,9 @@
         <div 
           class="flex md:hidden w-screen h-[10%] items-center justify-center appear-after-a-moment"
           v-if="isMobile && !hasScrolled"
-         
         >
          <!--  :style="{ display: isMobile && !hasScrolled ? 'flex' : 'none' }" -->
-          <button type="">
+          <button type="" name="You can scroll from this section">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
               <path fill="currentColor" fill-rule="evenodd" d="M2.22 5.22a.75.75 0 0 0 0 1.06l5.252 5.252a.75.75 0 0 0 1.06 0l5.252-5.252a.75.75 0 1 0-1.06-1.06L8.001 9.94L3.28 5.22a.75.75 0 0 0-1.06 0" clip-rule="evenodd"/>
             </svg>
@@ -122,6 +121,14 @@ export default {
     definePageMeta({
       layout: "accueil",
       middleware: ["first-visit"]
+    });
+    useSeoMeta({
+      title: 'LMLC COMMUNICATION',
+      ogTitle: 'My Amazing Site',
+      description: 'This is my amazing site, let me tell you all about it.',
+      ogDescription: 'This is my amazing site, let me tell you all about it.',
+      ogImage: 'https://example.com/image.png',
+      twitterCard: 'summary_large_image',
     });
     
     const isIntroAnimation = ref(true);

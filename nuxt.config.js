@@ -27,7 +27,7 @@ export default defineNuxtConfig({
   alias: {
     "@": resolve(__dirname, "/"),
   },
-  modules: ["nuxt-svgo", "@nuxt/image", "@nuxtjs/i18n", '@nuxt/image'],
+  modules: ["nuxt-svgo", "@nuxt/image", "@nuxtjs/i18n", '@nuxt/image', '@unlighthouse/nuxt'],
   image: {
     inject: true,
     quality: 80,
@@ -36,6 +36,12 @@ export default defineNuxtConfig({
   site: {
     url: 'https://lmlccommunication.fr',
     trailingSlash: true,
+  },
+  unlighthouse: {
+    scanner: {
+      // simulate a desktop device
+      device: 'desktop',
+    },
   },
   i18n: {
     vueI18n: "./i18n.config.js", // if you are using custom path, default
