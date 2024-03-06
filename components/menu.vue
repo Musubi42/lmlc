@@ -7,7 +7,7 @@
     ></div>
     <div
       class="bg-close h-screen bg-rose-neon flex flex-row items-center fixed z-[20] right-0 w-full md:w-1/2 transform translate-x-full"
-      
+      aria-label="menu"
       id="bg"
     >
       <div
@@ -175,6 +175,20 @@
 
 <script>
 export default {
+  setup() {
+    const isCloseMenu = closeMenu();
+
+    watch(isCloseMenu, (newValue, oldValue) => {
+      console.log(newValue, oldValue, "isCloseMenu");
+      IntroAnimation.value = newValue;
+    });
+
+    console.log(isCloseMenu);
+
+    return {
+      isCloseMenu,
+    };
+  },
   props: ["isMenuOpen"],
   data() {
     return {
@@ -191,6 +205,19 @@ export default {
     isMenuOpen() {
       this.isMenuOpen ? this.openMenu() : this.closeMenu();
     },
+    isCloseMenu() {
+      console.log(this.isCloseMenu, "isCloseMenu");
+      // this.isCloseMenu ? this.closeMenu() : this.openMenu();
+    },
+    // isCloseMenu: {
+    //   handler: function (newVal, oldVal) {
+    //     console.log(newVal, oldVal, "isCloseMenu");
+    //     if (newVal === false) {
+    //       // this.toggleMenuBurger();
+    //     }
+    //   },
+    //   deep: true, // Ceci est nécessaire si 'isMenuOpen' est un objet
+    // },
   },
   mounted() {
   },

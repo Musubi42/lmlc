@@ -29,6 +29,8 @@ export default {
 
     const isTableauPreFetchImagesLoading = tableauPreFetchImagesLoading();
 
+    const isCloseMenu = closeMenu();
+
     return {
       isMenuOpen,
       IntroAnimation,
@@ -36,6 +38,7 @@ export default {
       isMobile,
       useTableauPreFetchImages,
       isTableauPreFetchImagesLoading,
+      isCloseMenu,
     };
   },
   data() {
@@ -56,12 +59,22 @@ export default {
     },
     // TODO: Il ne faut pas que ça se trigger si je clique sur le menu
     closeMenuIfOpen(event) {
-      // console.log("oui");
-      // console.log(event.target);
-      // if (this.moreThanOnce > 0 && this.isMenuOpen) {
-      //   this.isMenuOpen = !this.isMenuOpen;
-      // }
-      // this.moreThanOnce++;
+      let ariaLabelMenu = event.target.getAttribute('aria-label');
+
+      if (ariaLabelMenu === "menu") {
+        console.log("menu");
+        return;
+      }
+
+      console.log(this.isCloseMenu, "isCloseMenu");
+
+      if (this.moreThanOnce > 0 && this.isMenuOpen) {
+        console.log("ici");
+        this.isCloseMenu = true;
+        console.log(this.isCloseMenu, "isCloseMenuInside");
+      }
+      console.log("3");
+      this.moreThanOnce++;
     },
 
     async preloadImagesAndConvertToDataUrls(isMobile) {
