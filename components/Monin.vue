@@ -44,7 +44,7 @@
           muted
           playsinline
         >
-          <source :src="`/video/1.mov`" type="video/mp4" />
+          <source :src="`/video/1_desktop.webm`" type="video/webm" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -56,7 +56,7 @@
           muted
           playsinline
         >
-          <source :src="`/video/2.mov`" type="video/mp4" />
+          <source :src="`/video/2_desktop.webm`" type="video/webm" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -68,7 +68,7 @@
           muted
           playsinline
         >
-          <source :src="`/video/3.mov`" type="video/mp4" />
+          <source :src="`/video/3_desktop.webm`" type="video/webm" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -80,7 +80,7 @@
           muted
           playsinline
         >
-          <source :src="`/video/4.mov`" type="video/mp4" />
+          <source :src="`/video/4_desktop.webm`" type="video/webm" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -92,7 +92,7 @@
           muted
           playsinline
         >
-          <source :src="`/video/5.mp4`" type="video/mp4" />
+          <source :src="`/video/5_desktop.webm`" type="video/webm" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -104,7 +104,7 @@
           muted
           playsinline
         >
-          <source :src="`/video/6.mov`" type="video/mp4" />
+          <source :src="`/video/6_desktop.webm`" type="video/webm" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -115,7 +115,7 @@
       <div class="flex flex-nowrap">
         <div class="w-[75%] flex-shrink-0 h-full mx-4 mb-4">
           <video class="flex" autoplay loop muted playsinline>
-            <source :src="`/video/1.mov`" type="video/mp4" />
+            <source :src="`/video/1_mobile.webm`" type="video/webm" />
             Your browser does not support the video tag.
           </video>
         </div>
@@ -142,31 +142,31 @@
 
         <div class="w-[75%] flex-shrink-0 h-full mx-4">
           <video class="flex" autoplay loop muted playsinline>
-            <source :src="`/video/2.mov`" type="video/mp4" />
+            <source :src="`/video/2_mobile.webm`" type="video/webm" />
             Your browser does not support the video tag.
           </video>
         </div>
         <div class="w-[75%] flex-shrink-0 h-full mx-4">
           <video class="flex" autoplay loop muted playsinline>
-            <source :src="`/video/3.mov`" type="video/mp4" />
+            <source :src="`/video/3_mobile.webm`" type="video/webm" />
             Your browser does not support the video tag.
           </video>
         </div>
         <div class="w-[75%] flex-shrink-0 h-full mx-4">
           <video class="flex" autoplay loop muted playsinline>
-            <source :src="`/video/4.mov`" type="video/mp4" />
+            <source :src="`/video/4_mobile.webm`" type="video/webm" />
             Your browser does not support the video tag.
           </video>
         </div>
         <div class="w-[75%] flex-shrink-0 h-full mx-4">
           <video class="flex" autoplay loop muted playsinline>
-            <source :src="`/video/5.mp4`" type="video/mp4" />
+            <source :src="`/video/5_mobile.webm`" type="video/webm" />
             Your browser does not support the video tag.
           </video>
         </div>
         <div class="w-[75%] flex-shrink-0 h-full mx-4">
           <video class="flex" autoplay loop muted playsinline>
-            <source :src="`/video/6.mov`" type="video/mp4" />
+            <source :src="`/video/6_mobile.webm`" type="video/webm" />
             Your browser does not support the video tag.
           </video>
         </div>
