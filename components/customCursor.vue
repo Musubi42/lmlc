@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="isMobile"
+    v-if="!isMobile"
     ref="cursor"
     class="hidden md:block cursor-container z-50"
     :style="{ top: `${cursorPosition.y}px`, left: `${cursorPosition.x}px`, backgroundColor: isMenuOpen ? 'rgba(255, 255, 255, 0.5)' : 'rgba(255, 0, 102, 0.5)'}"

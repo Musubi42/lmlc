@@ -20,7 +20,7 @@
         </div>
         <!-- TODO : Changer où je trigger la fnc isScrolling -->
         <div 
-          class="flex md:hidden w-screen h-[10%] items-center justify-center appear-after-a-moment"
+          class="flex md:hidden w-screen h-[15%] items-center justify-center appear-after-a-moment"
           v-if="isMobile && !hasScrolled"
         >
          <!--  :style="{ display: isMobile && !hasScrolled ? 'flex' : 'none' }" -->
@@ -100,7 +100,7 @@
 
 .appear-after-a-moment {
   /* opacity: 0; */
-  animation: appear 6s;
+  animation: appear 2s;
 }
 
 @keyframes appear {

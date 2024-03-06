@@ -192,7 +192,6 @@ export default {
       this.audioSource.volume = newVolume / 100;
     },
     isFirstInterraction() {
-      console.log("firstInterraction");
       this.toggleAudio();
     },
   },
@@ -271,8 +270,8 @@ export default {
 
     async toggleAudio() {
       if (!this.audioSource) {
-        await this.loadAndPlayAudio(this.trackID);
         this.isMusicPlaying = !this.audioSource?.paused;
+        await this.loadAndPlayAudio(this.trackID);
         return;
       }
 
