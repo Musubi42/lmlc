@@ -21,7 +21,7 @@
      {{ t("WorkBourges[5]") }}
    </p>
    <button v-cursorAnimation
-        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30 flex items-center justify-center px-4 group focus:outline-none hover:cursor-none  2xl:mb-20 mb-20"
+        class=" hidden md:flex absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30 items-center justify-center px-4 group focus:outline-none hover:cursor-none  2xl:mb-20 mb-20"
         @click="buttonDown">
         <span class="border-0 text-black rounded-full p-2 active:bg-rose-neon/50">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
@@ -46,7 +46,7 @@
 <div id="slide2" class=" relative h-screen">
  <img src="/Bourges2028.png" alt="Bourges 2028" class="h-screen w-screen object-cover">
  <button v-cursorAnimation
-        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30 flex items-center justify-center px-4 group focus:outline-none hover:cursor-none  2xl:mb-20 mb-20"
+        class=" hidden md:flex absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30  items-center justify-center px-4 group focus:outline-none hover:cursor-none  2xl:mb-20 mb-20"
         @click="buttonDown">
         <span class="border-0 text-black rounded-full p-2 active:bg-rose-neon/50">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
@@ -61,7 +61,7 @@
 <!-- Deux dernières images sur mobile -->
 <div id="slide3" class=" relative flex flex-col lg:flex-row h-screen w-screen items-center justify-center">
   <button v-cursorAnimation
-        class="absolute top-0 left-1/2 transform -translate-x-1/2 z-30 flex items-center justify-center rotate-180 px-4 group focus:outline-none hover:cursor-none  2xl:mt-10 mt-10"
+        class=" hidden md:flex absolute top-0 left-1/2 transform -translate-x-1/2 z-30  items-center justify-center rotate-180 px-4 group focus:outline-none hover:cursor-none  2xl:mt-10 mt-10"
         @click="buttonUp">
         <span class="border-0 text-black rounded-full p-2 active:bg-rose-neon/50">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
