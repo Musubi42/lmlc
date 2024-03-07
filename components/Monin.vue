@@ -115,7 +115,9 @@
       <div class="flex flex-nowrap">
         <div class="w-[75%] flex-shrink-0 h-full mx-4 mb-4">
           <video class="flex" autoplay loop muted playsinline>
-            <source :src="`/video/1_mobile.webm`" type="video/webm" />
+            <source :src="`/video/1_mobile_high.mp4`" type="video/mp4" />
+            <source :src="`/video/1_mobile_medium.mp4`" type="video/mp4" />
+            <source :src="`/video/1_mobile_low.mp4`" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
