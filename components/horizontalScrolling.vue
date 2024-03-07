@@ -144,7 +144,7 @@ onUnmounted(() => {
         class="profile text-left ml-20 h-1/2 w-[300px] flex flex-col content-center items-center relative box-border text-white"
         :key="profile.name"
       >
-        <NuxtImg class="object-cover w-full" :src="profile.imageUrl" alt="" />
+        <!-- <NuxtImg class="object-cover w-full" :src="profile.imageUrl" alt="" /> -->
         <div class="flex flex-col justify-start w-full">
           <h3 class="font-extrabold text-xl">{{ profile.name }}</h3>
           <p>{{ profile.title }}</p>
@@ -162,7 +162,7 @@ onUnmounted(() => {
         class="text-left min-w-[40vw] h-1/2 flex flex-col content-center items-center relative box-border text-white"
         :key="profile.name"
       >
-        <NuxtImg class="object-cover w-full" :src="profile.imageUrl" alt="" />
+        <!-- <NuxtImg class="object-cover w-full" :src="profile.imageUrl" alt="" /> -->
         <div class="flex flex-col justify-start w-full">
           <h3 class="font-bold text-base">{{ profile.name }}</h3>
           <p class="text-sm">{{ profile.title }}</p>

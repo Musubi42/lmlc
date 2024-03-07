@@ -24,6 +24,8 @@ export const tableauPreFetchImages = () => useState('useTableauPreFetchImages', 
 
 export const tableauPreFetchImagesLoading = () => useState('isTableauPreFetchImagesLoading', () => true);
 
+export const closeMenu = () => useState('isCloseMenu', () => false);
+
 
 
 
