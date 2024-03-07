@@ -38,17 +38,21 @@
 
 <!-- Deux dernières images sur mobile -->
 <div id="slide3" class="flex flex-col lg:flex-row h-screen w-screen items-center justify-center">
- <div class="relative basis-1/2">
-   <img src="/BidBook_fond_beige.png" alt="Bid Book Image" class="w-full h-auto">
-   <p class="absolute lg:bottom-10 bottom-2 w-full text-left  2xl:mb-14 font-extralight">
-     réalisation du dossier de candidature pour la demi-finale
-   </p>
+ <div class="flex flex-col justify-center basis-1/2">
+   <div class="mx-auto w-1/2">
+      <img src="/BidBook_fond_beige.png" alt="Bid Book Image" class="h-auto">
+      <p class="lg:bottom-10 bottom-2 w-[120%] text-left  2xl:mb-14 font-extralight">
+        réalisation du dossier de candidature pour la demi-finale
+      </p>
+   </div>
  </div>
- <div class="relative basis-1/2">
-   <img src="/couverture_Bidbook_.png" alt="Bid Book Image" class="w-full h-auto">
-   <p class="absolute lg:bottom-10 bottom-2 w-full text-left  2xl:mb-14 font-extralight">
-     réalisation du dossier de candidature pour la finale
-   </p>
+ <div class="flex flex-col justify-center basis-1/2">
+   <div class="mx-auto w-1/2">
+      <img src="/couverture_Bidbook.png" alt="Bid Book Image" class="h-auto">
+      <p class="lg:bottom-10 bottom-2 w-[120%] text-left  2xl:mb-14 font-extralight">
+        réalisation du dossier de candidature pour la demi-finale
+      </p>
+   </div>
  </div>
 </div>
 </template>

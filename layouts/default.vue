@@ -1,8 +1,6 @@
 <template>
   <div @click="closeMenuIfOpen">
-    <!-- <div class="bg-white h-15 w-full fixed"> -->
-      <Header :dynamicStyle="headerStyle" />
-    <!-- </div> -->
+    <Header :dynamicStyle="headerStyle" :callToggleMenu="closeMenu" />
     <NuxtPage />
     <Footer />
     <CustomCursor />
@@ -23,6 +21,7 @@ export default {
       headerStyle: 1,
       pastYPosition: 0,
       moreThanOnce: 0,
+      closeMenu: false,
     };
   },
   methods: {
@@ -36,12 +35,23 @@ export default {
     },
     // TODO: Il ne faut pas que ça se trigger si je clique sur le menu
     closeMenuIfOpen(event) {
-      // console.log("oui");
-      // console.log(event.target);
-      // if (this.moreThanOnce > 0 && this.isMenuOpen) {
-      //   this.isMenuOpen = !this.isMenuOpen;
-      // }
-      // this.moreThanOnce++;
+      let ariaLabelMenu = event.target.getAttribute('aria-label');
+
+      if (ariaLabelMenu === "menu") {
+        return;
+      }
+
+      if (ariaLabelMenu == "menuBurger") {
+        return;
+      }
+
+      if (this.isMenuOpen) {
+        this.closeMenu = true;
+        setTimeout(() => {
+          this.closeMenu = false;
+        }, 500);
+        this.moreThanOnce = 0;
+      }
     },
   },
   mounted() {

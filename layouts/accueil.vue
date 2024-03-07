@@ -2,7 +2,8 @@
   <div @click="closeMenuIfOpen" >
     <Intro v-if="IntroAnimation && firstVisit" class="fixed z-10000" />
     <!-- <Intro v-if="true" class="fixed z-10" /> -->
-    <Header :dynamicStyle="headerStyle" />
+    <Header :dynamicStyle="headerStyle" :callToggleMenu="closeMenu"/>
+    <p>{{ closeMenu}}</p>
     <NuxtPage />
     <Footer />
     <CustomCursor />
@@ -29,7 +30,7 @@ export default {
 
     const isTableauPreFetchImagesLoading = tableauPreFetchImagesLoading();
 
-    const isCloseMenu = closeMenu();
+    // const isCloseMenu = closeMenu();
 
     return {
       isMenuOpen,
@@ -38,7 +39,7 @@ export default {
       isMobile,
       useTableauPreFetchImages,
       isTableauPreFetchImagesLoading,
-      isCloseMenu,
+      // isCloseMenu,
     };
   },
   data() {
@@ -46,6 +47,7 @@ export default {
       headerStyle: 1,
       pastYPosition: 0,
       moreThanOnce: 0,
+      closeMenu: false,
     };
   },
   methods: {
@@ -62,19 +64,20 @@ export default {
       let ariaLabelMenu = event.target.getAttribute('aria-label');
 
       if (ariaLabelMenu === "menu") {
-        console.log("menu");
         return;
       }
 
-      console.log(this.isCloseMenu, "isCloseMenu");
-
-      if (this.moreThanOnce > 0 && this.isMenuOpen) {
-        console.log("ici");
-        this.isCloseMenu = true;
-        console.log(this.isCloseMenu, "isCloseMenuInside");
+      if (ariaLabelMenu == "menuBurger") {
+        return;
       }
-      console.log("3");
-      this.moreThanOnce++;
+
+      if (this.isMenuOpen) {
+        this.closeMenu = true;
+        setTimeout(() => {
+          this.closeMenu = false;
+        }, 500);
+        this.moreThanOnce = 0;
+      }
     },
 
     async preloadImagesAndConvertToDataUrls(isMobile) {

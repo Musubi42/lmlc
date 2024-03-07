@@ -28,6 +28,7 @@
           class="h-auto close z-[1000] fixed mr-4 right-0 text-black"
         >
           <IconsMenuBurger
+            aria-label="menuBurger"
             :style="{ height: burgerHeight + 'px', y: y + 'px' }"
             :y="y"
             class="text-[50px] fill-black"
@@ -281,6 +282,10 @@ export default {
       type: Object,
       required: false,
     },
+    callToggleMenu: {
+      type: Boolean,
+      required: false,
+    },
   },
   setup() {
     // const isMenuOpen = ref(false);
@@ -327,6 +332,14 @@ export default {
         }
       },
       deep: true, // Ceci est nécessaire si 'isMenuOpen' est un objet
+    },
+    callToggleMenu: {
+      handler: function (newVal, oldVal) {
+        console.log(newVal, oldVal);
+        if (newVal === true) {
+          this.toggleMenuBurger();
+        }
+      },
     },
     // isTalents: {
     //   handler: function (newVal, oldVal) {
