@@ -38,14 +38,11 @@
     <div>
       <a id="slide2"></a>
       <!-- Desktop -->
-      <div v-if="isMobile === false" class="hidden md:flex containerDE horizontal h-screen">
+      <div class="hidden md:flex containerDE horizontal h-screen">
         <div class="panell h-screen">
           <video
-            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            autoplay
-            loop
-            muted
-            playsinline
+            v-if="!isMobile === true" class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            autoplay loop muted playsinline
           >
             <source :src="`/video/1_desktop.webm`" type="video/webm" />
             Your browser does not support the video tag.
@@ -53,11 +50,8 @@
         </div>
         <div class="panell h-screen">
           <video
-            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            autoplay
-            loop
-            muted
-            playsinline
+            v-if="!isMobile === true" class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            autoplay loop muted playsinline
           >
             <source :src="`/video/2_desktop.webm`" type="video/webm" />
             Your browser does not support the video tag.
@@ -65,11 +59,8 @@
         </div>
         <div class="panell h-screen">
           <video
-            class="lg:h-[75%] h-screen flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            autoplay
-            loop
-            muted
-            playsinline
+            v-if="!isMobile === true" class="lg:h-[75%] h-screen flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            autoplay loop muted playsinline
           >
             <source :src="`/video/3_desktop.webm`" type="video/webm" />
             Your browser does not support the video tag.
@@ -77,11 +68,8 @@
         </div>
         <div class="panell h-screen">
           <video
-            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            autoplay
-            loop
-            muted
-            playsinline
+            v-if="!isMobile === true" class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            autoplay loop muted playsinline
           >
             <source :src="`/video/4_desktop.webm`" type="video/webm" />
             Your browser does not support the video tag.
@@ -89,11 +77,8 @@
         </div>
         <div class="panell h-screen">
           <video
-            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            autoplay
-            loop
-            muted
-            playsinline
+            v-if="!isMobile === true" class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            autoplay loop muted playsinline
           >
             <source :src="`/video/5_desktop.webm`" type="video/webm" />
             Your browser does not support the video tag.
@@ -101,11 +86,8 @@
         </div>
         <div class="panell h-screen">
           <video
-            class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            autoplay
-            loop
-            muted
-            playsinline
+            v-if="!isMobile === true" class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            autoplay loop muted playsinline
           >
             <source :src="`/video/6_desktop.webm`" type="video/webm" />
             Your browser does not support the video tag.
@@ -114,13 +96,11 @@
       </div>
 
       <!-- mobile -->
-      <div v-if="isMobile === true" class="md:hidden flex overflow-x-auto items-center gap-10 relative">
+      <div class="md:hidden flex overflow-x-auto items-center gap-10 relative">
         <div class="flex flex-nowrap">
           <div class="w-[75%] flex-shrink-0 h-full mx-4 mb-4">
-            <video class="flex" autoplay loop muted playsinline>
+            <video v-if="isMobile === true" class="flex" autoplay loop muted playsinline>
               <source :src="`/video/1_mobile_high.mp4`" type="video/mp4" />
-              <source :src="`/video/1_mobile_medium.mp4`" type="video/mp4" />
-              <source :src="`/video/1_mobile_low.mp4`" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -146,31 +126,31 @@
           </button>
 
           <div class="w-[75%] flex-shrink-0 h-full mx-4">
-            <video class="flex" autoplay loop muted playsinline>
+            <video v-if="isMobile === true" class="flex" autoplay loop muted playsinline>
               <source :src="`/video/2_mobile.webm`" type="video/webm" />
               Your browser does not support the video tag.
             </video>
           </div>
           <div class="w-[75%] flex-shrink-0 h-full mx-4">
-            <video class="flex" autoplay loop muted playsinline>
+            <video v-if="isMobile === true" class="flex" autoplay loop muted playsinline>
               <source :src="`/video/3_mobile.webm`" type="video/webm" />
               Your browser does not support the video tag.
             </video>
           </div>
           <div class="w-[75%] flex-shrink-0 h-full mx-4">
-            <video class="flex" autoplay loop muted playsinline>
+            <video v-if="isMobile === true" class="flex" autoplay loop muted playsinline>
               <source :src="`/video/4_mobile.webm`" type="video/webm" />
               Your browser does not support the video tag.
             </video>
           </div>
           <div class="w-[75%] flex-shrink-0 h-full mx-4">
-            <video class="flex" autoplay loop muted playsinline>
+            <video v-if="isMobile === true" class="flex" autoplay loop muted playsinline>
               <source :src="`/video/5_mobile.webm`" type="video/webm" />
               Your browser does not support the video tag.
             </video>
           </div>
           <div class="w-[75%] flex-shrink-0 h-full mx-4">
-            <video class="flex" autoplay loop muted playsinline>
+            <video v-if="isMobile === true" class="flex" autoplay loop muted playsinline>
               <source :src="`/video/6_mobile.webm`" type="video/webm" />
               Your browser does not support the video tag.
             </video>
