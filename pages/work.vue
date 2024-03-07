@@ -48,10 +48,10 @@
     </div>
 
     <div v-if="active == 0">
-      <Monin @bottom-reached="handleBottomReached" @top-reached="handleTopReached" />
+      <Monin @bottom-reached="handleBottomReached" @top-reached="handleTopReached"  @buttonDown="handleButtonDown" @buttonUp="handleButtonUp"/>
     </div>
     <div v-if="active == 1">
-      <Bourges2028 />
+      <Bourges2028  @buttonDown="handleButtonDown" @buttonUp="handleButtonUp"/>
     </div>
   </div>
 </template>
@@ -154,6 +154,24 @@ export default {
         //TODO reactiver le scroll ou pas ??
       }
     },
+    handleButtonDown() {
+      const isMobile = window.innerWidth <= 768;
+
+      if (!isMobile) {
+        this.scrollEnabled = false
+        this.slide++
+        gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true) });
+    }
+  },
+  handleButtonUp() {
+      const isMobile = window.innerWidth <= 768;
+
+      if (!isMobile) {
+        this.scrollEnabled = false
+        this.slide = 0
+        gsap.to(window, { duration: 2, scrollTo: "#slide0", onComplete: () => this.toggleScroll(true) });
+    }
+  },
     toggleScroll(enable) {
       this.scrollEnabled = enable;
     },
