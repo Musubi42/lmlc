@@ -139,7 +139,7 @@ export default {
       if (!isMobile) {
       if (this.intentObserver == null) {
         this.scrollEnabled = false
-        gsap.to(window, { duration: 2, scrollTo: "#slide1", onComplete: () => this.toggleScroll(true) });
+        gsap.to(window, { duration: 1, scrollTo: "#slide1", onComplete: () => this.toggleScroll(true) });
         this.slide = 1
         this.initializeScrollTrigger()
       }
@@ -147,7 +147,7 @@ export default {
     },
     handleTopReached() {
       if (this.intentObserver == null) {
-        // gsap.to(window, { duration: 2, scrollTo: "#footer" });
+        // gsap.to(window, { duration: 1, scrollTo: "#footer" });
         // this.slide++;
         // this.initializeScrollTrigger()
 
@@ -160,7 +160,7 @@ export default {
       if (!isMobile) {
         this.scrollEnabled = false
         this.slide++
-        gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true) });
+        gsap.to(window, { duration: 1, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true) });
     }
   },
   handleButtonUp() {
@@ -169,7 +169,7 @@ export default {
       if (!isMobile) {
         this.scrollEnabled = false
         this.slide = 0
-        gsap.to(window, { duration: 2, scrollTo: "#slide0", onComplete: () => this.toggleScroll(true) });
+        gsap.to(window, { duration: 1, scrollTo: "#slide0", onComplete: () => this.toggleScroll(true) });
     }
   },
     toggleScroll(enable) {
@@ -210,7 +210,7 @@ export default {
     goSlide() {
       this.slide = 1;
       this.scrollEnabled = false
-      gsap.to(window, { duration: 2, scrollTo: "#slide1", onComplete: () => this.toggleScroll(true) });
+      gsap.to(window, { duration: 1, scrollTo: "#slide1", onComplete: () => this.toggleScroll(true) });
     },
     initializeScrollTrigger() {
       const isMobile = window.innerWidth <= 768;
@@ -230,7 +230,7 @@ export default {
               this.scrollEnabled = false
               if (this.slide > 0) {
                 this.slide--;
-                gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true) });
+                gsap.to(window, { duration: 1, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true) });
                 this.isWorkCarousel = true;
               } else {
                 // this.isWorkCarousel = true;
@@ -252,12 +252,12 @@ export default {
 
             if (this.slide < this.data[this.active].slide - 1) {
               this.slide++;
-              gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true), });
+              gsap.to(window, { duration: 1, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true), });
             } else {
               // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
               if (this.slide < this.data[this.active].slide) {
                 this.slide++;
-                gsap.to(window, { duration: 2, scrollTo: "#footer", onComplete: () => this.toggleScroll(true) });
+                gsap.to(window, { duration: 1, scrollTo: "#footer", onComplete: () => this.toggleScroll(true) });
               }
             }
           }
@@ -291,7 +291,7 @@ export default {
             this.scrollEnabled = false
             if (this.slide > 0) {
               this.slide--;
-              gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true) });
+              gsap.to(window, { duration: 1, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true) });
               this.isWorkCarousel = true;
             } else {
               // this.isWorkCarousel = true;
@@ -312,12 +312,12 @@ export default {
 
             if (this.slide < this.data[this.active].slide - 1) {
               this.slide++;
-              gsap.to(window, { duration: 2, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true), });
+              gsap.to(window, { duration: 1, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true), });
             } else {
               // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
               if (this.slide < this.data[this.active].slide) {
                 this.slide++;
-                gsap.to(window, { duration: 2, scrollTo: "#footer", onComplete: () => this.toggleScroll(true) });
+                gsap.to(window, { duration: 1, scrollTo: "#footer", onComplete: () => this.toggleScroll(true) });
               }
             }
           }
