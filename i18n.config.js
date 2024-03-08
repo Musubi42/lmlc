@@ -65,10 +65,12 @@ export default defineI18nConfig(() => ({
       brandPerformanceExpert: "expert en brand performance ",
       TitleMonin: "MONIN",
       DescriptionMonin: ["Leader mondial des sirops et première référence du", "monde de la mixologie, notre agence accompagne", "l’entreprise familiale dans leurs projets de " , "brandcontent et de social media."],
+      DescriptionMoninMobile: "Leader mondial des sirops et première référence du monde de la mixologie, notre agence accompagne l’entreprise familiale dans leurs projets de brandcontent et de social media.",
       WorkMonin:["social media", "community management", "production audiovisuelle", "shooting photo"],
 
       TitleBourges: ["CAPITALE", "EUROPEENNE", "DE LA CULTURE"],
       DescriptionBourges: ["La ville de Bourges, sacrée capitale européenne de", "la culture 2028, a été accompagnée par notre", " agence dans le cadre de sa candidature, afin de la" , "conduire jusqu'à la victoire."],
+      DescriptionBourgesMobile: "La ville de Bourges, sacrée capitale européenne de la culture 2028, a été accompagnée par notre agence dans le cadre de sa candidature, afin de la conduire jusqu'à la victoire.",
       WorkBourges:["consulting", "DA & graphisme", "charte graphique", "édition & mise en page", "production audiovisuelle", "développement web",],
     },
     en: {
@@ -135,10 +137,12 @@ export default defineI18nConfig(() => ({
       brandPerformanceExpert: "brand performance expert",
       TitleMonin: "MONIN",
       DescriptionMonin: ["World leader in syrups and first reference in the ", "world of mixology, our agency accompanies the ", "family business in their brandcontent and social " , "media projects."],
+      DescriptionMoninMobile: "World leader in syrups and first reference in the world of mixology, our agency accompanies the family business in their brandcontent and social media projects.",
       WorkMonin:["social media", "community management", "production audiovisuelle", "shooting photo"],
 
       TitleBourges: ["EUROPEAN", "CAPITAL", "OF CULTURE"],
       DescriptionBourges: ["The city of Bourges, crowned European Capital of ", "Culture 2028, was supported by our agency in its", "bid to win the title." , ""],
+      DescriptionBourgesMobile: "The city of Bourges, crowned European Capital of Culture 2028, was supported by our agency in its bid to win the title.",
       WorkBourges:["consulting", "DA & graphisme", "charte graphique", "édition & mise en page", "production audiovisuelle", "développement web",],    
     },
     it: {
@@ -206,10 +210,12 @@ export default defineI18nConfig(() => ({
       brandPerformanceExpert: "brand performance expert",
       TitleMonin: "MONIN",
       DescriptionMonin: ["Leader mondiale nel settore degli sciroppi e punto ", "di riferimento nel mondo della mixology, la nostra ", "agenzia sta aiutando l'azienda familiare con i suoi" , "progetti di brandcontent e social media."],
+      DescriptionMoninMobile: "Leader mondiale nel settore degli sciroppi e punto di riferimento nel mondo della mixology, la nostra agenzia sta aiutando l'azienda familiare con i suoi progetti di brandcontent e social media.",
       WorkMonin:["social media", "community management", "production audiovisuelle", "shooting photo"],
 
       TitleBourges: ["CAPITALE", "EUROPEA", "DELLA CULTURA"],
       DescriptionBourges: ["La città di Bourges, incoronata Capitale europea", "della cultura 2028, è stata supportata dalla nostra", "agenzia nella sua candidatura al titolo." , ""],
+      DescriptionBourgesMobile: "La città di Bourges, incoronata Capitale europea della cultura 2028, è stata supportata dalla nostra agenzia nella sua candidatura al titolo.",
       WorkBourges:["consulting", "DA & graphisme", "charte graphique", "édition & mise en page", "production audiovisuelle", "développement web",],
     },
   },

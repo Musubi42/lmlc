@@ -11,11 +11,14 @@
         <h1 class="2xl:text-9xl lg:text-8xl text-5xl font-bold 2xl:mr-4 lg:mr-4">
           {{ t("TitleMonin") }}
         </h1>
-        <p class="lg:text-2xl text-base mb-4">
+        <p class="md:flex hidden lg:text-2xl text-base mb-4">
           {{ t("DescriptionMonin[0]") }} <br />
           {{ t("DescriptionMonin[1]") }} <br />
           {{ t("DescriptionMonin[2]") }}<br />
           {{ t("DescriptionMonin[3]") }}
+        </p>
+        <p class="md:hidden flex lg:text-2xl text-base mb-4 text-left">
+          {{ t("DescriptionMoninMobile") }}
         </p>
         <p class="text-base font-extralight">
           {{ t("WorkMonin[0]") }} <br />
@@ -47,7 +50,7 @@
       <a id="slide2" class="relative"></a>
       <!-- Desktop -->
       <button v-cursorAnimation
-        class=" hidden md:flex absolute top-0 left-1/2 transform -translate-x-1/2 z-30  items-center justify-center rotate-180 px-4 group focus:outline-none hover:cursor-none  2xl:mt-10 lg:mt-10"
+        class=" hidden md:flex absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30  items-center justify-center px-4 group focus:outline-none hover:cursor-none  2xl:mb-20 mb-20"
         @click="buttonUp">
         <span class="border-0 text-black rounded-full p-2 active:bg-rose-neon/50">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">

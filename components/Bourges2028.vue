@@ -6,11 +6,14 @@
      {{ t("TitleBourges[1]") }}<br>
      {{ t("TitleBourges[2]") }}
    </h1>
-   <p class="lg:text-2xl text-base mb-4">
+   <p class="md:flex hidden lg:text-2xl text-base mb-4">
      {{ t("DescriptionBourges[0]") }} <br>
      {{ t("DescriptionBourges[1]") }} <br>
      {{ t("DescriptionBourges[2]") }} <br>
      {{ t("DescriptionBourges[3]") }}
+   </p>
+   <p class="md:hidden flex lg:text-2xl text-base mb-4 text-left">
+     {{ t("DescriptionBourgesMobile") }}
    </p>
    <p class="text-base 2xl:mb-4 lg:mb-10 font-extralight">
      {{ t("WorkBourges[0]") }}<br>
@@ -32,14 +35,6 @@
         </span>
       </button>
  </div>
- <!-- <div class="hidden lg:flex flex-col items-center lg:basis-1/2">
-   <div class="mb-4">
-     <img src="/BidBook.png" alt="Bid Book" class="w-1/3 lg:w-1/6">
-   </div>
-   <div>
-     <img src="/couverture_bidbook_.png" alt="Couverture Bidbook" class="w-1/3 lg:w-1/6">
-   </div>
- </div> -->
  
 </div>
 
@@ -60,17 +55,6 @@
 
 <!-- Deux dernières images sur mobile -->
 <div id="slide3" class=" relative flex flex-col lg:flex-row h-screen w-screen items-center justify-center">
-  <button v-cursorAnimation
-        class=" hidden md:flex absolute top-0 left-1/2 transform -translate-x-1/2 z-30  items-center justify-center rotate-180 px-4 group focus:outline-none hover:cursor-none  2xl:mt-10 mt-10"
-        @click="buttonUp">
-        <span class="border-0 text-black rounded-full p-2 active:bg-rose-neon/50">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
-            <path fill="currentColor" fill-rule="evenodd"
-              d="M2.22 5.22a.75.75 0 0 0 0 1.06l5.252 5.252a.75.75 0 0 0 1.06 0l5.252-5.252a.75.75 0 1 0-1.06-1.06L8.001 9.94L3.28 5.22a.75.75 0 0 0-1.06 0"
-              clip-rule="evenodd" />
-          </svg>
-        </span>
-      </button>
  <div class="flex flex-col justify-center basis-1/2">
    <div class="mx-auto w-1/2">
       <img src="/BidBook_fond_beige.png" alt="Bid Book Image" class="h-auto">
@@ -83,10 +67,21 @@
    <div class="mx-auto w-1/2">
       <img src="/couverture_Bidbook.png" alt="Bid Book Image" class="h-auto">
       <p class="lg:bottom-10 bottom-2 w-[120%] text-left  2xl:mb-14 font-extralight">
-        réalisation du dossier de candidature pour la demi-finale
+        réalisation du dossier de candidature pour la finale
       </p>
    </div>
  </div>
+ <button v-cursorAnimation
+        class=" hidden md:flex absolute bottom-0 left-1/2 transform rotate-180 -translate-x-1/2 z-30  items-center justify-center px-4 group focus:outline-none hover:cursor-none  2xl:mb-20 mb-20"
+        @click="buttonUp">
+        <span class="border-0 text-black rounded-full p-2 active:bg-rose-neon/50">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
+            <path fill="currentColor" fill-rule="evenodd"
+              d="M2.22 5.22a.75.75 0 0 0 0 1.06l5.252 5.252a.75.75 0 0 0 1.06 0l5.252-5.252a.75.75 0 1 0-1.06-1.06L8.001 9.94L3.28 5.22a.75.75 0 0 0-1.06 0"
+              clip-rule="evenodd" />
+          </svg>
+        </span>
+      </button>
 </div>
 </template>
 
