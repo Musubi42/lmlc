@@ -49,17 +49,6 @@
     <div class="relative">
       <a id="slide2" class="relative"></a>
       <!-- Desktop -->
-      <button v-cursorAnimation
-        class=" hidden md:flex absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30  items-center justify-center px-4 group focus:outline-none hover:cursor-none  2xl:mb-20 mb-20"
-        @click="buttonUp">
-        <span class="border-0 text-black rounded-full p-2 active:bg-rose-neon/50">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
-            <path fill="currentColor" fill-rule="evenodd"
-              d="M2.22 5.22a.75.75 0 0 0 0 1.06l5.252 5.252a.75.75 0 0 0 1.06 0l5.252-5.252a.75.75 0 1 0-1.06-1.06L8.001 9.94L3.28 5.22a.75.75 0 0 0-1.06 0"
-              clip-rule="evenodd" />
-          </svg>
-        </span>
-      </button>
       <div class="hidden md:flex containerDE horizontal h-screen">
         <div class="panell h-screen">
           <video v-if="!isMobile === true"
@@ -163,6 +152,17 @@
           </div>
         </div>
       </div>
+      <button v-cursorAnimation
+        class=" hidden md:flex absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30  items-center justify-center rotate-180 px-4 group focus:outline-none hover:cursor-none  2xl:mb-20 mb-20"
+        @click="buttonUp">
+        <span class="border-0 text-black rounded-full p-2 active:bg-rose-neon/50">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
+            <path fill="currentColor" fill-rule="evenodd"
+              d="M2.22 5.22a.75.75 0 0 0 0 1.06l5.252 5.252a.75.75 0 0 0 1.06 0l5.252-5.252a.75.75 0 1 0-1.06-1.06L8.001 9.94L3.28 5.22a.75.75 0 0 0-1.06 0"
+              clip-rule="evenodd" />
+          </svg>
+        </span>
+      </button>
     </div>
   </div>
 </template>
