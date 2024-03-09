@@ -34,7 +34,7 @@
           <span class="sr-only">Next</span>
         </span>
       </button>
-      <button v-cursorAnimation
+      <button type="button" v-cursorAnimation
         class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30 flex items-center justify-center px-4 group focus:outline-none 2xl:mb-20 mb-20 hover:cursor-none"
         @click="goSlide" v-if="showButton">
         <span class="border-0 text-white rounded-full p-2 md:active:bg-rose-neon/50">
