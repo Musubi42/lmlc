@@ -195,8 +195,7 @@ function buttonDown() {
   emit("buttonDown");
 }
 function buttonUp() {
-  // Logique existante du gestionnaire de clic
-  emit("buttonDown");
+  emit("buttonUp");
 }
 onMounted(() => {
   ctx.value = gsap.context((self) => {

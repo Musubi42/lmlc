@@ -99,6 +99,7 @@ export default {
       showButton: false,
       intentObserver: null,
       scrollEnabled: true,
+      returnToTop: false
 
     };
   },
@@ -136,7 +137,7 @@ export default {
     handleBottomReached() {
       const isMobile = window.innerWidth <= 768;
 
-      if (!isMobile) {
+      if (!isMobile && !this.returnToTop) {
       if (this.intentObserver == null) {
         this.scrollEnabled = false
         gsap.to(window, { duration: 1, scrollTo: "#slide1", onComplete: () => this.toggleScroll(true) });
@@ -167,13 +168,18 @@ export default {
       const isMobile = window.innerWidth <= 768;
 
       if (!isMobile) {
+        this.returnToTop = true
         this.scrollEnabled = false
         this.slide = 0
-        gsap.to(window, { duration: 1, scrollTo: "#slide0", onComplete: () => this.toggleScroll(true) });
+        gsap.to(window, { duration: 2, scrollTo: "#slide0", onComplete: () => this.toggleScroll(true) });
     }
   },
     toggleScroll(enable) {
       this.scrollEnabled = enable;
+      if (this.returnToTop) {
+        this.returnToTop = false
+        this.initializeScrollTrigger()
+      }
     },
     goPrev() {
       this.showButton = false;

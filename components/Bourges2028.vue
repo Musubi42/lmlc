@@ -1,7 +1,7 @@
 <template>
   <div id="slide1" class="relative container mx-auto flex flex-col lg:flex-row h-screen">
- <div class="flex-grow flex flex-col lg:justify-end mt-6 mb-16">
-   <h1 class="2xl:text-9xl lg:text-8xl text-5xl font-bold mr-4">
+ <div class="flex-grow flex flex-col lg:justify-end mt-6 mb-16 ml-8">
+   <h1 class="2xl:text-8xl lg:text-8xl text-5xl font-bold mr-4">
      {{ t("TitleBourges[0]") }}<br> 
      {{ t("TitleBourges[1]") }}<br>
      {{ t("TitleBourges[2]") }}
@@ -58,7 +58,7 @@
  <div class="flex flex-col justify-center basis-1/2">
    <div class="mx-auto w-1/2">
       <img src="/BidBook_fond_beige.png" alt="Bid Book Image" class="h-auto">
-      <p class="lg:bottom-10 bottom-2 w-[120%] text-left  2xl:mb-14 font-extralight">
+      <p class="lg:bottom-10 bottom-2 w-[120%] text-left text-xs 2xl:mb-14 font-extralight">
         réalisation du dossier de candidature pour la demi-finale
       </p>
    </div>
@@ -66,7 +66,7 @@
  <div class="flex flex-col justify-center basis-1/2">
    <div class="mx-auto w-1/2">
       <img src="/couverture_Bidbook.png" alt="Bid Book Image" class="h-auto">
-      <p class="lg:bottom-10 bottom-2 w-[120%] text-left  2xl:mb-14 font-extralight">
+      <p class="lg:bottom-10 bottom-2 w-[120%] text-left text-xs 2xl:mb-14 font-extralight">
         réalisation du dossier de candidature pour la finale
       </p>
    </div>
