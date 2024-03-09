@@ -22,17 +22,15 @@ export default {
       isMenuOpen.value = newValue;
     });
 
-    const isMobile = stateIsMobile();
-
     return { 
       hoverState,
       isMenuOpen,
-      isMobile,
     };
   },
   data() {
     return {
       cursorPosition: { x: 0, y: 0 },
+      isMobile: false,
     };
   },
   computed: {
@@ -41,6 +39,8 @@ export default {
     },
   },
   mounted() {
+    this.isMobile = window.innerWidth < 768;
+    console.log("isMobile", this.isMobile);
     window.addEventListener("mousemove", this.updateCursorPosition);
     window.addEventListener("scroll", this.updateScrollPosition);
   },
