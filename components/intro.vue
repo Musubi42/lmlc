@@ -100,10 +100,12 @@ export default {
       setTimeout(() => {
         this.IntroAnimation = false;
         Cookies.set("firstVisit", "false");
+        document.body.style.overflow = 'auto';
       }, 1001);
     },
   },
   mounted() {
+    document.body.style.overflow = 'hidden';
     this.nodeIntro = this.$refs.textIntro;
     this.screenInfo = this.$refs.screnIntro;
     this.typeWriteText();

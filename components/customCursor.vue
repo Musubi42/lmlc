@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       cursorPosition: { x: 0, y: 0 },
-      isMobile: false,
+      isMobile: true,
     };
   },
   computed: {
