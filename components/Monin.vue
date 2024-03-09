@@ -57,6 +57,10 @@
             <source :src="`/video/1_desktop.webm`" type="video/webm" />
             Your browser does not support the video tag.
           </video>
+            <!-- <img class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              :src="`/video/GIF_LMLC_MONIN/medium_quality/1.gif`" /> -->
+              <img class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              :src="`/video/1.gif`" />
         </div>
         <div class="panell h-screen">
           <video v-if="!isMobile === true"
@@ -65,6 +69,10 @@
             <source :src="`/video/2_desktop.webm`" type="video/webm" />
             Your browser does not support the video tag.
           </video>
+          <!-- <img class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              :src="`/video/GIF_LMLC_MONIN/medium_quality/2.gif`" /> -->
+              <img class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              :src="`/video/GIF_LMLC_MONIN/medium_quality/1.gif`" />
         </div>
         <div class="panell h-screen">
           <video v-if="!isMobile === true"
@@ -73,6 +81,8 @@
             <source :src="`/video/3_desktop.webm`" type="video/webm" />
             Your browser does not support the video tag.
           </video>
+          <img class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              :src="`/video/GIF_LMLC_MONIN/medium_quality/3.gif`" />
         </div>
         <div class="panell h-screen">
           <video v-if="!isMobile === true"
@@ -81,6 +91,8 @@
             <source :src="`/video/4_desktop.webm`" type="video/webm" />
             Your browser does not support the video tag.
           </video>
+          <img class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              :src="`/video/GIF_LMLC_MONIN/medium_quality/4.gif`" />
         </div>
         <div class="panell h-screen">
           <video v-if="!isMobile === true"
@@ -89,6 +101,8 @@
             <source :src="`/video/5_desktop.webm`" type="video/webm" />
             Your browser does not support the video tag.
           </video>
+          <img class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              :src="`/video/GIF_LMLC_MONIN/medium_quality/5.gif`" />
         </div>
         <div class="panell h-screen">
           <video v-if="!isMobile === true"
@@ -97,6 +111,8 @@
             <source :src="`/video/6_desktop.webm`" type="video/webm" />
             Your browser does not support the video tag.
           </video>
+          <img class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              :src="`/video/GIF_LMLC_MONIN/medium_quality/6.gif`" />
         </div>
       </div>
 

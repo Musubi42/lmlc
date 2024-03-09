@@ -3,7 +3,6 @@
     <Intro v-if="IntroAnimation && firstVisit" class="fixed z-10000" />
     <!-- <Intro v-if="true" class="fixed z-10" /> -->
     <Header :dynamicStyle="headerStyle" :callToggleMenu="closeMenu"/>
-    <p>{{ closeMenu}}</p>
     <NuxtPage />
     <Footer />
     <CustomCursor />
