@@ -59,7 +59,7 @@
    <div class="mx-auto w-1/2">
       <img src="/BidBook_fond_beige.png" alt="Bid Book Image" class="h-auto">
       <p class="lg:bottom-10 bottom-2 w-[120%] text-left text-xs 2xl:mb-14 font-extralight">
-        réalisation du dossier de candidature pour la demi-finale
+        réalisation du dossier de candidature pour la finale
       </p>
    </div>
  </div>
@@ -67,7 +67,7 @@
    <div class="mx-auto w-1/2">
       <img src="/couverture_Bidbook.png" alt="Bid Book Image" class="h-auto">
       <p class="lg:bottom-10 bottom-2 w-[120%] text-left text-xs 2xl:mb-14 font-extralight">
-        réalisation du dossier de candidature pour la finale
+        réalisation du dossier de candidature pour la demi-finale
       </p>
    </div>
  </div>
