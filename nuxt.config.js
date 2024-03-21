@@ -26,7 +26,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      gtagId: "GTM-KPNVLLF6",
+      gtagId: "G-DDH88P7V5K",
       MAINTENANCE: process.env.MAINTENANCE,
       APIStreamAudioBaseUrl:
         process.env.NODE_ENV === "development"
