@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     handleScroll() {
-      if (window.scrollY || window.pageYOffset === 0) {
+      if ((window.scrollY || window.pageYOffset) === 0) {
         this.headerStyle = 1;
       } else {
         this.headerStyle = this.pastYPosition < (window.scrollY || window.pageYOffset) ? 0 : 1;

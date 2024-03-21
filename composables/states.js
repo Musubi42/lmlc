@@ -4,6 +4,8 @@ export const stateMenuOpen = () => useState('shared', () => false);
 
 export const stateIntroAnimation = () => useState('introAnimation', () => true);
 
+export const stateSession = () => useState('introSession', () => false);
+
 export const stateFirstVisit = () => useState('firstVisit', () => true);
 
 export const stateIsMobile = () => useState('isMobile', () => false);
