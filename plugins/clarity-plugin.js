@@ -5,7 +5,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       const script = document.createElement('script');
       script.type = 'text/javascript';
       script.async = true;
-      script.src = 'https://www.clarity.ms/tag/kd2cee6eia';
+      script.src = 'https://www.clarity.ms/tag/lk9m0oyh2p';
       script.onload = () => {
         // Initialize Clarity
         window.clarity = window.clarity || function() {

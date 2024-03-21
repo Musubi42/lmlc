@@ -26,6 +26,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
+      gtagId: "GTM-KPNVLLF6",
       MAINTENANCE: process.env.MAINTENANCE,
       APIStreamAudioBaseUrl:
         process.env.NODE_ENV === "development"
@@ -70,6 +71,7 @@ export default defineNuxtConfig({
     '/plugins/hover-directive.js',
     '/plugins/cursor-state.js',
     '/plugins/clarity-plugin.js',
+    '/plugins/gtag.client.js',
     // '/plugins/axeptio.js',
     // '/plugins/gsap.js',
   ],
