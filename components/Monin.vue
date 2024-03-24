@@ -58,9 +58,9 @@
             Your browser does not support the video tag.
           </video> -->
             <!-- <img class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              :src="`/video/GIF_LMLC_MONIN/medium_quality/1.gif`" /> -->
+              :src="`/video/GIF_LMLC_MONIN/medium_quality/1.mp4`" /> -->
               <img v-if="!isMobile === true" class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              :src="`/video/1.gif`" />
+              :src="`/video/1.mp4`" />
         </div>
         <div class="panell h-screen">
           <!-- <video v-if="!isMobile === true"
@@ -71,9 +71,9 @@
             Your browser does not support the video tag.
           </video>  -->
           <!-- <img class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              :src="`/video/GIF_LMLC_MONIN/medium_quality/2.gif`" /> -->
+              :src="`/video/GIF_LMLC_MONIN/medium_quality/2.mp4`" /> -->
               <img class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              :src="`/video/2.gif`" />
+              :src="`/video/2.mp4`" />
         </div>
         <div class="panell h-screen">
           <!-- <video v-if="!isMobile === true"
@@ -84,7 +84,7 @@
             Your browser does not support the video tag.
           </video> -->
           <img v-if="!isMobile === true" class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              :src="`/video/3.gif`" />
+              :src="`/video/3.mp4`" />
         </div>
         <div class="panell h-screen">
           <!-- <video v-if="!isMobile === true"
@@ -95,7 +95,7 @@
             Your browser does not support the video tag.
           </video> -->
           <img v-if="!isMobile === true" class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              :src="`/video/4.gif`" />
+              :src="`/video/4.mp4`" />
         </div>
         <div class="panell h-screen">
           <!-- <video v-if="!isMobile === true"
@@ -106,19 +106,19 @@
             Your browser does not support the video tag.
           </video> -->
           <img v-if="!isMobile === true" class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              :src="`/video/5.gif`" />
+              :src="`/video/5.mp4`" />
         </div>
-        <!-- <div class="panell h-screen">
-          <video v-if="!isMobile === true"
+        <div class="panell h-screen">
+        <!--   <video v-if="!isMobile === true"
             class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             autoplay loop muted playsinline>
             <source :src="`/video/6_desktop.webm`" type="video/webm" />
             <source :src="`/video/6.mov`" type="video/mp4" />
             Your browser does not support the video tag.
-          </video>
+          </video> -->
           <img v-if="!isMobile === true" class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              :src="`/video/GIF_LMLC_MONIN/medium_quality/6.gif`" />
-        </div> -->
+              :src="`/video/6.mp4`" />
+        </div> 
       </div>
 
       <!-- mobile -->
@@ -130,7 +130,7 @@
               Your browser does not support the video tag.
             </video> -->
             <img v-if="isMobile === true" class="flex"
-              :src="`/video/1.gif`" />
+              :src="`/video/1.mp4`" />
           </div>
           <button
             class="absolute bottom-1/2 right-0 transform translate-x-1/2 z-30 flex items-center justify-center mr-16 group focus:outline-none">
@@ -150,7 +150,7 @@
               Your browser does not support the video tag.
             </video> -->
             <img v-if="isMobile === true" class="flex"
-              :src="`/video/2.gif`" />
+              :src="`/video/2.mp4`" />
           </div>
           <div class="w-[75%] flex-shrink-0 h-full mx-4">
             <!-- <video v-if="isMobile === true" class="flex" autoplay loop muted playsinline>
@@ -159,7 +159,7 @@
               Your browser does not support the video tag.
             </video> -->
             <img v-if="isMobile === true" class="flex"
-              :src="`/video/3.gif`" />
+              :src="`/video/3.mp4`" />
           </div>
           <div class="w-[75%] flex-shrink-0 h-full mx-4">
             <!-- <video v-if="isMobile === true" class="flex" autoplay loop muted playsinline>
@@ -168,7 +168,7 @@
               Your browser does not support the video tag.
             </video> -->
             <img v-if="isMobile === true" class="flex"
-              :src="`/video/4.gif`" />
+              :src="`/video/4.mp4`" />
           </div>
           <div class="w-[75%] flex-shrink-0 h-full mx-4">
             <!-- <video v-if="isMobile === true" class="flex" autoplay loop muted playsinline>
@@ -177,17 +177,17 @@
               Your browser does not support the video tag.
             </video> -->
             <img v-if="isMobile === true" class="flex"
-              :src="`/video/5.gif`" />
+              :src="`/video/5.mp4`" />
           </div>
-          <!-- <div class="w-[75%] flex-shrink-0 h-full mx-4">
-            <video v-if="isMobile === true" class="flex" autoplay loop muted playsinline>
+         <div class="w-[75%] flex-shrink-0 h-full mx-4">
+            <!--  <video v-if="isMobile === true" class="flex" autoplay loop muted playsinline>
               <source :src="`/video/6_mobile.webm`" type="video/webm" />
               <source :src="`/video/6.mov`" type="video/mp4" />
               Your browser does not support the video tag.
-            </video>
+            </video> -->
             <img v-if="!isMobile === true" class="lg:h-[75%] flex content-center items-center relative mx-7 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              :src="`/video/5.gif`" />
-          </div> -->
+              :src="`/video/6.mp4`" />
+          </div>
         </div>
       </div>
       <button v-cursorAnimation

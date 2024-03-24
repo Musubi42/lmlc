@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "NODE_ENV=dev nuxt dev",
+    "dev": "NODE_ENV=dev nuxt dev --port 3002",
     "prod": "NODE_ENV=prod nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
