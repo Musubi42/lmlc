@@ -192,7 +192,8 @@ export default {
       this.audioSource.volume = newVolume / 100;
     },
     isFirstInterraction() {
-      this.toggleAudio();
+      // On ne veut plus lancer en auto la musique
+      // this.toggleAudio();
     },
   },
   methods: {

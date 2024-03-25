@@ -49,14 +49,13 @@ const setLanguageTexts = () => {
 };
 
 const profiles = ref([
-  { name: "Léo MATTHIAU", title: ceoAndFounder, imageUrl: "./leo.png" },
-  { name: "Constant GAMBIEZ", title: headNewBusiness, imageUrl: "./talents/constant.jpg" },
-  { name: "Cécile CARLOU", title: expertMarketing, imageUrl: "./leo.png" },
-  { name: "Aline  MAGNIER", title: projectManager, imageUrl: "./talents/aline.jpg" },
-  { name: "Léo BOUDET", title: filmDirector, imageUrl: "./leo.png" },
-  { name: "Benjamin ISSNER", title: webDeveloper, imageUrl: "./leo.png" },
-  { name: "Océane LUNVEN", title: artisticDirector, imageUrl: "./leo.png" },
-  { name: "Pascal CHARNEAU ", title: brandPerformanceExpert, imageUrl: "./leo.png" },
+  { name: "Léo", title: ceoAndFounder, imageUrl: "./leo.png" },
+  { name: "Constant", title: headNewBusiness, imageUrl: "./talents/constant.jpg" },
+  { name: "Cécile", title: expertMarketing, imageUrl: "./leo.png" },
+  { name: "Aline ", title: projectManager, imageUrl: "./talents/aline.jpg" },
+  { name: "Léo", title: filmDirector, imageUrl: "./leo.png" },
+  { name: "Benjamin", title: webDeveloper, imageUrl: "./leo.png" },
+  { name: "Pascal", title: brandPerformanceExpert, imageUrl: "./leo.png" },
 ]);
 
 var hasScrolled = ref(false);
