@@ -8,29 +8,28 @@
     <!-- <div> -->
     <div class=" relative flex flex-col lg:flex-row container mx-auto p-8 h-full lg:h-screen">
       <div class="flex-grow flex flex-col justify-end 2xl:mb-20 lg:mb-20 lg:order-1 order-2">
-        <h1 class="2xl:text-9xl lg:text-8xl text-5xl font-bold 2xl:mr-4 lg:mr-4">
-          {{ t("TitleMonin") }}
-        </h1>
-        <p class="md:flex hidden lg:text-2xl text-base mb-4">
-          {{ t("DescriptionMonin[0]") }} <br />
-          {{ t("DescriptionMonin[1]") }} <br />
-          {{ t("DescriptionMonin[2]") }}<br />
-          {{ t("DescriptionMonin[3]") }}
-        </p>
-        <p class="md:hidden flex lg:text-2xl text-base mb-4 text-left">
-          {{ t("DescriptionMoninMobile") }}
-        </p>
-        <p class="text-base font-extralight">
-          {{ t("WorkMonin[0]") }} <br />
-          {{ t("WorkMonin[1]") }} <br />
-          {{ t("WorkMonin[2]") }}<br />
-          {{ t("WorkMonin[3]") }}
-        </p>
-      </div>
-      <div
-        class="md:flex hidden justify-center lg:justify-end 2xl:w-2/5 lg:w-2/5 relative 2xl:mt-8 mr-10 lg:order-2 order-1">
-        <img src="/monin.gif" alt="GIF" class="object-cover mx-auto lg:h-5/6" />
-      </div>
+    <h1 class="2xl:text-9xl lg:text-8xl text-5xl font-bold 2xl:mr-4 lg:mr-4">
+      {{ t("TitleMonin") }}
+    </h1>
+    <p class="md:flex hidden lg:text-2xl text-base mb-4">
+      {{ t("DescriptionMonin[0]") }} <br />
+      {{ t("DescriptionMonin[1]") }} <br />
+      {{ t("DescriptionMonin[2]") }}<br />
+      {{ t("DescriptionMonin[3]") }}
+    </p>
+    <p class="md:hidden flex lg:text-2xl text-base mb-4 text-left">
+      {{ t("DescriptionMoninMobile") }}
+    </p>
+    <p class="text-base font-extralight">
+      {{ t("WorkMonin[0]") }} <br />
+      {{ t("WorkMonin[1]") }} <br />
+      {{ t("WorkMonin[2]") }}<br />
+      {{ t("WorkMonin[3]") }}
+    </p>
+  </div>
+  <div class="flex justify-end items-end lg:justify-end 2xl:w-2/5 lg:w-2/5 relative 2xl:mt-8 mr-10 lg:order-2 order-1 mb-20">
+    <img src="/monin.gif" alt="GIF" class="object-cover mx-auto lg:h-5/6" />
+  </div>
       <!-- </div> -->
       <button v-cursorAnimation
         class=" hidden md:flex absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30  items-center justify-center px-4 group focus:outline-none hover:cursor-none  2xl:mb-20 mb-20"
