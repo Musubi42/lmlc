@@ -82,7 +82,7 @@
                   <button
                     name="Button send email to newsletter"
                     id="sendEmail"
-                    @click="handleSendEmail"
+                    @click="sendDataToMake"
                     class="border-0 text-white rounded-full p-2 ml-2 active:bg-rose-neon/50 cursor-none"
                     v-cursorAnimation
                   >
@@ -104,7 +104,7 @@
                   </button>
                 </div>
 
-                <span id="axeptionConsent" @click="getClick"></span>
+                <!-- <span id="axeptionConsent" @click="getClick"></span> -->
               </div>
             </template>
           </ImageFooterOnHover>
@@ -141,7 +141,6 @@
           <span class="mt-4 mb-4 mx-4">-</span>
           <a
             data-footer-element
-            href="javascript:openAxeptioCookies()"
             class="font-monteserrat font-extralight text-sm mt-4 mb-6 cursor-none"
             v-cursorAnimation
             >gestion des cookies</a
@@ -166,40 +165,41 @@ export default {
     };
   },
   methods: {
-    getClick() {
-      let axeptionButtons = document.querySelectorAll("#axeptio_btn_undefined");
+    // getClick() {
+    //   let axeptionButtons = document.querySelectorAll("#axeptio_btn_undefined");
 
-      if (axeptionButtons.length > 1) {
-        axeptionButtons[0].addEventListener("click", () => {
-          null
-        });
-        axeptionButtons[1].addEventListener("click", () => {
-          this.sendDataToMake();
-        });
-      } else {
-        this.axeptioScreen[0].style.display = "none";
-      }
-    },
-    handleSendEmail() {
-      this.axeptioScreen = document.getElementsByClassName("Widget__WidgetStyle-sc-zhn46e-2 jyqhwN axeptio_widget ax-widget");
-      if (this.axeptioScreen.length === 0) {
-        this.openAxeptioEmailConsent();
-        this.getClick();
-      } else {
-        this.axeptioScreen[0].style.display = "block";
-        this.getClick();
-      }
-    },
-    openAxeptioEmailConsent() {
-      void 0 === window._axcb && (window._axcb = []);
-      window._axcb.push(function (axeptio) {
-        axeptio.mountWidget({
-          service: "processings",
-          name: "LMLC Newsletter",
-          node: document.getElementById("axeptionConsent"),
-        });
-      });
-    },
+    //   if (axeptionButtons.length > 1) {
+    //     axeptionButtons[0].addEventListener("click", () => {
+    //       null
+    //     });
+    //     axeptionButtons[1].addEventListener("click", () => {
+    //       this.sendDataToMake();
+    //     });
+    //   } else {
+    //     this.axeptioScreen[0].style.display = "none";
+    //   }
+    // },
+    // handleSendEmail() {
+    //   this.axeptioScreen = document.getElementsByClassName("Widget__WidgetStyle-sc-zhn46e-2 jyqhwN axeptio_widget ax-widget");
+    //   if (this.axeptioScreen.length === 0) {
+    //     this.openAxeptioEmailConsent();
+    //     this.getClick();
+    //   } else {
+    //     this.axeptioScreen[0].style.display = "block";
+    //     this.getClick();
+    //   }
+    // },
+    // openAxeptioEmailConsent() {
+    //   void 0 === window._axcb && (window._axcb = []);
+    //   window._axcb.push(function (axeptio) {
+    //     axeptio.mountWidget({
+    //       service: "processings",
+    //       name: "LMLC Newsletter",
+    //       node: document.getElementById("axeptionConsent"),
+    //     });
+    //   });
+    // },
+    // TODO : Retirer tout inté de Axeptio
     async sendDataToMake() {
       const webhookUrl = "https://hook.eu2.make.com/mbfn5v1e0b73rr4r0buwalq0nhe4ryl7"; // Remplacez avec l'URL de votre webhook Make.com
 

@@ -6,16 +6,16 @@ export default ({ app }) => {
   // Si non, c'est qu'il n'y a plus d'animation d'intro et on peut lancer Axeptio direct
   
   // Check if we're running on client-side
-  if (process.client) {
-    setTimeout(() => {
-      window.axeptioSettings = {
-        clientId: "65bd5e34454ae068c48164f9", // Replace with your client ID
-      };
+  // if (process.client) {
+  //   setTimeout(() => {
+  //     window.axeptioSettings = {
+  //       clientId: "65bd5e34454ae068c48164f9", // Replace with your client ID
+  //     };
 
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = "https://static.axept.io/sdk-slim.js";
-      document.head.appendChild(script);
-    }, 15000);
-  }
+  //     const script = document.createElement('script');
+  //     script.async = true;
+  //     script.src = "https://static.axept.io/sdk-slim.js";
+  //     document.head.appendChild(script);
+  //   }, 15000);
+  // }
 };
