@@ -33,7 +33,7 @@
       <!-- </div> -->
       <button v-cursorAnimation
         class=" hidden md:flex absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30  items-center justify-center px-4 group focus:outline-none hover:cursor-none  2xl:mb-20 mb-20"
-        @click="buttonDown">
+        >
         <span class="border-0 text-black rounded-full p-2 active:bg-rose-neon/50">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
             <path fill="currentColor" fill-rule="evenodd"
@@ -209,7 +209,7 @@ let animating = ref(false);
 const slide1Element = ref(null);
 const footerElement = ref(null);
 let observer = ref(null);
-const emit = defineEmits(["bottom-reached", "top-reached", "buttonDown", "buttonUp"]);
+const emit = defineEmits(["buttonUp"]);
 
 let isMobile = ref(null);
 
@@ -217,10 +217,10 @@ defineExpose({
   isMobile,
 });
 
-function buttonDown() {
-  // Logique existante du gestionnaire de clic
-  emit("buttonDown");
-}
+// function buttonDown() {
+//   // Logique existante du gestionnaire de clic
+//   emit("buttonDown");
+// }
 function buttonUp() {
   emit("buttonUp");
 }
@@ -282,34 +282,34 @@ onMounted(() => {
   slide1Element.value = document.getElementById("Bottom");
   footerElement.value = document.getElementById("footer");
 
-  const observerOptions = {
-    root: null, // Utilise le viewport comme zone de défilement
-    rootMargin: "0px",
-    threshold: 0.1, // Ajustez selon vos besoins pour déterminer quel pourcentage de l'élément doit être visible
-  };
+  // const observerOptions = {
+  //   root: null, // Utilise le viewport comme zone de défilement
+  //   rootMargin: "0px",
+  //   threshold: 0.1, // Ajustez selon vos besoins pour déterminer quel pourcentage de l'élément doit être visible
+  // };
 
-  observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        if (entry.target.id === "Bottom") {
-          emit("bottom-reached");
+  // observer = new IntersectionObserver((entries, observer) => {
+  //   entries.forEach((entry) => {
+  //     if (entry.isIntersecting) {
+  //       if (entry.target.id === "Bottom") {
+  //         emit("bottom-reached");
 
-          // Logique spécifique à Slide 1
-        } else if (entry.target.id === "footer") {
-          emit("top-reached");
-          // Logique spécifique au Footer
-        }
-      }
-    });
-  }, observerOptions);
+  //         // Logique spécifique à Slide 1
+  //       } else if (entry.target.id === "footer") {
+  //         emit("top-reached");
+  //         // Logique spécifique au Footer
+  //       }
+  //     }
+  //   });
+  // }, observerOptions);
 
   // Commence à observer les éléments
-  if (slide1Element.value) {
-    observer.observe(slide1Element.value);
-  }
-  if (footerElement.value) {
-    observer.observe(footerElement.value);
-  }
+  // if (slide1Element.value) {
+  //   observer.observe(slide1Element.value);
+  // }
+  // if (footerElement.value) {
+  //   observer.observe(footerElement.value);
+  // }
 
   isMobile.value = window.innerWidth < 768;
 });

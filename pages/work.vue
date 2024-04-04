@@ -142,7 +142,7 @@ export default {
         this.scrollEnabled = false
         gsap.to(window, { duration: 1, scrollTo: "#slide1", onComplete: () => this.toggleScroll(true) });
         this.slide = 1
-        this.initializeScrollTrigger()
+        // this.initializeScrollTrigger()
       }
     }
     },
@@ -178,7 +178,7 @@ export default {
       this.scrollEnabled = enable;
       if (this.returnToTop) {
         this.returnToTop = false
-        this.initializeScrollTrigger()
+        // this.initializeScrollTrigger()
       }
     },
     goPrev() {
@@ -280,58 +280,58 @@ export default {
         this.showButton = true;
       }, 2500);
     }
-    const isMobile = window.innerWidth <= 768;
+    // const isMobile = window.innerWidth <= 768;
 
-    if (!isMobile) {
-      this.intentObserver = ScrollTrigger.observe({
-        type: "wheel",
-        onUp: () => {
-          // Si le slide actuel est le slide 2, ne faites rien
-          if (this.slide === 2 && this.active === 0) {
-            this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
-            this.intentObserver = null;
-            return
-          };
+    // if (!isMobile) {
+    //   this.intentObserver = ScrollTrigger.observe({
+    //     type: "wheel",
+    //     onUp: () => {
+    //       // Si le slide actuel est le slide 2, ne faites rien
+    //       if (this.slide === 2 && this.active === 0) {
+    //         this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
+    //         this.intentObserver = null;
+    //         return
+    //       };
 
-          if (this.scrollEnabled) {
-            this.scrollEnabled = false
-            if (this.slide > 0) {
-              this.slide--;
-              gsap.to(window, { duration: 1, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true) });
-              this.isWorkCarousel = true;
-            } else {
-              // this.isWorkCarousel = true;
-            }
-          }
-        },
-        onDown: () => {
-          // Si le slide actuel est le slide 2, ne faites rien
-          if (this.slide === 2 && this.active === 0) {
-            this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
-            this.intentObserver = null;
-            return
-          };
+    //       if (this.scrollEnabled) {
+    //         this.scrollEnabled = false
+    //         if (this.slide > 0) {
+    //           this.slide--;
+    //           gsap.to(window, { duration: 1, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true) });
+    //           this.isWorkCarousel = true;
+    //         } else {
+    //           // this.isWorkCarousel = true;
+    //         }
+    //       }
+    //     },
+    //     onDown: () => {
+    //       // Si le slide actuel est le slide 2, ne faites rien
+    //       if (this.slide === 2 && this.active === 0) {
+    //         this.intentObserver.kill(); // ou la méthode appropriée pour désactiver
+    //         this.intentObserver = null;
+    //         return
+    //       };
 
-          this.isWorkCarousel = false;
-          if (this.scrollEnabled) {
-            this.scrollEnabled = false
+    //       this.isWorkCarousel = false;
+    //       if (this.scrollEnabled) {
+    //         this.scrollEnabled = false
 
-            if (this.slide < this.data[this.active].slide - 1) {
-              this.slide++;
-              gsap.to(window, { duration: 1, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true), });
-            } else {
-              // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
-              if (this.slide < this.data[this.active].slide) {
-                this.slide++;
-                gsap.to(window, { duration: 1, scrollTo: "#footer", onComplete: () => this.toggleScroll(true) });
-              }
-            }
-          }
-        },
-        tolerance: 100,
-        preventDefault: true,
-      });
-    }
+    //         if (this.slide < this.data[this.active].slide - 1) {
+    //           this.slide++;
+    //           gsap.to(window, { duration: 1, scrollTo: "#slide" + this.slide, onComplete: () => this.toggleScroll(true), });
+    //         } else {
+    //           // Assurez-vous que cela ne se déclenche pas lorsqu'on est déjà au dernier slide
+    //           if (this.slide < this.data[this.active].slide) {
+    //             this.slide++;
+    //             gsap.to(window, { duration: 1, scrollTo: "#footer", onComplete: () => this.toggleScroll(true) });
+    //           }
+    //         }
+    //       }
+    //     },
+    //     tolerance: 100,
+    //     preventDefault: true,
+    //   });
+    // }
   },
   unmounted() {
     if (this.titleTypewriter) {

@@ -25,7 +25,7 @@
    </p>
    <button v-cursorAnimation
         class=" hidden md:flex absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30 items-center justify-center px-4 group focus:outline-none hover:cursor-none  2xl:mb-20 mb-20"
-        @click="buttonDown">
+        >
         <span class="border-0 text-black rounded-full p-2 active:bg-rose-neon/50">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
             <path fill="currentColor" fill-rule="evenodd"
@@ -42,7 +42,7 @@
  <img src="/Bourges2028.png" alt="Bourges 2028" class="h-screen w-screen object-cover">
  <button v-cursorAnimation
         class=" hidden md:flex absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30  items-center justify-center px-4 group focus:outline-none hover:cursor-none  2xl:mb-20 mb-20"
-        @click="buttonDown">
+        >
         <span class="border-0 text-black rounded-full p-2 active:bg-rose-neon/50">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="bounce">
             <path fill="currentColor" fill-rule="evenodd"
