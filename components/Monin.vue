@@ -27,7 +27,7 @@
       {{ t("WorkMonin[3]") }}
     </p>
   </div>
-  <div class="flex justify-end items-end lg:justify-end 2xl:w-2/5 lg:w-2/5 relative 2xl:mt-8 mr-10 lg:order-2 order-1 mb-20">
+  <div class="hidden md:flex justify-end items-end lg:justify-end 2xl:w-2/5 lg:w-2/5 relative 2xl:mt-8 mr-10 lg:order-2 order-1 mb-20">
     <img src="/monin.gif" alt="GIF" class="object-cover mx-auto lg:h-5/6" />
   </div>
       <!-- </div> -->
@@ -139,7 +139,7 @@
 
           <div class="w-[75%] flex-shrink-0 h-full mx-4">
             <video v-if="isMobile === true" class="flex" autoplay loop muted playsinline>
-              <source :src="`/video/2`" type="video/mp4" />
+              <source :src="`/video/2.mp4`" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <!-- <img v-if="isMobile === true" class="flex"
