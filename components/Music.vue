@@ -237,7 +237,7 @@ export default {
           audioResponse = await fetch(`${this.APIStreamAudioBaseUrl}/music/${trackID}.mp3`);
         }
 
-        // audioResponse = await fetch(`https://stream.lmlc.musubi.dev/music/${trackID}.mp3`);
+        // audioResponse = await fetch(`https://streamlmlc.musubi.dev/music/${trackID}.mp3`);
 
         const blob = await audioResponse.blob();
         this.audioSource = new Audio(URL.createObjectURL(blob));

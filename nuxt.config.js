@@ -31,7 +31,7 @@ export default defineNuxtConfig({
       APIStreamAudioBaseUrl:
         process.env.NODE_ENV === "development"
           ? "http://localhost:3000/api"
-          : "https://stream.lmlc.musubi.dev",
+          : "https://streamlmlc.musubi.dev",
     },
   },
 
@@ -40,7 +40,7 @@ export default defineNuxtConfig({
     baseUrl:
       process.env.NODE_ENV === "dev"
         ? "http://localhost:3001"
-        : "https://stream.lmlc.musubi.dev",
+        : "https://streamlmlc.musubi.dev",
   },
   alias: {
     "@": resolve(__dirname, "/"),
