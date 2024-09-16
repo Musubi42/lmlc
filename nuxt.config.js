@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { resolve } from "path";
 export default defineNuxtConfig({
+  sourcemap: {
+    server: true,
+    client: true
+  },
   devtools: { 
     enabled: true,
     timeline: {
@@ -30,7 +34,7 @@ export default defineNuxtConfig({
       MAINTENANCE: process.env.MAINTENANCE,
       APIStreamAudioBaseUrl:
         process.env.NODE_ENV === "development"
-          ? "http://localhost:3000/api"
+          ? "http://localhost:3002/api"
           : "https://streamlmlc.musubi.dev",
     },
   },

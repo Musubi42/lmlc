@@ -1,7 +1,11 @@
 <template>
   <!-- TODO: Pour faire l'effet d'image qui follow sur le hover -->
   <!-- https://codepen.io/coreDeiv/pen/YzqzRKK -->
-  <footer id="footer" class="bottom-0 bg-black text-white w-full h-auto pb-14" data-footer-element>
+  <footer
+    id="footer"
+    class="bottom-0 bg-black text-white w-full h-auto pb-14"
+    data-footer-element
+  >
     <div class="flex flex-row px-[10%] py-[5%]" data-footer-element>
       <div class="flex-1 mb-24 md:mb-0" data-footer-element>
         <div class="mb-3 md:mb-8 w-fit" data-footer-element>
@@ -114,12 +118,28 @@
           <!-- TODO: Faire un input pour récupérer email en contact -->
         </div>
         <div class="flex flex-row mb-2">
-        <!-- TODO mettre le noref no... -->
-          <a href="https://www.instagram.com/lmlccommunication/" class="ml-[-2px] mr-1 hover:cursor-none" target="_blank" referrerpolicy="no-referrer|no-referrer-when-downgrade">
-            <IconsInstagram alt="(Ouvre le l'instagram de LMLC COMMUNICATION dans un nouvel onglet)" class="w-6 h-auto text-white" />
+          <!-- TODO mettre le noref no... -->
+          <a
+            href="https://www.instagram.com/lmlccommunication/"
+            class="ml-[-2px] mr-1 hover:cursor-none"
+            target="_blank"
+            referrerpolicy="no-referrer|no-referrer-when-downgrade"
+          >
+            <IconsInstagram
+              alt="(Ouvre le l'instagram de LMLC COMMUNICATION dans un nouvel onglet)"
+              class="w-6 h-auto text-white"
+            />
           </a>
-          <a href="https://www.linkedin.com/company/lmlccommunication/?originalSubdomain=fr" class="ml-[-2px] mr-1 hover:cursor-none" target="_blank" referrerpolicy="no-referrer|no-referrer-when-downgrade">
-            <IconsLinkedin alt="(Ouvre le linkedin de LMLC COMMUNICATION dans un nouvel onglet)" class="w-6 h-auto text-white" />
+          <a
+            href="https://www.linkedin.com/company/lmlccommunication/?originalSubdomain=fr"
+            class="ml-[-2px] mr-1 hover:cursor-none"
+            target="_blank"
+            referrerpolicy="no-referrer|no-referrer-when-downgrade"
+          >
+            <IconsLinkedin
+              alt="(Ouvre le linkedin de LMLC COMMUNICATION dans un nouvel onglet)"
+              class="w-6 h-auto text-white"
+            />
           </a>
         </div>
         <div class="z-10 relative" data-footer-element>PARIS, FR</div>

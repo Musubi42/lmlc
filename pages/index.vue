@@ -13,14 +13,14 @@
       <div
         class=" w-full h-full"
       >
-        <div id="tableau" class="w-screen font-extralight h-[90%] md:h-full">
+        <div id="tableau" class="w-screen font-extralight h-[95%] md:h-full">
         <!-- TODO: Cette façon de faire fait pété le tout -->
           <tableauTest v-if="!IntroAnimation && !isTableauPreFetchImagesLoading" v-cursorAnimation  />
           <!-- <tableauTest v-if="true" v-cursorAnimation :key="componentKey" /> -->
         </div>
         <!-- TODO : Changer où je trigger la fnc isScrolling -->
         <div 
-          class="relative flex md:hidden w-screen h-[15%] items-center justify-center appear-after-a-moment"
+          class="absolute bottom-14 flex md:hidden w-screen items-center justify-center appear-after-a-moment"
           v-if="isMobile && !hasScrolled"
         >
          <!--  :style="{ display: isMobile && !hasScrolled ? 'flex' : 'none' }" -->
