@@ -3,19 +3,24 @@ import { resolve } from "path";
 export default defineNuxtConfig({
   sourcemap: {
     server: true,
-    client: true
+    client: true,
   },
-  devtools: { 
-    enabled: true,
-    timeline: {
-      enabled: true,
+  // devtools: {
+  //   enabled: true,
+  //   timeline: {
+  //     enabled: true,
+  //   },
+  // },
+  server: {
+    hmr: {
+      clientPort: 3002,
     },
   },
-   head: {
+  head: {
     // Other head elements like title, meta tags, etc.
     script: [
       {
-        type: 'text/javascript',
+        type: "text/javascript",
         innerHTML: `
           (function(c,l,a,r,i,t,y){
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -23,10 +28,10 @@ export default defineNuxtConfig({
               y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
           })(window, document, "clarity", "script", "lk9m0oyh2p");
         `,
-        charset: 'utf-8',
+        charset: "utf-8",
       },
     ],
-    __dangerouslyDisableSanitizers: ['script'],
+    __dangerouslyDisableSanitizers: ["script"],
   },
   runtimeConfig: {
     public: {
@@ -49,20 +54,27 @@ export default defineNuxtConfig({
   alias: {
     "@": resolve(__dirname, "/"),
   },
-  modules: ["nuxt-svgo", "@nuxt/image", "@nuxtjs/i18n", '@nuxt/image', '@unlighthouse/nuxt'],
+  modules: [
+    "nuxt-svgo",
+    "@nuxt/image",
+    "@nuxtjs/i18n",
+    "@nuxt/image",
+    "@unlighthouse/nuxt",
+    "@builder.io/sdk-vue/nuxt"
+  ],
   image: {
     inject: true,
     quality: 80,
-    format: ['webp', 'png', 'jpg', 'gif'],  
+    format: ["webp", "png", "jpg", "gif"],
   },
   site: {
-    url: 'https://lmlccommunication.fr',
+    url: "https://lmlccommunication.fr",
     trailingSlash: true,
   },
   unlighthouse: {
     scanner: {
       // simulate a desktop device
-      device: 'desktop',
+      device: "desktop",
     },
   },
   i18n: {
@@ -72,15 +84,15 @@ export default defineNuxtConfig({
     autoImportPath: "~/assets/icons/",
   },
   plugins: [
-    '/plugins/hover-directive.js',
-    '/plugins/cursor-state.js',
-    '/plugins/clarity-plugin.js',
-    '/plugins/gtag.client.js',
+    "/plugins/hover-directive.js",
+    "/plugins/cursor-state.js",
+    "/plugins/clarity-plugin.js",
+    "/plugins/gtag.client.js",
     // '/plugins/axeptio.js',
     // '/plugins/gsap.js',
   ],
   build: {
-    transpile: ['gsap'],
+    transpile: ["gsap"],
   },
   components: true,
   css: ["~/assets/css/main.css"],
