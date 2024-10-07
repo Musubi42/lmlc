@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 
 export default defineNuxtRouteMiddleware(() => {
   const cookieFirstVisit = Cookies.get("firstVisit");
+  console.log("middleware : ", cookieFirstVisit);
   let firstVisit = undefined;
   let IntroAnimation = stateIntroAnimation();
   

@@ -41,7 +41,7 @@
 
 <script>
 import Typewriter from "typewriter-effect/dist/core";
-// import Cookies from "js-cookie";
+import Cookies from "js-cookie";
 
 export default {
   setup() {
@@ -99,7 +99,7 @@ export default {
       // A la fin de l'animation venir démonter le component du DOM
       setTimeout(() => {
         this.IntroAnimation = false;
-        // Cookies.set("firstVisit", "false");
+        Cookies.set("firstVisit", "false");
         document.body.style.overflow = 'auto';
       }, 1001);
     },
