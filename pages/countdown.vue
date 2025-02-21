@@ -1,3 +1,120 @@
+<script setup>
+definePageMeta({
+  layout: "menu",
+});
+
+// import gsap from "gsap";
+import { Quart } from "gsap/gsap-core";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+const { $gsap: gsap } = useNuxtApp();
+
+// Create refs for the elements
+const days = ref(null);
+const hours = ref(null);
+const minutes = ref(null);
+const seconds = ref(null);
+
+// Calculate initial values
+const birthday = "2025/04/20";
+const second = 1000;
+const minute = second * 60;
+const hour = minute * 60;
+const day = hour * 24;
+
+// Initial values computed
+const initialValues = computed(() => {
+  const countDown = new Date(birthday).getTime();
+  const now = new Date().getTime();
+  const distance = countDown - now;
+
+  return {
+    days: setNumber(distance / day),
+    hours: setNumber((distance % day) / hour),
+    minutes: setNumber((distance % hour) / minute),
+    seconds: setNumber((distance % minute) / second)
+  };
+});
+
+onMounted(() => {
+  // Set initial values
+  days.value.innerText = initialValues.value.days;
+  hours.value.innerText = initialValues.value.hours;
+  minutes.value.innerText = initialValues.value.minutes;
+  seconds.value.innerText = initialValues.value.seconds;
+
+  // Start the interval
+  startCountdown();
+});
+
+const startCountdown = () => {
+  const countDown = new Date(birthday).getTime();
+  
+  const x = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = countDown - now;
+
+    days.value.innerText = setNumber(distance / day);
+    hours.value.innerText = setNumber((distance % day) / hour);
+    minutes.value.innerText = setNumber((distance % hour) / minute);
+    animateFlip(seconds.value, Math.floor((distance % minute) / second));
+
+    if (distance < 0) {
+      clearInterval(x);
+      // Handle countdown end...
+    }
+  }, 1000);
+};
+
+function animateFlip(element, value) {
+  const currentValue = value < 10 ? "0" + value : "" + value;
+  const oldValue = element.innerText;
+
+  if (oldValue === currentValue) return;
+
+  // Create container for animation
+  const temp = document.createElement('div');
+  temp.style.position = 'absolute';
+  temp.style.width = '100%';
+  temp.style.height = '100%';
+  temp.style.overflow = 'hidden';
+  
+  // Set the new and old values
+  temp.innerHTML = `
+      <div class="old-value">${oldValue}</div>
+      <div class="new-value">${currentValue}</div>
+  `;
+  
+  element.innerHTML = '';
+  element.appendChild(temp);
+
+  // Animate
+  gsap.fromTo(temp.querySelector('.old-value'), {
+      y: 0,
+  }, {
+      y: '-100%',
+      duration: 0.2,
+      ease: 'power1.inOut'
+  });
+
+  gsap.fromTo(temp.querySelector('.new-value'), {
+      y: '100%',
+  }, {
+      y: 0,
+      duration: 0.2,
+      ease: 'power1.inOut',
+      onComplete: () => {
+          // Clean up after animation
+          element.innerHTML = currentValue;
+      }
+  });
+}
+
+function setNumber(num) {
+  const res = Math.floor(num);
+  return res >= 10 ? res : `0${res}`;
+}
+</script>
+
 <template>
   <div class="mx-4 md:mx-auto">
     <!-- Logo -->
@@ -7,7 +124,7 @@
         <div class="md:w-1/5 mx-auto">
           <img
             class="w-7/12 mx-auto md:w-full"
-            src="/logo-lmlc-black.png"
+            src="/lmlc-logo-and-name.png"
             alt="Logo lmlccommunication"
           />
         </div>
@@ -30,59 +147,27 @@
               <!-- <div class="flex items-center justify-between"> -->
               <!-- Début chiffre -->
               <div class="flex items-center flex-col flex-nowrap">
-                <span class="time-elem relative shadow-xl" id="days">
-                  <span class="top">00</span>
-                  <span class="top-back">
-                    <span>00</span>
-                  </span>
-                  <span class="bottom">08</span>
-                  <span class="bottom-back">
-                    <span>00</span>
-                  </span>
+                <span class="time-elem relative shadow-xl flex items-center justify-center" ref="days">
+                  {{ initialValues.days }}
                 </span>
-                <!-- <span class="title">Days</span> -->
               </div>
 
               <div class="flex items-center flex-col flex-nowrap">
-                <span class="time-elem relative shadow-xl" id="hours">
-                  <span class="top">00</span>
-                  <span class="top-back">
-                    <span>00</span>
-                  </span>
-                  <span class="bottom">08</span>
-                  <span class="bottom-back">
-                    <span>00</span>
-                  </span>
+                <span class="time-elem relative shadow-xl flex items-center justify-center" ref="hours">
+                  {{ initialValues.hours }}
                 </span>
-                <!-- <span class="title">Hours</span> -->
               </div>
 
               <div class="flex items-center flex-col flex-nowrap">
-                <span class="time-elem relative shadow-xl" id="minutes">
-                  <span class="top">00</span>
-                  <span class="top-back">
-                    <span>00</span>
-                  </span>
-                  <span class="bottom">08</span>
-                  <span class="bottom-back">
-                    <span>00</span>
-                  </span>
+                <span class="time-elem relative shadow-xl flex items-center justify-center" ref="minutes">
+                  {{ initialValues.minutes }}
                 </span>
-                <!-- <span class="title">Minutes</span> -->
               </div>
 
               <div class="flex items-center flex-col flex-nowrap">
-                <span class="time-elem relative shadow-xl" id="seconds">
-                  <span class="top">00</span>
-                  <span class="top-back">
-                    <span>00</span>
-                  </span>
-                  <span class="bottom">00</span>
-                  <span class="bottom-back">
-                    <span>00</span>
-                  </span>
+                <span class="time-elem relative shadow-xl flex items-center justify-center" ref="seconds">
+                  {{ initialValues.seconds }}
                 </span>
-                <!-- <span class="">Seconds</span> -->
               </div>
               <!-- </div> -->
               <!-- </div> -->
@@ -92,7 +177,7 @@
       </div>
 
       <!-- Contact -->
-      <div class="flex flex-1 font-montserrat">
+      <div class="flex flex-1 flex-col items-center font-montserrat text-white">
         <div class="flex-1"></div>
         <div class="flex-1">
           <p class="font-medium md:font-bold">QUESTION &</p>
@@ -102,12 +187,12 @@
               >contact@lmlccommunication.fr</a
             >
           </div>
-          <p class="font-medium md:font-bold">JOB</p>
+          <!-- <p class="font-medium md:font-bold">JOB</p>
           <div class="font-thin mt-2">
             <a href="mailto: talents@lmlccommunication.fr"
               >talents@lmlccommunication.fr</a
             >
-          </div>
+          </div> -->
         </div>
         <div class="flex-1"></div>
       </div>
@@ -115,93 +200,12 @@
   </div>
 </template>
 
-<script setup>
-definePageMeta({
-  layout: "menu",
-});
+<!-- <style scoped>
+.time-elem {
+    @apply bg-slate-800 rounded-lg w-16 h-20 relative overflow-hidden flex items-center justify-center;
+}
 
-// import gsap from "gsap";
-import { Quart } from "gsap/gsap-core";
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-const { $gsap: gsap } = useNuxtApp();
-
-
-
-onMounted(() => {
-  time();
-});
-const time = () => {
-  // window.addEventListener("load", () => {
-  let birthday = "2024/02/25";
-
-  (function () {
-    const second = 1000;
-    const minute = second * 60;
-    const hour = minute * 60;
-    const day = hour * 24;
-
-    const countDown = new Date(birthday).getTime();
-    var x = setInterval(function () {
-      const now = new Date().getTime();
-      const distance = countDown - now;
-
-      document.getElementById("days").innerText = setNumber(distance / day);
-
-      document.getElementById("hours").innerText = setNumber(
-        (distance % day) / hour
-      );
-      document.getElementById("minutes").innerText = setNumber(
-        (distance % hour) / minute
-      );
-      animateFlip(seconds, Math.floor((distance % minute) / second));
-
-      //do something later when date is reached
-      if (distance < 0) {
-        let headline = document.getElementById("headline"),
-          countdown = document.getElementById("countdown"),
-          content = document.getElementById("content");
-
-        headline.innerText = "It's my birthday!";
-        countdown.style.display = "none";
-        content.style.display = "block";
-
-        clearInterval(x);
-      }
-    }, 1000);
-  })();
-
-  function animateFlip(element, value) {
-    const valueInDom = element.querySelector(".bottom-back").innerText;
-    const currentValue = value < 10 ? "0" + value : "" + value;
-
-    if (valueInDom === currentValue) return;
-
-    element.querySelector(".top-back span").innerText = currentValue;
-    element.querySelector(".bottom-back span").innerText = currentValue;
-
-    gsap.to(element.querySelector(".top"), 0.7, {
-      rotationX: "-180deg",
-      transformPerspective: 300,
-      ease: Quart.easeOut,
-      onComplete: function () {
-        element.querySelector(".top").innerText = currentValue;
-        element.querySelector(".bottom").innerText = currentValue;
-        gsap.set(element.querySelector(".top"), { rotationX: 0 });
-      },
-    });
-
-    gsap.to(element.querySelector(".top-back"), 0.7, {
-      rotationX: 0,
-      transformPerspective: 300,
-      ease: Quart.easeOut,
-      clearProps: "all",
-    });
-  }
-
-  function setNumber(num) {
-    const res = Math.floor(num);
-    return res >= 10 ? res : `0${res}`;
-  }
-  // });
-};
-</script>
+.old-value, .new-value {
+    @apply absolute w-full h-full flex items-center justify-center;
+}
+</style> -->
