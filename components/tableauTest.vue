@@ -156,6 +156,8 @@ export default {
             options: renderOptions,
           });
 
+          console.log("import.meta.url : ", import.meta.url);
+
           const worker = new Worker(
             new URL("/assets/workers/tableau.js", import.meta.url),
             { type: "module" }

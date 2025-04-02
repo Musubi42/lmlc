@@ -12,6 +12,7 @@ const showWarning = ref(false);
 const checkOrientation = () => {
   // Voir à ajuster le 768
   showWarning.value = window.innerWidth > window.innerHeight && window.innerWidth < 768;
+  console.log(showWarning.value);
 };
 
 onMounted(() => {
