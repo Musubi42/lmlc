@@ -15,7 +15,7 @@ const minutes = ref(null);
 const seconds = ref(null);
 
 // Calculate initial values
-const birthday = "2025/04/20";
+const birthday = "2025/05/01";
 const second = 1000;
 const minute = second * 60;
 const hour = minute * 60;

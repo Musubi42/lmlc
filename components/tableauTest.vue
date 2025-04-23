@@ -156,6 +156,22 @@ export default {
             options: renderOptions,
           });
 
+          console.log("Adding mousemove event to engine");
+          // Add mouse hover event
+          Events.on(engine, 'mousemove', function(event) {
+            console.log("Mousemove triggered", event.mouse.position);
+            const mousePosition = event.mouse.position;
+            const hoveredBodies = Matter.Query.point(Composite.allBodies(world), mousePosition);
+            
+            if (hoveredBodies.length > 0) {
+              const hoveredBody = hoveredBodies[0];
+              console.log('Found hovered body:', hoveredBody);
+              if (hoveredBody.label && !hoveredBody.label.includes('_sprite')) {
+                console.log('Hovered element:', hoveredBody.label);
+              }
+            }
+          });
+
           console.log("import.meta.url : ", import.meta.url);
 
           const worker = new Worker(
@@ -212,12 +228,19 @@ export default {
             const { functionName, args } = event.data;
 
             if (functionName === "createBody") {
-              const [body, spriteBody, constraint] = args;
+              const [body, spriteBody, constraint, elementKey] = args;
+              console.log('Creating body for:', elementKey);
+              
               // TODO: La frequence de rafraichissement de la physique est trop lente, ce qui fait que les objets ne sont pas dans le même axe
               Events.on(engine, "beforeUpdate", function (event) {
                 // Set the angle of the spriteBody to the angle of the body
                 Body.setAngle(spriteBody, body.angle);
               });
+
+              // Add hover event
+              body.label = elementKey;
+              spriteBody.label = elementKey + "_sprite";
+              console.log('Added labels to body:', body.label);
 
               if (spriteBody.parts[0].render.sprite.texture.match("moninShadow")) {
                 Composite.add(world, body);
@@ -230,6 +253,10 @@ export default {
             Render.run(render);
           };
 
+          // Log all bodies in the world periodically to check if labels are present
+          setTimeout(() => {
+            console.log('All bodies in world:', Composite.allBodies(world).map(body => body.label));
+          }, 2000);
 
           // On peut jouer avec, mais il n'y a pas de collision
           // Composite.add(world, Bodies.rectangle(
@@ -268,7 +295,100 @@ export default {
               },
             });
 
-          // Allow to scoll on the canvas
+          console.log("Adding mouse events");
+          
+          // Add style for hover text
+          const hoverTextStyle = document.createElement('style');
+          hoverTextStyle.textContent = `
+            .hover-text {
+              position: fixed;
+              transform: translate(-50%, -50%);
+              pointer-events: none;
+              color: white;
+              background: rgba(0, 0, 0, 0.7);
+              padding: 5px 10px;
+              border-radius: 4px;
+              font-size: 14px;
+              z-index: 1000;
+              font-family: Arial, sans-serif;
+            }
+          `;
+          document.head.appendChild(hoverTextStyle);
+
+          // Create hover text element
+          const hoverText = document.createElement('div');
+          hoverText.className = 'hover-text';
+          hoverText.style.display = 'none';
+          document.body.appendChild(hoverText);
+
+          // Add mousemove event using MouseConstraint
+          Events.on(mouseConstraint, 'mousemove', function(event) {
+            const hoveredBodies = Matter.Query.point(Composite.allBodies(world), event.mouse.position);
+            
+            if (hoveredBodies.length > 0) {
+              const hoveredBody = hoveredBodies[0];
+              if (hoveredBody.label && !hoveredBody.label.includes('_sprite')) {
+                console.log('Hovered element:', hoveredBody.label);
+                
+                // Find the sprite body associated with this body
+                const spriteBody = Composite.allBodies(world).find(
+                  body => body.label === hoveredBody.label + '_sprite'
+                );
+                
+                if (spriteBody) {
+                  // Get the center position of the sprite body
+                  const bounds = spriteBody.bounds;
+                  const centerX = (bounds.max.x + bounds.min.x) / 2;
+                  const centerY = (bounds.max.y + bounds.min.y) / 2;
+
+                  // Update hover text content and position
+                  hoverText.textContent = hoveredBody.label;
+                  hoverText.style.display = 'block';
+                  hoverText.style.left = `${centerX}px`;
+                  hoverText.style.top = `${centerY}px`;
+                }
+              }
+            } else {
+              // Hide text when not hovering any body
+              hoverText.style.display = 'none';
+            }
+          });
+
+          // Hide text when mouse leaves canvas
+          render.canvas.addEventListener('mouseleave', () => {
+            hoverText.style.display = 'none';
+          });
+
+          // Clean up on component unmount
+          onBeforeUnmount(() => {
+            hoverText.remove();
+            hoverTextStyle.remove();
+          });
+
+          // Add mouseout event to reset the last hovered element
+          // Events.on(mouseConstraint, 'mouseout', function(event) {
+          //   Composite.allBodies(world).forEach(body => {
+          //     if (body.render && body.render.sprite) {
+          //       body.render.opacity = 1;
+          //       Body.setScale(body, 1, 1);
+          //     }
+          //   });
+          // });
+
+          // Add mouse hover event using MouseConstraint
+          Events.on(mouseConstraint, 'mousedown', function(event) {
+            console.log("Mouse down", event.mouse.position);
+            const hoveredBodies = Matter.Query.point(Composite.allBodies(world), event.mouse.position);
+            
+            if (hoveredBodies.length > 0) {
+              const hoveredBody = hoveredBodies[0];
+              if (hoveredBody.label && !hoveredBody.label.includes('_sprite')) {
+                console.log('Clicked element:', hoveredBody.label);
+              }
+            }
+          });
+
+          // Allow to scroll on the canvas
           mouseConstraint.mouse.element.removeEventListener(
             "mousewheel",
             mouseConstraint.mouse.mousewheel
@@ -527,6 +647,10 @@ export default {
           Runner.run(engine);
           // run the renderer
           Render.run(render);
+
+          // Verify events are properly bound
+          console.log("Engine events:", engine.events);
+          console.log("Mouse events bound:", Events.eventNames(engine));
         }
       );
       // Check if the code run on the client side
